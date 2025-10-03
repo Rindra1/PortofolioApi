@@ -1,0 +1,210 @@
+﻿@page "/"
+@rendermode InteractiveServer
+@inject HttpClient Http
+@inject IJSRuntime JS
+@using PortofolioApi.Domain.DTOs
+
+
+<!-- HERO -->
+<header class="hero">
+  <div class="layer layer-back"></div>
+  <div class="layer layer-mid"></div>
+  <div class="layer layer-front">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>@portfolio.Prenom</h1>
+        <p>@portfolio.resume</p>
+        <a href="#projects" class="btn btn-hero">Voir mes projets</a>
+      </div>
+      <div class="hero-image">
+        <img src="images/@portfolio.UserImage" alt="Rindra Niaina" />
+      </div>
+    </div>
+  </div>
+</header>
+
+
+  
+<!-- ABOUT -->
+<section id="about" class="fade">
+  <h2>À propos de moi</h2>
+  <p>@portfolio.APropos</p>
+</section>
+
+
+<!-- PROJECTS -->
+<section id="projects" class="fade">
+  <h2>Mes projets</h2>
+  <div class="projects-grid">
+    @foreach(var proj in portfolio.ProjetDTOs)
+    {
+        <div class="project-card">
+          <img src="/images/@proj.ImageProjet" alt="@proj.TitreProjet">
+          <div class="project-info">
+            <h3>@proj.TitreProjet</h3>
+            <p>@proj.ResumerProjet</p>
+            <a href="#" class="btn-small open-modal" data-project="@proj.IdProjet.ToString()">Voir détails</a>
+          </div>
+        </div>
+
+        <div id="modal-@proj.IdProjet.ToString()" class="modal">
+            <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>@proj.TitreProjet</h3>
+            <p>
+              @proj.DetailProjet
+            </p>
+          </div>
+        </div>
+    }
+  </div>
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact" class="fade">
+  <h2>Contact</h2>
+  <form>
+    <input type="text" placeholder="Nom" required>
+    <input type="email" placeholder="Email" required>
+    <textarea placeholder="Message" required></textarea>
+    <button type="submit" class="btn btn-hero">Envoyer</button>
+  </form>
+  <div class="socials">
+    @if(portfolio.ContactDTOs != null)
+      {
+          @foreach (var contact in portfolio.ContactDTOs)
+          {
+            if (contact.TypeContact.ToUpper() == "LINKEDIN")
+            {
+              <a href="@contact.AdresseContact"  target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            }
+            if (contact.TypeContact.ToUpper() == "GITHUB")
+            {
+              <a href="@contact.AdresseContact"  target="_blank" rel="noopener noreferrer">GitHub</a>
+            }
+          }
+      }
+  </div>
+</section>
+
+
+ 
+
+  <!-- Outils -->
+  <section id="tools" class="tools">
+    <h2>Outils utilisés</h2>
+    <div class="tools-list">
+      <span>HTML5</span>
+      <span>CSS3</span>
+      <span>JavaScript</span>
+      <span>C#</span>
+      <span>.NET</span>
+      <span>SQL Server</span>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <h2>Contact</h2>
+    <div class="contact-cards">
+      <div class="contact-card">
+        <h3>Email</h3>
+        <p><a href="mailto:contact@monportfolio.com">contact@monportfolio.com</a></p>
+      </div>
+      <div class="contact-card">
+        <h3>LinkedIn</h3>
+        @if(portfolio.ContactDTOs != null)
+        {
+          foreach (var contact in portfolio.ContactDTOs)
+          {
+            if (contact.TypeContact.ToUpper() == "LINKEDIN")
+            {
+              <p><a href="@contact.AdresseContact">Mon LinkedIn</a></p>
+            }
+          }
+        }
+        else
+        {
+          <p><a href="#">Mon LinkedIn</a></p>
+        }
+       
+      </div>
+      <div class="contact-card">
+      @if(portfolio.ContactDTOs != null)
+        {
+          foreach (var contact in portfolio.ContactDTOs)
+          {
+            if (contact.TypeContact.ToUpper() == "GITHUB")
+            {
+              <p><a href="@contact.AdresseContact">Mon GitHub</a></p>
+            }
+          }
+        }
+        else
+        {
+          <p><a href="#">Mon GitHub</a></p>
+        }
+        
+      </div>
+      <div class="contact-card">
+        <h3>Telephone</h3>
+        <p><a href="#">+261 32 52 781 38</a></p>
+      </div>
+      <div class="contact-card">
+        <h3>Whats app</h3>
+        <p><a href="#">+261 32 52 781 38</a></p>
+      </div>
+    </div>
+  </section>
+
+@code{
+    /*[Parameter]
+    public int IdUserLogin{get;set;}
+    private HttpClient http;
+    private PortofolioApi.Domain.Entities.Utilisateur user;
+    protected override async Task OnInitializedAsync()
+    {
+        string url = $"https://localhost:7047/api/utilisateur/{IdUserLogin}";
+        user = await Http.GetFromJsonAsync<PortofolioApi.Domain.Entities.Utilisateur>(url)??null;
+        
+    }*/
+}
+
+@code {
+
+  private HttpClient http;
+  private UtilisateurDTO portfolio = new UtilisateurDTO();
+  protected override async Task OnAfterRenderAsync(bool firstRender)
+  {
+    if (firstRender)
+    {
+      await JS.InvokeVoidAsync("siteInterop.initAll");
+    }
+  }
+  protected override async Task OnInitializedAsync()
+    {
+        string url = $"api/portfolio";
+        portfolio = await Http.GetFromJsonAsync<UtilisateurDTO>(url)??null;
+        Console.WriteLine("Portfolio:");
+        Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(portfolio));
+    }
+
+
+  class Project {
+    public string Title { get; set; }
+    public string Description { get; set; }
+    public List<string> Images { get; set; }
+  }
+
+  List<Project> Projects = new() {
+    new Project { Title="Demo 1", Description="...", Images = new List<string>{ "images/sary.jpg", "images/sary1.png" } },
+    new Project { Title="Demo 2", Description="...", Images = new List<string>{ "images/img3.jpg", "images/img4.jpg" } }
+  };
+
+  /*async Task OpenModal(List<string> images)
+  {
+    // Appelle la fonction JS exposée : modalInterop.showModal(images)
+    await JS.InvokeVoidAsync("modalInterop.showModal", images);
+  }*/
+}

@@ -1,0 +1,89 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\DotNetCoreApp\\PortofolioApi\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\PortofolioApi.bundle.scp.css",
+      "PackagePath": "staticwebassets\\PortofolioApi.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\app1.css",
+      "PackagePath": "staticwebassets\\app1.css"
+    },
+    {
+      "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\images\\3db52da4-31d4-40fb-a8da-918750eb0c21_sary.jpg",
+      "PackagePath": "staticwebassets\\images\\3db52da4-31d4-40fb-a8da-918750eb0c21_sary.jpg"
+    },
+    {
+      "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\images\\4e58b33c-07a5-4b70-a094-6fa74f406365_sary.jpg",
+      "PackagePath": "staticwebassets\\images\\4e58b33c-07a5-4b70-a094-6fa74f406365_sary.jpg"
+    },
+    {
+      "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\images\\82535d03-1f4e-4b76-b852-ca5db8e2dc3c_monportfolio.png",
+      "PackagePath": "staticwebassets\\images\\82535d03-1f4e-4b76-b852-ca5db8e2dc3c_monportfolio.png"
+    },
+    {
+      "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\images\\b49e27d0-7abc-4ed0-8ed6-691df56607cb_sary1.png",
+      "PackagePath": "staticwebassets\\images\\b49e27d0-7abc-4ed0-8ed6-691df56607cb_sary1.png"
+    },
+    {
+      "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\images\\bc74e3a5-2480-4b1d-b5ce-b39b3fc9ce65_sary2.png",
+      "PackagePath": "staticwebassets\\images\\bc74e3a5-2480-4b1d-b5ce-b39b3fc9ce65_sary2.png"
+    },
+    {
+      "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\images\\c2be670b-4d72-4883-be77-9b5d21837cef_sary2.png",
+      "PackagePath": "staticwebassets\\images\\c2be670b-4d72-4883-be77-9b5d21837cef_sary2.png"
+    },
+    {
+      "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\images\\c5c81aa4-a438-4530-8481-2f83709523b7_sary1.png",
+      "PackagePath": "staticwebassets\\images\\c5c81aa4-a438-4530-8481-2f83709523b7_sary1.png"
+    },
+    {
+      "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\images\\e1b4364f-984f-43bb-be1a-4710ee8d6a35_sary1.png",
+      "PackagePath": "staticwebassets\\images\\e1b4364f-984f-43bb-be1a-4710ee8d6a35_sary1.png"
+    },
+    {
+      "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\images\\fd8d1c2e-3128-4347-86ee-cc137163fc25_monportfolio.png",
+      "PackagePath": "staticwebassets\\images\\fd8d1c2e-3128-4347-86ee-cc137163fc25_monportfolio.png"
+    },
+    {
+      "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\script.js",
+      "PackagePath": "staticwebassets\\script.js"
+    },
+    {
+      "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\script1.js",
+      "PackagePath": "staticwebassets\\script1.js"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.PortofolioApi.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.PortofolioApi.props",
+      "PackagePath": "build\\PortofolioApi.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.PortofolioApi.props",
+      "PackagePath": "buildMultiTargeting\\PortofolioApi.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.PortofolioApi.props",
+      "PackagePath": "buildTransitive\\PortofolioApi.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

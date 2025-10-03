@@ -1,0 +1,31 @@
+@page "/addprojet"
+@rendermode InteractiveServer
+@inherits AddprojetBase
+@using Microsoft.AspNetCore.Components.Forms
+@using System.ComponentModel.DataAnnotations
+
+
+
+<!-- SECTION AJOUT PROJET -->
+<section id="add-project" class="fade">
+  <h2>Ajouter un projet</h2>
+  <div class="project-container">
+    <!-- Formulaire côté gauche -->
+    <form class="project-form">
+      <input type="text" @bind="newProjet.TitreProjet" placeholder="Titre du projet" required>
+      <input type="text" @bind="newProjet.ResumerProjet" placeholder="Resumé du projet" required>
+      <textarea  @bind="newProjet.DetailProjet" placeholder="Description du projet" required></textarea>
+      <InputFile OnChange="OnFileSelected"/>
+      <button @onclick="Enregistrer" class="btn-details">Enregistrer</button>
+    </form>
+
+    <!-- Liste projets côté droit -->
+    <!--<div class="project-list">  
+      <InputFile OnChange="OnFileSelectedLien" multiple/>
+      <button @onclick="Enregistrer" class="btn-details">Enregistrer</button>
+    </div>-->
+  </div>
+</section>
+
+<h1> @message</h1> 
+
