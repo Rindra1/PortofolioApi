@@ -112,7 +112,7 @@
 
 
 @code {
-
+  private string message = string.Empty;
   private HttpClient http;
   private UtilisateurDTO portfolio = new UtilisateurDTO();
   protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -123,12 +123,18 @@
     }
   }
   protected override async Task OnInitializedAsync()
+  {
+    try
     {
-        string url = $"api/portfolio";
-        portfolio = await Http.GetFromJsonAsync<UtilisateurDTO>(url)??null;
-        Console.WriteLine("Portfolio:");
-        Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(portfolio));
+      string url = $"api/portfolio";
+      portfolio = await Http.GetFromJsonAsync<UtilisateurDTO>(url)??null;
+      Console.WriteLine("Portfolio:");
+      Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(portfolio));
+    }catch(Exception ex)
+    {
+        message = $"Erreur: {ex.Message} {ex.StackTrace}";
     }
+  }
 
 
   class Project {
