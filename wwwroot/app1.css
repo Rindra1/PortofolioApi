@@ -1,0 +1,669 @@
+/* RESET */
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Poppins',sans-serif; line-height:1.6; transition: background 0.5s, color 0.5s; }
+a { text-decoration:none; }
+
+/* THEMES */
+body.dark { background:#121212; color:#eee; }
+body.light { background:#f9f9f9; color:#333; }
+
+/* NAVIGATION */
+nav { display:flex; justify-content:space-between; align-items:center; padding:15px 20px; position:sticky; top:0; z-index:10; }
+nav .logo { font-weight:bold; font-size:24px; }
+nav ul { display:flex; gap:20px; list-style:none; }
+nav ul li a { font-weight:500; transition:0.3s; }
+#theme-toggle,#menu-toggle { cursor:pointer; background:none; border:none; font-size:20px; }
+
+/* NAV colors */
+body.dark nav { background:#1c1c1c; color:#eee; }
+body.dark nav ul li a { color:#eee; }
+body.dark nav ul li a:hover { color:#4B6CB7; }
+body.light nav { background:#fff; color:#333; border-bottom:1px solid #ddd; }
+body.light nav ul li a { color:#333; }
+body.light nav ul li a:hover { color:#4B6CB7; }
+
+/* Mobile menu */
+#menu-toggle { display:none; }
+@media(max-width:768px){
+  #menu-toggle { display:block; }
+  nav ul { display:none; flex-direction:column; width:100%; margin-top:10px; gap:10px; }
+  nav ul li a { display:block; padding:10px; border-radius:5px; }
+  nav ul.show { display:flex; }
+  body.dark nav ul li a { background:#2a2a2a; }
+  body.light nav ul li a { background:#f1f1f1; }
+}
+
+/* FOOTER */
+body.dark footer { background:#1c1c1c; color:#eee; border-top:1px solid #333; }
+body.light footer { background:#fff; color:#333; border-top:1px solid #ddd; }
+
+/* HERO */
+.hero { position:relative; height:100vh; overflow:hidden; }
+.layer { position:absolute; top:0; left:0; width:100%; height:100%; }
+.layer-back { background: linear-gradient(to right,#4B6CB7,#182848); z-index:1; }
+.layer-mid { background: url('https://via.placeholder.com/1200x800') center/cover no-repeat; opacity:0.3; z-index:2; }
+.layer-front { position:relative; z-index:3; display:flex; flex-direction:column; justify-content:center; align-items:center; height:100%; text-align:center; color:#fff; }
+.btn-hero { margin-top:20px; padding:12px 25px; border-radius:8px; font-weight:600; transition:0.3s; }
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  gap: 2rem; /* marge entre texte et image */
+  min-height: 400px; /* s'assure que le contenu ne soit pas coupé */
+}
+
+.hero-text {
+  flex: 1;
+  padding-bottom: 1rem; /* ajoute de l'espace sous le texte avant le bouton */
+}
+
+.hero-text h1 {
+  margin-bottom: 0.5rem;
+}
+
+.hero-text p {
+  margin-bottom: 1.5rem; /* espace avant le bouton */
+}
+
+.hero-image img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #fff;
+}
+
+/* Responsive pour mobile */
+@media (max-width: 768px) {
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+    min-height: auto;
+  }
+
+  .hero-image img {
+    width: 150px;
+    height: 150px;
+    margin-top: 1rem;
+  }
+
+  .hero-text p {
+    margin-bottom: 1rem;
+  }
+}
+
+
+
+
+
+/* Buttons */
+body.dark .btn-hero { background:#fff; color:#182848; }
+body.dark .btn-hero:hover { background:linear-gradient(45deg,#4B6CB7,#182848); color:#fff; }
+body.light .btn-hero { background:#182848; color:#fff; }
+body.light .btn-hero:hover { background:#4B6CB7; }
+
+/* Sections */
+section { padding:80px 20px; max-width:1000px; margin:0 auto; opacity:0; transform:translateY(50px); transition: all 0.8s; }
+section h2 { text-align:center; font-size:36px; margin-bottom:40px; color:#4B6CB7; }
+
+/* Projects */
+.projects-grid { display:grid; gap:20px; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); }
+.project-card { border-radius:10px; overflow:hidden; transition:transform 0.3s; }
+.project-card:hover { transform:translateY(-5px); }
+.project-card img { width:100%; display:block; }
+.project-info { padding:15px; text-align:center; }
+.project-info h3 { margin-bottom:10px; color:#4B6CB7; }
+
+body.dark .project-card { background:#2a2a2a; color:#eee; box-shadow:0 4px 10px rgba(0,0,0,0.6); }
+body.dark .project-info p { color:#ccc; }
+body.light .project-card { background:#fff; color:#333; box-shadow:0 4px 10px rgba(0,0,0,0.2); }
+body.light .project-info p { color:#555; }
+
+/* Buttons small */
+.btn-small { display:inline-block; padding:8px 15px; border-radius:5px; font-size:14px; transition:0.3s; }
+body.dark .btn-small { background:#4B6CB7; color:#fff; }
+body.dark .btn-small:hover { background:#182848; }
+body.light .btn-small { background:#182848; color:#fff; }
+body.light .btn-small:hover { background:#4B6CB7; }
+
+/* Modal */
+.modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); justify-content:center; align-items:center; z-index:1000; }
+.modal-content { padding:20px; border-radius:8px; max-width:600px; max-height:80vh; overflow:auto; }
+.close { float:right; font-size:22px; cursor:pointer; }
+
+body.dark .modal-content { background:#1c1c1c; color:#eee; }
+body.light .modal-content { background:#fff; color:#333; border:1px solid #ddd; }
+body.dark .close { color:#aaa; }
+body.dark .close:hover { color:#fff; }
+body.light .close { color:#555; }
+body.light .close:hover { color:#000; }
+
+/* Skills */
+.skills-grid { display:flex; flex-wrap:wrap; gap:15px; justify-content:center; }
+.skill { padding:12px 18px; border-radius:8px; font-weight:500; transition:0.3s; cursor:pointer; }
+body.dark .skill { background:#4B6CB7; color:#fff; }
+body.dark .skill:hover { background:linear-gradient(45deg,#182848,#4B6CB7); }
+body.light .skill { background:#182848; color:#fff; }
+body.light .skill:hover { background:#4B6CB7; }
+
+/* Timeline */
+.timeline { position:relative; margin:40px 0; }
+.timeline:before { content:""; position:absolute; left:50%; width:4px; height:100%; background:#4B6CB7; transform:translateX(-50%); }
+.timeline-item { position:relative; width:50%; padding:20px; }
+.timeline-item:nth-child(odd){ left:0; text-align:right; }
+.timeline-item:nth-child(even){ left:50%; }
+.timeline-item .date { font-weight:600; margin-bottom:5px; color:#4B6CB7; }
+.timeline-item .content { padding:15px; border-radius:8px; transition:0.5s; }
+
+body.dark .timeline-item .content { background:#2a2a2a; color:#eee; box-shadow:0 4px 15px rgba(0,0,0,0.6); }
+body.light .timeline-item .content { background:#fff; color:#333; box-shadow:0 4px 15px rgba(0,0,0,0.2); }
+
+/* Contact */
+form { display:flex; flex-direction:column; gap:15px; max-width:500px; margin:0 auto; }
+form input, form textarea { padding:12px; border-radius:8px; font-size:16px; }
+body.dark form input,body.dark form textarea { background:#2a2a2a; border:1px solid #444; color:#eee; }
+body.light form input,body.light form textarea { background:#fff; border:1px solid #ccc; color:#333; }
+
+/* Socials */
+.socials { text-align:center; margin-top:20px; }
+.socials a { margin:0 10px; font-weight:500; transition:0.3s; }
+body.dark .socials a { color:#4B6CB7; }
+body.dark .socials a:hover { color:#182848; }
+body.light .socials a { color:#182848; }
+body.light .socials a:hover { color:#4B6CB7; }
+
+
+/* FOOTER sombre */
+footer { 
+    text-align:center; 
+    padding:20px; 
+    background:#1c1c1c; 
+    color:#eee; 
+    border-top:1px solid #333; 
+}
+
+
+
+
+/* Tableau utilisateurs */
+.user-table-container {
+  overflow-x: auto;
+}
+
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+.user-table th,
+.user-table td {
+  padding: 12px 15px;
+  border-radius: 6px;
+  text-align: left;
+}
+
+/* Mode sombre */
+body.dark .user-table thead {
+  background: #4B6CB7;
+  color: #fff;
+}
+body.dark .user-table tbody tr {
+  background: #2a2a2a;
+  color: #eee;
+  transition: background 0.3s;
+}
+body.dark .user-table tbody tr:hover {
+  background: #4B6CB7;
+  color: #fff;
+}
+body.dark .user-table td {
+  border-bottom: 1px solid #444;
+}
+
+/* Mode clair */
+body.light .user-table thead {
+  background: #4B6CB7;
+  color: #fff;
+}
+body.light .user-table tbody tr {
+  background: #fff;
+  color: #333;
+  transition: background 0.3s;
+}
+body.light .user-table tbody tr:hover {
+  background: #e6e9f3;
+  color: #182848;
+}
+body.light .user-table td {
+  border-bottom: 1px solid #ddd;
+}
+
+/* Actions utilisateurs */
+.user-table td button {
+  margin-right: 5px;
+  padding: 8px 14px;
+  border-radius: 5px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Bouton Éditer */
+.user-table .edit-btn {
+  background: #4B6CB7;
+  color: #fff;
+}
+.user-table .edit-btn:hover {
+  background: #182848;
+}
+
+/* Bouton Supprimer */
+.user-table .delete-btn {
+  background: #e74c3c;
+  color: #fff;
+}
+.user-table .delete-btn:hover {
+  background: #c0392b;
+}
+
+
+/* Responsive */
+@media(max-width:768px) {
+  .user-form { flex-direction: column; }
+  .user-form input { flex: 1 1 100%; }
+  .user-table { min-width: 100%; }
+}
+
+
+/* Actions utilisateurs */
+.user-table td button {
+  margin-right: 5px;
+}
+.user-table .edit-btn {
+  background: #4B6CB7;
+  color: #fff;
+}
+.user-table .edit-btn:hover { background: #182848; }
+.user-table .delete-btn {
+  background: #e74c3c;
+  color: #fff;
+}
+.user-table .delete-btn:hover { background: #c0392b; }
+
+
+/* Container projet */
+.project-container {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Formulaire ajout projet */
+.project-form, .project-list {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+/* Styles de base pour les champs */
+.project-form input,
+.project-form textarea,
+.project-form select,
+.project-form button,
+.project-list input,
+.project-list textarea,
+.project-list select,
+.project-list button {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+/* Mode sombre */
+body.dark .project-form input,
+body.dark .project-form textarea,
+body.dark .project-form select,
+body.dark .project-form button,
+body.dark .project-list input,
+body.dark .project-list textarea,
+body.dark .project-list select,
+body.dark .project-list button {
+  background: #2a2a2a;
+  border-color: #444;
+  color: #eee;
+}
+
+body.dark .project-form button,
+body.dark .project-list button {
+  background: #4B6CB7;
+  color: #fff;
+}
+body.dark .project-form button:hover,
+body.dark .project-list button:hover {
+  background: #182848;
+}
+
+/* Mode clair */
+body.light .project-form input,
+body.light .project-form textarea,
+body.light .project-form select,
+body.light .project-form button,
+body.light .project-list input,
+body.light .project-list textarea,
+body.light .project-list select,
+body.light .project-list button {
+  background: #fff;
+  border-color: #ccc;
+  color: #333;
+}
+
+body.light .project-form button,
+body.light .project-list button {
+  background: #4B6CB7;
+  color: #fff;
+}
+body.light .project-form button:hover,
+body.light .project-list button:hover {
+  background: #182848;
+}
+
+
+
+.project-form button {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  background: #4B6CB7;
+  color: #fff;
+  transition: 0.3s;
+}
+.project-form button:hover { background: #182848; }
+
+
+
+/* Responsive */
+@media(max-width:1024px) {
+  .project-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+
+
+/* Section ajout – visible en sombre et clair */
+#add-section {
+  padding: 60px 20px;
+  max-width: 1000px;
+  margin: 40px auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+  background-color: #2e2e2e !important; /* forcé pour sombre */
+  color: #eee !important;
+  z-index: 10;
+}
+
+/* Titre */
+#add-section h2 {
+  text-align: center;
+  color: #4B6CB7 !important;
+  margin-bottom: 30px;
+}
+
+/* Formulaire container */
+.add-form-container {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* Colonnes */
+.form-column {
+  flex: 1;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Champs forcés visibles */
+.form-column input,
+.form-column textarea {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #555;
+  background-color: #3a3a3a !important; /* forcé pour sombre */
+  color: #fff !important;
+  font-size: 16px;
+}
+
+/* Bouton visible */
+.add-form-container button {
+  margin-top: 20px;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: #4B6CB7;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.add-form-container button:hover { background-color: #182848; }
+
+/* Responsive */
+@media(max-width:768px) {
+  .add-form-container {
+    flex-direction: column;
+  }
+}
+
+/* Section login */
+#login-section {
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Conteneur login – sombre par défaut */
+.login-container {
+  width: 100%;
+  max-width: 400px;
+  padding: 40px 30px;
+  border-radius: 12px;
+  background: #2a2a2a;
+  color: #eee;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+  text-align: center;
+}
+
+/* Titre */
+.login-container h2 {
+  margin-bottom: 25px;
+  font-size: 28px;
+  color: #4B6CB7;
+}
+
+/* Formulaire */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.login-form input {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background: #2a2a2a;
+  color: #eee;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.login-form button {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  background: #4B6CB7;
+  color: #fff;
+  transition: 0.3s;
+}
+.login-form button:hover {
+  background: #182848;
+}
+
+/* Texte bas */
+.login-info {
+  margin-top: 20px;
+  font-size: 14px;
+}
+.login-info a {
+  color: #4B6CB7;
+  font-weight: 600;
+  text-decoration: none;
+}
+.login-info a:hover {
+  text-decoration: underline;
+}
+
+/* ✅ Mode clair */
+body.light .login-container {
+  background: #fff;
+  color: #333;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+body.light .login-form input {
+  background: #fff;
+  border: 1px solid #ccc;
+  color: #333;
+}
+
+#login-section {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
+
+/* ========================= */
+/* Formulaire Login Blazor   */
+/* ========================= */
+.login-form .input-field {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background: inherit; /* reprend le fond du container (sombre ou clair) */
+    color: inherit;      /* reprend la couleur du container */
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.login-form .input-field:focus {
+    outline: none;
+    border-color: #4B6CB7;
+    box-shadow: 0 0 5px #4B6CB7;
+}
+
+.login-form .validation-msg {
+    color: #e74c3c; /* rouge pour erreur */
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+/* Bouton */
+.login-form .btn-hero {
+    margin-top: 10px;
+    padding: 12px 20px;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    background: #4B6CB7;
+    color: #fff;
+}
+
+body.dark .login-form .btn-hero:hover {
+    background: #182848;
+}
+
+body.light .login-form .btn-hero:hover {
+    background: #182848;
+    color: #fff;
+}
+
+/* Mobile */
+@media(max-width:768px) {
+    .login-container {
+        width: 90%;
+        padding: 30px 20px;
+    }
+
+    .login-form .input-field {
+        font-size: 15px;
+    }
+}
+
+
+.modal-content {
+  background-color: inherit; /* reprend la couleur actuelle du body */
+  color: inherit;
+}
+
+/* MODAL */
+.modal {
+  display: none; /* cachée par défaut */
+  position: fixed; /* superposition sur toute la page */
+  z-index: 1000; /* au-dessus de tout */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* si contenu grand */
+  background-color: rgba(0,0,0,0.6); /* fond semi-transparent */
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: inherit; /* reprend la couleur du body (clair/sombre) */
+  color: inherit;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  width: 90%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  color: inherit;
+}
+
+

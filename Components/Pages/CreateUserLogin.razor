@@ -1,0 +1,43 @@
+@page "/createuserlogin"
+@rendermode InteractiveServer
+@inherits CreateUserLoginBase
+@using Microsoft.AspNetCore.Components.Forms
+@using System.ComponentModel.DataAnnotations
+
+
+<section id="login-section">
+    <div class="login-container">
+        <h2>Login</h2>
+        
+        <EditForm Model="@newUserLogin" OnValidSubmit="@CreerUserLogin" class="login-form">
+            <ValidationSummary />
+
+            <InputText @bind-Value="newUserLogin.Pseudo" placeholder="Pseudo" class="input-field" />
+            <ValidationMessage For="@(() => newUserLogin.Pseudo!)" class="validation-msg" />
+
+            <InputText @bind-Value="newUserLogin.MotDePasse" type="password" placeholder="Mot de passe" class="input-field" />
+            <ValidationMessage For="@(() => newUserLogin.MotDePasse!)" class="validation-msg" />
+
+            <InputSelect @bind-Value="newUserLogin.Role" TValue="string" class="input-field">
+                <option value="">-- Choisir rôle --</option>
+                @foreach(var role in roles)
+                {
+                    <option value="@role">@role</option>
+                }
+            </InputSelect>
+            <ValidationMessage For="@(() => newUserLogin.Role!)" class="validation-msg" />
+
+            <button type="submit" class="btn-hero">Créer</button>
+        </EditForm>
+
+        <div class="login-info">
+            <p>Vous avez déjà un compte ? <a href="/login">Se connecter</a></p>
+        </div>
+    </div>
+</section>
+
+
+@if (!string.IsNullOrEmpty(message))
+{
+    <p>@message</p>
+}

@@ -1,0 +1,91 @@
+﻿
+@inject NavigationManager Nav
+@inject IJSRuntime JS
+@inject UserState UserState
+@inject TokenServices TokenService
+@rendermode InteractiveServer 
+
+<nav>
+  <div class="logo">Rindra</div>
+  <button id="menu-toggle">☰ Menu</button>
+  <ul id="menu">
+
+  @if (!string.IsNullOrEmpty(_role))
+    {
+      
+        @if (_role.ToUpper() == "ADMINISTRATEUR")
+        {
+          <li><a href="#">Admin Panel</a></li> 
+          <li><a href="/utilisateur">Utilisateur</a></li>
+          <li><a href="/addprojet">Projet</a></li>   
+        }
+        else if (_role.ToUpper() == "UTILISATEUR")
+        {
+            <li><a href="/utilisateur">Utilisateur</a></li>
+            <li><a href="/addprojet">Projet</a></li>
+        }
+        <li><a @onclick="Logout" href="#" class="logout-link">Déconnexion</a></li>
+
+    }
+    else
+    {
+      <li><a href="#home">Accueil</a></li>
+      <li><a href="#about">À propos</a></li>
+      <li><a href="#projects">Projets</a></li>
+      <li><a href="#tools">Outils</a></li>
+      <li><a href="#contact">Contact</a></li>
+    }
+  </ul>
+    <button id="theme-toggle">☀️</button>
+  </nav>
+
+
+
+@code {
+    private string _role;
+
+  /*protected override async Task OnAfterRenderAsync(bool firstRender)
+  {
+    if (firstRender)
+    {
+      await JS.InvokeVoidAsync("siteInterop.initAll");
+    }
+  }*/
+
+    private void LogoutEvent(MouseEventArgs e){
+      Console.WriteLine("Interieur Evenement");
+      Logout();
+    }
+
+
+    protected override void OnInitialized()
+    {
+        Console.WriteLine($"NAV_INIT: UserState.Role = '{UserState.Role}', TokenService.GetRole() = '{TokenService.GetRole()}'");
+        UserState.OnChange += OnUserStateChanged;
+        _role = UserState.Role ?? TokenService.GetRole();
+        Console.WriteLine($"NAV_INIT: Initial Id set to '{TokenService.GetUserId()}'");
+    }
+
+    private void OnUserStateChanged()
+    {
+        // On prend seulement la valeur de UserState, pas TokenService
+        _role = UserState.Role; 
+        Console.WriteLine($"NAV_ONCHANGE: UserState.Role changed => '{UserState.Role}'");
+        InvokeAsync(StateHasChanged);
+    }
+
+    public async Task Logout()
+    {
+        await JS.InvokeVoidAsync("localStorage.removeItem", "token");
+        TokenService.ClearToken();  // On vide le token en premier
+        UserState.Role = null;      // Puis on notifie pour mettre le menu à jour
+        Console.WriteLine("NAV_LOGOUT: User logged out, navigating to /login");
+        StateHasChanged();
+        Nav.NavigateTo("/login");
+    }
+
+    public void Dispose()
+    {
+        UserState.OnChange -= OnUserStateChanged;
+    }
+}

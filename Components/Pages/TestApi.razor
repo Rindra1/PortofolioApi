@@ -1,0 +1,61 @@
+@rendermode InteractiveServer
+@page "/testapi"
+
+@inject HttpClient Http
+@using PortofolioApi.Domain.Entities
+@using System.Net.Http.Json
+
+<h3>Test API</h3>
+<button @onclick="TestClick">Test</button>
+<button @onclick="GetUsers">Tester API</button>
+<table>
+    <thead>
+        <tr>
+            <th>Pseudo</th>
+            <th>Pseudo</th>
+            <th>Mot de passe</th>
+            <th>Role</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (users != null)
+        {
+            foreach (var u in users)
+            {
+                <tr>
+                    <th>@u.IdUserLogin</th>
+                    <th>@u.Pseudo</th>
+                    <th>@u.MotDePasse</th>
+                    <th>@u.Role</th>
+                </tr>
+            }
+        }
+        else
+        {
+        <li>Aucun utilisateur chargé.</li>
+        }
+    </tbody>
+</table>
+<h1> @message</h1> 
+@code {
+    private List<UserLogin>? users;
+    private string message = "";
+    private void TestClick()
+    {
+        message = "Button clicked at " + DateTime.Now.ToLongTimeString();
+        Console.WriteLine("Clicked!");
+    }
+    private async Task GetUsers()
+    {
+        try
+        {
+            Console.WriteLine("Début requête API");
+            //var Http1 = HttpFactory.CreateClient("Api");
+            users = await Http.GetFromJsonAsync<List<UserLogin>>("api/userlogin");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Erreur API" + ex.Message);
+        }
+    }
+}

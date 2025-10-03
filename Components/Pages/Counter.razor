@@ -1,0 +1,48 @@
+﻿@page "/counter"
+@rendermode InteractiveServer
+@using Microsoft.AspNetCore.Components;
+@inject IJSRuntime JS
+
+<PageTitle>Counter</PageTitle>
+
+<h1>Counter</h1>
+
+<p role="status">Current count: @currentCount</p>
+
+<button type="button" @onclick="IncrementCount">Click me</button>
+<button type="button" @onclick="CallJs">Call js</button>
+<p>@message</p>
+
+<SiteInitializer />
+
+
+@code {
+    private int currentCount = 0;
+    private string message = "Tonga ato";
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("siteInterop.initAll");
+        }
+    }
+
+    private void IncrementCount()
+    {
+        currentCount++;
+        message = "Tafiditra anaty bouton " + currentCount;
+        Console.WriteLine($"currentcount= {currentCount}");
+    }
+
+    private async Task CallJs()
+    {
+       try
+       {
+        //await JS.InvokeVoidAsync("siteInterop");
+        //await JS.InvokeVoidAsync("siteInterop.initAll");
+       }catch (Exception ex){
+        message = ex.Message;
+        Console.WriteLine($"Erreur JS: {ex.Message}");
+       }
+    }
+}
