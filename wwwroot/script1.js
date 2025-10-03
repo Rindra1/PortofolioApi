@@ -97,7 +97,6 @@ window.siteInterop = {
     e.preventDefault();
     
     const projectId = btn.dataset.project;
-    alert('modal-' + projectId); // ton test
     const modal = document.getElementById('modal-' + projectId);
     if (modal) modal.style.display = "flex";
 });
