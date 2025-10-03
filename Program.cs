@@ -27,6 +27,10 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Récupère le port fourni par Render
+var port = Environment.GetEnvironmentVariable("PORT") ?? "5000"; // 5000 si local
+builder.WebHost.UseUrls($"http://*:{port}");
+
 builder.Services.AddSingleton<UserState>();
 builder.Services.AddSingleton<PortofolioApi.Services.TokenServices>();
 
