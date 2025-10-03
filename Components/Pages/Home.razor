@@ -6,7 +6,7 @@
 
 
 <!-- HERO -->
-<header class="hero">
+<header id="home" class="hero">
   <div class="layer layer-back"></div>
   <div class="layer layer-mid"></div>
   <div class="layer layer-front">
@@ -60,6 +60,27 @@
   </div>
 </section>
 
+<section id="skills" class="fade">
+  <h2>Compétences</h2>
+  <div class="skills-grid">
+    <!-- Développement Desktop -->
+    <div class="skill">C# / VB.NET / WinForms</div>
+
+    <!-- Développement Web -->
+    <div class="skill">.NET Core 8 / ASP.NET Core</div>
+    <div class="skill">ASP.NET Web Forms / WCF / REST (JSON) / Web API / Swagger</div>
+    <div class="skill">HTML / CSS / Bootstrap / jQuery</div>
+
+    <!-- Bases de données et ORM -->
+    <div class="skill">SQL Server / SQLite / MySQL / Access</div>
+    <div class="skill">Entity Framework / LINQ</div>
+
+    <!-- Outils et versioning -->
+    <div class="skill">Git / GitHub / SVN</div>
+  </div>
+</section>
+
+
 
 <!-- CONTACT -->
 <section id="contact" class="fade">
@@ -89,87 +110,6 @@
 </section>
 
 
- 
-
-  <!-- Outils -->
-  <section id="tools" class="tools">
-    <h2>Outils utilisés</h2>
-    <div class="tools-list">
-      <span>HTML5</span>
-      <span>CSS3</span>
-      <span>JavaScript</span>
-      <span>C#</span>
-      <span>.NET</span>
-      <span>SQL Server</span>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="contact">
-    <h2>Contact</h2>
-    <div class="contact-cards">
-      <div class="contact-card">
-        <h3>Email</h3>
-        <p><a href="mailto:contact@monportfolio.com">contact@monportfolio.com</a></p>
-      </div>
-      <div class="contact-card">
-        <h3>LinkedIn</h3>
-        @if(portfolio.ContactDTOs != null)
-        {
-          foreach (var contact in portfolio.ContactDTOs)
-          {
-            if (contact.TypeContact.ToUpper() == "LINKEDIN")
-            {
-              <p><a href="@contact.AdresseContact">Mon LinkedIn</a></p>
-            }
-          }
-        }
-        else
-        {
-          <p><a href="#">Mon LinkedIn</a></p>
-        }
-       
-      </div>
-      <div class="contact-card">
-      @if(portfolio.ContactDTOs != null)
-        {
-          foreach (var contact in portfolio.ContactDTOs)
-          {
-            if (contact.TypeContact.ToUpper() == "GITHUB")
-            {
-              <p><a href="@contact.AdresseContact">Mon GitHub</a></p>
-            }
-          }
-        }
-        else
-        {
-          <p><a href="#">Mon GitHub</a></p>
-        }
-        
-      </div>
-      <div class="contact-card">
-        <h3>Telephone</h3>
-        <p><a href="#">+261 32 52 781 38</a></p>
-      </div>
-      <div class="contact-card">
-        <h3>Whats app</h3>
-        <p><a href="#">+261 32 52 781 38</a></p>
-      </div>
-    </div>
-  </section>
-
-@code{
-    /*[Parameter]
-    public int IdUserLogin{get;set;}
-    private HttpClient http;
-    private PortofolioApi.Domain.Entities.Utilisateur user;
-    protected override async Task OnInitializedAsync()
-    {
-        string url = $"https://localhost:7047/api/utilisateur/{IdUserLogin}";
-        user = await Http.GetFromJsonAsync<PortofolioApi.Domain.Entities.Utilisateur>(url)??null;
-        
-    }*/
-}
 
 @code {
 
