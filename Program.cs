@@ -96,9 +96,16 @@ builder.Services.AddControllers();
 
 
 // Configurer Sqlite
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
+/*builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")
         ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.")));
+*/
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+{
+    options.UseSqlite($"Data Source={dbPath}");
+});
+
+
 
 // Ajouter les services applicatifs
 builder.Services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
