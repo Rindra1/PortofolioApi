@@ -80,12 +80,12 @@ private async Task RedirectAfterLogin()
             if (response.IsSuccessStatusCode)
             {
                 var result = await response.Content.ReadFromJsonAsync<AuthResponseDto>();
-            
+
                 if (result == null)
                 {
                     message = "Erreur lors de la récupération du token.";
                     return;
-                }   
+                }
 
                 // Stocker le token côté client
                 await JS.InvokeVoidAsync("localStorage.setItem", "token", result.Token);
@@ -95,9 +95,10 @@ private async Task RedirectAfterLogin()
                 StateHasChanged();
                 if (TokenServices.GetRole().ToUpper() == "ADMINISTRATEUR")
                     Navigation.NavigateTo("/createuserlogin");
+                else if (TokenServices.GetRole().ToUpper() == "ADMIN")
+                    Navigation.NavigateTo("/createuserlogin");
                 else
                     Navigation.NavigateTo("/addprojet");
-                
             }
             else
             {

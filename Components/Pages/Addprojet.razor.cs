@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using PortofolioApi.Domain.DTOs;
 using Microsoft.JSInterop;
 using Microsoft.AspNetCore.Hosting;
+using PortofolioApi.Services;
 
 namespace PortofolioApi.Components.Pages;
 
@@ -14,6 +15,10 @@ public class AddprojetBase : ComponentBase
 {
     [Inject]
     protected HttpClient Http {get;set;}
+    [Inject]
+    protected UserState userState{ get; set; }
+    [Inject] 
+    protected NavigationManager Nav{get;set;}
     protected ProjetDTO newProjet = new ProjetDTO();
     protected LienDTO newLien = new LienDTO();
     protected List<LienDTO> listeLien = new List<LienDTO>();
@@ -33,6 +38,10 @@ public class AddprojetBase : ComponentBase
     {
         if (firstRender)
         {
+            if(userState.Role==null)
+                Nav.NavigateTo("/login");
+            else if(userState.Role.ToUpper()=="ADMIN")
+                Nav.NavigateTo("/createuserlogin");
             await JS.InvokeVoidAsync("siteInterop.initAll");
         }
     }
