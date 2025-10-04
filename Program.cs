@@ -145,8 +145,8 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddHttpClient("API", client =>
 {
-    client.BaseAddress = new Uri("https://localhost:7047/");
-    //client.BaseAddress = new Uri("https://portofolioapi-8nmz.onrender.com");
+    //client.BaseAddress = new Uri("https://localhost:7047/");
+    client.BaseAddress = new Uri("https://portofolioapi-8nmz.onrender.com");
     client.Timeout = TimeSpan.FromSeconds(60); // éviter le TaskCanceled
 });
 
