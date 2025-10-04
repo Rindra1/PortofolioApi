@@ -62,13 +62,18 @@ public partial class UtilisateurBase : ComponentBase
     {
         try
         {
+            if(userState.Role==null)
+                Nav.NavigateTo("/login");
+            else if(userState.Role.ToUpper()=="ADMIN")
+                Nav.NavigateTo("/createuserlogin");
+    
             int id = 1;
-        string url = $"https://localhost:7047/api/utilisateur/";
+            string url = $"https://localhost:7047/api/utilisateur/";
         
-        HttpResponseMessage rep =  await Http.GetAsync(url);
-        string json = await rep.Content.ReadAsStringAsync();
-        //newUser = JsonSerializer.Deserialize<UserLogin>(json, new JsonSerializerOptions {PropertyNameCaseInsensitive = true});
-        //newUser = await Http.GetFromJsonAsync<UserLoginResponseDTO>(url);
+            HttpResponseMessage rep =  await Http.GetAsync(url);
+            string json = await rep.Content.ReadAsStringAsync();
+            //newUser = JsonSerializer.Deserialize<UserLogin>(json, new JsonSerializerOptions {PropertyNameCaseInsensitive = true});
+            //newUser = await Http.GetFromJsonAsync<UserLoginResponseDTO>(url);
         }catch(Exception ex)
         {
             message = $"Une erreur s'est produite: {ex.Message}";
