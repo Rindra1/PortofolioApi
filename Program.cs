@@ -23,7 +23,8 @@ using System.Text;
 
 using System.Net;
 
-var dbPath = "/mnt/data/appdata.sqlite";
+var dbPath = Path.Combine(AppContext.BaseDirectory, "appdata.db");
+
 
 // Vérifie si la base existe
 if (!File.Exists(dbPath))
