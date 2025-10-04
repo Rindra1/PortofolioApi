@@ -21,6 +21,21 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
+using System.Net;
+
+var dbPath = "appdata.sqlite";
+
+// Vérifie si la base existe
+if (!File.Exists(dbPath))
+{
+    using var client = new WebClient();
+    client.DownloadFile(
+        "https://github.com/Rindra1/PortofolioApi/raw/refs/heads/main/appdata.db",
+        dbPath
+    );
+}
+
+
 
 
 
@@ -129,8 +144,8 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddHttpClient("API", client =>
 {
-    //client.BaseAddress = new Uri("https://localhost:7047/");
-    client.BaseAddress = new Uri("https://portofolioapi-8nmz.onrender.com");
+    client.BaseAddress = new Uri("https://localhost:7047/");
+    //client.BaseAddress = new Uri("https://portofolioapi-8nmz.onrender.com");
     client.Timeout = TimeSpan.FromSeconds(60); // éviter le TaskCanceled
 });
 
