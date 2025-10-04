@@ -52,13 +52,20 @@ public partial class UtilisateurBase : ComponentBase
 
     protected override async Task OnInitializedAsync()
     {
-        int id = 1;
+        try
+        {
+            int id = 1;
         string url = $"https://localhost:7047/api/utilisateur/";
         
         HttpResponseMessage rep =  await Http.GetAsync(url);
         string json = await rep.Content.ReadAsStringAsync();
         //newUser = JsonSerializer.Deserialize<UserLogin>(json, new JsonSerializerOptions {PropertyNameCaseInsensitive = true});
         //newUser = await Http.GetFromJsonAsync<UserLoginResponseDTO>(url);
+        }catch(Exception ex)
+        {
+            message = $"Une erreur s'est produite: {ex.Message}";
+        }
+        
     }
 
     protected void OnFileSelected(InputFileChangeEventArgs e)
