@@ -33,6 +33,11 @@ Directory.CreateDirectory(appDataFolder); // Crée le dossier si inexistant
 
 var dbPath = Path.Combine(appDataFolder, "appdata.db");
 Console.WriteLine($"Chemin de la base de données: {dbPath}");
+// Supprime le fichier existant s'il existe
+if (File.Exists(dbPath))
+{
+    File.Delete(dbPath);
+}
 // 2️⃣ Téléchargement si la base n'existe pas
 if (!File.Exists(dbPath))
 {
@@ -46,6 +51,8 @@ if (!File.Exists(dbPath))
             dbPath
         );
         Console.WriteLine("Base téléchargée avec succès !");
+        Console.WriteLine(new FileInfo(dbPath).Length);
+
     }
     catch (Exception ex)
     {
