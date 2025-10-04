@@ -25,10 +25,7 @@ using System.Net;
 
 
 // 1️⃣ Chemin vers la base, compatible local et Render
-var appDataFolder = Path.Combine(
-    Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-    "PortofolioApi"
-);
+var appDataFolder = Path.Combine(AppContext.BaseDirectory, "var", "data");
 Directory.CreateDirectory(appDataFolder); // Crée le dossier si inexistant
 
 var dbPath = Path.Combine(appDataFolder, "appdata.db");
