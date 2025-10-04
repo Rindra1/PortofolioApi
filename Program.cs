@@ -23,17 +23,34 @@ using System.Text;
 
 using System.Net;
 
-var dbPath = Path.Combine(AppContext.BaseDirectory, "appdata.db");
 
+// 1️⃣ Chemin vers la base, compatible local et Render
+var appDataFolder = Path.Combine(
+    Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+    "PortofolioApi"
+);
+Directory.CreateDirectory(appDataFolder); // Crée le dossier si inexistant
 
-// Vérifie si la base existe
+var dbPath = Path.Combine(appDataFolder, "appdata.db");
+Console.WriteLine($"Chemin de la base de données: {dbPath}");
+// 2️⃣ Téléchargement si la base n'existe pas
 if (!File.Exists(dbPath))
 {
+    Console.WriteLine("Téléchargement de la base de données depuis GitHub...");
     using var client = new WebClient();
-    client.DownloadFile(
-        "https://github.com/Rindra1/PortofolioApi/raw/refs/heads/main/appdata.db",
-        dbPath
-    );
+
+    try
+    {
+        client.DownloadFile(
+            "https://github.com/Rindra1/PortofolioApi/raw/refs/heads/main/appdata.db",
+            dbPath
+        );
+        Console.WriteLine("Base téléchargée avec succès !");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Erreur lors du téléchargement de la base : {ex.Message}");
+    }
 }
 
 
@@ -152,8 +169,8 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddHttpClient("API", client =>
 {
-    //client.BaseAddress = new Uri("https://localhost:7047/");
-    client.BaseAddress = new Uri("https://portofolioapi-8nmz.onrender.com");
+    client.BaseAddress = new Uri("https://localhost:7047/");
+    //client.BaseAddress = new Uri("https://portofolioapi-8nmz.onrender.com");
     client.Timeout = TimeSpan.FromSeconds(60); // éviter le TaskCanceled
 });
 
