@@ -30,8 +30,14 @@ public partial class CreateUserLoginBase : ComponentBase
         }
     }
 
+
     protected override async Task OnInitializedAsync()
     {
+            if(userState.Role==null)
+            Nav.NavigateTo("/login");
+        else if(userState.Role.ToUpper()=="ADMIN")
+            Nav.NavigateTo("/createuserlogin");
+    
         string url = $"api/userlogin";
         users = await Http.GetFromJsonAsync<List<UserLoginResponseDTO>>(url) ?? null;
 

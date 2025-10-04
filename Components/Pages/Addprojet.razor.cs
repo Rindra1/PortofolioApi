@@ -34,14 +34,19 @@ public class AddprojetBase : ComponentBase
     protected IJSRuntime JS { get; set; }
     [Inject] 
     protected IWebHostEnvironment _env{get;set;}
+
+    protected override async Task OnInitializedAsync()
+    {
+        if(userState.Role==null)
+            Nav.NavigateTo("/login");
+        else if(userState.Role.ToUpper()=="ADMIN")
+            Nav.NavigateTo("/createuserlogin");
+    }
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            if(userState.Role==null)
-                Nav.NavigateTo("/login");
-            else if(userState.Role.ToUpper()=="ADMIN")
-                Nav.NavigateTo("/createuserlogin");
             await JS.InvokeVoidAsync("siteInterop.initAll");
         }
     }
