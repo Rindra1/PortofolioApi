@@ -1,0 +1,11 @@
+# Bloquer l’accès aux dossiers sensibles
+User-agent: *
+Disallow: /admin/
+Disallow: /private/
+
+# Autoriser tout le reste
+User-agent: *
+Allow: /
+
+# Indiquer l’emplacement du sitemap
+Sitemap: https://portofolioapi-8nmz.onrender.com/sitemap.xml

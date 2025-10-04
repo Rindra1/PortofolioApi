@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using PortofolioApi.Domain.Entities;
 using PortofolioApi.Domain.DTOs;
 using Microsoft.JSInterop;
+using PortofolioApi.Services;
 
 
 
@@ -15,6 +16,10 @@ public partial class UtilisateurBase : ComponentBase
     protected HttpClient Http {get;set;}
     [Inject]
     protected IJSRuntime JS {get;set;}
+    [Inject] 
+    protected NavigationManager Nav{get;set;}
+    [Inject]
+    protected UserState userState{ get; set; }
     protected IHttpClientFactory ClientFactory { get; set; } = default!;
     
     protected UserLoginResponseDTO newUser = new UserLoginResponseDTO();
@@ -28,7 +33,10 @@ public partial class UtilisateurBase : ComponentBase
     {
         if (firstRender)
         {
-            await JS.InvokeVoidAsync("siteInterop.initAll");
+            if(userState.Role==null)
+                Nav.NavigateTo("/login");
+            else if(userState.Role.ToUpper()=="ADMIN")
+                Nav.NavigateTo("/createuserlogin");
         }
     }
 
