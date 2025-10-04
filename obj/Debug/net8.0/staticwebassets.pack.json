@@ -13,10 +13,6 @@
       "PackagePath": "staticwebassets\\app1.css"
     },
     {
-      "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\app_data\\appdata.db",
-      "PackagePath": "staticwebassets\\app_data\\appdata.db"
-    },
-    {
       "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\bootstrap\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
     },
@@ -65,12 +61,20 @@
       "PackagePath": "staticwebassets\\images\\aa2be732-8b42-476c-9b38-cae9bdc9da76_m.png"
     },
     {
+      "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\robots.txt",
+      "PackagePath": "staticwebassets\\robots.txt"
+    },
+    {
       "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\script.js",
       "PackagePath": "staticwebassets\\script.js"
     },
     {
       "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\script1.js",
       "PackagePath": "staticwebassets\\script1.js"
+    },
+    {
+      "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\sitemap.xml",
+      "PackagePath": "staticwebassets\\sitemap.xml"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.PortofolioApi.Microsoft.AspNetCore.StaticWebAssets.props",

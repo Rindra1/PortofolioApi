@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "wF3SzvMBnfQVJtGEppYtK6G7dY/HNdXFxOT8b3Tel2A=",
+  "Hash": "njVKMJ5SCL6jnlRNNxJG6QeSDrUWYf6lsFOfbZcBBZU=",
   "Source": "PortofolioApi",
   "BasePath": "_content/PortofolioApi",
   "Mode": "Default",
@@ -53,25 +53,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\DotNetCoreApp\\PortofolioApi\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\PortofolioApi.bundle.scp.css"
-    },
-    {
-      "Identity": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\app_data\\appdata.db",
-      "SourceId": "PortofolioApi",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\",
-      "BasePath": "_content/PortofolioApi",
-      "RelativePath": "app_data/appdata.db",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\app_data\\appdata.db"
     },
     {
       "Identity": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\app.css",
@@ -340,6 +321,25 @@
       "OriginalItemSpec": "wwwroot\\images\\aa2be732-8b42-476c-9b38-cae9bdc9da76_m.png"
     },
     {
+      "Identity": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\robots.txt",
+      "SourceId": "PortofolioApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\",
+      "BasePath": "_content/PortofolioApi",
+      "RelativePath": "robots.txt",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\robots.txt"
+    },
+    {
       "Identity": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\script.js",
       "SourceId": "PortofolioApi",
       "SourceType": "Discovered",
@@ -376,6 +376,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\script1.js"
+    },
+    {
+      "Identity": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\sitemap.xml",
+      "SourceId": "PortofolioApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\",
+      "BasePath": "_content/PortofolioApi",
+      "RelativePath": "sitemap.xml",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\sitemap.xml"
     }
   ]
 }

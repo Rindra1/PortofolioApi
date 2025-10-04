@@ -21,13 +21,21 @@ window.siteInterop = {
     },
 
     initSmoothScroll: function () {
-        document.querySelectorAll('nav ul li a').forEach(a => {
+        document.querySelectorAll('nav ul li a:not(.btn-hero)').forEach(a => {
+            a.addEventListener('click', e => {
+            e.preventDefault();
+            const target = document.querySelector(a.getAttribute('href'));
+            if (target) target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        /*document.querySelectorAll('nav ul li a').forEach(a => {
             a.addEventListener('click', e => {
                 e.preventDefault();
                 const target = document.querySelector(a.getAttribute('href'));
                 if (target) target.scrollIntoView({ behavior: 'smooth' });
             });
-        });
+        });*/
     },
 
     initFadeScroll: function () {
@@ -47,7 +55,6 @@ window.siteInterop = {
     initThemeToggle: function () {
         const toggleBtn = document.getElementById('theme-toggle');
         if (!toggleBtn) return;
-
         toggleBtn.addEventListener('click', () => {
             document.body.classList.toggle('dark');
             document.body.classList.toggle('light');
