@@ -139,3 +139,4 @@ C:\DotNetCoreApp\PortofolioApi\obj\Debug\net8.0\refint\PortofolioApi.dll
 C:\DotNetCoreApp\PortofolioApi\obj\Debug\net8.0\PortofolioApi.pdb
 C:\DotNetCoreApp\PortofolioApi\obj\Debug\net8.0\PortofolioApi.genruntimeconfig.cache
 C:\DotNetCoreApp\PortofolioApi\obj\Debug\net8.0\ref\PortofolioApi.dll
+C:\DotNetCoreApp\PortofolioApi\bin\Debug\net8.0\appdata.db
