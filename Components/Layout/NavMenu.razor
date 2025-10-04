@@ -23,6 +23,9 @@
         {
             <li><a href="/utilisateur">Utilisateur</a></li>
             <li><a href="/addprojet">Projet</a></li>
+        }else if(_role.ToUpper()=="ADMIN")
+        {
+          <li><a href="/createuserlogin">Utilisateur</a></li>
         }
         <li><a @onclick="Logout" href="#" class="logout-link">Déconnexion</a></li>
 
