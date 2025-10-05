@@ -200,6 +200,10 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+// Route de test pour vérifier si le serveur est actif
+app.MapGet("/health", () => Results.Ok("OK"));
+
+
 // Pipeline HTTP
 if (!app.Environment.IsDevelopment())
 {
