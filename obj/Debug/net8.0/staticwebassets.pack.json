@@ -25,6 +25,10 @@
       "PackagePath": "staticwebassets\\favicon.png"
     },
     {
+      "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\faviconrindra.png",
+      "PackagePath": "staticwebassets\\faviconrindra.png"
+    },
+    {
       "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\images\\060cbed7-2b35-4f2c-afbe-210ae8f68ace_pa.png",
       "PackagePath": "staticwebassets\\images\\060cbed7-2b35-4f2c-afbe-210ae8f68ace_pa.png"
     },

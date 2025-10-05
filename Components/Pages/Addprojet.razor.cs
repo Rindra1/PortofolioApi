@@ -51,113 +51,113 @@ public class AddprojetBase : ComponentBase
         }
     }
     // Méthode pour ajouter un lien à la liste
-protected void AjouterLien()
-{
-    /*if (FichierLien != null)
+    protected void AjouterLien()
     {
-        ListeFichier.Add(FichierLien); // Ajouter le fichier à la liste
-        FichierLien = null;             // réinitialiser l'input seulement après ajout
-    }*/
-}
-
-// Sélection fichier projet
-protected void OnFileSelected(InputFileChangeEventArgs e)
-{
-    Fichier = e.File;
-}
-
-// Sélection fichier lien
-protected void OnFileSelectedLien(InputFileChangeEventArgs e)
-{
-    foreach (var file in e.GetMultipleFiles())
-    {
-        ListeFichier.Add(file);
+        /*if (FichierLien != null)
+        {
+            ListeFichier.Add(FichierLien); // Ajouter le fichier à la liste
+            FichierLien = null;             // réinitialiser l'input seulement après ajout
+        }*/
     }
 
-    // Réinitialiser InputFile pour pouvoir resélectionner les mêmes fichiers
-    fileInputKey = Guid.NewGuid();
-}
-
-
-// Enregistrement projet + liens
-protected async Task Enregistrer()
-{
-    Console.WriteLine("Energistrer projet");
-    Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(newProjet));
-    try
+    // Sélection fichier projet
+    protected void OnFileSelected(InputFileChangeEventArgs e)
     {
-        // Upload image projet
-        /*if (Fichier != null)
+        Fichier = e.File;
+    }
+
+    // Sélection fichier lien
+    protected void OnFileSelectedLien(InputFileChangeEventArgs e)
+    {
+        foreach (var file in e.GetMultipleFiles())
         {
-            var uploadFolder = Path.Combine(Environment.CurrentDirectory,"wwwroot/images");
-            if (!Directory.Exists(uploadFolder))
-                Directory.CreateDirectory(uploadFolder);
-
-            var fileName= $"{Guid.NewGuid()}_{Fichier.Name}";
-            var filePath = Path.Combine(uploadFolder, fileName);
-            using var stream = File.Create(filePath);
-            await Fichier.OpenReadStream().CopyToAsync(stream);
-
-            newProjet.ImageProjet = fileName;
-        }*/
-
-        if (Fichier != null)
-{
-    var uploadFolder = Path.Combine(_env.WebRootPath, "images");
-    if (!Directory.Exists(uploadFolder))
-        Directory.CreateDirectory(uploadFolder);
-
-    var fileName = $"{Guid.NewGuid()}_{Path.GetFileName(Fichier.Name)}";
-    var filePath = Path.Combine(uploadFolder, fileName);
-
-    using var stream = File.Create(filePath);
-    await Fichier.OpenReadStream(maxAllowedSize: 10 * 1024 * 1024).CopyToAsync(stream);
-
-    newProjet.ImageProjet = fileName;
-}
-
-
-        // Créer le projet côté serveur
-        var response = await Http.PostAsJsonAsync("api/projet", newProjet);
-        if (!response.IsSuccessStatusCode)
-        {
-            message = "Erreur lors de la création du Projet.";
-            return;
+            ListeFichier.Add(file);
         }
 
-        var idProjet = await response.Content.ReadFromJsonAsync<int>();
-        Console.WriteLine($"Projet créé avec ID: {idProjet}");
-        // Upload fichiers liens
-        /*foreach (var fichier in ListeFichier)
-        {
-            Console.WriteLine($"Upload fichier lien: {fichier.Name}");
-            var uploadFolder = Path.Combine(Environment.CurrentDirectory,"wwwroot/images");
-            if (!Directory.Exists(uploadFolder))
-                Directory.CreateDirectory(uploadFolder);
-
-            var fileName= $"{Guid.NewGuid()}_{fichier.Name}";
-            var filePath = Path.Combine(uploadFolder, fileName);
-            using var stream = File.Create(filePath);
-            await fichier.OpenReadStream().CopyToAsync(stream);
-
-            var lien = new LienDTO
-            {
-                CheminLien = fileName,
-                IdProjet = idProjet
-            };
-            Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(lien));
-            await Http.PostAsJsonAsync("api/lien", lien);
-        }*/
-
-        // Réinitialiser formulaire et liste
-        message = "Projet créé avec succès!";
-        newProjet = new ProjetDTO();
-        Fichier = null;
-        ListeFichier.Clear();
+        // Réinitialiser InputFile pour pouvoir resélectionner les mêmes fichiers
+        fileInputKey = Guid.NewGuid();
     }
-    catch (Exception ex)
+
+
+    // Enregistrement projet + liens
+    protected async Task Enregistrer()
     {
-        message = $"Une erreur s'est produite: {ex.Message}";
-    }   
-}
+        Console.WriteLine("Energistrer projet");
+        Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(newProjet));
+        try
+        {
+            // Upload image projet
+            /*if (Fichier != null)
+            {
+                var uploadFolder = Path.Combine(Environment.CurrentDirectory,"wwwroot/images");
+                if (!Directory.Exists(uploadFolder))
+                    Directory.CreateDirectory(uploadFolder);
+
+                var fileName= $"{Guid.NewGuid()}_{Fichier.Name}";
+                var filePath = Path.Combine(uploadFolder, fileName);
+                using var stream = File.Create(filePath);
+                await Fichier.OpenReadStream().CopyToAsync(stream);
+
+                newProjet.ImageProjet = fileName;
+            }*/
+
+            if (Fichier != null)
+            {
+                var uploadFolder = Path.Combine(_env.WebRootPath, "images");
+                if (!Directory.Exists(uploadFolder))
+                    Directory.CreateDirectory(uploadFolder);
+
+                var fileName = $"{Guid.NewGuid()}_{Path.GetFileName(Fichier.Name)}";
+                var filePath = Path.Combine(uploadFolder, fileName);
+
+                using var stream = File.Create(filePath);
+                await Fichier.OpenReadStream(maxAllowedSize: 10 * 1024 * 1024).CopyToAsync(stream);
+
+                newProjet.ImageProjet = fileName;
+            }
+
+
+            // Créer le projet côté serveur
+            var response = await Http.PostAsJsonAsync("api/projet", newProjet);
+            if (!response.IsSuccessStatusCode)
+            {
+                message = "Erreur lors de la création du Projet.";
+                return;
+            }
+
+            var idProjet = await response.Content.ReadFromJsonAsync<int>();
+            Console.WriteLine($"Projet créé avec ID: {idProjet}");
+            // Upload fichiers liens
+            /*foreach (var fichier in ListeFichier)
+            {
+                Console.WriteLine($"Upload fichier lien: {fichier.Name}");
+                var uploadFolder = Path.Combine(Environment.CurrentDirectory,"wwwroot/images");
+                if (!Directory.Exists(uploadFolder))
+                    Directory.CreateDirectory(uploadFolder);
+
+                var fileName= $"{Guid.NewGuid()}_{fichier.Name}";
+                var filePath = Path.Combine(uploadFolder, fileName);
+                using var stream = File.Create(filePath);
+                await fichier.OpenReadStream().CopyToAsync(stream);
+
+                var lien = new LienDTO
+                {
+                    CheminLien = fileName,
+                    IdProjet = idProjet
+                };
+                Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(lien));
+                await Http.PostAsJsonAsync("api/lien", lien);
+            }*/
+
+            // Réinitialiser formulaire et liste
+            message = "Projet créé avec succès!";
+            newProjet = new ProjetDTO();
+            Fichier = null;
+            ListeFichier.Clear();
+        }
+        catch (Exception ex)
+        {
+            message = $"Une erreur s'est produite: {ex.Message}";
+        }   
+    }
 }

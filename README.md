@@ -27,6 +27,7 @@ Il permet de mettre en avant mes travaux, technologies maîtrisées et expérien
 - Blazor (Server / WebAssembly selon implémentation)  
 - API RESTful  
 - HTML, CSS, JavaScript  
+- SQLITE
 
 ---
 

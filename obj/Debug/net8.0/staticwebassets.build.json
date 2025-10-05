@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "njVKMJ5SCL6jnlRNNxJG6QeSDrUWYf6lsFOfbZcBBZU=",
+  "Hash": "nQCL+oy7jX9sd18HmuWgQtp4HprQkTLcxU+waLwGy+U=",
   "Source": "PortofolioApi",
   "BasePath": "_content/PortofolioApi",
   "Mode": "Default",
@@ -148,6 +148,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.png"
+    },
+    {
+      "Identity": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\faviconrindra.png",
+      "SourceId": "PortofolioApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\",
+      "BasePath": "_content/PortofolioApi",
+      "RelativePath": "faviconrindra.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\faviconrindra.png"
     },
     {
       "Identity": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\images\\060cbed7-2b35-4f2c-afbe-210ae8f68ace_pa.png",
