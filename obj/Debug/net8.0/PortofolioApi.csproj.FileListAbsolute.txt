@@ -1,6 +1,7 @@
 C:\DotNetCoreApp\PortofolioApi\bin\Debug\net8.0\appsettings.Development.json
 C:\DotNetCoreApp\PortofolioApi\bin\Debug\net8.0\appsettings.json
 C:\DotNetCoreApp\PortofolioApi\bin\Debug\net8.0\PortofolioApi.staticwebassets.runtime.json
+C:\DotNetCoreApp\PortofolioApi\bin\Debug\net8.0\appdata.db
 C:\DotNetCoreApp\PortofolioApi\bin\Debug\net8.0\PortofolioApi.exe
 C:\DotNetCoreApp\PortofolioApi\bin\Debug\net8.0\PortofolioApi.deps.json
 C:\DotNetCoreApp\PortofolioApi\bin\Debug\net8.0\PortofolioApi.runtimeconfig.json
@@ -29,9 +30,12 @@ C:\DotNetCoreApp\PortofolioApi\bin\Debug\net8.0\Microsoft.IdentityModel.Protocol
 C:\DotNetCoreApp\PortofolioApi\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
 C:\DotNetCoreApp\PortofolioApi\bin\Debug\net8.0\Microsoft.OpenApi.dll
 C:\DotNetCoreApp\PortofolioApi\bin\Debug\net8.0\Mono.TextTemplating.dll
+C:\DotNetCoreApp\PortofolioApi\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\DotNetCoreApp\PortofolioApi\bin\Debug\net8.0\SendGrid.dll
 C:\DotNetCoreApp\PortofolioApi\bin\Debug\net8.0\SQLitePCLRaw.batteries_v2.dll
 C:\DotNetCoreApp\PortofolioApi\bin\Debug\net8.0\SQLitePCLRaw.core.dll
 C:\DotNetCoreApp\PortofolioApi\bin\Debug\net8.0\SQLitePCLRaw.provider.e_sqlite3.dll
+C:\DotNetCoreApp\PortofolioApi\bin\Debug\net8.0\StarkbankEcdsa.dll
 C:\DotNetCoreApp\PortofolioApi\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\DotNetCoreApp\PortofolioApi\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\DotNetCoreApp\PortofolioApi\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -139,4 +143,3 @@ C:\DotNetCoreApp\PortofolioApi\obj\Debug\net8.0\refint\PortofolioApi.dll
 C:\DotNetCoreApp\PortofolioApi\obj\Debug\net8.0\PortofolioApi.pdb
 C:\DotNetCoreApp\PortofolioApi\obj\Debug\net8.0\PortofolioApi.genruntimeconfig.cache
 C:\DotNetCoreApp\PortofolioApi\obj\Debug\net8.0\ref\PortofolioApi.dll
-C:\DotNetCoreApp\PortofolioApi\bin\Debug\net8.0\appdata.db

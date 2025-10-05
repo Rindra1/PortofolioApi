@@ -64,6 +64,10 @@ if (!File.Exists(dbPath))
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.Configure<SendGridSettings>(builder.Configuration.GetSection("SendGrid"));
+builder.Services.AddTransient<SendGridEmailService>();
+
+
 // Injection du service mail
 //builder.Services.AddSingleton<MailController>();
 

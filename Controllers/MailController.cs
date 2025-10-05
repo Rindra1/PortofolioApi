@@ -16,10 +16,21 @@ namespace PortofolioApi.Controllers;
 public class MailController : ControllerBase
 {
     private readonly IConfiguration _config;
-
-    public MailController(IConfiguration config)
+    private readonly SendGridEmailService _emailService;
+    public MailController(IConfiguration config, SendGridEmailService emailService)
     {
         _config = config;
+        _emailService = emailService;
+    }
+
+    [HttpPost("sendgrid")]
+    public async Task<IActionResult> Post([FromBody] MailDTO model)
+    {
+        if (string.IsNullOrWhiteSpace(model.To) || !model.To.Contains("@"))
+            return BadRequest(new { Message = "Adresse e-mail invalide" });
+
+        await _emailService.SendEmailAsync(model.To, model.Subject, model.Body);
+        return Ok(new { Message = "E-mail envoyé avec succès !" });
     }
 
     [HttpPost]

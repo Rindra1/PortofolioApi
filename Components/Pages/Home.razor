@@ -128,7 +128,7 @@
 
   private async Task Envoyer()
 {
-    var response = await Http.PostAsJsonAsync("api/mail", emailRequest);
+    var response = await Http.PostAsJsonAsync("api/mail/sendgrid", emailRequest);
 
     MailResponseDTO result = null;
 
