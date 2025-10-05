@@ -31,6 +31,7 @@ public class MailController : ControllerBase
 
         await _emailService.SendEmailAsync(model.To, model.Subject, model.Body);
         return Ok(new { Message = "E-mail envoyé avec succès !" });
+
     }
 
     [HttpPost]
