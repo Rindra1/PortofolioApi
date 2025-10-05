@@ -2,6 +2,7 @@
 @rendermode InteractiveServer
 @inject HttpClient Http
 @inject IJSRuntime JS
+@using Microsoft.EntityFrameworkCore.Metadata.Conventions
 @using PortofolioApi.Domain.DTOs
 
 
@@ -87,10 +88,10 @@
 <section id="contact" class="fade">
   <h2>Contact</h2>
   <form>
-    <input type="text" placeholder="Nom" required>
-    <input type="email" placeholder="Email" required>
-    <textarea placeholder="Message" required></textarea>
-    <button type="submit" class="btn btn-hero">Envoyer</button>
+    <input @bind="emailRequest.To" type="email" placeholder="Email" required>
+    <input @bind="emailRequest.Subject" type="text" placeholder="Sujet" required>
+    <textarea @bind="emailRequest.Body" placeholder="Message" required></textarea>
+    <button @onclick="Envoyer"  class="btn btn-hero">Envoyer</button>
   </form>
   <div class="socials">
     @if(portfolio.ContactDTOs != null)
@@ -114,6 +115,7 @@
 
 @code {
   private string message = string.Empty;
+  private MailDTO emailRequest = new MailDTO();
   private HttpClient http;
   private UtilisateurDTO portfolio = new UtilisateurDTO();
   protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -123,14 +125,49 @@
       await JS.InvokeVoidAsync("siteInterop.initAll");
     }
   }
+
+  private async Task Envoyer()
+{
+    var response = await Http.PostAsJsonAsync("api/mail", emailRequest);
+
+    MailResponseDTO result = null;
+
+    try
+    {
+        result = await response.Content.ReadFromJsonAsync<MailResponseDTO>();
+    }
+    catch
+    {
+        // Si JSON invalide, lire le texte brut
+        var text = await response.Content.ReadAsStringAsync();
+        result = new MailResponseDTO { Message = string.IsNullOrWhiteSpace(text) ? "Erreur inconnue" : text };
+    }
+
+    if (response.IsSuccessStatusCode)
+    {
+        Console.WriteLine(result?.Message);
+    }
+    else
+    {
+        Console.WriteLine("Erreur : " + result?.Message);
+        if (!string.IsNullOrEmpty(result?.Error))
+        {
+            Console.WriteLine("Détails : " + result.Error);
+        }
+    }
+}
+
+
+
+
   protected override async Task OnInitializedAsync()
   {
     try
     {
       string url = $"api/portfolio";
       portfolio = await Http.GetFromJsonAsync<UtilisateurDTO>(url)??null;
-      Console.WriteLine("Portfolio:");
-      Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(portfolio));
+      //Console.WriteLine("Portfolio:");
+      //Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(portfolio));
     }catch(Exception ex)
     {
         message = $"Erreur: {ex.Message} {ex.StackTrace}";
