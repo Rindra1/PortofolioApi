@@ -19,21 +19,51 @@ window.siteInterop = {
 
         menuToggle.addEventListener('click', () => menu.classList.toggle('show'));
     },
-
     initSmoothScroll: function () {
-        document.querySelectorAll('nav ul li a:not(.btn-hero)').forEach(a => {
+         // --- Gestion du thème ---
+        function initTheme() {
+            // Vérifie si un thème est déjà sauvegardé
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.body.classList.remove('light', 'dark');
+            document.body.classList.add(savedTheme);
+        }
+
+        function toggleTheme() {
+            const current = document.body.classList.contains('light') ? 'light' : 'dark';
+            const newTheme = current === 'light' ? 'dark' : 'light';
+            document.body.classList.remove(current);
+            document.body.classList.add(newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Appelé au chargement de la page
+        document.addEventListener('DOMContentLoaded', () => {
+            initTheme();
+
+            const themeToggle = document.getElementById('theme-toggle');
+            if (themeToggle) {
+                themeToggle.addEventListener('click', toggleTheme);
+            }
+
+            // --- Smooth scroll ---
+            document.querySelectorAll('nav ul li a:not(.btn-hero)').forEach(a => {
+                a.addEventListener('click', e => {
+                    const href = a.getAttribute('href');
+                    if (href && href.startsWith('#')) {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+
+
+        /*document.querySelectorAll('nav ul li a:not(.btn-hero)').forEach(a => {
             a.addEventListener('click', e => {
             e.preventDefault();
             const target = document.querySelector(a.getAttribute('href'));
             if (target) target.scrollIntoView({ behavior: 'smooth' });
-            });
-        });
-
-        /*document.querySelectorAll('nav ul li a').forEach(a => {
-            a.addEventListener('click', e => {
-                e.preventDefault();
-                const target = document.querySelector(a.getAttribute('href'));
-                if (target) target.scrollIntoView({ behavior: 'smooth' });
             });
         });*/
     },

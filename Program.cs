@@ -24,18 +24,18 @@ using System.Text;
 using System.Net;
 
 
-// 1️⃣ Chemin vers la base, compatible local et Render
+// Chemin vers la base, compatible local et Render
 var appDataFolder = Path.Combine(AppContext.BaseDirectory, "var", "data");
 Directory.CreateDirectory(appDataFolder); // Crée le dossier si inexistant
 
 var dbPath = Path.Combine(appDataFolder, "appdata.db");
 Console.WriteLine($"Chemin de la base de données: {dbPath}");
 // Supprime le fichier existant s'il existe
-if (File.Exists(dbPath))
+/*if (File.Exists(dbPath))
 {
     File.Delete(dbPath);
-}
-// 2️⃣ Téléchargement si la base n'existe pas
+}*/
+// Téléchargement si la base n'existe pas
 if (!File.Exists(dbPath))
 {
     Console.WriteLine("Téléchargement de la base de données depuis GitHub...");
