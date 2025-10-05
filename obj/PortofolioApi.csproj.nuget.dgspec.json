@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\DotNetCoreApp\\PortofolioApi\\PortofolioApi.csproj": {}
+    "C:\\DotNetCoreApp\\PortofolioApi\\PortofolioApi.csproj": {}
   },
   "projects": {
-    "c:\\DotNetCoreApp\\PortofolioApi\\PortofolioApi.csproj": {
+    "C:\\DotNetCoreApp\\PortofolioApi\\PortofolioApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\DotNetCoreApp\\PortofolioApi\\PortofolioApi.csproj",
+        "projectUniqueName": "C:\\DotNetCoreApp\\PortofolioApi\\PortofolioApi.csproj",
         "projectName": "PortofolioApi",
-        "projectPath": "c:\\DotNetCoreApp\\PortofolioApi\\PortofolioApi.csproj",
+        "projectPath": "C:\\DotNetCoreApp\\PortofolioApi\\PortofolioApi.csproj",
         "packagesPath": "C:\\Users\\Rindra\\.nuget\\packages\\",
-        "outputPath": "c:\\DotNetCoreApp\\PortofolioApi\\obj\\",
+        "outputPath": "C:\\DotNetCoreApp\\PortofolioApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\ProgramData\\Xamarin\\NuGet\\",
