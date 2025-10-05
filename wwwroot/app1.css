@@ -41,7 +41,13 @@ body.light footer { background:#fff; color:#333; border-top:1px solid #ddd; }
 .hero { position:relative; height:100vh; overflow:hidden; }
 .layer { position:absolute; top:0; left:0; width:100%; height:100%; }
 .layer-back { background: linear-gradient(to right,#4B6CB7,#182848); z-index:1; }
-.layer-mid { background: url('https://via.placeholder.com/1200x800') center/cover no-repeat; opacity:0.3; z-index:2; }
+/*.layer-mid { background: url('https://via.placeholder.com/1200x800') center/cover no-repeat; opacity:0.3; z-index:2; }*/
+.layer-mid {
+  background: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+  opacity: 0.25;
+  z-index: 2;
+}
+
 .layer-front { position:relative; z-index:3; display:flex; flex-direction:column; justify-content:center; align-items:center; height:100%; text-align:center; color:#fff; }
 .btn-hero { margin-top:20px; padding:12px 25px; border-radius:8px; font-weight:600; transition:0.3s; }
 
