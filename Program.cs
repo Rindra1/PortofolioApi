@@ -143,6 +143,8 @@ builder.Services.AddScoped<LienService>();
 builder.Services.AddScoped<ProjetService>();
 builder.Services.AddScoped<ContactService>();
 builder.Services.AddScoped<ExperienceService>();
+builder.Services.AddScoped<SendGridEmailService>();
+builder.Services.AddScoped<SendGridSettings>();
 builder.Services.AddScoped<PortfolioService>();
 
 // Repository
