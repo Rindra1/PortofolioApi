@@ -1,13 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using PortofolioApi.Domain.Entities;
 using PortofolioApi.Domain.DTOs;
 using PortofolioApi.Application.Services;
-using Microsoft.AspNetCore.Authorization;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using PortofolioApi.Services;
 using System.Net.Mail;
-using Microsoft.Extensions.Configuration;
 
 namespace PortofolioApi.Controllers;
 

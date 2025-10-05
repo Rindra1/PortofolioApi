@@ -1,16 +1,7 @@
 using SendGrid;
 using SendGrid.Helpers.Mail;
 using Microsoft.Extensions.Options;
-namespace PortofolioApi.Services;
-
-public class SendGridSettings
-{
-    public string ApiKey { get; set; }
-    public string SenderEmail { get; set; }
-    public string SenderName { get; set; }
-    
-}
-
+namespace PortofolioApi.Application.Services;
 public class SendGridEmailService
 {
     private readonly SendGridSettings _settings;
