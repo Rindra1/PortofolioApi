@@ -51,7 +51,7 @@ namespace PortofolioApi.Application.Services
             var from = new EmailAddress(_settings.SenderEmail, _settings.SenderName);
             var toEmail = new EmailAddress(to);
 
-            var msg = MailHelper.CreateSingleEmail(from, toEmail, subject, "", body);
+            var msg = MailHelper.CreateSingleEmail(from, toEmail, subject, "","<strong>" + body + "</strong>");
             msg.HtmlContent = body;
 
             var response = await client.SendEmailAsync(msg);
