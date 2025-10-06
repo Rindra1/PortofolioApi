@@ -3,6 +3,10 @@ using PortofolioApi.Domain.DTOs;
 using PortofolioApi.Application.Services;
 using System.Net.Mail;
 
+using SendGrid;
+using SendGrid.Helpers.Mail;
+using Microsoft.Extensions.Options;
+
 namespace PortofolioApi.Controllers;
 
 [ApiController]
@@ -11,10 +15,16 @@ public class MailController : ControllerBase
 {
     private readonly IConfiguration _config;
     private readonly SendGridEmailService _emailService;
-    public MailController(IConfiguration config, SendGridEmailService emailService)
+    private readonly SendGridSettings _settings;
+    public MailController(IConfiguration config, SendGridEmailService emailService, IOptions<SendGridSettings> settings)
     {
         _config = config;
         _emailService = emailService;
+        _settings = settings.Value;
+
+        _settings.SenderEmail ??= Environment.GetEnvironmentVariable("SENDGRID_SENDEREMAIL");
+        _settings.SenderName ??= Environment.GetEnvironmentVariable("SENDGRID_SENDERNAME");
+        
     }
 
     [HttpPost("sendgrid")]
@@ -22,8 +32,21 @@ public class MailController : ControllerBase
     {
         if (string.IsNullOrWhiteSpace(model.To) || !model.To.Contains("@"))
             return BadRequest(new { Message = "Adresse e-mail invalide" });
-        Console.WriteLine($"Envoi d'un e-mail à {model.To} via SendGrid...");
-        await _emailService.SendEmailAsync(model.To, model.Subject, model.Body);
+        // Envoyer le message à moi
+        await _emailService.SendEmailAsync(
+            _settings.SenderEmail,
+            $"Nouveau message de {model.Name}",
+            $"Email: {model.To}\nMessage: {model.Subject}"
+        );
+
+        //Envoyer un accusé de réception au visiteur
+        await _emailService.SendEmailAsync(
+            model.To,
+            "Merci pour votre message !",
+            $"Bonjour {model.Name},\n\nNous avons bien reçu votre message et nous vous répondrons bientôt."
+        );
+
+        //await _emailService.SendEmailAsync(model.To, model.Subject, model.Body);
         return Ok(new { Message = "E-mail envoyé avec succès !" });
 
     }

@@ -88,6 +88,7 @@
 <section id="contact" class="fade">
   <h2>Contact</h2>
   <form>
+    <input @bind="emailRequest.Name" type="text" placeholder="Nom" required>
     <input @bind="emailRequest.To" type="email" placeholder="Email" required>
     <input @bind="emailRequest.Subject" type="text" placeholder="Sujet" required>
     <textarea @bind="emailRequest.Body" placeholder="Message" required></textarea>
