@@ -36,7 +36,7 @@ public class MailController : ControllerBase
         await _emailService.SendEmailAsync(
             _settings.SenderEmail,
             $"Nouveau message de {model.Name}",
-            $"Email: {model.To}\nMessage: {model.Subject}"
+            $"Email: {model.To}\nMessage: {model.Subject}\n{model.Body}"
         );
 
         //Envoyer un accusé de réception au visiteur
