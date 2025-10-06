@@ -16,21 +16,13 @@ namespace PortofolioApi.Application.Services
             _settings.SenderEmail ??= Environment.GetEnvironmentVariable("SENDGRID__SENDEREMAIL");
             _settings.SenderName ??= Environment.GetEnvironmentVariable("SENDGRID__SENDERNAME");
         }
+        
 
-        public async Task SendEmailAsync(string to, string subject, string body)
+    /*public async Task SendEmailAsync(string to, string subject, string body)
         {
-            var apiKey = Environment.GetEnvironmentVariable("SENDGRID__APIKEY");
-
-            if (string.IsNullOrEmpty(apiKey))
-                throw new Exception("Clé SendGrid manquante : définis SENDGRID_API_KEY dans les variables d'environnement sur Render.");
-
-            if (string.IsNullOrEmpty(_settings.SenderEmail))
-                throw new Exception("SenderEmail non défini. Ajoute-le dans les variables d'environnement Render.");
-
-            var client = new SendGridClient(apiKey);
+            var client = new SendGridClient(_settings.ApiKey);
             var from = new EmailAddress(_settings.SenderEmail, _settings.SenderName);
             var toEmail = new EmailAddress(to);
-
             var msg = MailHelper.CreateSingleEmail(from, toEmail, subject, "", body);
             msg.HtmlContent = body;
 
@@ -42,5 +34,32 @@ namespace PortofolioApi.Application.Services
                 throw new Exception($"Erreur SendGrid: {text}");
             }
         }
+    }*/
+    public async Task SendEmailAsync(string to, string subject, string body)
+{
+    // On lit la clé SendGrid depuis les variables d’environnement
+    var apiKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
+
+    if (string.IsNullOrEmpty(apiKey))
+        throw new Exception("Clé SendGrid manquante : définis SENDGRID_API_KEY dans les variables d'environnement.");
+
+    // On garde le reste identique
+    var client = new SendGridClient(apiKey);
+    var from = new EmailAddress(_settings.SenderEmail, _settings.SenderName);
+    var toEmail = new EmailAddress(to);
+
+    var msg = MailHelper.CreateSingleEmail(from, toEmail, subject, "", body);
+    msg.HtmlContent = body;
+
+    var response = await client.SendEmailAsync(msg);
+
+    if (!response.IsSuccessStatusCode)
+    {
+        var text = await response.Body.ReadAsStringAsync();
+        throw new Exception($"Erreur SendGrid: {text}");
     }
 }
+
+}
+}
+
