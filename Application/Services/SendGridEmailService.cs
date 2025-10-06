@@ -13,8 +13,8 @@ namespace PortofolioApi.Application.Services
             _settings = settings.Value;
 
             // Si les valeurs ne sont pas dans appsettings.json, on les lit dans les variables d'environnement
-            _settings.SenderEmail ??= Environment.GetEnvironmentVariable("SENDGRID__SENDEREMAIL");
-            _settings.SenderName ??= Environment.GetEnvironmentVariable("SENDGRID__SENDERNAME");
+            _settings.SenderEmail ??= Environment.GetEnvironmentVariable("SENDGRID_SENDEREMAIL");
+            _settings.SenderName ??= Environment.GetEnvironmentVariable("SENDGRID_SENDERNAME");
         }
         
 
