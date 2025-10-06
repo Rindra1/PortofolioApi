@@ -1,0 +1,21 @@
+@page "/addcomptence"
+@rendermode InteractiveServer
+@inherits AddComptenceBase
+@using Microsoft.AspNetCore.Components.Forms
+
+<!-- SECTION AJOUT COMPETENCE -->
+<section id="add-project" class="fade">
+  <h2>Ajouter un projet</h2>
+  <div class="project-container">
+    <!-- Formulaire côté gauche -->
+    <form class="project-form">
+        <input type="text" @bind="newExperience.TitreExperience" placeholder="Titre du poste" required>
+        <textarea  @bind="newExperience.DetailExperience" placeholder="Description" required></textarea>
+        <input type="date" @bind="newExperience.DateDebut" placeholder="Date debut" required>
+        <input type="date" @bind="newExperience.DateFin" placeholder="Titre du projet" required>
+      <button @onclick="Enregistrer" class="btn-details">Enregistrer</button>
+    </form>
+  </div>
+</section>
+
+<h1> @message</h1> 

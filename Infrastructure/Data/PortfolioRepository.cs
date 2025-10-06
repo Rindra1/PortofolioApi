@@ -29,6 +29,14 @@ public class PortfolioRepository : IRepositoryPortfolio<UtilisateurDTO>
                     TypeContact = c.TypeContact,
                     AdresseContact = c.AdresseContact
                 }).ToList(),
+                ExperienceDTOs = u.Experiences.Select(e => new ExperienceDTO
+                {
+                    IdExperience = e.IdExperience,
+                    TitreExperience = e.TitreExperience,
+                    DetailExperience = e.DetailExperience,
+                    DateDebut = e.DateDebut,
+                    DateFin = e.DateFin
+                }).ToList(),
                 ProjetDTOs = u.Projets.Select(p => new ProjetDTO
                 {
                     IdProjet = p.IdProjet,

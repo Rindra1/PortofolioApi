@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using PortofolioApi.Domain.Entities;
 using PortofolioApi.Domain.DTOs;
 using PortofolioApi.Domain.Interfaces;
+using PortofolioApi.Services;
 
 namespace PortofolioApi.Infrastructure.Data;
 
 public class ExperienceRepository : IRepository<Experience>
 {
     private readonly ApplicationDbContext _dbContext;
-    public ExperienceRepository(ApplicationDbContext dbcontext)
+    private readonly TokenServices _tokenServices;
+    public ExperienceRepository(ApplicationDbContext dbcontext, TokenServices tokenServices)
     {
         _dbContext = dbcontext;
+        _tokenServices = tokenServices;
     }
     public IEnumerable<Experience> GetAll() 
     {
@@ -28,19 +31,6 @@ public class ExperienceRepository : IRepository<Experience>
 
     public Experience GetById(int id)
     {
-        /*var experience = _dbContext.Experience
-            .Where(e => e.IdExperience == id)
-            .Select(e => new ExperienceDTO
-            {
-                IdExperience = e.IdExperience,
-                TitreExperience = e.TitreExperience,
-                DetailExperience = e.DetailExperience,
-                DateDebut = e.DateDebut,
-                DateFin = e.DateFin
-            })
-            .FirstOrDefault();*/
-
-        //return experience ?? new ExperienceDTO();
         return _dbContext.Experience.Find(id) ?? new Experience();
     }
 
@@ -48,8 +38,16 @@ public class ExperienceRepository : IRepository<Experience>
 
     public int Add(Experience experience)
     {
-        
-        return 1;
+        int IdUserLogin = Convert.ToInt32(_tokenServices.GetUserId());
+        Console.WriteLine("Id User Login= " + IdUserLogin); 
+        var utilisateur = _dbContext.Utilisateur.FirstOrDefault(u=>u.IdUserLogin==IdUserLogin);
+        if (utilisateur != null)
+        {
+            experience.IdUser = utilisateur.IdUser;
+        }
+        _dbContext.Experience.Add(experience);
+        _dbContext.SaveChanges();
+        return experience.IdExperience;
     }
 
     public void Remove(int id)
@@ -65,7 +63,7 @@ public class ExperienceRepository : IRepository<Experience>
     public void Update(Experience experience)
     { 
         _dbContext.Experience.Update(experience);
-        _dbContext.SaveChangesAsync();
+        _dbContext.SaveChanges();
 
     }
 }

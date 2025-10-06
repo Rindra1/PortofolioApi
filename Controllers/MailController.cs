@@ -32,21 +32,7 @@ public class MailController : ControllerBase
     {
         if (string.IsNullOrWhiteSpace(model.To) || !model.To.Contains("@"))
             return BadRequest(new { Message = "Adresse e-mail invalide" });
-        // Envoyer le message à moi
-        await _emailService.SendEmailAsync(
-            _settings.SenderEmail,
-            $"Nouveau message de {model.Name}",
-            $"Email: {model.To}\nMessage: {model.Subject}\n{model.Body}"
-        );
-
-        //Envoyer un accusé de réception au visiteur
-        await _emailService.SendEmailAsync(
-            model.To,
-            "Merci pour votre message !",
-            $"Bonjour {model.Name},\n\nNous avons bien reçu votre message et nous vous répondrons bientôt."
-        );
-
-        //await _emailService.SendEmailAsync(model.To, model.Subject, model.Body);
+        await _emailService.SendEmailAsync(model.To,model.Name, model.Subject, model.Body);
         return Ok(new { Message = "E-mail envoyé avec succès !" });
 
     }
