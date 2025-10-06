@@ -162,6 +162,8 @@ builder.Services.AddScoped<UtilisateurService>();
 builder.Services.AddScoped<ProjetService>();
 builder.Services.AddScoped<LienService>();
 builder.Services.AddScoped<ContactService>();
+builder.Services.AddScoped<SendGridEmailService>();
+builder.Services.AddScoped<SendGridSettings>();
 builder.Services.AddScoped<ProtectedLocalStorage>();
 
 builder.Services.AddControllers()
