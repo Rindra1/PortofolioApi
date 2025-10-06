@@ -35,33 +35,54 @@ namespace PortofolioApi.Application.Services
             }
         }
     }*/
-        public async Task SendEmailAsync(string to, string subject, string body)
+        public async Task SendEmailAsync(string visitorEmail, string visitorName, string subject, string body)
         {
             Console.WriteLine("Démarrage de l'envoi d'email via SendGrid...");
-            // On lit la clé SendGrid depuis les variables d’environnement
-            var apiKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
 
+            var apiKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
             if (string.IsNullOrEmpty(apiKey))
                 throw new Exception("Clé SendGrid manquante : définis SENDGRID_API_KEY dans les variables d'environnement.");
             else
                 Console.WriteLine("Clé SendGrid trouvée.");
-            // On garde le reste identique
-            Console.WriteLine($"Email To : {_settings.SenderEmail}, Test : {_settings.SenderName}");
+
             var client = new SendGridClient(apiKey);
-            var from = new EmailAddress(_settings.SenderEmail, _settings.SenderName);
-            var toEmail = new EmailAddress(to);
 
-            var msg = MailHelper.CreateSingleEmail(from, toEmail, subject, body,"<strong>" +  body.Replace("\n","<br>") + "</strong>");
-            msg.HtmlContent = body;
+            // --- Email vers moi ---
+            var fromMe = new EmailAddress(_settings.SenderEmail, _settings.SenderName);
+            var toMe = new EmailAddress(_settings.SenderEmail, _settings.SenderName);
 
-            var response = await client.SendEmailAsync(msg);
+            var plainTextToMe = $"Message de {visitorName} <{visitorEmail}> :\n\n{body}";
+            var htmlToMe = $"<strong>Message de {visitorName} &lt;{visitorEmail}&gt; :</strong><br>{body.Replace("\n","<br>")}";
 
-            if (!response.IsSuccessStatusCode)
+            var msgToMe = MailHelper.CreateSingleEmail(fromMe, toMe, subject, plainTextToMe, htmlToMe);
+            var responseToMe = await client.SendEmailAsync(msgToMe);
+
+            if (!responseToMe.IsSuccessStatusCode)
             {
-                var text = await response.Body.ReadAsStringAsync();
-                throw new Exception($"Erreur SendGrid: {text}");
+                var text = await responseToMe.Body.ReadAsStringAsync();
+                throw new Exception($"Erreur SendGrid (vers moi) : {text}");
             }
+
+            // --- Accusé de réception vers le visiteur ---
+            var fromVisitor = new EmailAddress(_settings.SenderEmail, _settings.SenderName);
+            var toVisitor = new EmailAddress(visitorEmail, visitorName);
+
+            var ackSubject = "Confirmation de réception de votre message";
+            var ackBody = $"Bonjour {visitorName},\n\nMerci pour votre message. Je reviendrai vers vous rapidement.\n\nCordialement,\n{_settings.SenderName}";
+            var ackHtml = $"Bonjour {visitorName},<br><br>Merci pour votre message. Je reviendrai vers vous rapidement.<br><br>Cordialement,<br>{_settings.SenderName}";
+
+            var msgToVisitor = MailHelper.CreateSingleEmail(fromVisitor, toVisitor, ackSubject, ackBody, ackHtml);
+            var responseToVisitor = await client.SendEmailAsync(msgToVisitor);
+
+            if (!responseToVisitor.IsSuccessStatusCode)
+            {
+                var text = await responseToVisitor.Body.ReadAsStringAsync();
+                throw new Exception($"Erreur SendGrid (vers visiteur) : {text}");
+            }
+
+            Console.WriteLine("Emails envoyés avec succès !");
         }
+
     }
 }
 
