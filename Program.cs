@@ -64,6 +64,15 @@ if (!File.Exists(dbPath))
 
 var builder = WebApplication.CreateBuilder(args);
 
+// 🔧 Liaison du fichier appsettings.json ou des variables Render
+builder.Services.Configure<SendGridSettings>(
+    builder.Configuration.GetSection("SendGridSettings")
+);
+
+// 🔧 Injection du service SendGrid
+builder.Services.AddScoped<SendGridEmailService>();
+
+
 builder.Services.Configure<SendGridSettings>(builder.Configuration.GetSection("SendGrid"));
 builder.Services.AddTransient<SendGridEmailService>();
 
