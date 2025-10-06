@@ -22,7 +22,7 @@ public class MailController : ControllerBase
     {
         if (string.IsNullOrWhiteSpace(model.To) || !model.To.Contains("@"))
             return BadRequest(new { Message = "Adresse e-mail invalide" });
-
+        Console.WriteLine($"Envoi d'un e-mail à {model.To} via SendGrid...");
         await _emailService.SendEmailAsync(model.To, model.Subject, model.Body);
         return Ok(new { Message = "E-mail envoyé avec succès !" });
 
