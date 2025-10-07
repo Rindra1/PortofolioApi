@@ -31,27 +31,26 @@ window.siteInterop = {
     },
 
     IniChatBot: function () {
-        const toggle = document.getElementById("chat-toggle");
-            const chatBody = document.getElementById("chat-body");
-            toggle.addEventListener("click", () => {
-            chatBody.style.display = chatBody.style.display === "flex" ? "none" : "flex";
-        });
-        window.scrollChatToBottom = () => {
-            const chat = document.getElementById('chat-messages');
-            if(chat) chat.scrollTop = chat.scrollHeight;
-        };
+    const toggle = document.getElementById("chat-toggle");
+    const chatBody = document.getElementById("chat-body");
 
-        // Fade-in section on load
-        window.addEventListener('load', () => {
-            const fade = document.querySelectorAll('.fade');
-            fade.forEach(e => {
-                e.style.opacity = 1;
-                e.style.transform = 'translateY(0)';
-            });
-        });
+    // Vérifie que les éléments existent
+    if (!toggle || !chatBody) {
+        console.warn("Chatbot non trouvé dans le DOM");
+        return;
+    }
 
+    // Toggle l'affichage du chat
+    toggle.addEventListener("click", () => {
+        chatBody.style.display = chatBody.style.display === "flex" ? "none" : "flex";
+    });
 
-    },
+    // Fonction de scroll vers le bas
+    window.scrollChatToBottom = () => {
+        const chat = document.getElementById('chat-messages');
+        if(chat) chat.scrollTop = chat.scrollHeight;
+    };
+},
 
     initMobileMenu: function () {
         const menuToggle = document.getElementById('menu-toggle');
