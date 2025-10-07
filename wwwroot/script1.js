@@ -1,3 +1,20 @@
+window.themeManager = {
+    setTheme: function (theme) {
+        localStorage.setItem("theme", theme);
+        document.documentElement.setAttribute("data-theme", theme);
+    },
+    getTheme: function () {
+        return localStorage.getItem("theme") || "dark"; // par défaut sombre
+    },
+    toggleTheme: function () {
+        const current = localStorage.getItem("theme") || "dark";
+        const next = current === "dark" ? "light" : "dark";
+        this.setTheme(next);
+        return next;
+    }
+};
+
+
 // script.js
 window.siteInterop = {
     initAll: function () {
@@ -10,6 +27,30 @@ window.siteInterop = {
         this.initParallax();
         this.initTiltCards();
         this.initModalProjects();
+        this.IniChatBot();
+    },
+
+    IniChatBot: function () {
+        const toggle = document.getElementById("chat-toggle");
+            const chatBody = document.getElementById("chat-body");
+            toggle.addEventListener("click", () => {
+            chatBody.style.display = chatBody.style.display === "flex" ? "none" : "flex";
+        });
+        window.scrollChatToBottom = () => {
+            const chat = document.getElementById('chat-messages');
+            if(chat) chat.scrollTop = chat.scrollHeight;
+        };
+
+        // Fade-in section on load
+        window.addEventListener('load', () => {
+            const fade = document.querySelectorAll('.fade');
+            fade.forEach(e => {
+                e.style.opacity = 1;
+                e.style.transform = 'translateY(0)';
+            });
+        });
+
+
     },
 
     initMobileMenu: function () {
@@ -154,3 +195,8 @@ window.siteInterop = {
         });
     }
 };
+
+
+
+
+

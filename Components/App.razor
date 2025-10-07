@@ -29,6 +29,10 @@
 <body>
     <Routes />
         <script src="script1.js"></script>
+        <script>
+            // Applique le thème sauvegardé dès le chargement
+            document.documentElement.setAttribute("data-theme", localStorage.getItem("theme") || "dark");
+        </script>
 
     <script src="_framework/blazor.web.js"></script>
 

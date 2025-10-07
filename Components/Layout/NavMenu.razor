@@ -37,6 +37,7 @@
       <li><a href="#projects">Projets</a></li>
       <li><a href="#skills">Outils</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li><a href="/chat">Contact</a></li>
     }
   </ul>
     <button id="theme-toggle">☀️</button>
@@ -54,6 +55,20 @@
       await JS.InvokeVoidAsync("siteInterop.initAll");
     }
   }*/
+
+  private async Task ToggleTheme()
+    {
+        await JS.InvokeAsync<string>("themeManager.toggleTheme");
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var theme = await JS.InvokeAsync<string>("themeManager.getTheme");
+            await JS.InvokeVoidAsync("themeManager.setTheme", theme);
+        }
+    }
 
     private void LogoutEvent(MouseEventArgs e){
       Console.WriteLine("Interieur Evenement");

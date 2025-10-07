@@ -1,3 +1,11 @@
+C:\DotNetCoreApp\PortofolioApi\obj\Debug\net8.0\PortofolioApi.csproj.AssemblyReference.cache
+C:\DotNetCoreApp\PortofolioApi\obj\Debug\net8.0\PortofolioApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\DotNetCoreApp\PortofolioApi\obj\Debug\net8.0\PortofolioApi.AssemblyInfoInputs.cache
+C:\DotNetCoreApp\PortofolioApi\obj\Debug\net8.0\PortofolioApi.AssemblyInfo.cs
+C:\DotNetCoreApp\PortofolioApi\obj\Debug\net8.0\PortofolioApi.csproj.CoreCompileInputs.cache
+C:\DotNetCoreApp\PortofolioApi\obj\Debug\net8.0\PortofolioApi.MvcApplicationPartsAssemblyInfo.cs
+C:\DotNetCoreApp\PortofolioApi\obj\Debug\net8.0\PortofolioApi.MvcApplicationPartsAssemblyInfo.cache
+C:\DotNetCoreApp\PortofolioApi\obj\Debug\net8.0\PortofolioApi.sourcelink.json
 C:\DotNetCoreApp\PortofolioApi\bin\Debug\net8.0\appsettings.Development.json
 C:\DotNetCoreApp\PortofolioApi\bin\Debug\net8.0\appsettings.json
 C:\DotNetCoreApp\PortofolioApi\bin\Debug\net8.0\PortofolioApi.staticwebassets.runtime.json
@@ -31,6 +39,7 @@ C:\DotNetCoreApp\PortofolioApi\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.d
 C:\DotNetCoreApp\PortofolioApi\bin\Debug\net8.0\Microsoft.OpenApi.dll
 C:\DotNetCoreApp\PortofolioApi\bin\Debug\net8.0\Mono.TextTemplating.dll
 C:\DotNetCoreApp\PortofolioApi\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\DotNetCoreApp\PortofolioApi\bin\Debug\net8.0\OpenAI_API.dll
 C:\DotNetCoreApp\PortofolioApi\bin\Debug\net8.0\SendGrid.dll
 C:\DotNetCoreApp\PortofolioApi\bin\Debug\net8.0\SQLitePCLRaw.batteries_v2.dll
 C:\DotNetCoreApp\PortofolioApi\bin\Debug\net8.0\SQLitePCLRaw.core.dll
@@ -118,14 +127,6 @@ C:\DotNetCoreApp\PortofolioApi\bin\Debug\net8.0\runtimes\win-arm\native\e_sqlite
 C:\DotNetCoreApp\PortofolioApi\bin\Debug\net8.0\runtimes\win-arm64\native\e_sqlite3.dll
 C:\DotNetCoreApp\PortofolioApi\bin\Debug\net8.0\runtimes\win-x64\native\e_sqlite3.dll
 C:\DotNetCoreApp\PortofolioApi\bin\Debug\net8.0\runtimes\win-x86\native\e_sqlite3.dll
-C:\DotNetCoreApp\PortofolioApi\obj\Debug\net8.0\PortofolioApi.csproj.AssemblyReference.cache
-C:\DotNetCoreApp\PortofolioApi\obj\Debug\net8.0\PortofolioApi.GeneratedMSBuildEditorConfig.editorconfig
-C:\DotNetCoreApp\PortofolioApi\obj\Debug\net8.0\PortofolioApi.AssemblyInfoInputs.cache
-C:\DotNetCoreApp\PortofolioApi\obj\Debug\net8.0\PortofolioApi.AssemblyInfo.cs
-C:\DotNetCoreApp\PortofolioApi\obj\Debug\net8.0\PortofolioApi.csproj.CoreCompileInputs.cache
-C:\DotNetCoreApp\PortofolioApi\obj\Debug\net8.0\PortofolioApi.MvcApplicationPartsAssemblyInfo.cs
-C:\DotNetCoreApp\PortofolioApi\obj\Debug\net8.0\PortofolioApi.MvcApplicationPartsAssemblyInfo.cache
-C:\DotNetCoreApp\PortofolioApi\obj\Debug\net8.0\PortofolioApi.sourcelink.json
 C:\DotNetCoreApp\PortofolioApi\obj\Debug\net8.0\staticwebassets.build.json
 C:\DotNetCoreApp\PortofolioApi\obj\Debug\net8.0\staticwebassets.development.json
 C:\DotNetCoreApp\PortofolioApi\obj\Debug\net8.0\staticwebassets\msbuild.PortofolioApi.Microsoft.AspNetCore.StaticWebAssets.props

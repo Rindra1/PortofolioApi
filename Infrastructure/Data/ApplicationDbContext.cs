@@ -20,6 +20,7 @@ public class ApplicationDbContext : DbContext
 
     public DbSet<Contact> Contact { get; set; } = default!;
     public DbSet<Experience> Experience { get; set; } = default!;
+    public DbSet<Competence> Competence{get;set;} = default!;
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Utilisateur>()
@@ -33,6 +34,9 @@ public class ApplicationDbContext : DbContext
 
         modelBuilder.Entity<Experience>()
             .HasKey(p => p.IdExperience);
+        
+        modelBuilder.Entity<Competence>()
+            .HasKey(c=>c.IdCompetence);
 
         modelBuilder.Entity<Lien>()
             .HasKey(l => l.IdLien);
@@ -72,6 +76,13 @@ public class ApplicationDbContext : DbContext
         modelBuilder.Entity<Experience>()
             .HasOne(p=>p.Utilisateur) 
             .WithMany(m=>m.Experiences)
+            .HasForeignKey(fk=>fk.IdUser)
+            .IsRequired(false)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<Competence>()
+            .HasOne(p=>p.Utilisateur) 
+            .WithMany(m=>m.Competences)
             .HasForeignKey(fk=>fk.IdUser)
             .IsRequired(false)
             .OnDelete(DeleteBehavior.Cascade);

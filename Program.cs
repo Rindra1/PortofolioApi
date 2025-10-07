@@ -15,13 +15,16 @@ using PortofolioApi.Infrastructure.Data;
 using PortofolioApi.Configuration;
 using PortofolioApi.Domain.Interfaces;
 using PortofolioApi.Services;
-using Microsoft.OpenApi.Models;
 
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using System.Text.Json;
 
 using System.Net;
+using Microsoft.AspNetCore.Mvc;
+
+
 
 
 // Chemin vers la base, compatible local et Render
@@ -31,10 +34,10 @@ Directory.CreateDirectory(appDataFolder); // Crée le dossier si inexistant
 var dbPath = Path.Combine(appDataFolder, "appdata.db");
 Console.WriteLine($"Chemin de la base de données: {dbPath}");
 // Supprime le fichier existant s'il existe
-/*if (File.Exists(dbPath))
+if (File.Exists(dbPath))
 {
     File.Delete(dbPath);
-}*/
+}
 // Téléchargement si la base n'existe pas
 if (!File.Exists(dbPath))
 {
@@ -63,6 +66,21 @@ if (!File.Exists(dbPath))
 
 
 var builder = WebApplication.CreateBuilder(args);
+
+//Utilisation Open-API
+//var apiKey = Environment.GetEnvironmentVariable("OPENAI_API_KEY");
+
+//builder.Services.AddSingleton(new OpenAI.OpenAIClient(apiKey));
+
+//Test en local Open-api
+/*builder.Services.AddSingleton(new OpenAI.GPT3.OpenAIService(new OpenAI.GPT3.Models.OpenAiOptions()
+{
+    ApiKey = builder.Configuration["OpenAI:ApiKey"]
+}));*/
+
+
+
+
 
 // Ajoute cette ligne juste après la création du builder
 builder.Configuration.AddEnvironmentVariables();
@@ -159,6 +177,8 @@ builder.Services.AddScoped<ExperienceService>();
 builder.Services.AddScoped<SendGridEmailService>();
 builder.Services.AddScoped<SendGridSettings>();
 builder.Services.AddScoped<PortfolioService>();
+//ChatBot
+builder.Services.AddScoped<ChatService>();
 
 // Repository
 builder.Services.AddScoped<IRepository<UserLogin>, UserLoginRepository>();
@@ -169,6 +189,7 @@ builder.Services.AddScoped<IRepository<Lien>, LienRepository>();
 builder.Services.AddScoped<IRepository<Contact>, ContactRepository>();
 builder.Services.AddScoped<IRepository<Experience>, ExperienceRepository>();
 builder.Services.AddScoped<IRepositoryPortfolio<UtilisateurDTO>, PortfolioRepository>();
+builder.Services.AddScoped<IRepository<Competence>, CompetenceRepository>();
 
 
 // Service
@@ -180,6 +201,8 @@ builder.Services.AddScoped<ContactService>();
 builder.Services.AddScoped<SendGridEmailService>();
 builder.Services.AddScoped<SendGridSettings>();
 builder.Services.AddScoped<ProtectedLocalStorage>();
+
+builder.Services.AddScoped<ChatService>();
 
 builder.Services.AddControllers()
     .AddJsonOptions(options =>

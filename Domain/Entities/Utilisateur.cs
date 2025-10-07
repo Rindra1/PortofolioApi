@@ -14,4 +14,5 @@ public class Utilisateur
     public List<Projet> Projets { get; set; } = new List<Projet>();
     public List<Contact> Contacts { get; set; } = new List<Contact>();
     public List<Experience> Experiences { get; set; } = new List<Experience>();
+    public List<Competence> Competences { get; set; } = new List<Competence>();
 }

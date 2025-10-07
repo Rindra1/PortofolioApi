@@ -10,4 +10,5 @@ public class UtilisateurDTO
     public List<ProjetDTO>? ProjetDTOs { get; set; } = new List<ProjetDTO>();
     public List<ContactDTO>? ContactDTOs { get; set; } = new List<ContactDTO>();
     public List<ExperienceDTO>? ExperienceDTOs { get; set; } = new List<ExperienceDTO>();
+    public List<CompetenceDTO>? CompetenceDTOs { get; set; } = new List<CompetenceDTO>();
 }
