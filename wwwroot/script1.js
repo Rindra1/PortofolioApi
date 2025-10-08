@@ -130,7 +130,7 @@ window.siteInterop = {
         menuToggle.addEventListener('click', () => menu.classList.toggle('show'));
     },
 
-    initSmoothScroll: function () {
+    /*initSmoothScroll: function () {
         document.querySelectorAll('nav ul li a:not(.btn-hero)').forEach(a => {
             a.addEventListener('click', e => {
                 const href = a.getAttribute('href');
@@ -141,7 +141,21 @@ window.siteInterop = {
                 }
             });
         });
+    },*/
+
+    initSmoothScroll: function () {
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                const href = a.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
     },
+
 
     initFadeScroll: function () {
         const fadeElems = document.querySelectorAll('.fade');
