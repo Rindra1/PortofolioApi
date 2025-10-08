@@ -53,6 +53,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
 // script.js
 window.siteInterop = {
+    hideLoader: function() {
+        const loader = document.getElementById('loader');
+        if(loader) loader.style.display = 'none';
+    },
     initAll: function () {
         console.log("Initialisation du site...");
 
