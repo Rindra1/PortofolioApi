@@ -37,6 +37,10 @@
       "PackagePath": "staticwebassets\\images\\25c129b2-1496-40c3-9129-5b7712f6ccea_pf.png"
     },
     {
+      "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\images\\2e5db83e-c3bc-4fb1-b1fa-110e4c470874_al.png",
+      "PackagePath": "staticwebassets\\images\\2e5db83e-c3bc-4fb1-b1fa-110e4c470874_al.png"
+    },
+    {
       "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\images\\34e4db9b-1c9a-4880-9297-63cb44c5bd6e_me.png",
       "PackagePath": "staticwebassets\\images\\34e4db9b-1c9a-4880-9297-63cb44c5bd6e_me.png"
     },
@@ -63,6 +67,14 @@
     {
       "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\images\\aa2be732-8b42-476c-9b38-cae9bdc9da76_m.png",
       "PackagePath": "staticwebassets\\images\\aa2be732-8b42-476c-9b38-cae9bdc9da76_m.png"
+    },
+    {
+      "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\images\\rindra_logo.png",
+      "PackagePath": "staticwebassets\\images\\rindra_logo.png"
+    },
+    {
+      "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\rindra_logo.png",
+      "PackagePath": "staticwebassets\\rindra_logo.png"
     },
     {
       "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\robots.txt",

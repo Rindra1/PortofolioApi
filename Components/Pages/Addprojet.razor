@@ -16,7 +16,7 @@
       <input type="text" @bind="newProjet.ResumerProjet" placeholder="Resumé du projet" required>
       <textarea  @bind="newProjet.DetailProjet" placeholder="Description du projet" required></textarea>
       <InputFile OnChange="OnFileSelected"/>
-      <button @onclick="Enregistrer" class="btn-details">Enregistrer</button>
+      <button type="button" @onclick="Enregistrer" class="btn-details">Enregistrer</button>
     </form>
 
     <!-- Liste projets côté droit -->

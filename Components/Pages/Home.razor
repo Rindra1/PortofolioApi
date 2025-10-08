@@ -19,7 +19,7 @@
         <a href="#projects" class="btn btn-hero">Voir mes projets</a>
       </div>
       <div class="hero-image">
-        <img src="images/@portfolio.UserImage" alt="Rindra Niaina" />
+        <img src="images/@portfolio.UserImage" alt="@portfolio.Nom @portfolio.Prenom"  loading="lazy"/>
       </div>
     </div>
   </div>
@@ -107,15 +107,18 @@
           {
             if (contact.TypeContact.ToUpper() == "LINKEDIN")
             {
-              <a href="@contact.AdresseContact"  target="_blank" rel="noopener noreferrer">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="#0077B5">
-                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.268h-3v-5.604c0-1.337-.025-3.065-1.868-3.065-1.868 0-2.154 1.459-2.154 2.968v5.701h-3v-10h2.881v1.367h.041c.401-.757 1.379-1.555 2.841-1.555 3.036 0 3.598 1.997 3.598 4.592v5.596z"/>
+              <a href="@contact.AdresseContact" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label="Profil LinkedIn de Rindra Niaina">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="#0077B5" role="img" aria-hidden="true">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761..."/>
                 </svg>
               </a>
             }
             if (contact.TypeContact.ToUpper() == "GITHUB")
             {
-              <a href="@contact.AdresseContact"  target="_blank" rel="noopener noreferrer">
+              <a href="@contact.AdresseContact"  target="_blank" rel="noopener noreferrer" aria-label="Profil GitHub de Rindra Niaina">
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="#0077B5">
                   <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.089-.745.084-.729.084-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.418-1.305.762-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.468-2.38 1.235-3.22-.123-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.3 1.23a11.52 11.52 0 0 1 3-.405c1.02.005 2.045.138 3 .405 2.29-1.552 3.295-1.23 3.295-1.23.653 1.653.242 2.873.12 3.176.77.84 1.233 1.91 1.233 3.22 0 4.61-2.807 5.625-5.48 5.922.43.372.823 1.102.823 2.222 0 1.606-.015 2.898-.015 3.293 0 .32.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
                 </svg>
@@ -232,36 +235,51 @@
   }
 
   private async Task Envoyer()
-  {
-    var response = await Http.PostAsJsonAsync("api/mail/sendgrid", emailRequest);
-
-    MailResponseDTO result = null;
+{
+    if (emailRequest == null)
+        return;
 
     try
     {
-      
-        result = await response.Content.ReadFromJsonAsync<MailResponseDTO>();
-    }
-    catch
-    {
-        // Si JSON invalide, lire le texte brut
-        var text = await response.Content.ReadAsStringAsync();
-        result = new MailResponseDTO { Message = string.IsNullOrWhiteSpace(text) ? "Erreur inconnue" : text };
-    }
+        // URL propre, pas de "?" ajouté
+        var response = await Http.PostAsJsonAsync("api/mail/sendgrid", emailRequest);
 
-    if (response.IsSuccessStatusCode)
-    {
-        Console.WriteLine(result?.Message);
-    }
-    else
-    {
-        Console.WriteLine("Erreur : " + result?.Message);
-        if (!string.IsNullOrEmpty(result?.Error))
+        MailResponseDTO result = null;
+
+        try
         {
-            Console.WriteLine("Détails : " + result.Error);
+            // Essayer de lire la réponse JSON
+            result = await response.Content.ReadFromJsonAsync<MailResponseDTO>();
+        }
+        catch
+        {
+            // Si JSON invalide, lire le texte brut
+            var text = await response.Content.ReadAsStringAsync();
+            result = new MailResponseDTO
+            {
+                Message = string.IsNullOrWhiteSpace(text) ? "Erreur inconnue" : text
+            };
+        }
+
+        if (response.IsSuccessStatusCode)
+        {
+            Console.WriteLine(result?.Message);
+        }
+        else
+        {
+            Console.WriteLine("Erreur : " + result?.Message);
+            if (!string.IsNullOrEmpty(result?.Error))
+            {
+                Console.WriteLine("Détails : " + result.Error);
+            }
         }
     }
+    catch (Exception ex)
+    {
+        Console.WriteLine("Exception : " + ex.Message);
+    }
 }
+
 
 
 

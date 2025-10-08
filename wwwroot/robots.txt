@@ -8,4 +8,4 @@ User-agent: *
 Allow: /
 
 # Indiquer l’emplacement du sitemap
-Sitemap: https://portofolioapi-8nmz.onrender.com/sitemap.xml
+Sitemap: https://rindra-dotnet-developer.onrender.com/sitemap.xml
