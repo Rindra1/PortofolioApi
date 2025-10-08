@@ -1,18 +1,53 @@
 window.themeManager = {
-    applyTheme: function() {
+    // Appliquer le thème sauvegardé
+    applyTheme: function () {
         const theme = localStorage.getItem("theme") || "dark";
         document.documentElement.setAttribute("data-theme", theme);
-        document.body.classList.remove("dark","light");
+        document.body.classList.remove("dark", "light");
         document.body.classList.add(theme);
+
+        // Change l’icône du bouton
+        const btn = document.getElementById("theme-toggle");
+        if (btn) btn.textContent = theme === "dark" ? "☀️" : "🌙";
     },
-    toggleTheme: function() {
+
+    // Changer de thème
+    toggleTheme: function () {
         const current = localStorage.getItem("theme") || "dark";
         const next = current === "dark" ? "light" : "dark";
         localStorage.setItem("theme", next);
         this.applyTheme();
         return next;
+    },
+
+    // Initialisation globale
+    init: function () {
+        // Appliquer le thème au chargement
+        this.applyTheme();
+
+        // Gérer le bouton toggle
+        const btn = document.getElementById("theme-toggle");
+        if (btn) {
+            btn.addEventListener("click", () => {
+                this.toggleTheme();
+            });
+        }
+
+        // S'assurer qu'après navigation (Blazor ou <a>) le thème reste
+        window.addEventListener("popstate", () => this.applyTheme());
+        document.addEventListener("click", e => {
+            if (e.target.tagName === "A" && e.target.getAttribute("href")?.startsWith("#")) {
+                setTimeout(() => this.applyTheme(), 50);
+            }
+        });
     }
 };
+
+// Exécution automatique après chargement de la page
+window.addEventListener("DOMContentLoaded", () => {
+    window.themeManager.init();
+});
+
 
 
 
@@ -24,108 +59,88 @@ window.siteInterop = {
         this.initMobileMenu();
         this.initSmoothScroll();
         this.initFadeScroll();
-        //this.initThemeToggle();
         this.initParallax();
         this.initTiltCards();
         this.initModalProjects();
         this.IniChatBot();
-        this.applyTheme();
-        this.toggleTheme();
+        this.initTheme(); // ✅ seul appel correct ici
     },
 
-    //Garder le thème choisis par le visiteur
-    applyTheme: function() {
-        const theme = localStorage.getItem("theme") || "dark";
+    // --- 🎨 Thème : gestion centralisée ---
+    initTheme: function () {
+        const themeToggle = document.getElementById("theme-toggle");
+        const savedTheme = localStorage.getItem("theme") || "dark";
+
+        // Appliquer le thème sauvegardé
+        this.applyTheme(savedTheme);
+
+        // Gérer le clic sur le bouton
+        if (themeToggle) {
+            themeToggle.addEventListener("click", () => {
+                const current = localStorage.getItem("theme") || "dark";
+                const next = current === "dark" ? "light" : "dark";
+                localStorage.setItem("theme", next);
+                this.applyTheme(next);
+            });
+        }
+
+        // Réappliquer après navigation (ancre ou Blazor)
+        window.addEventListener("popstate", () => this.applyTheme(localStorage.getItem("theme")));
+        document.addEventListener("click", e => {
+            if (e.target.tagName === "A" && e.target.getAttribute("href")?.startsWith("#")) {
+                setTimeout(() => this.applyTheme(localStorage.getItem("theme")), 50);
+            }
+        });
+    },
+
+    applyTheme: function (theme) {
         document.documentElement.setAttribute("data-theme", theme);
-        document.body.classList.remove("dark","light");
+        document.body.classList.remove("dark", "light");
         document.body.classList.add(theme);
-    },
-    toggleTheme: function() {
-        const current = localStorage.getItem("theme") || "dark";
-        const next = current === "dark" ? "light" : "dark";
-        localStorage.setItem("theme", next);
-        this.applyTheme();
-        return next;
+
+        const btn = document.getElementById("theme-toggle");
+        if (btn) btn.textContent = theme === "dark" ? "☀️" : "🌙";
     },
 
-
-
+    // --- 🤖 Chatbot ---
     IniChatBot: function () {
-    const toggle = document.getElementById("chat-toggle");
-    const chatBody = document.getElementById("chat-body");
+        const toggle = document.getElementById("chat-toggle");
+        const chatBody = document.getElementById("chat-body");
 
-    // Vérifie que les éléments existent
-    if (!toggle || !chatBody) {
-        console.warn("Chatbot non trouvé dans le DOM");
-        return;
-    }
+        if (!toggle || !chatBody) {
+            console.warn("Chatbot non trouvé dans le DOM");
+            return;
+        }
 
-    // Toggle l'affichage du chat
-    toggle.addEventListener("click", () => {
-        chatBody.style.display = chatBody.style.display === "flex" ? "none" : "flex";
-    });
+        toggle.addEventListener("click", () => {
+            chatBody.style.display = chatBody.style.display === "flex" ? "none" : "flex";
+        });
 
-    // Fonction de scroll vers le bas
-    window.scrollChatToBottom = () => {
-        const chat = document.getElementById('chat-messages');
-        if(chat) chat.scrollTop = chat.scrollHeight;
-    };
-},
+        window.scrollChatToBottom = () => {
+            const chat = document.getElementById('chat-messages');
+            if (chat) chat.scrollTop = chat.scrollHeight;
+        };
+    },
 
+    // --- Autres fonctions inchangées ---
     initMobileMenu: function () {
         const menuToggle = document.getElementById('menu-toggle');
         const menu = document.getElementById('menu');
         if (!menuToggle || !menu) return;
-
         menuToggle.addEventListener('click', () => menu.classList.toggle('show'));
     },
+
     initSmoothScroll: function () {
-         // --- Gestion du thème ---
-        function initTheme() {
-            // Vérifie si un thème est déjà sauvegardé
-            const savedTheme = localStorage.getItem('theme') || 'dark';
-            document.body.classList.remove('light', 'dark');
-            document.body.classList.add(savedTheme);
-        }
-
-        function toggleTheme() {
-            const current = document.body.classList.contains('light') ? 'light' : 'dark';
-            const newTheme = current === 'light' ? 'dark' : 'light';
-            document.body.classList.remove(current);
-            document.body.classList.add(newTheme);
-            localStorage.setItem('theme', newTheme);
-        }
-
-        // Appelé au chargement de la page
-        document.addEventListener('DOMContentLoaded', () => {
-            initTheme();
-
-            const themeToggle = document.getElementById('theme-toggle');
-            if (themeToggle) {
-                themeToggle.addEventListener('click', toggleTheme);
-            }
-
-            // --- Smooth scroll ---
-            document.querySelectorAll('nav ul li a:not(.btn-hero)').forEach(a => {
-                a.addEventListener('click', e => {
-                    const href = a.getAttribute('href');
-                    if (href && href.startsWith('#')) {
-                        e.preventDefault();
-                        const target = document.querySelector(href);
-                        if (target) target.scrollIntoView({ behavior: 'smooth' });
-                    }
-                });
+        document.querySelectorAll('nav ul li a:not(.btn-hero)').forEach(a => {
+            a.addEventListener('click', e => {
+                const href = a.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) target.scrollIntoView({ behavior: 'smooth' });
+                }
             });
         });
-
-
-        /*document.querySelectorAll('nav ul li a:not(.btn-hero)').forEach(a => {
-            a.addEventListener('click', e => {
-            e.preventDefault();
-            const target = document.querySelector(a.getAttribute('href'));
-            if (target) target.scrollIntoView({ behavior: 'smooth' });
-            });
-        });*/
     },
 
     initFadeScroll: function () {
@@ -140,16 +155,6 @@ window.siteInterop = {
             });
         }, { threshold: 0.1 });
         fadeElems.forEach(el => observer.observe(el));
-    },
-
-    initThemeToggle: function () {
-        const toggleBtn = document.getElementById('theme-toggle');
-        if (!toggleBtn) return;
-        toggleBtn.addEventListener('click', () => {
-            document.body.classList.toggle('dark');
-            document.body.classList.toggle('light');
-            toggleBtn.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
-        });
     },
 
     initParallax: function () {
@@ -183,22 +188,18 @@ window.siteInterop = {
     },
 
     initModalProjects: function () {
-        // Supprime les anciens listeners pour éviter doublons
         document.querySelectorAll('.open-modal').forEach(btn => btn.onclick = null);
         document.querySelectorAll('.close').forEach(btn => btn.onclick = null);
 
-        // Ouvrir modal
-        document.addEventListener('click', function(e) {
-    const btn = e.target.closest('.open-modal');
-    if (!btn) return;
-    e.preventDefault();
-    
-    const projectId = btn.dataset.project;
-    const modal = document.getElementById('modal-' + projectId);
-    if (modal) modal.style.display = "flex";
-});
+        document.addEventListener('click', function (e) {
+            const btn = e.target.closest('.open-modal');
+            if (!btn) return;
+            e.preventDefault();
+            const projectId = btn.dataset.project;
+            const modal = document.getElementById('modal-' + projectId);
+            if (modal) modal.style.display = "flex";
+        });
 
-        // Fermer modal
         document.querySelectorAll('.close').forEach(c => {
             c.addEventListener('click', () => {
                 const modal = c.closest('.modal');
@@ -206,7 +207,6 @@ window.siteInterop = {
             });
         });
 
-        // Fermer modal en cliquant en dehors
         window.addEventListener('click', e => {
             if (e.target.classList.contains('modal')) {
                 e.target.style.display = "none";
@@ -214,6 +214,7 @@ window.siteInterop = {
         });
     }
 };
+
 
 
 

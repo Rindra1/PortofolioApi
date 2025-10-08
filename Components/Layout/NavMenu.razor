@@ -64,8 +64,7 @@
     {
         if (firstRender)
         {
-            var theme = await JS.InvokeAsync<string>("themeManager.applyTheme");
-            await JS.InvokeVoidAsync("themeManager.toggleTheme", theme);
+            await JS.InvokeVoidAsync("themeManager.applyTheme");
         }
     }
 
