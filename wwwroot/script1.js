@@ -24,7 +24,7 @@ window.siteInterop = {
         this.initMobileMenu();
         this.initSmoothScroll();
         this.initFadeScroll();
-        this.initThemeToggle();
+        //this.initThemeToggle();
         this.initParallax();
         this.initTiltCards();
         this.initModalProjects();

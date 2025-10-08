@@ -57,15 +57,15 @@
 
   private async Task ToggleTheme()
     {
-        await JS.InvokeAsync<string>("themeManager.toggleTheme");
+        await JS.InvokeAsync<string>("themeManager.applyTheme");
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            var theme = await JS.InvokeAsync<string>("themeManager.getTheme");
-            await JS.InvokeVoidAsync("themeManager.setTheme", theme);
+            var theme = await JS.InvokeAsync<string>("themeManager.applyTheme");
+            await JS.InvokeVoidAsync("themeManager.toggleTheme", theme);
         }
     }
 
