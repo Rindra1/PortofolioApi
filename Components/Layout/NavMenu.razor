@@ -36,6 +36,7 @@
       <li><a href="#about">À propos</a></li>
       <li><a href="#projects">Projets</a></li>
       <li><a href="#skills">Outils</a></li>
+      <li><a href="#experience">Outils</a></li>
       <li><a href="#contact">Contact</a></li>
     }
   </ul>
@@ -55,7 +56,21 @@
     }
   }*/
 
-  private async Task ToggleTheme()
+  
+  private bool _initialized;
+
+protected override async Task OnAfterRenderAsync(bool firstRender)
+{
+    if (firstRender && !_initialized)
+    {
+        _initialized = true;
+        await JS.InvokeVoidAsync("siteInterop.initAll");
+        await JS.InvokeAsync<string>("themeManager.applyTheme");
+    }
+}
+
+
+  /*private async Task ToggleTheme()
     {
         await JS.InvokeAsync<string>("themeManager.applyTheme");
     }
@@ -66,7 +81,7 @@
         {
             await JS.InvokeVoidAsync("themeManager.applyTheme");
         }
-    }
+    }*/
 
     private void LogoutEvent(MouseEventArgs e){
       Console.WriteLine("Interieur Evenement");

@@ -159,14 +159,27 @@
   private UtilisateurDTO portfolio = new UtilisateurDTO();
   private string UserMessage { get; set; } = "";
   private List<ChatEntry> ChatResponses { get; set; } = new();
-  
+  private bool _initialized;
+
+/*protected override async Task OnAfterRenderAsync(bool firstRender)
+{
+    if (firstRender && !_initialized)
+    {
+        _initialized = true;
+        await JS.InvokeVoidAsync("siteInterop.initAll");
+        await JS.InvokeAsync<string>("themeManager.applyTheme");
+    }
+}
+
+
   protected override async Task OnAfterRenderAsync(bool firstRender)
   {
     if (firstRender)
     {
       await JS.InvokeVoidAsync("siteInterop.initAll");
+      await JS.InvokeAsync<string>("themeManager.applyTheme");
     }
-  }
+  }*/
   
   private async Task SendMessage()
   {
@@ -267,22 +280,4 @@
         Console.WriteLine(message);
     }
   }
-
-
-  class Project {
-    public string Title { get; set; }
-    public string Description { get; set; }
-    public List<string> Images { get; set; }
-  }
-
-  List<Project> Projects = new() {
-    new Project { Title="Demo 1", Description="...", Images = new List<string>{ "images/sary.jpg", "images/sary1.png" } },
-    new Project { Title="Demo 2", Description="...", Images = new List<string>{ "images/img3.jpg", "images/img4.jpg" } }
-  };
-
-  /*async Task OpenModal(List<string> images)
-  {
-    // Appelle la fonction JS exposée : modalInterop.showModal(images)
-    await JS.InvokeVoidAsync("modalInterop.showModal", images);
-  }*/
 }
