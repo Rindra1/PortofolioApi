@@ -34,10 +34,10 @@ Directory.CreateDirectory(appDataFolder); // Crée le dossier si inexistant
 var dbPath = Path.Combine(appDataFolder, "appdata.db");
 Console.WriteLine($"Chemin de la base de données: {dbPath}");
 // Supprime le fichier existant s'il existe
-/*if (File.Exists(dbPath))
+if (File.Exists(dbPath))
 {
     File.Delete(dbPath);
-}*/
+}
 // Téléchargement si la base n'existe pas
 if (!File.Exists(dbPath))
 {
@@ -220,8 +220,8 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddHttpClient("API", client =>
 {
-    client.BaseAddress = new Uri("https://localhost:7047/"); //En local
-    //client.BaseAddress = new Uri("https://rindra-dotnet-developer.onrender.com"); //Sur Render
+    //client.BaseAddress = new Uri("https://localhost:7047/"); //En local
+    client.BaseAddress = new Uri("https://rindra-dotnet-developer.onrender.com"); //Sur Render
     client.Timeout = TimeSpan.FromSeconds(60); // éviter le TaskCanceled
 });
 
