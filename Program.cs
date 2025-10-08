@@ -266,6 +266,9 @@ app.UseAuthentication();    // 🔹 Toujours avant Authorization
 app.UseAuthorization();
 app.UseAntiforgery();
 
+
+
+
 // Afficher tous les endpoints dans la console
 app.UseEndpoints(endpoints =>
 {
@@ -300,6 +303,12 @@ if (app.Environment.IsDevelopment())
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "Portofolio API V1");
     });
 }
+
+/*app.MapBlazorHub(options =>
+{
+    // Forcer LongPolling si WebSockets ne sont pas supportés
+    options.Transports = Microsoft.AspNetCore.Http.Connections.HttpTransportType.LongPolling;
+});*/
 
 
 app.Run();

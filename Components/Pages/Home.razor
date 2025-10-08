@@ -162,7 +162,7 @@
   private UtilisateurDTO portfolio = new UtilisateurDTO();
   private string UserMessage { get; set; } = "";
   private List<ChatEntry> ChatResponses { get; set; } = new();
-  private bool _initialized;
+  /*private bool _initialized;
 
 protected override async Task OnAfterRenderAsync(bool firstRender)
 {
@@ -184,7 +184,7 @@ protected override async Task OnAfterRenderAsync(bool firstRender)
         Console.WriteLine(message);
     }
     }
-}
+}*/
 
 
   /*protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -295,7 +295,7 @@ protected override async Task OnAfterRenderAsync(bool firstRender)
 
 
 
-  /*private bool _alreadyLoaded = false;
+  private bool _alreadyLoaded = false;
   protected override async Task OnInitializedAsync()
   {
     if (_alreadyLoaded) return;
@@ -313,5 +313,5 @@ protected override async Task OnAfterRenderAsync(bool firstRender)
         message = $"Erreur: {ex.Message} {ex.StackTrace}";
         Console.WriteLine(message);
     }
-  }*/
+  }
 }
