@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "cPmIuLrSUMkVQfXs+siXzCqO4A54AK38SCQjz1OL77c=",
+  "Hash": "1GNIKLu4ecOzVxVPRttNqD5XV3ZhTHrdYA2AxANjWpk=",
   "Source": "PortofolioApi",
   "BasePath": "_content/PortofolioApi",
   "Mode": "Default",
@@ -91,6 +91,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\app1.css"
+    },
+    {
+      "Identity": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\assets\\profile.jpg",
+      "SourceId": "PortofolioApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\",
+      "BasePath": "_content/PortofolioApi",
+      "RelativePath": "assets/profile.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\profile.jpg"
     },
     {
       "Identity": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\bootstrap\\bootstrap.min.css",

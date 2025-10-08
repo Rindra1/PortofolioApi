@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\app1.css"
     },
     {
+      "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\assets\\profile.jpg",
+      "PackagePath": "staticwebassets\\assets\\profile.jpg"
+    },
+    {
       "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\bootstrap\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
     },
