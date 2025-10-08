@@ -37,6 +37,11 @@ public class PortfolioRepository : IRepositoryPortfolio<UtilisateurDTO>
                     DateDebut = e.DateDebut,
                     DateFin = e.DateFin
                 }).ToList(),
+                CompetenceDTOs = u.Competences.Select(e => new CompetenceDTO
+                {
+                    IdCompetence = e.IdCompetence,
+                    Nom = e.Nom
+                }).ToList(),
                 ProjetDTOs = u.Projets.Select(p => new ProjetDTO
                 {
                     IdProjet = p.IdProjet,

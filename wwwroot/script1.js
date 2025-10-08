@@ -1,18 +1,19 @@
 window.themeManager = {
-    setTheme: function (theme) {
-        localStorage.setItem("theme", theme);
+    applyTheme: function() {
+        const theme = localStorage.getItem("theme") || "dark";
         document.documentElement.setAttribute("data-theme", theme);
+        document.body.classList.remove("dark","light");
+        document.body.classList.add(theme);
     },
-    getTheme: function () {
-        return localStorage.getItem("theme") || "dark"; // par défaut sombre
-    },
-    toggleTheme: function () {
+    toggleTheme: function() {
         const current = localStorage.getItem("theme") || "dark";
         const next = current === "dark" ? "light" : "dark";
-        this.setTheme(next);
+        localStorage.setItem("theme", next);
+        this.applyTheme();
         return next;
     }
 };
+
 
 
 // script.js
@@ -28,7 +29,26 @@ window.siteInterop = {
         this.initTiltCards();
         this.initModalProjects();
         this.IniChatBot();
+        this.applyTheme();
+        this.toggleTheme();
     },
+
+    //Garder le thème choisis par le visiteur
+    applyTheme: function() {
+        const theme = localStorage.getItem("theme") || "dark";
+        document.documentElement.setAttribute("data-theme", theme);
+        document.body.classList.remove("dark","light");
+        document.body.classList.add(theme);
+    },
+    toggleTheme: function() {
+        const current = localStorage.getItem("theme") || "dark";
+        const next = current === "dark" ? "light" : "dark";
+        localStorage.setItem("theme", next);
+        this.applyTheme();
+        return next;
+    },
+
+
 
     IniChatBot: function () {
     const toggle = document.getElementById("chat-toggle");

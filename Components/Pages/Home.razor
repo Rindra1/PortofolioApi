@@ -65,19 +65,10 @@
   <h2>Compétences</h2>
   <div class="skills-grid">
     <!-- Développement Desktop -->
-    <div class="skill">C# / VB.NET / WinForms</div>
-
-    <!-- Développement Web -->
-    <div class="skill">.NET Core 8 / ASP.NET Core</div>
-    <div class="skill">ASP.NET Web Forms / WCF / REST (JSON) / Web API / Swagger</div>
-    <div class="skill">HTML / CSS / Bootstrap / jQuery / Ajax</div>
-
-    <!-- Bases de données et ORM -->
-    <div class="skill">SQL Server / SQLite / MySQL / Access</div>
-    <div class="skill">Entity Framework / LINQ</div>
-
-    <!-- Outils et versioning -->
-    <div class="skill">Git / GitHub / SVN</div>
+    @foreach(var competence in portfolio.CompetenceDTOs)
+    {
+      <div class="skill">@competence.Nom</div>  
+    }
   </div>
 </section>
 

@@ -32,18 +32,25 @@ public class ChatController : ControllerBase
             // Construire le prompt pour le modèle
             var prompt = "Voici les informations sur mon portfolio :\n";
             prompt += $"Nom: {utilisateur.Nom}\nPrénom: {utilisateur.Prenom}\nResume: {utilisateur.resume}\nA propos: {utilisateur.APropos}\n\n";
+            foreach(var contact in utilisateur.ContactDTOs)
+            {
+                prompt += $"Contact : {contact.AdresseContact}\n\n";
+            }
             foreach (var projet in utilisateur.ProjetDTOs)
             {
-                Console.WriteLine(projet.TitreProjet);
                 prompt += $"Titre : {projet.TitreProjet}\nResumé : {projet.ResumerProjet}\nDétails : {projet.DetailProjet}\n\n";
             }
             foreach (var experience in utilisateur.ExperienceDTOs)
             {
                 prompt += $"Titre : {experience.TitreExperience}\nDétail : {experience.DetailExperience}\nDate début : {experience.DateDebut}\nDate Fin : {experience.DateFin}\n\n";
             }
+            foreach(var competence in utilisateur.CompetenceDTOs)
+            {
+                prompt += $"Competence : {competence.Nom}\n\n";
+            }
             prompt += $"Réponds à la question suivante : \"{request.Message}\"";
             //prompt += "⚠️ Réponds le moins que possible, de manière concise et claire.";
-            prompt += "⚠️ Réponds par 300 mots maximum, de manière concise et claire.";
+            //prompt += "⚠️ Réponds par 300 mots maximum, de manière concise et claire.";
             prompt += "⚠️ Réponds par 300 mots maximum, de manière concise et claire, et sans utiliser de tirets ou de Markdown.";
             //var prompt = "Réponds à la question suivante : \"Bonjour\"";
             var responseMessage = await _chatService.SendMessageAsync(prompt);
