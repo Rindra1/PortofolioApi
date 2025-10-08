@@ -164,15 +164,27 @@
   private List<ChatEntry> ChatResponses { get; set; } = new();
   private bool _initialized;
 
-/*protected override async Task OnAfterRenderAsync(bool firstRender)
+protected override async Task OnAfterRenderAsync(bool firstRender)
 {
     if (firstRender && !_initialized)
     {
         _initialized = true;
-        await JS.InvokeVoidAsync("siteInterop.initAll");
-        await JS.InvokeAsync<string>("themeManager.applyTheme");
+        //await JS.InvokeVoidAsync("siteInterop.initAll");
+        //await JS.InvokeAsync<string>("themeManager.applyTheme");
+        try
+    {
+      string url = $"api/portfolio";
+      portfolio = await Http.GetFromJsonAsync<UtilisateurDTO>(url)??null;
+      Console.WriteLine("Portfolio:");
+      //Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(portfolio));
+      StateHasChanged();
+    }catch(Exception ex)
+    {
+        message = $"Erreur: {ex.Message} {ex.StackTrace}";
+        Console.WriteLine(message);
     }
-}*/
+    }
+}
 
 
   /*protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -283,19 +295,23 @@
 
 
 
-
+  /*private bool _alreadyLoaded = false;
   protected override async Task OnInitializedAsync()
   {
+    if (_alreadyLoaded) return;
+    _alreadyLoaded = true;
+
+    
     try
     {
       string url = $"api/portfolio";
       portfolio = await Http.GetFromJsonAsync<UtilisateurDTO>(url)??null;
       Console.WriteLine("Portfolio:");
-      Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(portfolio));
+      //Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(portfolio));
     }catch(Exception ex)
     {
         message = $"Erreur: {ex.Message} {ex.StackTrace}";
         Console.WriteLine(message);
     }
-  }
+  }*/
 }
