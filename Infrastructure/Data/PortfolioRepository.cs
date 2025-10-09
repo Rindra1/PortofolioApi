@@ -17,48 +17,56 @@ public class PortfolioRepository : IRepositoryPortfolio<UtilisateurDTO>
     public UtilisateurDTO GetPortfolio()
     {
         var utilisateurDto = _db.Utilisateur
-            .Select(u => new UtilisateurDTO
-            {
-                resume = u.resume,
-                Nom = u.Nom,
-                Prenom = u.Prenom,
-                APropos = u.APropos,
-                UserImage = u.UserImage,
-                ContactDTOs = u.Contacts.Select(c => new ContactDTO
-                {
-                    TypeContact = c.TypeContact,
-                    AdresseContact = c.AdresseContact
-                }).ToList(),
-                ExperienceDTOs = u.Experiences.Select(e => new ExperienceDTO
-                {
-                    IdExperience = e.IdExperience,
-                    TitreExperience = e.TitreExperience,
-                    DetailExperience = e.DetailExperience,
-                    DateDebut = e.DateDebut,
-                    DateFin = e.DateFin
-                }).ToList(),
-                CompetenceDTOs = u.Competences.Select(e => new CompetenceDTO
-                {
-                    IdCompetence = e.IdCompetence,
-                    Nom = e.Nom
-                }).ToList(),
-                ProjetDTOs = u.Projets.Select(p => new ProjetDTO
-                {
-                    IdProjet = p.IdProjet,
-                    ResumerProjet = p.ResumerProjet,
-                    TitreProjet = p.TitreProjet,
-                    DetailProjet = p.DetailProjet,
-                    ImageProjet = p.ImageProjet,
+        .AsSplitQuery() //évite les requêtes géantes avec doublons
+        .OrderBy(u => u.IdUser) // ordre déterministe pour FirstOrDefault
+        .Select(u => new UtilisateurDTO
+        {
+            resume = u.resume,
+            Nom = u.Nom,
+            Prenom = u.Prenom,
+            APropos = u.APropos,
+            UserImage = u.UserImage,
 
-                    LienDTOs = p.Liens.Select(t => new LienDTO
-                    {
-                        CheminLien = t.CheminLien
-                    }).ToList()
+            ContactDTOs = u.Contacts.Select(c => new ContactDTO
+            {
+                TypeContact = c.TypeContact,
+                AdresseContact = c.AdresseContact
+            }).ToList(),
+
+            ExperienceDTOs = u.Experiences.Select(e => new ExperienceDTO
+            {
+                IdExperience = e.IdExperience,
+                TitreExperience = e.TitreExperience,
+                DetailExperience = e.DetailExperience,
+                DateDebut = e.DateDebut,
+                DateFin = e.DateFin
+            }).ToList(),
+
+            CompetenceDTOs = u.Competences.Select(e => new CompetenceDTO
+            {
+                IdCompetence = e.IdCompetence,
+                Nom = e.Nom
+            }).ToList(),
+
+            ProjetDTOs = u.Projets.Select(p => new ProjetDTO
+            {
+                IdProjet = p.IdProjet,
+                ResumerProjet = p.ResumerProjet,
+                TitreProjet = p.TitreProjet,
+                DetailProjet = p.DetailProjet,
+                ImageProjet = p.ImageProjet,
+
+                LienDTOs = p.Liens.Select(t => new LienDTO
+                {
+                    CheminLien = t.CheminLien
                 }).ToList()
-            })
-        .FirstOrDefault(); // retourne un seul DTO
+            }).ToList()
+        })
+        .FirstOrDefault(); 
+
         return utilisateurDto ?? new UtilisateurDTO();
     }
+
 
 
     public UtilisateurDTO GetPortfolioByLastName(string Prenom)

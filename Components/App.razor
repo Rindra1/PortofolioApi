@@ -1,5 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Components
 @using Microsoft.AspNetCore.Components.Web
+@inject IJSRuntime JS
 
 <!DOCTYPE html>
 <html lang="fr" data-theme="dark">
@@ -7,6 +8,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Auteur -->
+    <meta name="google-site-verification" content="x-vrAMjzUexxRp20uw7NNce5JFTpFV6TgOtbhB-DWJY" />
+
 
     <!-- Auteur -->
     <meta name="author" content="Razafimandanona Rindra Niaina">
@@ -41,6 +45,16 @@
     <link rel="icon" type="image/png" href="images/rindra_logo.png" />
     <link rel="preconnect" href="https://rindra-dotnet-developer.onrender.com">
     <link rel="dns-prefetch" href="https://rindra-dotnet-developer.onrender.com">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7D0HPW8VLE"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-7D0HPW8VLE');
+    </script>
+    
     <HeadOutlet />
     
 </head>
@@ -51,9 +65,9 @@
     <div class="spinner"></div>
 </div>
     <Routes />
-        <script src="script.js"></script>
+        
         <script src="_framework/blazor.web.js"></script>
-
+        <script src="script.js"></script>
         
         <script>
             // Applique le thème sauvegardé dès le chargement
@@ -65,3 +79,16 @@
 </body>
 
 </html>
+@code{
+    /*private bool _initialized;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender && !_initialized)
+        {
+            _initialized = true;
+            //await JS.InvokeVoidAsync("siteInterop.initAll");
+            await JS.InvokeVoidAsync("siteInterop.hideLoader");
+        }
+    }*/
+}

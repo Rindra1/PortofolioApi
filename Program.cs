@@ -106,9 +106,12 @@ builder.Services.AddTransient<SendGridEmailService>();
 //var port = Environment.GetEnvironmentVariable("PORT") ?? "5000"; // 5000 si local
 //sbuilder.WebHost.UseUrls($"http://*:{port}");
 
-builder.Services.AddSingleton<UserState>();
-builder.Services.AddSingleton<PortofolioApi.Services.TokenServices>();
+//builder.Services.AddSingleton<UserState>();
+//builder.Services.AddSingleton<PortofolioApi.Services.TokenServices>();
 
+
+builder.Services.AddScoped<UserState>();
+builder.Services.AddScoped<PortofolioApi.Services.TokenServices>();
 
 // Bind JwtSettings
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
@@ -174,11 +177,16 @@ builder.Services.AddScoped<LienService>();
 builder.Services.AddScoped<ProjetService>();
 builder.Services.AddScoped<ContactService>();
 builder.Services.AddScoped<ExperienceService>();
+/*Envoi Email*/
 builder.Services.AddScoped<SendGridEmailService>();
 builder.Services.AddScoped<SendGridSettings>();
+/**********************/
 builder.Services.AddScoped<PortfolioService>();
+/*Storage*/
+builder.Services.AddScoped<ProtectedLocalStorage>();
 //ChatBot
 builder.Services.AddScoped<ChatService>();
+
 
 // Repository
 builder.Services.AddScoped<IRepository<UserLogin>, UserLoginRepository>();
@@ -192,17 +200,6 @@ builder.Services.AddScoped<IRepositoryPortfolio<UtilisateurDTO>, PortfolioReposi
 builder.Services.AddScoped<IRepository<Competence>, CompetenceRepository>();
 
 
-// Service
-builder.Services.AddScoped<UserLoginService>();
-builder.Services.AddScoped<UtilisateurService>();
-builder.Services.AddScoped<ProjetService>();
-builder.Services.AddScoped<LienService>();
-builder.Services.AddScoped<ContactService>();
-builder.Services.AddScoped<SendGridEmailService>();
-builder.Services.AddScoped<SendGridSettings>();
-builder.Services.AddScoped<ProtectedLocalStorage>();
-
-builder.Services.AddScoped<ChatService>();
 
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
@@ -220,8 +217,8 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddHttpClient("API", client =>
 {
-    //client.BaseAddress = new Uri("https://localhost:7047/"); //En local
-    client.BaseAddress = new Uri("https://rindra-dotnet-developer.onrender.com"); //Sur Render
+    client.BaseAddress = new Uri("https://localhost:7047/"); //En local
+    //client.BaseAddress = new Uri("https://rindra-dotnet-developer.onrender.com"); //Sur Render
     client.Timeout = TimeSpan.FromSeconds(60); // éviter le TaskCanceled
 });
 

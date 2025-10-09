@@ -33,16 +33,32 @@
       "PackagePath": "staticwebassets\\faviconrindra.png"
     },
     {
+      "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\google39433078b265ff1c.html",
+      "PackagePath": "staticwebassets\\google39433078b265ff1c.html"
+    },
+    {
       "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\images\\060cbed7-2b35-4f2c-afbe-210ae8f68ace_pa.png",
       "PackagePath": "staticwebassets\\images\\060cbed7-2b35-4f2c-afbe-210ae8f68ace_pa.png"
+    },
+    {
+      "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\images\\060cbed7-2b35-4f2c-afbe-210ae8f68ace_pa.webp",
+      "PackagePath": "staticwebassets\\images\\060cbed7-2b35-4f2c-afbe-210ae8f68ace_pa.webp"
     },
     {
       "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\images\\25c129b2-1496-40c3-9129-5b7712f6ccea_pf.png",
       "PackagePath": "staticwebassets\\images\\25c129b2-1496-40c3-9129-5b7712f6ccea_pf.png"
     },
     {
+      "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\images\\25c129b2-1496-40c3-9129-5b7712f6ccea_pf.webp",
+      "PackagePath": "staticwebassets\\images\\25c129b2-1496-40c3-9129-5b7712f6ccea_pf.webp"
+    },
+    {
       "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\images\\2e5db83e-c3bc-4fb1-b1fa-110e4c470874_al.png",
       "PackagePath": "staticwebassets\\images\\2e5db83e-c3bc-4fb1-b1fa-110e4c470874_al.png"
+    },
+    {
+      "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\images\\2e5db83e-c3bc-4fb1-b1fa-110e4c470874_al.webp",
+      "PackagePath": "staticwebassets\\images\\2e5db83e-c3bc-4fb1-b1fa-110e4c470874_al.webp"
     },
     {
       "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\images\\34e4db9b-1c9a-4880-9297-63cb44c5bd6e_me.png",
@@ -53,24 +69,20 @@
       "PackagePath": "staticwebassets\\images\\4e58b33c-07a5-4b70-a094-6fa74f406365_sary.jpg"
     },
     {
-      "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\images\\654973de-e6ac-4bc8-9ce7-9878b9c1d137_me.png",
-      "PackagePath": "staticwebassets\\images\\654973de-e6ac-4bc8-9ce7-9878b9c1d137_me.png"
-    },
-    {
-      "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\images\\7397d83c-80c5-401c-be0f-aad767fccc8b_m.png",
-      "PackagePath": "staticwebassets\\images\\7397d83c-80c5-401c-be0f-aad767fccc8b_m.png"
-    },
-    {
       "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\images\\7e464346-7338-4ee5-96b4-1a13420fef28_m.png",
       "PackagePath": "staticwebassets\\images\\7e464346-7338-4ee5-96b4-1a13420fef28_m.png"
+    },
+    {
+      "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\images\\7e464346-7338-4ee5-96b4-1a13420fef28_m.webp",
+      "PackagePath": "staticwebassets\\images\\7e464346-7338-4ee5-96b4-1a13420fef28_m.webp"
     },
     {
       "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\images\\9b51a30e-b826-4678-baa0-937f7dfd20bf_sary.jpg",
       "PackagePath": "staticwebassets\\images\\9b51a30e-b826-4678-baa0-937f7dfd20bf_sary.jpg"
     },
     {
-      "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\images\\aa2be732-8b42-476c-9b38-cae9bdc9da76_m.png",
-      "PackagePath": "staticwebassets\\images\\aa2be732-8b42-476c-9b38-cae9bdc9da76_m.png"
+      "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\images\\rindra_logo copy.png",
+      "PackagePath": "staticwebassets\\images\\rindra_logo copy.png"
     },
     {
       "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\images\\rindra_logo.png",

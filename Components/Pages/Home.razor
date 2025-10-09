@@ -6,8 +6,10 @@
 @using PortofolioApi.Domain.DTOs
 @using Microsoft.AspNetCore.Components
 
-
-<!-- HERO -->
+@if(portfolio==null){
+  <h1>Chargement...</h1>
+}else{
+  <!-- HERO -->
 <header id="home" class="hero">
   <div class="layer layer-back"></div>
   <div class="layer layer-mid"></div>
@@ -152,8 +154,7 @@
       </div>
   </div>
 </div>
-
-
+}
 
 @code {
   private string message = string.Empty;
@@ -162,7 +163,7 @@
   private UtilisateurDTO portfolio = new UtilisateurDTO();
   private string UserMessage { get; set; } = "";
   private List<ChatEntry> ChatResponses { get; set; } = new();
-  /*private bool _initialized;
+  private bool _initialized;
 
 protected override async Task OnAfterRenderAsync(bool firstRender)
 {
@@ -178,13 +179,15 @@ protected override async Task OnAfterRenderAsync(bool firstRender)
       Console.WriteLine("Portfolio:");
       //Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(portfolio));
       StateHasChanged();
+      await JS.InvokeVoidAsync("siteInterop.hideLoader");
+
     }catch(Exception ex)
     {
         message = $"Erreur: {ex.Message} {ex.StackTrace}";
         Console.WriteLine(message);
     }
     }
-}*/
+}
 
 
   /*protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -295,7 +298,7 @@ protected override async Task OnAfterRenderAsync(bool firstRender)
 
 
 
-  private bool _alreadyLoaded = false;
+/*  private bool _alreadyLoaded = false;
   protected override async Task OnInitializedAsync()
   {
     if (_alreadyLoaded) return;
@@ -313,5 +316,5 @@ protected override async Task OnAfterRenderAsync(bool firstRender)
         message = $"Erreur: {ex.Message} {ex.StackTrace}";
         Console.WriteLine(message);
     }
-  }
+  }*/
 }
