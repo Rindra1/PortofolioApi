@@ -1,10 +1,10 @@
 # Portfolio Personnel
 
 ![status](https://img.shields.io/badge/status-en%20cours-yellow)
-![GitHub top language](https://img.shields.io/github/languages/top/tonpseudo/tonrepo)
-![GitHub last commit](https://img.shields.io/github/last-commit/tonpseudo/tonrepo)
-![GitHub repo size](https://img.shields.io/github/repo-size/tonpseudo/tonrepo)
-![GitHub stars](https://img.shields.io/github/stars/tonpseudo/tonrepo?style=social)
+![GitHub top language](https://img.shields.io/github/languages/top/Rindra1/PortofolioApi)
+![GitHub last commit](https://img.shields.io/github/last-commit/Rindra1/PortofolioApi)
+![GitHub repo size](https://img.shields.io/github/repo-size/Rindra1/PortofolioApi)
+![GitHub stars](https://img.shields.io/github/stars/Rindra1/PortofolioApi?style=social)
 
 ⚠️ **Projet en cours de développement** – certaines fonctionnalités ne sont pas encore finalisées.
 
