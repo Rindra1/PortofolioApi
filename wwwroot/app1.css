@@ -1047,23 +1047,23 @@ body.light .chat-input button {
 
 
 
-/* Animation slide from left */
+/* Slide gauche -> droite */
 @keyframes slideInLeft {
-    0% {
-        opacity: 0;
-        transform: translateX(-200px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
+    0% { opacity: 0; transform: translateX(-50px); }
+    100% { opacity: 1; transform: translateX(0); }
 }
 
-/* Classe à appliquer automatiquement via JS */
-.slide-left {
-    opacity: 0;
-    transform: translateX(-200px);
+/* Slide droite -> gauche */
+@keyframes slideInRight {
+    0% { opacity: 0; transform: translateX(50px); }
+    100% { opacity: 1; transform: translateX(0); }
 }
+
+/* Classes invisibles par défaut */
+.slide-left, .slide-right {
+    opacity: 0;
+}
+
 
 
 

@@ -29,14 +29,14 @@
 
   
 <!-- ABOUT -->
-<section id="about" class="fade slide-left">
+<section id="about" class="fade">
   <h2>À propos de moi</h2>
   <p>@portfolio.APropos</p>
 </section>
 
 
 <!-- PROJECTS -->
-<section id="projects" class="fade slide-left">
+<section id="projects" class="fade">
   <h2>Mes projets</h2>
   <div class="projects-grid">
     @foreach(var proj in portfolio.ProjetDTOs)
@@ -62,7 +62,7 @@
   </div>
 </section>
 
-<section id="skills" class="fade slide-left">
+<section id="skills" class="fade">
   <h2>Compétences</h2>
   <div class="skills-grid">
     <!-- Développement Desktop -->
@@ -74,7 +74,7 @@
 </section>
 
 <!-- EXPERIENCE -->
-<section id="experience" class="fade slide-left">
+<section id="experience" class="fade">
   <h2>Expériences</h2>
   <div class="timeline">
   @foreach(var exp in portfolio.ExperienceDTOs)
@@ -92,7 +92,7 @@
 
 
 <!-- CONTACT -->
-<section id="contact" class="fade slide-left">
+<section id="contact" class="fade">
   <h2>Contact</h2>
   <form>
     <input @bind="emailRequest.Name" type="text" placeholder="Nom" required>
