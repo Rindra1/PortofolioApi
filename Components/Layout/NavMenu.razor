@@ -64,7 +64,7 @@ protected override async Task OnAfterRenderAsync(bool firstRender)
     if (firstRender && !_initialized)
     {
         _initialized = true;
-        await JS.InvokeVoidAsync("siteInterop.initAll");
+        //await JS.InvokeVoidAsync("siteInterop.initAll");
         //await JS.InvokeAsync<string>("themeManager.applyTheme");
         //await JS.InvokeVoidAsync("siteInterop.hideLoader");
     }

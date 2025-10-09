@@ -5,7 +5,6 @@
 @using Microsoft.EntityFrameworkCore.Metadata.Conventions
 @using PortofolioApi.Domain.DTOs
 @using Microsoft.AspNetCore.Components
-
 @if(portfolio==null){
   <h1>Chargement...</h1>
 }else{
@@ -179,8 +178,19 @@ protected override async Task OnAfterRenderAsync(bool firstRender)
       Console.WriteLine("Portfolio:");
       //Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(portfolio));
       StateHasChanged();
-      await JS.InvokeVoidAsync("siteInterop.hideLoader");
+      await JS.InvokeVoidAsync("eval", @"
+        var script = document.createElement('script');
+        script.src = 'script.js';
+        script.onload = function() {
+          siteInterop.initAll();
+          siteInterop.hideLoader();
+        };
+        document.head.appendChild(script);
+      ");
 
+      //await JS.InvokeVoidAsync("siteInterop.initAll");
+      //await JS.InvokeVoidAsync("siteInterop.hideLoader");
+      
     }catch(Exception ex)
     {
         message = $"Erreur: {ex.Message} {ex.StackTrace}";
