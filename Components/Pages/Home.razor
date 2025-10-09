@@ -29,14 +29,14 @@
 
   
 <!-- ABOUT -->
-<section id="about" class="fade">
+<section id="about" class="fade slide-left">
   <h2>À propos de moi</h2>
   <p>@portfolio.APropos</p>
 </section>
 
 
 <!-- PROJECTS -->
-<section id="projects" class="fade">
+<section id="projects" class="fade slide-left">
   <h2>Mes projets</h2>
   <div class="projects-grid">
     @foreach(var proj in portfolio.ProjetDTOs)
@@ -62,7 +62,7 @@
   </div>
 </section>
 
-<section id="skills" class="fade">
+<section id="skills" class="fade slide-left">
   <h2>Compétences</h2>
   <div class="skills-grid">
     <!-- Développement Desktop -->
@@ -74,7 +74,7 @@
 </section>
 
 <!-- EXPERIENCE -->
-<section id="experience" class="fade">
+<section id="experience" class="fade slide-left">
   <h2>Expériences</h2>
   <div class="timeline">
   @foreach(var exp in portfolio.ExperienceDTOs)
@@ -92,7 +92,7 @@
 
 
 <!-- CONTACT -->
-<section id="contact" class="fade">
+<section id="contact" class="fade slide-left">
   <h2>Contact</h2>
   <form>
     <input @bind="emailRequest.Name" type="text" placeholder="Nom" required>
@@ -228,8 +228,11 @@ protected override async Task OnAfterRenderAsync(bool firstRender)
         ChatResponses.Add(new ChatEntry
         {
           UserMessage = userMsg,
-          BotResponse = chatResponse?.Message ?? "Aucune réponse"
+          BotResponse = ""//chatResponse?.Message ?? "Aucune réponse"
         });
+        var botMessage = chatResponse?.Message ?? "Aucune réponse";
+         // Afficher le message caractère par caractère
+            await TypeBotResponse(botMessage);
       }
       else
       {
@@ -252,6 +255,25 @@ protected override async Task OnAfterRenderAsync(bool firstRender)
         // Ne pas réinitialiser la réponse complète, seulement le champ input
         UserMessage = "";
   }
+
+  private async Task TypeBotResponse(string botMessage)
+{
+    var typedResponse = "";
+    foreach (var c in botMessage)
+    {
+        typedResponse += c;
+
+        // Mettre à jour la dernière entrée du chat
+        ChatResponses.Last().BotResponse = typedResponse;
+
+        // Rafraîchir l’UI
+        StateHasChanged();
+
+        // Pause entre chaque caractère (ajuste la vitesse)
+        await Task.Delay(30); 
+    }
+}
+
 
   private class ChatEntry
   {

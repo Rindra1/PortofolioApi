@@ -93,7 +93,7 @@ window.siteInterop = {
         });
     },
 
-    initFadeScroll: function () {
+    /*initFadeScroll: function () {
         document.querySelectorAll('.fade').forEach(el => {
             const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
@@ -106,7 +106,26 @@ window.siteInterop = {
             }, { threshold: 0.1 });
             observer.observe(el);
         });
-    },
+    },*/
+    initFadeScroll: function () {
+    document.querySelectorAll('.fade, .slide-left').forEach(el => {
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (el.classList.contains('slide-left')) {
+                        el.style.animation = 'slideInLeft 0.8s forwards';
+                    } else {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        observer.observe(el);
+    });
+},
+
 
     initParallax: function () {
         window.addEventListener('scroll', () => {

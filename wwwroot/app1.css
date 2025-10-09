@@ -1044,3 +1044,26 @@ body.light .chat-input button {
   visibility: hidden;
   transition: opacity 0.5s ease, visibility 0.5s ease;
 }
+
+
+
+/* Animation slide from left */
+@keyframes slideInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-200px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Classe à appliquer automatiquement via JS */
+.slide-left {
+    opacity: 0;
+    transform: translateX(-200px);
+}
+
+
+
