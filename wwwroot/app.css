@@ -180,6 +180,19 @@ body.light .skill:hover { background:#4B6CB7; }
 body.dark .timeline-item .content { background:#2a2a2a; color:#eee; box-shadow:0 4px 15px rgba(0,0,0,0.6); }
 body.light .timeline-item .content { background:#fff; color:#333; box-shadow:0 4px 15px rgba(0,0,0,0.2); }
 
+/* Version mobile : timeline pleine largeur */
+@media (max-width: 768px) {
+  .timeline:before { left: 8px; } /* la ligne peut rester sur la gauche */
+  .timeline-item {
+    width: 100% !important;
+    left: 0 !important;
+    text-align: left !important;
+    padding-left: 40px; /* espace pour la ligne verticale */
+    margin-bottom: 20px;
+  }
+}
+
+
 /* Contact */
 form { display:flex; flex-direction:column; gap:15px; max-width:500px; margin:0 auto; }
 form input, form textarea { padding:12px; border-radius:8px; font-size:16px; }

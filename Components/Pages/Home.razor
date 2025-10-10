@@ -42,7 +42,7 @@
     @foreach(var proj in portfolio.ProjetDTOs)
     {
         <div class="project-card">
-          <img src="/images/@proj.ImageProjet" alt="@proj.TitreProjet">
+          <img src="/images/@proj.ImageProjet" alt="@proj.TitreProjet"  loading="lazy">
           <div class="project-info">
             <h3>@proj.TitreProjet</h3>
             <p>@proj.ResumerProjet</p>
