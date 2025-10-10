@@ -30,14 +30,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBZGRwcm9qZXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/DotNetCoreApp/PortofolioApi/Components/Pages/Chat.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDaGF0LnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/DotNetCoreApp/PortofolioApi/Components/Pages/Counter.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3VudGVyLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/DotNetCoreApp/PortofolioApi/Components/Pages/CreateUserLogin.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDcmVhdGVVc2VyTG9naW4ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
@@ -54,24 +46,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMb2dpbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/DotNetCoreApp/PortofolioApi/Components/Pages/TestApi.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUZXN0QXBpLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/DotNetCoreApp/PortofolioApi/Components/Pages/Utilisateur.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xVdGlsaXNhdGV1ci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/DotNetCoreApp/PortofolioApi/Components/Pages/Weather.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xXZWF0aGVyLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/DotNetCoreApp/PortofolioApi/Components/Routes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/DotNetCoreApp/PortofolioApi/Components/SiteInitializer.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTaXRlSW5pdGlhbGl6ZXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/DotNetCoreApp/PortofolioApi/Components/_Imports.razor]

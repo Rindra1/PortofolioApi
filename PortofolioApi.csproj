@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>164d07cd-9146-451f-a467-5d7c1cd669a4</UserSecretsId>
+    <BlazorWebAssemblyEnableLinking>true</BlazorWebAssemblyEnableLinking>
   </PropertyGroup>
 
   <ItemGroup>

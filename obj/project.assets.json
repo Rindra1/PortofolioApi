@@ -3341,11 +3341,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\DotNetCoreApp\\PortofolioApi\\PortofolioApi.csproj",
+      "projectUniqueName": "c:\\DotNetCoreApp\\PortofolioApi\\PortofolioApi.csproj",
       "projectName": "PortofolioApi",
-      "projectPath": "C:\\DotNetCoreApp\\PortofolioApi\\PortofolioApi.csproj",
+      "projectPath": "c:\\DotNetCoreApp\\PortofolioApi\\PortofolioApi.csproj",
       "packagesPath": "C:\\Users\\Rindra\\.nuget\\packages\\",
-      "outputPath": "C:\\DotNetCoreApp\\PortofolioApi\\obj\\",
+      "outputPath": "c:\\DotNetCoreApp\\PortofolioApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\ProgramData\\Xamarin\\NuGet\\",
@@ -3445,13 +3445,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.413/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1900",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Une erreur s’est produite lors de l’obtention des données de vulnérabilité du package : Impossible de charger l'index de service pour la source https://api.nuget.org/v3/index.json."
-    }
-  ]
+  }
 }
