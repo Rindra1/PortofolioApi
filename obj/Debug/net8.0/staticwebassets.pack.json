@@ -49,14 +49,6 @@
       "PackagePath": "staticwebassets\\images\\9b51a30e-b826-4678-baa0-937f7dfd20bf_sary.jpg"
     },
     {
-      "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\images\\chat-bot.png",
-      "PackagePath": "staticwebassets\\images\\chat-bot.png"
-    },
-    {
-      "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\images\\chatbot.png",
-      "PackagePath": "staticwebassets\\images\\chatbot.png"
-    },
-    {
       "Id": "C:\\DotNetCoreApp\\PortofolioApi\\wwwroot\\images\\chatbot1.png",
       "PackagePath": "staticwebassets\\images\\chatbot1.png"
     },
