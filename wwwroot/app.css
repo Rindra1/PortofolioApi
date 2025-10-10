@@ -862,15 +862,129 @@ body.light .chat-input button {
     color: #fff;
 }
 
-
-
-
-
-
-
-
 /* Chatbot flottant */
+
 .chatbot-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 350px;
+  font-family: 'Segoe UI', sans-serif;
+  z-index: 1000;
+}
+
+/* Bouton toggle avec image */
+.chat-toggle {
+  cursor: pointer;
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s, box-shadow 0.3s;
+  background: transparent; /* Fond complètement transparent */
+}
+
+.chat-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.45);
+}
+
+/* Taille de l'image */
+.chat-toggle img.chat-icon {
+  width: 75px;
+  height: 75px;
+  object-fit: contain; /* garde les proportions */
+}
+
+/* Corps du chat */
+.chat-body {
+  background: #1e1e1e;
+  color: #fff;
+  display: none;
+  flex-direction: column;
+  height: 400px;
+  border-radius: 16px;
+  margin-top: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+  animation: slideDown 0.3s ease-out;
+}
+
+/* Animation slide */
+@keyframes slideDown {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Messages */
+.chat-messages {
+  flex: 1;
+  padding: 12px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.chat-message {
+  padding: 10px 14px;
+  border-radius: 18px;
+  max-width: 75%;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+.chat-message.user {
+  background: #0078ff;
+  color: white;
+  align-self: flex-end;
+}
+
+.chat-message.bot {
+  background: #333;
+  color: #eee;
+  align-self: flex-start;
+}
+
+/* Input */
+.chat-input {
+  display: flex;
+  border-top: 1px solid #444;
+}
+.chat-input input {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  outline: none;
+  background: #2a2a2a;
+  color: white;
+  border-radius: 0 0 0 16px;
+}
+.chat-input button {
+  background: #0078ff;
+  border: none;
+  padding: 0 18px;
+  cursor: pointer;
+  color: white;
+  border-radius: 0 0 16px 0;
+  transition: background 0.3s, transform 0.2s;
+}
+.chat-input button:hover {
+  background: #0099ff;
+  transform: scale(1.05);
+}
+
+
+
+
+
+
+
+/*.chatbot-container {
   position: fixed;
   bottom: 20px;
   right: 20px;
@@ -879,7 +993,7 @@ body.light .chat-input button {
   z-index: 1000;
 }
 
-/* En-tête du chat */
+/* En-tête du chat 
 .chat-header {
   background: linear-gradient(45deg, #0078ff, #00bfff);
   color: white;
@@ -891,19 +1005,19 @@ body.light .chat-input button {
   box-shadow: 0 3px 10px rgba(0,0,0,0.3);
 }
 
-/* Corps du chat */
+/* Corps du chat 
 .chat-body {
   background: #1e1e1e;
   color: #fff;
   border-radius: 0 0 12px 12px;
   box-shadow: 0 3px 10px rgba(0,0,0,0.3);
-  display: none; /* masqué par défaut */
+  display: none; 
   flex-direction: column;
   height: 400px;
   overflow: hidden;
 }
 
-/* Zone des messages */
+/* Zone des messages 
 .chat-messages {
   flex: 1;
   padding: 12px;
@@ -913,7 +1027,7 @@ body.light .chat-input button {
   gap: 8px;
 }
 
-/* Bulle utilisateur et bot */
+/* Bulle utilisateur et bot 
 .chat-message {
   padding: 8px 12px;
   border-radius: 14px;
@@ -931,7 +1045,7 @@ body.light .chat-input button {
   align-self: flex-start;
 }
 
-/* Champ de saisie */
+/* Champ de saisie 
 .chat-input {
   display: flex;
   border-top: 1px solid #444;
@@ -959,7 +1073,7 @@ body.light .chat-input button {
 
 .chat-input button:hover {
   background: #0099ff;
-}
+}*/
 
 
 
@@ -978,38 +1092,6 @@ body.light .chat-input button {
 .blue-logo {
     filter: invert(34%) sepia(96%) saturate(3141%) hue-rotate(187deg) brightness(95%) contrast(90%);
 }
-
-
-
-
-/*#loader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-}
-
-.spinner {
-    border: 6px solid #f3f3f3;
-    border-top: 6px solid #0077B5;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg);}
-    100% { transform: rotate(360deg);}
-}
-
-
 
 /* Fullscreen Loader */
 #loader {

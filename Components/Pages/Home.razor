@@ -131,28 +131,33 @@
 </section>
 
 <!-- Chatbot flottant -->
+<!-- Chatbot flottant -->
 <div class="chatbot-container">
-  <div class="chat-header" id="chat-toggle">💬 Assistance</div>
+  <div class="chat-toggle" id="chat-toggle">
+    <img src="images/chatbot1.png" alt="Chat" class="chat-icon" />
+  </div>
   <div class="chat-body" id="chat-body">
-      <div class="chat-messages" id="chat-messages">
-        @foreach(var msg in ChatResponses)
-          {
-            <div class="message @(true ? "user" : "bot")">
-                <span>@msg.UserMessage</span>
-            </div>
-            <div class="message @(false ? "user" : "bot")">
-                <span>@msg.BotResponse</span>
-            </div>
-          }
-      </div>
-      <div class="chat-input">
-        <input type="text" placeholder="Écrire un message..." id="chat-input-field" 
-          @bind="UserMessage" @bind:event="oninput"
-          @onkeypress="@(async e => { if(e.Key == "Enter") await SendMessage(); })"/>
-        <button  @onclick="SendMessage" id="chat-send-btn">➤</button>
-      </div>
+    <div class="chat-messages" id="chat-messages">
+      @foreach(var msg in ChatResponses)
+      {
+        <div class="chat-message user">
+          <span>@msg.UserMessage</span>
+        </div>
+        <div class="chat-message bot">
+          <span>@msg.BotResponse</span>
+        </div>
+      }
+    </div>
+    <div class="chat-input">
+      <input type="text" placeholder="Écrire un message..." id="chat-input-field" 
+        @bind="UserMessage" @bind:event="oninput"
+        @onkeypress="@(async e => { if(e.Key == "Enter") await SendMessage(); })"/>
+      <button @onclick="SendMessage" id="chat-send-btn">➤</button>
+    </div>
   </div>
 </div>
+
+
 }
 
 @code {
