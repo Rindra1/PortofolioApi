@@ -310,19 +310,4 @@ if (app.Environment.IsDevelopment())
     options.Transports = Microsoft.AspNetCore.Http.Connections.HttpTransportType.LongPolling;
 });*/
 
-builder.Services.AddResponseCompression(options =>
-{
-    options.EnableForHttps = true;
-    options.Providers.Add<BrotliCompressionProvider>();
-    options.Providers.Add<GzipCompressionProvider>();
-});
-builder.Services.Configure<BrotliCompressionProviderOptions>(o =>
-{
-    o.Level = CompressionLevel.Fastest;
-});
-builder.Services.Configure<GzipCompressionProviderOptions>(o =>
-{
-    o.Level = CompressionLevel.Fastest;
-});
-
 app.Run();

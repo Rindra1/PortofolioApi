@@ -39,7 +39,7 @@
 <section id="projects" class="fade">
   <h2>Mes projets</h2>
   <div class="projects-grid">
-    @foreach(var proj in portfolio.ProjetDTOs)
+    @foreach(var proj in portfolio.Projets)
     {
         <div class="project-card">
           <img src="/images/@proj.ImageProjet" alt="@proj.TitreProjet"  loading="lazy">
@@ -66,7 +66,7 @@
   <h2>Compétences</h2>
   <div class="skills-grid">
     <!-- Développement Desktop -->
-    @foreach(var competence in portfolio.CompetenceDTOs)
+    @foreach(var competence in portfolio.Competences)
     {
       <div class="skill">@competence.Nom</div>  
     }
@@ -77,7 +77,7 @@
 <section id="experience" class="fade">
   <h2>Expériences</h2>
   <div class="timeline">
-  @foreach(var exp in portfolio.ExperienceDTOs)
+  @foreach(var exp in portfolio.Experiences)
   {
     <div class="timeline-item">
       <div class="date">@exp.DateDebut.Year - @(exp.DateFin.HasValue ? exp.DateFin.Value.ToString("yyyy") : "Présent")</div>
@@ -102,9 +102,9 @@
     <button @onclick="Envoyer"  class="btn btn-hero">Envoyer</button>
   </form>
   <div class="socials">
-    @if(portfolio.ContactDTOs != null)
+    @if(portfolio.Contacts != null)
       {
-          @foreach (var contact in portfolio.ContactDTOs)
+          @foreach (var contact in portfolio.Contacts)
           {
             if (contact.TypeContact.ToUpper() == "LINKEDIN")
             {

@@ -25,7 +25,7 @@ public class UtilisateurService
                     Prenom = utilisateur.Prenom,
                     APropos = utilisateur.APropos,
                     UserImage = utilisateur.UserImage,
-                    ContactDTOs = utilisateur.Contacts.Select(
+                    Contacts = utilisateur.Contacts.Select(
                         c=>new ContactDTO{
                             TypeContact = c.TypeContact,
                             AdresseContact = c.AdresseContact

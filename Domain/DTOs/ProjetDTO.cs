@@ -9,5 +9,5 @@ public class ProjetDTO
     public string TitreProjet { get; set; }
     public string DetailProjet { get; set; }
     public string ImageProjet { get; set; }
-    public List<LienDTO>? LienDTOs {get;set;} = new List<LienDTO>(); 
+    public List<LienDTO>? Liens {get;set;} = new List<LienDTO>(); 
 }

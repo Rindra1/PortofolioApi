@@ -40,6 +40,7 @@ namespace PortofolioApi.Application.Services
             Console.WriteLine("Démarrage de l'envoi d'email via SendGrid...");
 
             var apiKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
+            Console.WriteLine($"SENDGRID_API_KEY trouvé ? {(!string.IsNullOrEmpty(apiKey))}");
             if (string.IsNullOrEmpty(apiKey))
                 throw new Exception("Clé SendGrid manquante : définis SENDGRID_API_KEY dans les variables d'environnement.");
             else

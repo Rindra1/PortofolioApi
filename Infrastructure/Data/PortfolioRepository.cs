@@ -27,13 +27,13 @@ public class PortfolioRepository : IRepositoryPortfolio<UtilisateurDTO>
             APropos = u.APropos,
             UserImage = u.UserImage,
 
-            ContactDTOs = u.Contacts.Select(c => new ContactDTO
+            Contacts = u.Contacts.Select(c => new ContactDTO
             {
                 TypeContact = c.TypeContact,
                 AdresseContact = c.AdresseContact
             }).ToList(),
 
-            ExperienceDTOs = u.Experiences.Select(e => new ExperienceDTO
+            Experiences = u.Experiences.Select(e => new ExperienceDTO
             {
                 IdExperience = e.IdExperience,
                 TitreExperience = e.TitreExperience,
@@ -42,13 +42,13 @@ public class PortfolioRepository : IRepositoryPortfolio<UtilisateurDTO>
                 DateFin = e.DateFin
             }).ToList(),
 
-            CompetenceDTOs = u.Competences.Select(e => new CompetenceDTO
+            Competences = u.Competences.Select(e => new CompetenceDTO
             {
                 IdCompetence = e.IdCompetence,
                 Nom = e.Nom
             }).ToList(),
 
-            ProjetDTOs = u.Projets.Select(p => new ProjetDTO
+            Projets = u.Projets.Select(p => new ProjetDTO
             {
                 IdProjet = p.IdProjet,
                 ResumerProjet = p.ResumerProjet,
@@ -56,7 +56,7 @@ public class PortfolioRepository : IRepositoryPortfolio<UtilisateurDTO>
                 DetailProjet = p.DetailProjet,
                 ImageProjet = p.ImageProjet,
 
-                LienDTOs = p.Liens.Select(t => new LienDTO
+                Liens = p.Liens.Select(t => new LienDTO
                 {
                     CheminLien = t.CheminLien
                 }).ToList()
@@ -79,18 +79,18 @@ public class PortfolioRepository : IRepositoryPortfolio<UtilisateurDTO>
                 Prenom = u.Prenom,
                 APropos = u.APropos,
                 UserImage = u.UserImage,
-                ContactDTOs = u.Contacts.Select(c => new ContactDTO
+                Contacts = u.Contacts.Select(c => new ContactDTO
                 {
                     TypeContact = c.TypeContact,
                     AdresseContact = c.AdresseContact
                 }).ToList(),
-                ProjetDTOs = u.Projets.Select(p => new ProjetDTO
+                Projets = u.Projets.Select(p => new ProjetDTO
                 {
                     TitreProjet = p.TitreProjet,
                     DetailProjet = p.DetailProjet,
                     ImageProjet = p.ImageProjet,
 
-                    LienDTOs = p.Liens.Select(t => new LienDTO
+                    Liens = p.Liens.Select(t => new LienDTO
                     {
                         CheminLien = t.CheminLien
                     }).ToList()

@@ -104,7 +104,7 @@ public partial class UtilisateurBase : ComponentBase
                 //newUtilisateur.IdUserLogin = 1;
                 //newUtilisateur.UserLogin = newUser;
             }
-            newUtilisateur.ContactDTOs = contacts; 
+            newUtilisateur.Contacts = contacts; 
 
             //var client = ClientFactory.CreateClient("API");
             var user = await Http.PostAsJsonAsync("api/utilisateur", newUtilisateur);

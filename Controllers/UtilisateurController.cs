@@ -55,7 +55,7 @@ public class UtilisateurController : ControllerBase
         };
 
         // Ajoute les contacts liés à cet utilisateur
-        foreach (var contactDTO in utilisateurDTO.ContactDTOs)
+        foreach (var contactDTO in utilisateurDTO.Contacts)
         {
             utilisateur.Contacts.Add(new Contact
             {

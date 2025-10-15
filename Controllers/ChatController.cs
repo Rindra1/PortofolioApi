@@ -32,19 +32,19 @@ public class ChatController : ControllerBase
             // Construire le prompt pour le modèle
             var prompt = "Voici les informations sur mon portfolio :\n";
             prompt += $"Nom: {utilisateur.Nom}\nPrénom: {utilisateur.Prenom}\nResume: {utilisateur.resume}\nA propos: {utilisateur.APropos}\n\n";
-            foreach(var contact in utilisateur.ContactDTOs)
+            foreach(var contact in utilisateur.Contacts)
             {
                 prompt += $"Contact : {contact.AdresseContact}\n\n";
             }
-            foreach (var projet in utilisateur.ProjetDTOs)
+            foreach (var projet in utilisateur.Projets)
             {
                 prompt += $"Titre : {projet.TitreProjet}\nResumé : {projet.ResumerProjet}\nDétails : {projet.DetailProjet}\n\n";
             }
-            foreach (var experience in utilisateur.ExperienceDTOs)
+            foreach (var experience in utilisateur.Experiences)
             {
                 prompt += $"Titre : {experience.TitreExperience}\nDétail : {experience.DetailExperience}\nDate début : {experience.DateDebut}\nDate Fin : {experience.DateFin}\n\n";
             }
-            foreach(var competence in utilisateur.CompetenceDTOs)
+            foreach(var competence in utilisateur.Competences)
             {
                 prompt += $"Competence : {competence.Nom}\n\n";
             }

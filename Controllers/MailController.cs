@@ -30,6 +30,7 @@ public class MailController : ControllerBase
     [HttpPost("sendgrid")]
     public async Task<IActionResult> Post([FromBody] MailDTO model)
     {
+        Console.WriteLine("Requête reçue dans MailController/Post");
         if (string.IsNullOrWhiteSpace(model.To) || !model.To.Contains("@"))
             return BadRequest(new { Message = "Adresse e-mail invalide" });
         await _emailService.SendEmailAsync(model.To,model.Name, model.Subject, model.Body);
