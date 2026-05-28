@@ -27,6 +27,14 @@ public class PortfolioRepository : IRepositoryPortfolio<UtilisateurDTO>
             APropos = u.APropos,
             UserImage = u.UserImage,
 
+            LoginRequest = new UserLoginRequestDTO
+            {
+                Pseudo = u.UserLogin.Pseudo,
+                MotDePasse = u.UserLogin.MotDePasse,
+                Role = u.UserLogin.Role
+            },
+            
+
             Contacts = u.Contacts.Select(c => new ContactDTO
             {
                 TypeContact = c.TypeContact,

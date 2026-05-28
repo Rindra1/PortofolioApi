@@ -23,14 +23,16 @@ public class ProjetRepository : IRepository<Projet>
     public int Add(Projet projet)
     {
         Console.WriteLine("Projet Repository"); 
-        int IdUserLogin = Convert.ToInt32(_tokenServices.GetUserId());
+        int IdUserLogin = 1; //Convert.ToInt32(_tokenServices.GetUserId());
         Console.WriteLine("Id User Login= " + IdUserLogin); 
-        var utilisateur = _db.Utilisateur.FirstOrDefault(u=>u.IdUserLogin==IdUserLogin);
-        if (utilisateur != null)
+        //var utilisateur = 1; //_db.Utilisateur.FirstOrDefault(u=>u.IdUserLogin==IdUserLogin);
+        /*if (utilisateur != null)
         {
             projet.UtilisateurId = utilisateur.IdUser;
-        }
+        }*/
+        projet.UtilisateurId = 1;
         Projet? projetAjouter = _db.Projet.Find(projet.IdProjet);
+        Console.WriteLine("Projet Ajouter= " + projetAjouter);
         if (projetAjouter != null)
         {
             projet.IdProjet = projetAjouter.UtilisateurId;

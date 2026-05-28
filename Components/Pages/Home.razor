@@ -181,6 +181,8 @@ protected override async Task OnAfterRenderAsync(bool firstRender)
       string url = $"api/portfolio";
       portfolio = await Http.GetFromJsonAsync<UtilisateurDTO>(url)??null;
       Console.WriteLine("Portfolio:");
+      Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(portfolio));
+      Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(portfolio));
       //Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(portfolio));
       StateHasChanged();
       await JS.InvokeVoidAsync("eval", @"

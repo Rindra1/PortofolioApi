@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using PortofolioApi.Domain.Entities;
 using PortofolioApi.Domain.DTOs;
 using PortofolioApi.Services;
+using Microsoft.JSInterop;
 
 
 public partial class CreateUserLoginBase : ComponentBase
@@ -19,29 +20,41 @@ public partial class CreateUserLoginBase : ComponentBase
     protected UserLoginRequestDTO newUserLogin = new UserLoginRequestDTO{Role = "Administrateur"};
     protected List<UserLoginResponseDTO> users = new List<UserLoginResponseDTO>();
     protected List<string> roles = new(){"Administrateur","Utilisateur"};
+    [Inject]
+    protected TokenServices TokenServices { get; set; }
    protected string message = string.Empty;
+   [Inject] 
+    protected IJSRuntime JS { get; set; }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if (firstRender)
+        Console.WriteLine("Rôle actuel de l'utilisateur: " + userState.Role);
+        /*if (firstRender)
         {
             if(userState.Role==null)
                 Nav.NavigateTo("/login");
-        }
+        }*/
+        Console.WriteLine("Rôle actuel de l'utilisateur: " + userState.Role);
+        var token = await JS.InvokeAsync<string>(
+    "localStorage.getItem",
+    "token");
+    TokenServices.SetToken(token);
+userState.Role = TokenServices.GetRole();
     }
 
 
-    protected override async Task OnInitializedAsync()
+    /*protected override async Task OnInitializedAsync()
     {
+        
             if(userState.Role==null)
-            Nav.NavigateTo("/login");
-        else if(userState.Role.ToUpper()=="ADMIN")
-            Nav.NavigateTo("/createuserlogin");
+                Nav.NavigateTo("/login");
+        //else if(userState.Role.ToUpper()=="ADMIN")
+        //    Nav.NavigateTo("/createuserlogin");
     
         string url = $"api/userlogin";
         users = await Http.GetFromJsonAsync<List<UserLoginResponseDTO>>(url) ?? null;
 
-    }
+    }*/
 
 
     protected async Task CreerUserLogin()

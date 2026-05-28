@@ -14,6 +14,7 @@ public interface ITokenService
 public class TokenService : ITokenService
 {  private readonly JwtSettings _settings;
     private readonly byte[] _key;
+    private string _token;
 
     public TokenService(IOptions<JwtSettings> options)
     {
@@ -33,7 +34,7 @@ public class TokenService : ITokenService
 
         var creds = new SigningCredentials(new SymmetricSecurityKey(_key), SecurityAlgorithms.HmacSha256);
 
-        var token = new JwtSecurityToken(
+        var jwttoken = new JwtSecurityToken(
             issuer: _settings.Issuer,
             audience: _settings.Audience,
             claims: claims,
@@ -41,7 +42,22 @@ public class TokenService : ITokenService
             signingCredentials: creds
         );
 
-        return new JwtSecurityTokenHandler().WriteToken(token);
+        return new JwtSecurityTokenHandler().WriteToken(jwttoken);
+    }
+    public void SetToken(string token)
+    {
+        _token = token;
+    }
+
+    public string GetRole()
+    {
+        if (string.IsNullOrEmpty(_token))
+            return "";
+
+        var handler = new JwtSecurityTokenHandler();
+        var jwt = handler.ReadJwtToken(_token);
+
+        return jwt.Claims.FirstOrDefault(x => x.Type == "role")?.Value ?? "";
     }
 }
 

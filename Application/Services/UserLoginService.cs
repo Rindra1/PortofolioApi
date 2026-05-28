@@ -45,6 +45,8 @@ public class UserLoginService
             Role = l.Role
             };
             lstResponse.Add(dto);
+            Console.WriteLine("Mot de passe : "  + DecrypterMotDePasse(l.MotDePasse));
+            Console.WriteLine(l.Role + " " + l.Pseudo);
         }  
         return lstResponse;
     }

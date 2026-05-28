@@ -11,4 +11,6 @@ public class UtilisateurDTO
     public List<ContactDTO>? Contacts { get; set; } = new List<ContactDTO>();
     public List<ExperienceDTO>? Experiences { get; set; } = new List<ExperienceDTO>();
     public List<CompetenceDTO>? Competences { get; set; } = new List<CompetenceDTO>();
+
+    public UserLoginRequestDTO LoginRequest { get; set; } = new UserLoginRequestDTO();
 }

@@ -47,9 +47,9 @@ public class UtilisateurRepository : IRepository<Utilisateur>
                                             .Where(p=>p.IdUser==u.IdUser)
                                             .ToList()
                             }).FirstOrDefault();*/
-                            user = _db.Utilisateur
-    .Include(u => u.UserLogin)
-    .FirstOrDefault(u => u.IdUser == 1);
+                            //user = _db.Utilisateur
+    //.Include(u => u.UserLogin)
+    //.FirstOrDefault(u => u.IdUser == 1);
 
        return user?? new Utilisateur();
     } 

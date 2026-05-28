@@ -92,11 +92,17 @@ private async Task RedirectAfterLogin()
                 UserState.Role = result.Role; // 🔹 stocker le rôle dans UserState
                 TokenServices.SetToken(result.Token); // 🔹 stocker le token et le rôle dans TokenService
                 // Redirection selon le rôle
-                StateHasChanged();
+                //StateHasChanged();
+                Console.WriteLine("Rôle de l'utilisateur: " + result.Role);
                 if (TokenServices.GetRole().ToUpper() == "ADMINISTRATEUR")
                     Navigation.NavigateTo("/createuserlogin");
                 else if (TokenServices.GetRole().ToUpper() == "ADMIN")
+                {
+                    Console.WriteLine("Rôle de l'utilisateur: " + result.Role);
+                    Console.WriteLine("Redirection vers /createuserlogin");
                     Navigation.NavigateTo("/createuserlogin");
+                }
+                    
                 else
                     Navigation.NavigateTo("/addprojet");
             }
