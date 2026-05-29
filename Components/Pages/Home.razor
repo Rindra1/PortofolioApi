@@ -2,6 +2,7 @@
 @rendermode InteractiveServer
 @inject HttpClient Http
 @inject IJSRuntime JS
+@inject PortofolioApi.Services.LocalizationService Localizer
 @using Microsoft.EntityFrameworkCore.Metadata.Conventions
 @using PortofolioApi.Domain.DTOs
 @using Microsoft.AspNetCore.Components
@@ -17,7 +18,7 @@
       <div class="hero-text">
         <h1>@portfolio.Prenom</h1>
         <p>@portfolio.resume</p>
-        <a href="#projects" class="btn btn-hero">Voir mes projets</a>
+        <a href="#projects" class="btn btn-hero">@Localizer.T("SeeProjects")</a>
       </div>
       <div class="hero-image">
         <img src="images/@portfolio.UserImage" alt="@portfolio.Nom @portfolio.Prenom"  loading="lazy"/>
@@ -30,14 +31,14 @@
   
 <!-- ABOUT -->
 <section id="about" class="fade">
-  <h2>À propos de moi</h2>
+  <h2>@Localizer.T("About")</h2>
   <p>@portfolio.APropos</p>
 </section>
 
 
 <!-- PROJECTS -->
 <section id="projects" class="fade">
-  <h2>Mes projets</h2>
+  <h2>@Localizer.T("Projects")</h2>
   <div class="projects-grid">
     @foreach(var proj in portfolio.Projets)
     {
@@ -46,7 +47,7 @@
           <div class="project-info">
             <h3>@proj.TitreProjet</h3>
             <p>@proj.ResumerProjet</p>
-            <button class="btn-small open-modal" data-project="@proj.IdProjet.ToString()">Voir détails</button>
+            <button class="btn-small open-modal" data-project="@proj.IdProjet.ToString()">@Localizer.T("ViewDetails")</button>
 
           </div>
         </div>
@@ -63,7 +64,7 @@
 </section>
 
 <section id="skills" class="fade">
-  <h2>Compétences</h2>
+  <h2>@Localizer.T("Skills")</h2>
   <div class="skills-grid">
     <!-- Développement Desktop -->
     @foreach(var competence in portfolio.Competences)
@@ -75,14 +76,14 @@
 
 <!-- EXPERIENCE -->
 <section id="experience" class="fade">
-  <h2>Expériences</h2>
+  <h2>@Localizer.T("Experience")</h2>
   <div class="timeline">
-  @foreach(var exp in portfolio.Experiences)
+  @foreach(var exp in portfolio.Experiences.OrderByDescending(e => e.DateDebut))
   {
     <div class="timeline-item">
-      <div class="date">@exp.DateDebut.Year - @(exp.DateFin.HasValue ? exp.DateFin.Value.ToString("yyyy") : "Présent")</div>
+      <div class="date">@exp.DateDebut.Year - @(exp.DateFin.HasValue ? exp.DateFin.Value.ToString("yyyy") : Localizer.T("Present"))</div>
       <div class="content">
-        <h3>@exp.TitreExperience</h3>
+        <h3>@Localizer.T(exp.TitreExperience)</h3>
         <p>@(new MarkupString(exp.DetailExperience.Replace("\\n", "<br/>")))</p>
       </div>
     </div>
@@ -93,7 +94,7 @@
 
 <!-- CONTACT -->
 <section id="contact" class="fade">
-  <h2>Contact</h2>
+  <h2>@Localizer.T("Contact")</h2>
   <!--<form>
     <input @bind="emailRequest.Name" type="text" placeholder="Nom" required>
     <input @bind="emailRequest.To" type="email" placeholder="Email" required>
@@ -132,13 +133,16 @@
 
 <!-- Chatbot flottant -->
 <div class="chatbot-container">
-  <div class="chat-toggle" id="chat-toggle">
+  <div class="chat-toggle" id="chat-toggle" role="button" tabindex="0" aria-controls="chat-body" aria-expanded="false">
     <img src="images/chatbot1.png" alt="Chat" class="chat-icon" />
   </div>
-  <div class="chat-body" id="chat-body">
+  <div class="chat-body" id="chat-body" aria-hidden="true">
     <div class="chat-messages" id="chat-messages">
       @if (ChatResponses != null && ChatResponses.Any())
       {
+        <div class="chat-message bot">
+          <span>@Localizer.T("ChatGreeting")</span>
+        </div>
         foreach (var msg in ChatResponses)
         {
           <div class="chat-message user">
@@ -152,15 +156,14 @@
       else
       {
         <div class="chat-message bot">
-          <span>Bonjour! Comment puis-je vous aider aujourd'hui?</span>
+          <span>@Localizer.T("ChatGreeting")</span>
         </div>
       }
     </div>
     <div class="chat-input">
-        <input autocomplete="off" type="text" placeholder="Écrire un message..." id="chat-input-field"
-          @bind="UserMessage" />
-        <button type="button" id="chat-send-btn" @onclick="SendMessage">➤</button>
-      
+        <input autocomplete="off" type="text" placeholder='@Localizer.T("ChatPlaceholder")' id="chat-input-field"
+          @bind="UserMessage" aria-label="Message" />
+        <button type="button" id="chat-send-btn" @onclick="SendMessage" aria-label='@Localizer.T("Send")' title='@Localizer.T("Send")'>➤</button>
     </div>
   </div>
 </div>
@@ -176,6 +179,47 @@
   private List<ChatEntry> ChatResponses { get; set; } = new();
   private bool _initialized;
 
+  protected override void OnInitialized()
+  {
+      // subscribe to language changes
+      Localizer.OnChange += OnLangChanged;
+  }
+
+  private void OnLangChanged()
+  {
+      InvokeAsync(async () =>
+      {
+        try
+        {
+          if (portfolio != null)
+          {
+            if (Localizer.CurrentLanguage != "fr")
+            {
+              await TranslatePortfolioAsync(portfolio, Localizer.CurrentLanguage);
+            }
+            else
+            {
+              // reload original French content from API
+              try
+              {
+                var url = $"api/portfolio";
+                var original = await Http.GetFromJsonAsync<UtilisateurDTO>(url);
+                if (original != null) portfolio = original;
+              }
+              catch { }
+            }
+          }
+        }
+        catch { }
+        StateHasChanged();
+      });
+  }
+
+  public void Dispose()
+  {
+      Localizer.OnChange -= OnLangChanged;
+  }
+
 protected override async Task OnAfterRenderAsync(bool firstRender)
 {
     if (firstRender && !_initialized)
@@ -186,11 +230,20 @@ protected override async Task OnAfterRenderAsync(bool firstRender)
         try
     {
       string url = $"api/portfolio";
+      // ensure localizer initialized
+      try { await Localizer.InitializeAsync(); } catch { }
+
       portfolio = await Http.GetFromJsonAsync<UtilisateurDTO>(url)??null;
       Console.WriteLine("Portfolio:");
       Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(portfolio));
       //Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(portfolio));
-      StateHasChanged();
+        StateHasChanged();
+
+        // Traduire le contenu dynamique si la langue est autre que FR
+        if (Localizer.CurrentLanguage != "fr" && portfolio != null)
+        {
+          try { await TranslatePortfolioAsync(portfolio, Localizer.CurrentLanguage); StateHasChanged(); } catch { }
+        }
       // Appeler l'initialisation JavaScript déjà incluse via App.razor
       await JS.InvokeVoidAsync("siteInterop.initAll");
       await JS.InvokeVoidAsync("siteInterop.hideLoader");
@@ -287,6 +340,64 @@ protected override async Task OnAfterRenderAsync(bool firstRender)
     public string UserMessage { get; set; } = "";
     public string BotResponse { get; set; } = "";
   }
+
+    private async Task TranslatePortfolioAsync(UtilisateurDTO p, string target)
+    {
+      Console.WriteLine("Translation");
+      if (p == null) return;
+
+      var texts = new List<string>();
+      // order: APropos, resume
+      texts.Add(p.APropos ?? string.Empty);
+      texts.Add(p.resume ?? string.Empty);
+
+      // competences
+      var compCount = p.Competences?.Count ?? 0;
+      for (int i = 0; i < compCount; i++) texts.Add(p.Competences[i].Nom ?? string.Empty);
+
+      // projets
+      var projCount = p.Projets?.Count ?? 0;
+      for (int i = 0; i < projCount; i++)
+      {
+        texts.Add(p.Projets[i].TitreProjet ?? string.Empty);
+        texts.Add(p.Projets[i].ResumerProjet ?? string.Empty);
+        texts.Add(p.Projets[i].DetailProjet ?? string.Empty);
+      }
+
+      // experiences
+      var expCount = p.Experiences?.Count ?? 0;
+      for (int i = 0; i < expCount; i++)
+      {
+        texts.Add(p.Experiences[i].TitreExperience ?? string.Empty);
+        texts.Add(p.Experiences[i].DetailExperience ?? string.Empty);
+      }
+
+      var translations = await Localizer.TranslateTextsAsync(texts, target);
+      Console.WriteLine("Nombre translater =" + translations.Count);
+      if (translations == null || translations.Count == 0) return;
+
+      int idx = 0;
+      if (idx < translations.Count) p.APropos = translations[idx++];
+      if (idx < translations.Count) p.resume = translations[idx++];
+
+      for (int i = 0; i < compCount; i++)
+      {
+        if (idx < translations.Count) p.Competences[i].Nom = translations[idx++];
+      }
+
+      for (int i = 0; i < projCount; i++)
+      {
+        if (idx < translations.Count) p.Projets[i].TitreProjet = translations[idx++];
+        if (idx < translations.Count) p.Projets[i].ResumerProjet = translations[idx++];
+        if (idx < translations.Count) p.Projets[i].DetailProjet = translations[idx++];
+      }
+
+      for (int i = 0; i < expCount; i++)
+      {
+        if (idx < translations.Count) p.Experiences[i].TitreExperience = translations[idx++];
+        if (idx < translations.Count) p.Experiences[i].DetailExperience = translations[idx++];
+      }
+    }
 
   private async Task Envoyer()
 {

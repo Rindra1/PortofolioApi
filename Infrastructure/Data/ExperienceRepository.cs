@@ -40,11 +40,12 @@ public class ExperienceRepository : IRepository<Experience>
     {
         int IdUserLogin = Convert.ToInt32(_tokenServices.GetUserId());
         Console.WriteLine("Id User Login= " + IdUserLogin); 
-        var utilisateur = _dbContext.Utilisateur.FirstOrDefault(u=>u.IdUserLogin==IdUserLogin);
+        /*var utilisateur = _dbContext.Utilisateur.FirstOrDefault(u=>u.IdUserLogin==IdUserLogin);
         if (utilisateur != null)
         {
             experience.IdUser = utilisateur.IdUser;
-        }
+        }*/
+        experience.IdUser = 1;
         _dbContext.Experience.Add(experience);
         _dbContext.SaveChanges();
         return experience.IdExperience;

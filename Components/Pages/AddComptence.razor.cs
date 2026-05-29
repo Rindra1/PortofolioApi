@@ -26,11 +26,11 @@ public class AddComptenceBase : ComponentBase
 
     protected override async Task OnInitializedAsync()
     {
-        if (userState.Role == null)
+        /*if (userState.Role == null)
             Nav.NavigateTo("/login");
         else if (userState.Role.ToUpper() == "ADMIN")
-            Nav.NavigateTo("/createuserlogin");
-        listeExperience = await Http.GetFromJsonAsync<List<ExperienceDTO>>("api/experience");
+            Nav.NavigateTo("/createuserlogin");*/
+        listeExperience = await Http.GetFromJsonAsync<List<ExperienceDTO>>("http://localhost:5000/api/experience");
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -42,14 +42,16 @@ public class AddComptenceBase : ComponentBase
     }
     protected async Task Enregistrer()
     {
+        Console.WriteLine("Nouvelle expérience à enregistrer :");
         try
         {
-            var response = await Http.PostAsJsonAsync("api/experience", newExperience);
+            var response = await Http.PostAsJsonAsync("http://localhost:5000/api/experience", newExperience);
             if (response.IsSuccessStatusCode)
             {
                 message = "Expérience ajoutée avec succès !";
                 newExperience = new ExperienceDTO(); // Réinitialiser le formulaire
-                listeExperience = await Http.GetFromJsonAsync<List<ExperienceDTO>>("api/experience");
+                listeExperience = await Http.GetFromJsonAsync<List<ExperienceDTO>>("http://localhost:5000/api/experience");
+                 Console.WriteLine("Expérience ajoutée avec succès !");
             }
             else
             {
@@ -58,6 +60,7 @@ public class AddComptenceBase : ComponentBase
         }
         catch (Exception ex)
         {
+            Console.WriteLine($"Erreur: {ex.Message}");
             message = $"Erreur: {ex.Message}";
         }
     }

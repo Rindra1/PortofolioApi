@@ -116,6 +116,9 @@ builder.Services.AddTransient<SendGridEmailService>();
 builder.Services.AddScoped<UserState>();
 builder.Services.AddScoped<PortofolioApi.Services.TokenServices>();
 
+// Localization service (FR/EN)
+builder.Services.AddScoped<PortofolioApi.Services.LocalizationService>();
+
 // Bind JwtSettings
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
 

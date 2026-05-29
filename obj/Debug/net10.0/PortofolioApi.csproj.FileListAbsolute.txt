@@ -156,5 +156,5 @@ C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\refint\PortofolioApi.dll
 C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\PortofolioApi.pdb
 C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\PortofolioApi.genruntimeconfig.cache
 C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\ref\PortofolioApi.dll
-C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\nphpm4t4yx-{0}-52ucgbai41-52ucgbai41.gz
-C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\satxfy5zdj-{0}-vsaqal95eu-vsaqal95eu.gz
+C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\satxfy5zdj-{0}-4gpidenb7d-4gpidenb7d.gz
+C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\nphpm4t4yx-{0}-op5wlvb83d-op5wlvb83d.gz

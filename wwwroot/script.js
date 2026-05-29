@@ -23,54 +23,97 @@ window.siteInterop = {
 
     // --- Thème ---
     initTheme: function () {
-        const themeToggle = document.getElementById("theme-toggle");
-        const savedTheme = localStorage.getItem("theme") || "dark";
 
-        this.applyTheme(savedTheme);
+        const saved = localStorage.getItem("theme");
+        const systemPref = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+        const themeToUse = saved || systemPref || 'dark';
+
+        console.log("Thème chargé :", themeToUse);
+
+        this.applyTheme(themeToUse);
+
+        const themeToggle = document.getElementById("theme-toggle");
 
         if (themeToggle) {
-            themeToggle.addEventListener("click", () => {
-                const current = localStorage.getItem("theme") || "dark";
-                const next = current === "dark" ? "light" : "dark";
+            themeToggle.onclick = null;
+            themeToggle.onclick = () => {
+                const current = localStorage.getItem("theme") || (document.body.classList.contains('dark') ? 'dark' : 'light');
+                const next = current === 'dark' ? 'light' : 'dark';
                 localStorage.setItem("theme", next);
                 this.applyTheme(next);
-            });
+                console.log("Nouveau thème :", next);
+            };
         }
-
-        // Maintenir le thème après navigation ou ancre
-        window.addEventListener("popstate", () => this.applyTheme(localStorage.getItem("theme")));
-        document.addEventListener("click", e => {
-            if (e.target.tagName === "A" && e.target.getAttribute("href")?.startsWith("#")) {
-                setTimeout(() => this.applyTheme(localStorage.getItem("theme")), 50);
-            }
-        });
     },
 
     applyTheme: function(theme) {
-        document.documentElement.setAttribute("data-theme", theme);
+
         document.body.classList.remove("dark", "light");
+
         document.body.classList.add(theme);
 
+        document.documentElement.setAttribute("data-theme", theme);
+
         const btn = document.getElementById("theme-toggle");
-        if (btn) btn.textContent = theme === "dark" ? "☀️" : "🌙";
+
+        if (btn) {
+            btn.textContent = theme === "dark"
+                ? "☀️"
+                : "🌙";
+        }
     },
 
     // --- ChatBot ---
-    initChatBot: function() {
-        const toggle = document.getElementById("chat-toggle");
-        const chatBody = document.getElementById("chat-body");
+    initChatBot: function () {
+    const toggle = document.getElementById("chat-toggle");
+    const chatBody = document.getElementById("chat-body");
 
-        if (!toggle || !chatBody) return;
+    if (!toggle || !chatBody) {
+        console.log("Chatbot introuvable");
+        return;
+    }
 
-        toggle.addEventListener("click", () => {
-            chatBody.style.display = chatBody.style.display === "flex" ? "none" : "flex";
+    // Évite doublons d'événements
+    toggle.onclick = null;
+
+    // Accessibilité initiale
+    toggle.setAttribute('role', 'button');
+    toggle.setAttribute('tabindex', '0');
+    toggle.setAttribute('aria-controls', 'chat-body');
+    toggle.setAttribute('aria-expanded', 'false');
+    chatBody.setAttribute('aria-hidden', 'true');
+
+    toggle.onclick = () => {
+        const isOpen = chatBody.classList.toggle('show');
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        chatBody.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+        // focus sur le champ input quand on ouvre
+        if (isOpen) {
+            const input = document.getElementById('chat-input-field');
+            if (input) setTimeout(() => input.focus(), 120);
+        }
+    };
+
+    // Envoi par Entrée
+    const input = document.getElementById('chat-input-field');
+    const sendBtn = document.getElementById('chat-send-btn');
+    if (input) {
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                if (sendBtn) sendBtn.click();
+            }
         });
+    }
 
-        window.scrollChatToBottom = () => {
-            const chat = document.getElementById('chat-messages');
-            if (chat) chat.scrollTop = chat.scrollHeight;
-        };
-    },
+    // Fonction globale scroll
+    window.scrollChatToBottom = () => {
+        const chat = document.getElementById('chat-messages');
+        if (chat) {
+            setTimeout(() => { chat.scrollTop = chat.scrollHeight; }, 50);
+        }
+    };
+},
 
     // --- Menu mobile ---
     initMobileMenu: function () {

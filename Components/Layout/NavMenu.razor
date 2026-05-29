@@ -3,6 +3,7 @@
 @inject IJSRuntime JS
 @inject UserState UserState
 @inject TokenServices TokenService
+@inject PortofolioApi.Services.LocalizationService Localizer
 @rendermode InteractiveServer 
 
 <nav  aria-label="Navigation principale">
@@ -32,15 +33,23 @@
     }
     else
     {
-      <li><a href="#home">Accueil</a></li>
-      <li><a href="#about">À propos</a></li>
-      <li><a href="#projects">Projets</a></li>
-      <li><a href="#skills">Outils</a></li>
-      <li><a href="#experience">Expériences</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#home">@Localizer.T("Home")</a></li>
+      <li><a href="#about">@Localizer.T("About")</a></li>
+      <li><a href="#projects">@Localizer.T("Projects")</a></li>
+      <li><a href="#skills">@Localizer.T("Skills")</a></li>
+      <li><a href="#experience">@Localizer.T("Experience")</a></li>
+      <li><a href="#contact">@Localizer.T("Contact")</a></li>
     }
   </ul>
-    <button id="theme-toggle">☀️</button>
+    <div style="display:flex;gap:8px;align-items:center">
+      <button id="theme-toggle">☀️</button>
+      <div class="lang-select" style="display:flex;align-items:center">
+        <select id="lang-select" @onchange="OnLangSelectChange" value="@Localizer.CurrentLanguage" aria-label="Choisir la langue">
+          <option value="fr">🇫🇷 Français</option>
+          <option value="en">🇬🇧 English</option>
+        </select>
+      </div>
+    </div>
   </nav>
 
 
@@ -63,11 +72,22 @@ protected override async Task OnAfterRenderAsync(bool firstRender)
 {
     if (firstRender && !_initialized)
     {
-        _initialized = true;
-        await JS.InvokeVoidAsync("siteInterop.initAll");
-        //await JS.InvokeAsync<string>("themeManager.applyTheme");
-        //await JS.InvokeVoidAsync("siteInterop.hideLoader");
+      _initialized = true;
+      try { await Localizer.InitializeAsync(); } catch { }
+      await JS.InvokeVoidAsync("siteInterop.initAll");
     }
+}
+
+private async Task ChangeLangAsync(string lang)
+{
+  await Localizer.SetLanguageAsync(lang);
+  StateHasChanged();
+}
+
+private async Task OnLangSelectChange(ChangeEventArgs e)
+{
+    var val = e?.Value?.ToString();
+    if (!string.IsNullOrEmpty(val)) await ChangeLangAsync(val);
 }
 
 
@@ -94,6 +114,7 @@ protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         Console.WriteLine($"NAV_INIT: UserState.Role = '{UserState.Role}', TokenService.GetRole() = '{TokenService.GetRole()}'");
         UserState.OnChange += OnUserStateChanged;
+      Localizer.OnChange += OnLangChanged;
         _role = UserState.Role ?? TokenService.GetRole();
         Console.WriteLine($"NAV_INIT: Initial Id set to '{TokenService.GetUserId()}'");
     }
@@ -104,6 +125,11 @@ protected override async Task OnAfterRenderAsync(bool firstRender)
         _role = UserState.Role; 
         Console.WriteLine($"NAV_ONCHANGE: UserState.Role changed => '{UserState.Role}'");
         InvokeAsync(StateHasChanged);
+    }
+
+    private void OnLangChanged()
+    {
+      InvokeAsync(StateHasChanged);
     }
 
     public async Task Logout()
@@ -119,5 +145,6 @@ protected override async Task OnAfterRenderAsync(bool firstRender)
     public void Dispose()
     {
         UserState.OnChange -= OnUserStateChanged;
+      Localizer.OnChange -= OnLangChanged;
     }
 }

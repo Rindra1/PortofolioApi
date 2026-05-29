@@ -18,4 +18,26 @@
   </div>
 </section>
 
+<table class="table">
+    <thead>
+        <tr>
+            <th>Titre</th>
+            <th>Description</th>
+            <th>Date de début</th>
+            <th>Date de fin</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var experience in listeExperience)
+        {
+            <tr>
+                <td>@experience.TitreExperience</td>
+                <td>@experience.DetailExperience</td>
+                <td>@experience.DateDebut.ToShortDateString()</td>
+                <td>@experience.DateFin?.ToShortDateString()</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
 <h1> @message</h1> 

@@ -105,7 +105,7 @@ public class AddprojetBase : ComponentBase
         }
 
         // 2️⃣ Création du projet côté serveur
-        var response = await Http.PostAsJsonAsync("api/projet", newProjet);
+        var response = await Http.PostAsJsonAsync("http://localhost:5000/api/projet", newProjet);
 
         if (!response.IsSuccessStatusCode)
         {
