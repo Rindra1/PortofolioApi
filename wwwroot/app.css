@@ -24,8 +24,6 @@ body.dark #menu-toggle {
   color: #fff; /* blanc en mode sombre */
 }
 
-
-
 /* NAV colors */
 body.dark nav { background:#1c1c1c; color:#eee; }
 body.dark nav ul li a { color:#eee; }
@@ -113,10 +111,6 @@ body.light footer { background:#fff; color:#333; border-top:1px solid #ddd; }
     margin-bottom: 1rem;
   }
 }
-
-
-
-
 
 /* Buttons */
 body.dark .btn-hero { background:#fff; color:#182848; }
@@ -216,9 +210,6 @@ footer {
     color:#eee; 
     border-top:1px solid #333; 
 }
-
-
-
 
 /* Tableau utilisateurs */
 .user-table-container {
@@ -593,9 +584,6 @@ body.light .login-form input {
   transform: translateY(0);
 }
 
-
-
-
 /* ========================= */
 /* Formulaire Login Blazor   */
 /* ========================= */
@@ -876,8 +864,8 @@ body.light .chat-input button {
 /* Bouton toggle avec image */
 .chat-toggle {
   cursor: pointer;
-  width: 95px;
-  height: 95px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   overflow: hidden;
   box-shadow: 0 6px 20px rgba(0,0,0,0.35);
@@ -895,8 +883,8 @@ body.light .chat-input button {
 
 /* Taille de l'image */
 .chat-toggle img.chat-icon {
-  width: 75px;
-  height: 75px;
+  width: 60px;
+  height: 60px;
   object-fit: contain; /* garde les proportions */
 }
 
@@ -978,105 +966,6 @@ body.light .chat-input button {
   transform: scale(1.05);
 }
 
-
-
-
-
-
-
-/*.chatbot-container {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 350px;
-  font-size: 14px;
-  z-index: 1000;
-}
-
-/* En-tête du chat 
-.chat-header {
-  background: linear-gradient(45deg, #0078ff, #00bfff);
-  color: white;
-  padding: 12px;
-  border-radius: 12px 12px 0 0;
-  cursor: pointer;
-  font-weight: bold;
-  text-align: center;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.3);
-}
-
-/* Corps du chat 
-.chat-body {
-  background: #1e1e1e;
-  color: #fff;
-  border-radius: 0 0 12px 12px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.3);
-  display: none; 
-  flex-direction: column;
-  height: 400px;
-  overflow: hidden;
-}
-
-/* Zone des messages 
-.chat-messages {
-  flex: 1;
-  padding: 12px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-/* Bulle utilisateur et bot 
-.chat-message {
-  padding: 8px 12px;
-  border-radius: 14px;
-  max-width: 80%;
-}
-
-.chat-message.user {
-  background: #0078ff;
-  color: white;
-  align-self: flex-end;
-}
-
-.chat-message.bot {
-  background: #333;
-  align-self: flex-start;
-}
-
-/* Champ de saisie 
-.chat-input {
-  display: flex;
-  border-top: 1px solid #444;
-}
-
-.chat-input input {
-  flex: 1;
-  padding: 10px;
-  border: none;
-  outline: none;
-  background: #2a2a2a;
-  color: white;
-  border-radius: 0 0 0 12px;
-}
-
-.chat-input button {
-  background: #0078ff;
-  border: none;
-  padding: 0 15px;
-  cursor: pointer;
-  color: white;
-  border-radius: 0 0 12px 0;
-  transition: background 0.2s;
-}
-
-.chat-input button:hover {
-  background: #0099ff;
-}*/
-
-
-
 :root[data-theme='dark'] {
   --bg-color: #121212;
   --text-color: #ffffff;
@@ -1140,8 +1029,6 @@ body.light .chat-input button {
   transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
-
-
 /* Slide gauche -> droite */
 @keyframes slideInLeft {
     0% { opacity: 0; transform: translateX(-50px); }
@@ -1158,7 +1045,3 @@ body.light .chat-input button {
 .slide-left, .slide-right {
     opacity: 0;
 }
-
-
-
-

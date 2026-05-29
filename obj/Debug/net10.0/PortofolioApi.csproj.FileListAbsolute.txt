@@ -138,10 +138,8 @@ C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\scopedcss\Components\Layout\MainLa
 C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\scopedcss\Components\Layout\NavMenu.razor.rz.scp.css
 C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\scopedcss\bundle\PortofolioApi.styles.css
 C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\scopedcss\projectbundle\PortofolioApi.bundle.scp.css
-C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\nphpm4t4yx-{0}-ln8cwl327l-ln8cwl327l.gz
 C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\9er21g4149-{0}-z02cfyjm9u-z02cfyjm9u.gz
 C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\v6s207a7g9-{0}-ti34f2gjts-ti34f2gjts.gz
-C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\satxfy5zdj-{0}-vsaqal95eu-vsaqal95eu.gz
 C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\rsgjwjsx63-{0}-wjfvjxjvvx-wjfvjxjvvx.gz
 C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\0vjdw2lh6o-{0}-hwaxidwiwj-hwaxidwiwj.gz
 C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\8x6ubkqr0d-{0}-xbbil6v7co-xbbil6v7co.gz
@@ -158,3 +156,5 @@ C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\refint\PortofolioApi.dll
 C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\PortofolioApi.pdb
 C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\PortofolioApi.genruntimeconfig.cache
 C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\ref\PortofolioApi.dll
+C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\nphpm4t4yx-{0}-52ucgbai41-52ucgbai41.gz
+C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\satxfy5zdj-{0}-vsaqal95eu-vsaqal95eu.gz

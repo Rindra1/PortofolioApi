@@ -94,13 +94,13 @@
 <!-- CONTACT -->
 <section id="contact" class="fade">
   <h2>Contact</h2>
-  <form>
+  <!--<form>
     <input @bind="emailRequest.Name" type="text" placeholder="Nom" required>
     <input @bind="emailRequest.To" type="email" placeholder="Email" required>
     <input @bind="emailRequest.Subject" type="text" placeholder="Sujet" required>
     <textarea @bind="emailRequest.Body" placeholder="Message" required></textarea>
     <button @onclick="Envoyer"  class="btn btn-hero">Envoyer</button>
-  </form>
+  </form>-->
   <div class="socials">
     @if(portfolio.Contacts != null)
       {
@@ -131,32 +131,39 @@
 </section>
 
 <!-- Chatbot flottant -->
-<!-- Chatbot flottant -->
 <div class="chatbot-container">
   <div class="chat-toggle" id="chat-toggle">
     <img src="images/chatbot1.png" alt="Chat" class="chat-icon" />
   </div>
   <div class="chat-body" id="chat-body">
     <div class="chat-messages" id="chat-messages">
-      @foreach(var msg in ChatResponses)
+      @if (ChatResponses != null && ChatResponses.Any())
       {
-        <div class="chat-message user">
-          <span>@msg.UserMessage</span>
-        </div>
+        foreach (var msg in ChatResponses)
+        {
+          <div class="chat-message user">
+            <span>@msg.UserMessage</span>
+          </div>
+          <div class="chat-message bot">
+            <span>@msg.BotResponse</span>
+          </div>
+        }
+      }
+      else
+      {
         <div class="chat-message bot">
-          <span>@msg.BotResponse</span>
+          <span>Bonjour! Comment puis-je vous aider aujourd'hui?</span>
         </div>
       }
     </div>
     <div class="chat-input">
-      <input type="text" placeholder="Écrire un message..." id="chat-input-field" 
-        @bind="UserMessage" @bind:event="oninput"
-        @onkeypress="@(async e => { if(e.Key == "Enter") await SendMessage(); })"/>
-      <button @onclick="SendMessage" id="chat-send-btn">➤</button>
+        <input autocomplete="off" type="text" placeholder="Écrire un message..." id="chat-input-field"
+          @bind="UserMessage" />
+        <button type="button" id="chat-send-btn" @onclick="SendMessage">➤</button>
+      
     </div>
   </div>
 </div>
-
 
 }
 
@@ -182,21 +189,11 @@ protected override async Task OnAfterRenderAsync(bool firstRender)
       portfolio = await Http.GetFromJsonAsync<UtilisateurDTO>(url)??null;
       Console.WriteLine("Portfolio:");
       Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(portfolio));
-      Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(portfolio));
       //Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(portfolio));
       StateHasChanged();
-      await JS.InvokeVoidAsync("eval", @"
-        var script = document.createElement('script');
-        script.src = 'script.js';
-        script.onload = function() {
-          siteInterop.initAll();
-          siteInterop.hideLoader();
-        };
-        document.head.appendChild(script);
-      ");
-
-      //await JS.InvokeVoidAsync("siteInterop.initAll");
-      //await JS.InvokeVoidAsync("siteInterop.hideLoader");
+      // Appeler l'initialisation JavaScript déjà incluse via App.razor
+      await JS.InvokeVoidAsync("siteInterop.initAll");
+      await JS.InvokeVoidAsync("siteInterop.hideLoader");
       
     }catch(Exception ex)
     {
@@ -259,8 +256,11 @@ protected override async Task OnAfterRenderAsync(bool firstRender)
       });
     }
 
-        // Ne pas réinitialiser la réponse complète, seulement le champ input
-        UserMessage = "";
+          // Ne pas réinitialiser la réponse complète, seulement le champ input
+          UserMessage = "";
+
+          // Faire défiler le chat vers le bas si la fonction JS existe
+          try { await JS.InvokeVoidAsync("eval", "window.scrollChatToBottom()"); } catch { }
   }
 
   private async Task TypeBotResponse(string botMessage)

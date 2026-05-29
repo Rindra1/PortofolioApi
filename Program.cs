@@ -220,7 +220,7 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddHttpClient("API", client =>
 {
-    //client.BaseAddress = new Uri("https://localhost:7047/"); //En local
+    //client.BaseAddress = new Uri("https://localhost:5000/"); //En local
     client.BaseAddress = new Uri("https://rindra-dotnet-developer.onrender.com"); //Sur Render
     client.Timeout = TimeSpan.FromSeconds(60); // éviter le TaskCanceled
 });
