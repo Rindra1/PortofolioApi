@@ -17,9 +17,25 @@ window.siteInterop = {
         this.initChatBot();
         this.initTheme();
 
+        this.initKeepAlive(); 
         // Masquer le loader après tout
         this.hideLoader();
     },
+
+    initKeepAlive: function () {
+
+    // évite double interval (Blazor re-render / init multiple)
+    if (this._keepAliveStarted) return;
+    this._keepAliveStarted = true;
+
+    console.log("Keep-alive activé");
+
+    setInterval(() => {
+        fetch("https://ton-api.onrender.com/api/health")
+            .then(() => console.log("keep-alive OK"))
+            .catch(err => console.log("keep-alive error", err));
+    }, 4 * 60 * 1000); // 4 minutes
+},
 
     // --- Thème ---
     initTheme: function () {

@@ -6,6 +6,6 @@ namespace PortofolioApi.Controllers;
 [Route("api/[controller]")]
 public class HealthController : ControllerBase
 {
-    [HttpGet]
+    [HttpGet("health")]
     public IActionResult Get() => Ok("API is running");
 }
