@@ -1,11 +1,10 @@
-# Bloquer l’accès aux dossiers sensibles
 User-agent: *
 Disallow: /admin/
 Disallow: /private/
+Disallow: /bin/
+Disallow: /obj/
+Disallow: /api/
 
-# Autoriser tout le reste
-User-agent: *
 Allow: /
 
-# Indiquer l’emplacement du sitemap
 Sitemap: https://rindra-dotnet-developer.onrender.com/sitemap.xml
