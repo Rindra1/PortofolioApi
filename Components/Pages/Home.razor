@@ -254,7 +254,7 @@
               // reload original French content from API
               try
               {
-                var url = $"http://localhost:5000/api/portfolio";
+                var url = $"api/portfolio";
                 var original = await Http.GetFromJsonAsync<UtilisateurDTO>(url);
                 if (original != null) portfolio = original;
               }
@@ -281,7 +281,7 @@ protected override async Task OnAfterRenderAsync(bool firstRender)
         //await JS.InvokeAsync<string>("themeManager.applyTheme");
         try
     {
-      string url = $"http://localhost:5000/api/portfolio";
+      string url = $"api/portfolio";
       // ensure localizer initialized
       try { await Localizer.InitializeAsync(); } catch { }
 
