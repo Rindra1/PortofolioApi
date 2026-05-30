@@ -135,18 +135,15 @@ private async Task SelectLangAndClose(string lang)
 
     protected override void OnInitialized()
     {
-        Console.WriteLine($"NAV_INIT: UserState.Role = '{UserState.Role}', TokenService.GetRole() = '{TokenService.GetRole()}'");
         UserState.OnChange += OnUserStateChanged;
       Localizer.OnChange += OnLangChanged;
         _role = UserState.Role ?? TokenService.GetRole();
-        Console.WriteLine($"NAV_INIT: Initial Id set to '{TokenService.GetUserId()}'");
     }
 
     private void OnUserStateChanged()
     {
         // On prend seulement la valeur de UserState, pas TokenService
         _role = UserState.Role; 
-        Console.WriteLine($"NAV_ONCHANGE: UserState.Role changed => '{UserState.Role}'");
         InvokeAsync(StateHasChanged);
     }
 
@@ -160,7 +157,6 @@ private async Task SelectLangAndClose(string lang)
         await JS.InvokeVoidAsync("localStorage.removeItem", "token");
         TokenService.ClearToken();  // On vide le token en premier
         UserState.Role = null;      // Puis on notifie pour mettre le menu à jour
-        Console.WriteLine("NAV_LOGOUT: User logged out, navigating to /login");
         StateHasChanged();
         Nav.NavigateTo("/login");
     }

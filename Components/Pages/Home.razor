@@ -286,9 +286,6 @@ protected override async Task OnAfterRenderAsync(bool firstRender)
       try { await Localizer.InitializeAsync(); } catch { }
 
       portfolio = await Http.GetFromJsonAsync<UtilisateurDTO>(url)??null;
-      Console.WriteLine("Portfolio:");
-      Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(portfolio));
-      //Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(portfolio));
         StateHasChanged();
 
         // Traduire le contenu dynamique si la langue est autre que FR
