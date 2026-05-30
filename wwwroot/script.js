@@ -117,10 +117,26 @@ window.siteInterop = {
 
     // --- Menu mobile ---
     initMobileMenu: function () {
-        const menuToggle = document.getElementById('menu-toggle');
-        const menu = document.getElementById('menu');
-        if (!menuToggle || !menu) return;
-        menuToggle.addEventListener('click', () => menu.classList.toggle('show'));
+        // Protect against multiple initializations (Blazor may re-render components)
+        if (this._mobileMenuInited) return;
+        this._mobileMenuInited = true;
+
+        // Use event delegation so handlers survive DOM replacements
+        document.addEventListener('click', (e) => {
+            const toggle = e.target.closest && e.target.closest('#menu-toggle');
+            if (toggle) {
+                const menu = document.getElementById('menu');
+                if (menu) menu.classList.toggle('show');
+                return;
+            }
+
+            // Close menu when clicking a link inside it (mobile behaviour)
+            const insideLink = e.target.closest && e.target.closest('#menu a');
+            if (insideLink) {
+                const menu = document.getElementById('menu');
+                if (menu && menu.classList.contains('show')) menu.classList.remove('show');
+            }
+        });
     },
 
     initSmoothScroll: function () {
@@ -151,27 +167,43 @@ window.siteInterop = {
         });
     },*/
     initFadeScroll: function () {
-    const elements = document.querySelectorAll('section, .timeline-item');
+    // Observe .fade sections to add .in-view and animate timeline-items with slide directions
+    const fadeEls = document.querySelectorAll('.fade');
+    const slideEls = document.querySelectorAll('.timeline-item');
 
-    elements.forEach((el, index) => {
-        // Dynamique : pair/impair
+    // Handle generic fade elements: add .in-view when visible
+    const fadeObserver = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                obs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12 });
+
+    fadeEls.forEach(el => {
+        fadeObserver.observe(el);
+    });
+
+    // Handle timeline items with alternating slide animations
+    slideEls.forEach((el, index) => {
         const isEven = (index + 1) % 2 === 0;
         el.classList.add(isEven ? 'slide-left' : 'slide-right');
 
-        const observer = new IntersectionObserver(entries => {
+        const tObserver = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    if (el.classList.contains('slide-left')) {
-                        el.style.animation = 'slideInLeft 0.8s forwards';
+                    if (entry.target.classList.contains('slide-left')) {
+                        entry.target.style.animation = 'slideInLeft 0.8s forwards';
                     } else {
-                        el.style.animation = 'slideInRight 0.8s forwards';
+                        entry.target.style.animation = 'slideInRight 0.8s forwards';
                     }
-                    observer.unobserve(el);
+                    obs.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.08 });
 
-        observer.observe(el);
+        tObserver.observe(el);
     });
 },
 

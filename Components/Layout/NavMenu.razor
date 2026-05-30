@@ -43,11 +43,23 @@
   </ul>
     <div style="display:flex;gap:8px;align-items:center">
       <button id="theme-toggle">☀️</button>
-      <div class="lang-select" style="display:flex;align-items:center">
-        <select id="lang-select" @onchange="OnLangSelectChange" value="@Localizer.CurrentLanguage" aria-label="Choisir la langue">
-          <option value="fr">🇫🇷 Français</option>
-          <option value="en">🇬🇧 English</option>
-        </select>
+      <div class="lang-select" style="position:relative;display:flex;align-items:center">
+        <button class="lang-toggle" @onclick="ToggleLangDropdown" aria-haspopup="true" aria-expanded="@_langOpen" style="background:none;border:0;cursor:pointer">
+          <img src="@(Localizer.CurrentLanguage=="en"?"/images/flags/gb.png":"/images/flags/fr.png")" alt="Lang" width="24" height="16" />
+        </button>
+        @if (_langOpen)
+        {
+          <ul class="lang-menu" style="position:absolute;right:0;top:36px;list-style:none;margin:0;padding:6px;background:var(--surface,#fff);box-shadow:0 6px 18px rgba(0,0,0,0.12);border-radius:6px;">
+            <li style="padding:6px;cursor:pointer;display:flex;gap:8px;align-items:center;" @onclick='() => SelectLangAndClose("fr")'>
+              <img src="/images/flags/fr.png" alt="Français" width="24" height="16" />
+              <span>Français</span>
+            </li>
+            <li style="padding:6px;cursor:pointer;display:flex;gap:8px;align-items:center;" @onclick='() => SelectLangAndClose("en")'>
+              <img src="/images/flags/gb.png" alt="English" width="24" height="16" />
+              <span>English</span>
+            </li>
+          </ul>
+        }
       </div>
     </div>
   </nav>
@@ -88,6 +100,17 @@ private async Task OnLangSelectChange(ChangeEventArgs e)
 {
     var val = e?.Value?.ToString();
     if (!string.IsNullOrEmpty(val)) await ChangeLangAsync(val);
+}
+
+private Task SetFr() => ChangeLangAsync("fr");
+private Task SetEn() => ChangeLangAsync("en");
+
+private bool _langOpen = false;
+private void ToggleLangDropdown() => _langOpen = !_langOpen;
+private async Task SelectLangAndClose(string lang)
+{
+  _langOpen = false;
+  await ChangeLangAsync(lang);
 }
 
 

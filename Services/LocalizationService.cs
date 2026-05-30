@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Globalization;
+using PortofolioApi.Resources;
 using Microsoft.JSInterop;
 using System.Net.Http.Json;
 using System.Net.Http.Headers;
@@ -58,10 +60,26 @@ namespace PortofolioApi.Services
         public string T(string key)
         {
             if (string.IsNullOrEmpty(key)) return string.Empty;
-            if (_dict.TryGetValue(CurrentLanguage, out var map) && map.TryGetValue(key, out var val))
+            try
+            {
+                // Try resource manager first (Resources/Resource.resx + localized variants)
+                var culture = new CultureInfo(CurrentLanguage ?? "fr");
+                var res = Resource.ResourceManager.GetString(key, culture);
+                if (!string.IsNullOrEmpty(res)) return res;
+                // fallback to invariant/base resources (no culture)
+                res = Resource.ResourceManager.GetString(key, CultureInfo.InvariantCulture);
+                if (!string.IsNullOrEmpty(res)) return res;
+            }
+            catch
+            {
+                // ignore resource lookup errors and fall back to dictionary
+            }
+
+            // Fallback to in-memory dictionary (legacy)
+            if (!string.IsNullOrEmpty(CurrentLanguage) && _dict.TryGetValue(CurrentLanguage, out var map) && map.TryGetValue(key, out var val))
                 return val;
-            // fallback to french then key
-            if (_dict.TryGetValue("fr", out var fallback) && fallback.TryGetValue(key, out var fv)) return fv;
+            // fallback to french dictionary
+            //if (_dict.TryGetValue("fr", out var fallback) && fallback.TryGetValue(key, out var fv)) return fv;
             return key;
         }
 
@@ -73,6 +91,7 @@ namespace PortofolioApi.Services
                 if (!string.IsNullOrEmpty(saved))
                 {
                     CurrentLanguage = saved;
+                    try { Resource.Culture = new CultureInfo(CurrentLanguage); } catch { }
                     OnChange?.Invoke();
                     return;
                 }
@@ -84,6 +103,7 @@ namespace PortofolioApi.Services
                     var code = nav.Substring(0,2).ToLower();
                     if (_dict.ContainsKey(code)) CurrentLanguage = code;
                 }
+                try { Resource.Culture = new CultureInfo(CurrentLanguage); } catch { }
                 OnChange?.Invoke();
             }
             catch
@@ -96,9 +116,14 @@ namespace PortofolioApi.Services
         {
             if (string.IsNullOrEmpty(lang)) return;
             lang = lang.ToLower();
+            // normalize locales like en-GB, en-US -> en
+            if (lang.Contains('-')) lang = lang.Split('-')[0];
+            if (lang.StartsWith("en")) lang = "en";
+            if (lang.StartsWith("fr")) lang = "fr";
             if (!_dict.ContainsKey(lang)) return;
             CurrentLanguage = lang;
             try { await _js.InvokeVoidAsync("localStorage.setItem", "lang", lang); } catch { }
+            try { Resource.Culture = new CultureInfo(CurrentLanguage); } catch { }
             OnChange?.Invoke();
         }
 

@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About" xml:space="preserve">
+    <value>About me</value>
+  </data>
+  <data name="ChatGreeting" xml:space="preserve">
+    <value>Hello! How can I help you today?</value>
+  </data>
+  <data name="ChatPlaceholder" xml:space="preserve">
+    <value>Write a message...</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="Experience" xml:space="preserve">
+    <value>Experience</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Present" xml:space="preserve">
+    <value>Present</value>
+  </data>
+  <data name="Projects" xml:space="preserve">
+    <value>Projects</value>
+  </data>
+  <data name="SeeProjects" xml:space="preserve">
+    <value>See my projects</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="Skills" xml:space="preserve">
+    <value>Skills</value>
+  </data>
+  <data name="ViewDetails" xml:space="preserve">
+    <value>See details</value>
+  </data>
+  <data name="Resumer" xml:space="preserve">
+    <value>Full-Stack Software Developer | .NET (WinForms, Web &amp; API)</value>
+  </data>
+  <data name="APropos" xml:space="preserve">
+    <value>As a passionate and versatile software developer, I create desktop applications (WinForms), web applications (ASP.NET, Blazor, WCF), and RESTful APIs using C#, VB.NET, SQL Server, and MySQL. Curious and meticulous, I integrate modern technologies such as AI chatbots (Hugging Face) and automated email sending (Twilio SendGrid) to transform ideas into concrete, reliable, and interactive solutions.</value>
+  </data>
+  <data name="Experience.1.Titre" xml:space="preserve">
+    <value>VB.NET &amp; C# Developer – Tanyah Consulting</value>
+  </data>
+  <data name="Experience.1.Detail" xml:space="preserve">
+    <value>Maintenance, bug fixes, and feature additions to existing Windows Forms applications for an international client.\n
+- Projects: payroll and accounting management, performance optimization, and process reliability.\n
+- Technologies: VB.NET, C#, Access, and SQL Server.</value>
+  </data>
+
+  <data name="Experience.3.Titre" xml:space="preserve">
+    <value>Developer Intern – ALFA Medical Center, Sonierana</value>
+  </data>
+  <data name="Experience.3.Detail" xml:space="preserve">
+    <value>During my internship, I created a complete software application in C# using WCF and MySQL:\n
+- Inventory management for the pharmacy and grocery store.\n
+- Patient tracking to facilitate the organization and planning of care.\n
+- Optimization of internal processes and improvement of inventory traceability.</value>
+  </data>
+
+  <data name="Experience.4.Titre" xml:space="preserve">
+    <value>C# Developer – Personal Project: Project Evaluation</value>
+  </data>
+  <data name="Experience.4.Detail" xml:space="preserve">
+    <value>Development of a WinForms application in C# that allows users to :\n
+- Import Excel/CSV files to analyze projects.\n
+- Calculate the total duration, identify critical tasks, and determine free time.\n
+- Create an interactive tool for project analysis and planning.</value>
+  </data>
+
+  <data name="Experience.5.Titre" xml:space="preserve">
+    <value>Web Developer Intern – Ministry of Energy and Hydrocarbons</value>
+  </data>
+  <data name="Experience.5.Detail" xml:space="preserve">
+    <value>Development and maintenance of a complete web application for task tracking and management.\n
+- Design and implementation using ASP.NET Web Forms and C#, with SQL Server for data.\n
+- Responsive interface with jQuery and Bootstrap for seamless navigation.\n
+- Smart notifications and automated emails for task tracking and deadline adherence.\n
+- Optimization of productivity and efficiency for Ministry users.</value>
+  </data>
+
+  <data name="Experience.6.Titre" xml:space="preserve">
+    <value>Web Developer Intern – Ministry of Energy and Hydrocarbons</value>
+  </data>
+  <data name="Experience.6.Detail" xml:space="preserve">
+    <value>Development and maintenance of a complete web application for managing correspondence within the Ministry.\n
+- Design and implementation using ASP.NET Web Forms and C#, with SQL Server for data management.\n
+- Responsive interface with jQuery and Bootstrap for seamless navigation.\n
+- Optimization of productivity and efficiency for Ministry users.</value>
+  </data>
+
+  <data name="Experience.7.Titre" xml:space="preserve">
+    <value>.NET Front-End Developer – EN16931 Electronic Billing Project</value>
+  </data>
+  <data name="Experience.7.Detail" xml:space="preserve">
+    <value>Development and maintenance of an electronic invoicing platform compliant with the European standard EN16931 for a client based in France.\n
+- Development of modern and responsive interfaces using Blazor and MudBlazor.\n
+- Integration and consumption of REST APIs in C#.\n
+- Implementation of business rules related to electronic invoicing.\n
+- Performance optimization, user experience improvement, and bug fixes.</value>
+  </data>
+
+<data name="Projet.1.Titre" xml:space="preserve">
+    <value>Interactive Full-Stack .NET Portfolio with AI, Emailing, and Documented API</value>
+  </data>
+  <data name="Projet.1.Resumer" xml:space="preserve">
+    <value>A modern web application developed with .NET 8, C#, Blazor, Entity Framework Core, SQLite, and a RESTful API, offering a fluid interface, an intelligent chatbot (Hugging Face), and an email sending system via Twilio SendGrid.<br/>
+    This project showcases my skills in full-stack development, AI integration, and documented API design using Swagger.</value>
+  </data>
+  <data name="Projet.1.Detail" xml:space="preserve">
+    <value>This portfolio offers a modern and interactive user experience, combining performance, aesthetics, and advanced features:\n
+- Backend: RESTful API developed with .NET 8, connected to an SQLite database via Entity Framework Core.\n
+- Frontend: Responsive and animated Blazor interface, displaying my projects with images, descriptions, and external links.\n
+- Integrated chatbot: Conversational assistant based on Hugging Face, capable of showcasing my skills and achievements.\n
+- Emailing: Automated and reliable email sending using Twilio SendGrid.\n
+- API documentation: Swagger UI integration for testing and exploring endpoints directly from the browser.\n
+- Design &amp; accessibility: Responsive structure, opening of external links (LinkedIn, GitHub) in new tabs, and mobile/desktop compatibility.</value>
+  </data>
+
+<data name="Projet.2.Titre" xml:space="preserve">
+    <value>WinForms Applications – Accounting and Payroll Management (VB.NET / C#)</value>
+  </data>
+  <data name="Projet.2.Resumer" xml:space="preserve">
+    <value>WinForms desktop application suite for accounting and payroll management, developed primarily in VB.NET with some modules in C#, connected to Access and SQL Server databases and usable over a network via RDP or network sharing. Reliability and performance guaranteed for data processing.</value>
+  </data>
+  <data name="Projet.2.Detail" xml:space="preserve">
+    <value>Development and maintenance of a WinForms application suite optimized for accounting and payroll management:\n
+- Technologies: main project in VB.NET, add-on modules in C#, connection to Access and SQL Server databases.\n
+- Interface: intuitive and multi-user WinForms, suitable for network use (RDP or network sharing).\n
+- Advanced features: addition of new features, bug fixes, and performance optimization for reliable and fast data processing.\n
+- User experience: stable and high-performing applications, facilitating daily accounting and payroll management.</value>
+  </data>
+
+  <data name="Projet.3.Titre" xml:space="preserve">
+    <value>Web Application – Task Tracking and Management</value>
+  </data>
+  <data name="Projet.3.Resumer" xml:space="preserve">
+    <value>High-performance web application developed in ASP.NET WebForms (C#) with jQuery, Bootstrap and SQL Server, enabling efficient tracking and management of tasks, with email notifications and alerts for proactive activity monitoring.</value>
+  </data>
+  <data name="Projet.3.Detail" xml:space="preserve">
+    <value>Development of a complete web application for task tracking and management:\n
+- Technologies: ASP.NET WebForms, C#, jQuery, Bootstrap, SQL Server\n
+- Task management: creation, due date tracking, and real-time status updates\n
+- Smart notifications: automatic alerts and emails to notify users of incomplete tasks and ensure deadlines are met\n
+- User interface: responsive and intuitive design using Bootstrap, offering smooth navigation and an optimal user experience\n
+- Improved productivity: simplifies task tracking and ensures effective activity control</value>
+  </data>
+
+  <data name="Projet.4.Titre" xml:space="preserve">
+    <value>ALFA Medical Center Management Software</value>
+  </data>
+  <data name="Projet.4.Resumer" xml:space="preserve">
+    <value>Development of an innovative desktop application in C# WinForms with WCF and MySQL, centralizing stock management and patient tracking to transform the organization of the medical center and improve the quality of care.</value>
+  </data>
+  <data name="Projet.4.Detail" xml:space="preserve">
+    <value>Optimized inventory management: real-time monitoring of the pharmacy and grocery sections, with automatic alerts to prevent stockouts and reduce losses.\n
+- Intelligent patient monitoring: simplified care planning and organization, saving time and improving coordination among medical staff.\n
+- Improved internal processes: reduced errors, better inventory traceability, and automation of repetitive tasks.\n
+- Robust and secure technologies: reliable communication via WCF and centralized storage with MySQL, ensuring data integrity and security.\n
+- Tangible impact: increased operational efficiency, improved experience for staff and patients, and modernization of the medical center's daily operations.</value>
+  </data>
+
+  <data name="Projet.5.Titre" xml:space="preserve">
+    <value>.NET Front-End Developer – EN16931 Electronic Billing Platform</value>
+  </data>
+  <data name="Projet.5.Resumer" xml:space="preserve">
+    <value>Participation in the development and maintenance of an electronic invoicing platform compliant with the European standard EN16931 for a client based in France. Development of modern and responsive interfaces with Blazor and MudBlazor, integration of REST APIs in C#, management of business rules related to electronic invoices, performance improvement and optimization of the user experience.</value>
+  </data>
+  <data name="Projet.5.Detail" xml:space="preserve">
+    <value>- Developing user interfaces with Blazor and MudBlazor.\n
+- Integrating and consuming REST APIs in C#/.NET.\n
+- Managing electronic invoicing workflows.\n
+- Implementing business rules compliant with the EN16931 standard.\n
+- Creating reusable components and maintaining existing code.\n
+- Optimizing performance and improving UX.\n
+- Fixing bugs and enhancing the platform's functionality.\n
+- Collaborating with the back-end and business teams.\n
+- Using Git for version control and development tracking.\n
+- Participating in testing and validating features.</value>
+  </data>
+</root>

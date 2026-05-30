@@ -20,6 +20,14 @@
         },
         "runtime": {
           "PortofolioApi.dll": {}
+        },
+        "resources": {
+          "en/PortofolioApi.resources.dll": {
+            "locale": "en"
+          },
+          "en-GB/PortofolioApi.resources.dll": {
+            "locale": "en-GB"
+          }
         }
       },
       "BCrypt.Net-Next/4.0.3": {

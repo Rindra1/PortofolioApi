@@ -1,0 +1,299 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About" xml:space="preserve">
+    <value>À propos de moi</value>
+  </data>
+  <data name="ChatGreeting" xml:space="preserve">
+    <value>Bonjour! Comment puis-je vous aider aujourd'hui?</value>
+  </data>
+  <data name="ChatPlaceholder" xml:space="preserve">
+    <value>Écrire un message...</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="Experience" xml:space="preserve">
+    <value>Expériences</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Accueil</value>
+  </data>
+  <data name="Present" xml:space="preserve">
+    <value>Présent</value>
+  </data>
+  <data name="Projects" xml:space="preserve">
+    <value>Mes projets</value>
+  </data>
+  <data name="SeeProjects" xml:space="preserve">
+    <value>Voir mes projets</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Envoyer</value>
+  </data>
+  <data name="Skills" xml:space="preserve">
+    <value>Compétences</value>
+  </data>
+  <data name="ViewDetails" xml:space="preserve">
+    <value>Voir détails</value>
+  </data>
+  <data name="Resumer" xml:space="preserve">
+    <value>Développeur logiciel Full-Stack | .NET (WinForms, Web &amp; API)</value>
+  </data>
+  <data name="APropos" xml:space="preserve">
+    <value>Développeur logiciel passionné et polyvalent, je crée des applications desktop (WinForms), web (ASP.NET, Blazor, WCF) et des API RESTful, utilisant C#, VB.NET, SQL Server et MySQL. Curieux et rigoureux, j’intègre des technologies modernes comme chatbots IA (Hugging Face) et envoi d’e-mails automatisé (Twilio SendGrid) pour transformer des idées en solutions concrètes, fiables et interactives.</value>
+  </data>
+  <data name="Experience.1.Titre" xml:space="preserve">
+    <value>Développeur VB.NET &amp; C# – Tanyah Consulting</value>
+  </data>
+  <data name="Experience.1.Detail" xml:space="preserve">
+    <value>Maintenance, correction de bugs et ajout de fonctionnalités sur des applications Windows Forms existantes pour un client international.\n
+- Projets : gestion de la paie et gestion comptable, optimisation des performances et fiabilité des traitements.\n
+- Technologies : VB.NET, C#, Access et SQL Server.</value>
+  </data>
+
+  <data name="Experience.3.Titre" xml:space="preserve">
+    <value>Stagiaire Développeur – Centre médical ALFA, Sonierana</value>
+  </data>
+  <data name="Experience.3.Detail" xml:space="preserve">
+    <value>Création d’un logiciel complet en C# avec WCF et MySQL durant mon stage :\n
+- Gestion du stock de la pharmacie et de l’épicerie.\n
+- Suivi des patients pour faciliter l’organisation et la planification des soins.\n
+- Optimisation des processus internes et amélioration de la traçabilité des stocks.</value>
+  </data>
+
+  <data name="Experience.4.Titre" xml:space="preserve">
+    <value>Développeur C# – Projet Personnel : Évaluation de Projet</value>
+  </data>
+  <data name="Experience.4.Detail" xml:space="preserve">
+    <value>Développement d’une application WinForms en C# permettant de :\n
+- Importer des fichiers Excel/CSV pour analyser les projets.\n
+- Calculer la durée totale, identifier les tâches critiques et les marges libres.\n
+- Création d’un outil interactif pour l’analyse et la planification de projets.</value>
+  </data>
+
+  <data name="Experience.5.Titre" xml:space="preserve">
+    <value>Développeur VB.NET &amp; C# – Tanyah Consulting</value>
+  </data>
+  <data name="Experience.5.Detail" xml:space="preserve">
+    <value>Maintenance, correction de bugs et ajout de fonctionnalités sur des applications Windows Forms existantes pour un client international.\n
+- Projets : gestion de la paie et gestion comptable, optimisation des performances et fiabilité des traitements.\n
+- Technologies : VB.NET, C#, Access et SQL Server.</value>
+  </data>
+
+  <data name="Experience.6.Titre" xml:space="preserve">
+    <value>Développeur VB.NET &amp; C# – Tanyah Consulting</value>
+  </data>
+  <data name="Experience.6.Detail" xml:space="preserve">
+    <value>Maintenance, correction de bugs et ajout de fonctionnalités sur des applications Windows Forms existantes pour un client international.\n
+- Projets : gestion de la paie et gestion comptable, optimisation des performances et fiabilité des traitements.\n
+- Technologies : VB.NET, C#, Access et SQL Server.</value>
+  </data>
+
+  <data name="Experience.7.Titre" xml:space="preserve">
+    <value>Développeur Front-End .NET – Projet de Facturation Électronique EN16931</value>
+  </data>
+  <data name="Experience.7.Detail" xml:space="preserve">
+    <value>Développement et maintenance d’une plateforme de facturation électronique conforme à la norme européenne EN16931 pour un client basé en France.\n
+    - Développement d’interfaces modernes et responsives avec Blazor et MudBlazor.\n
+    - Intégration et consommation d’API REST en C#.\n
+    - Implémentation des règles métier liées à la facturation électronique.\n
+    - Optimisation des performances, amélioration de l’expérience utilisateur et correction de bugs.</value>
+  </data>
+
+  <data name="Projet.1.Titre" xml:space="preserve">
+    <value>Portfolio Full-Stack .NET Interactif avec IA, Emailing et API Documentée</value>
+  </data>
+  <data name="Projet.1.Resumer" xml:space="preserve">
+    <value>Application web moderne développée avec .NET 8, C#, Blazor, Entity Framework Core, SQLite et API RESTful, offrant une interface fluide, un chatbot intelligent (Hugging Face) et un système d’envoi d’e-mails via Twilio SendGrid.<br/>
+    Le projet met en avant mes compétences en développement full-stack, intégration d’IA et conception d’API documentée avec Swagger.</value>
+  </data>
+  <data name="Projet.1.Detail" xml:space="preserve">
+    <value>Ce portfolio propose une expérience utilisateur moderne et interactive, alliant performance, esthétique et fonctionnalités avancées :\n
+    - Backend : API RESTful développée avec .NET 8, connectée à une base SQLite via Entity Framework Core.\n
+    - Frontend : interface Blazor responsive et animée, affichant mes projets avec images, descriptions et liens externes.\n
+    - Chatbot intégré : assistant conversationnel basé sur Hugging Face, capable de présenter mes compétences et réalisations.\n
+    - Emailing : envoi d’e-mails automatisé et fiable grâce à Twilio SendGrid.\n
+    - Documentation d’API : intégration de Swagger UI pour tester et explorer les endpoints directement depuis le navigateur.\n
+    - Design &amp; accessibilité : structure responsive, ouverture des liens externes (LinkedIn, GitHub) dans de nouveaux onglets, et compatibilité mobile/desktop.</value>
+  </data>
+
+  <data name="Projet.2.Titre" xml:space="preserve">
+    <value>Applications WinForms – Gestion Comptable et Paie (VB.NET / C#)</value>
+  </data>
+  <data name="Projet.2.Resumer" xml:space="preserve">
+    <value>Suite d’applications desktop WinForms pour la gestion comptable et de la paie, développée principalement en VB.NET avec certains modules en C#, connectée à des bases Access et SQL Server et utilisable en réseau via RDP ou partage réseau. Fiabilité et performance assurées pour le traitement des données.</value>
+  </data>
+  <data name="Projet.2.Detail" xml:space="preserve">
+    <value>Développement et maintenance d’une suite d’applications WinForms optimisée pour la gestion comptable et la paie :\n
+    - Technologies : projet principal en VB.NET, modules complémentaires en C#, connexion aux bases Access et SQL Server.\n
+    - Interface : WinForms intuitive et multi-utilisateur, adaptée à un usage en réseau (RDP ou partage réseau).\n
+    - Fonctionnalités avancées : ajout de nouvelles fonctionnalités, correction de bugs et optimisation des performances pour un traitement fiable et rapide des données.\n
+    - Expérience utilisateur : applications stables et performantes, facilitant la gestion quotidienne de la comptabilité et de la paie.</value>
+  </data>
+
+  <data name="Projet.4.Titre" xml:space="preserve">
+    <value>Logiciel de gestion pour Centre médical ALFA</value>
+  </data>
+  <data name="Projet.4.Resumer" xml:space="preserve">
+    <value>Développement d’une application desktop innovante en C# WinForms avec WCF et MySQL, centralisant la gestion des stocks et le suivi des patients pour transformer l’organisation du centre médical et améliorer la qualité des soins.</value>
+  </data>
+  <data name="Projet.4.Detail" xml:space="preserve">
+    <value>Gestion optimisée des stocks : suivi en temps réel de la pharmacie et de l’épicerie, avec alertes automatiques pour prévenir les ruptures et réduire les pertes.\n
+    - Suivi intelligent des patients : planification et organisation des soins simplifiées, permettant un gain de temps et une meilleure coordination du personnel médical.\n
+    - Amélioration des processus internes : réduction des erreurs, meilleure traçabilité des stocks et automatisation des tâches répétitives.\n
+    - Technologies robustes et sécurisées : communication fiable via WCF et stockage centralisé avec MySQL, garantissant l’intégrité et la sécurité des données.\n
+    - Impact concret : gain d’efficacité opérationnelle, meilleure expérience pour le personnel et les patients, et modernisation de la gestion quotidienne du centre médical.</value>
+  </data>
+
+  <data name="Projet.3.Titre" xml:space="preserve">
+    <value>Application Web – Suivi et Gestion des Tâches</value>
+  </data>
+  <data name="Projet.3.Resumer" xml:space="preserve">
+    <value>Application web performante développée en ASP.NET WebForms (C#) avec jQuery, Bootstrap et SQL Server, permettant de suivre et gérer efficacement les tâches, avec notifications et alertes par e-mail pour un suivi proactif des activités.</value>
+  </data>
+  <data name="Projet.3.Detail" xml:space="preserve">
+    <value>Développement d’une application web complète pour le suivi et la gestion des tâches :\n
+    - Technologies : ASP.NET WebForms, C#, jQuery, Bootstrap, SQL Server.\n
+    - Gestion des tâches : création, suivi des dates d’échéance et mise à jour du statut en temps réel.\n
+    - Notifications intelligentes : alertes et emails automatiques pour prévenir les utilisateurs des tâches non terminées et assurer le respect des délais.\n
+    - Interface utilisateur : design responsive et intuitif grâce à Bootstrap, offrant une navigation fluide et une expérience utilisateur optimale.\n
+    - Productivité améliorée : simplifie le suivi des tâches et garantit un contrôle efficace des activités.</value>
+  </data>
+
+  <data name="Projet.5.Titre" xml:space="preserve">
+    <value>Développeur Front-End .NET – Plateforme de Facturation Électronique EN16931</value>
+  </data>
+  <data name="Projet.5.Resumer" xml:space="preserve">
+    <value>Participation au développement et à la maintenance d’une plateforme de facturation électronique conforme à la norme européenne EN16931 pour un client basé en France. Développement d’interfaces modernes et responsives avec Blazor et MudBlazor, intégration d’API REST en C#, gestion des règles métier liées aux factures électroniques, amélioration des performances et optimisation de l’expérience utilisateur.</value>
+  </data>
+  <data name="Projet.5.Detail" xml:space="preserve">
+    <value>- Développement d’interfaces utilisateur avec Blazor et MudBlazor.\n
+    - Intégration et consommation d’API REST en C# /.NET\n
+    - Gestion des workflows de facturation électronique.\n
+    - Implémentation des règles métier conformes à la norme EN16931.\n
+    - Création de composants réutilisables et maintenance du code existant\n
+    - Optimisation des performances et amélioration de l’UX\n
+    - Correction de bugs et évolution fonctionnelle de la plateforme\n
+    - Collaboration avec l’équipe back-end et les équipes métier\n
+    - Utilisation de Git pour le versioning et le suivi des développements\n
+    - Participation aux phases de tests et validation des fonctionnalités</value>
+  </data>
+
+</root>
