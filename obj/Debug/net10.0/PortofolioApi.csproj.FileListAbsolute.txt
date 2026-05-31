@@ -167,3 +167,4 @@ C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\9cdsj2r9rb-{0}-yl6bidhs
 C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\nphpm4t4yx-{0}-ehpz72ku4x-ehpz72ku4x.gz
 C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\satxfy5zdj-{0}-ahssqk0fo9-ahssqk0fo9.gz
 C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\v6s207a7g9-{0}-s8dg7x0tom-s8dg7x0tom.gz
+C:\Users\ASUS\PortofolioApi\bin\Debug\net10.0\Data\appdata.db

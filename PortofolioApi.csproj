@@ -20,7 +20,7 @@
     <PackageReference Include="SendGrid" Version="9.29.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.4" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.14.0" />
-    <None Update="appdata.db">
+    <None Update="Data\appdata.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
 
