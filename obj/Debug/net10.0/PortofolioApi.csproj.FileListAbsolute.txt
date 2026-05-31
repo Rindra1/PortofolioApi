@@ -2,7 +2,6 @@ C:\Users\ASUS\PortofolioApi\bin\Debug\net10.0\appsettings.Development.json
 C:\Users\ASUS\PortofolioApi\bin\Debug\net10.0\appsettings.json
 C:\Users\ASUS\PortofolioApi\bin\Debug\net10.0\PortofolioApi.staticwebassets.runtime.json
 C:\Users\ASUS\PortofolioApi\bin\Debug\net10.0\PortofolioApi.staticwebassets.endpoints.json
-C:\Users\ASUS\PortofolioApi\bin\Debug\net10.0\appdata.db
 C:\Users\ASUS\PortofolioApi\bin\Debug\net10.0\PortofolioApi.exe
 C:\Users\ASUS\PortofolioApi\bin\Debug\net10.0\PortofolioApi.deps.json
 C:\Users\ASUS\PortofolioApi\bin\Debug\net10.0\PortofolioApi.runtimeconfig.json

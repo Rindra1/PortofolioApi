@@ -28,14 +28,20 @@ using Microsoft.AspNetCore.ResponseCompression;
 using System.IO.Compression;
 
 
-
+var builder = WebApplication.CreateBuilder(args);
 
 // Chemin vers la base, compatible local et Render
-var appDataFolder = Path.Combine(AppContext.BaseDirectory, "var", "data");
+var dbPath = Path.Combine(
+    builder.Environment.ContentRootPath,
+    "Data",
+    "appdata.db");
+/*var appDataFolder = Path.Combine(AppContext.BaseDirectory, "var", "data");
 Directory.CreateDirectory(appDataFolder); // Crée le dossier si inexistant
 
-var dbPath = Path.Combine(appDataFolder, "appdata.db");
+var dbPath = Path.Combine(appDataFolder, "appdata.db");*/
+Console.WriteLine();
 Console.WriteLine($"Chemin de la base de données: {dbPath}");
+Console.WriteLine();
 // Supprime le fichier existant s'il existe
 /*if (File.Exists(dbPath))
 {
@@ -62,13 +68,6 @@ if (!File.Exists(dbPath))
         Console.WriteLine($"Erreur lors du téléchargement de la base : {ex.Message}");
     }
 }
-
-
-
-
-
-
-var builder = WebApplication.CreateBuilder(args);
 
 //Utilisation Open-API
 //var apiKey = Environment.GetEnvironmentVariable("OPENAI_API_KEY");
