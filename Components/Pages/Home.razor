@@ -6,221 +6,210 @@
 @using Microsoft.EntityFrameworkCore.Metadata.Conventions
 @using PortofolioApi.Domain.DTOs
 @using Microsoft.AspNetCore.Components
-@if(portfolio==null){
-  <h1>Chargement...</h1>
-}else{
-  <!-- HERO -->
-<header id="home" class="hero">
-  <div class="layer layer-back"></div>
-  <div class="layer layer-mid"></div>
-  <div class="layer layer-front">
-    <div class="hero-content">
-      <div class="hero-text">
-        <h1>@portfolio.Prenom</h1>
-        <p>@portfolio.resume</p>
-        <div class="hero-ctas">
-          <a href="#projects" class="btn btn-hero">@Localizer.T("SeeProjects")</a>
-          <a href="#contact" class="btn btn-hero">@Localizer.T("Contact")</a>
+<main>
+    <section id="accueil" class="hero-section">
+        <div class="container hero">
+            <div class="hero-content" data-aos="fade-right">
+                <div class="dispo-badge"><span class="green-circle"></span> @Localizer.T("Available")</div>
+                <div class="hero-name">@portfolio.Nom <span>@portfolio.Prenom</span></div>
+                <div class="hero-title">Développeur .NET Fullstack</div>
+                <p class="hero-description">Passionné par le développement Full-Stack .NET, je crée des applications performantes et intuitives — de l'API REST au front Blazor, centrées sur l'expérience utilisateur.</p>
+                <div class="hero-buttons">
+                    <a href="#projets" class="btn-primary"><i class="fas fa-arrow-right"></i> @Localizer.T("ViewProjects")</a>
+                    <a href="#contact" class="btn-outline"><i class="fas fa-envelope"></i> @Localizer.T("ContactMe")</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-card"><div class="stat-number">5+</div><div class="stat-label">@Localizer.T("YearsOfExperience")</div></div>
+                    <div class="stat-card"><div class="stat-number">5+</div><div class="stat-label">@Localizer.T("CompletedProjects")</div></div>
+                    <div class="stat-card"><div class="stat-number">10+</div><div class="stat-label">Technologies</div></div>
+                    <div class="stat-card"><div class="stat-number">100%</div><div class="stat-label">Satisfaction client</div></div>
+                </div>
+                <div class="hero-stack-section">
+                    <div class="hero-stack-title"><i class="fas fa-layer-group"></i> @Localizer.T("MasteredStack")</div>
+                    <div class="stack-items">
+                        <span class="stack-item">.NET 10</span><span class="stack-item">C#</span><span class="stack-item">Blazor</span>
+                        <span class="stack-item">SQL Server</span><span class="stack-item">VB.NET</span><span class="stack-item">ASP.NET Core</span>
+                        <span class="stack-item">Entity Framework</span><span class="stack-item">REST API</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image-container" data-aos="fade-left">
+                <div class="profile-circle">
+                    <img src="images/@portfolio.UserImage" alt="@portfolio.Nom @portfolio.Prenom"  loading="lazy"/>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="hero-image">
-        <img src="images/@portfolio.UserImage" alt="@portfolio.Nom @portfolio.Prenom"  loading="lazy"/>
-      </div>
+    </section>
+
+    <!-- À PROPOS -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">@Localizer.T("About")</h2>
+            <div class="about-wrapper">
+                <div class="about-text" data-aos="fade-up">
+                    <p>Passionné par le développement logiciel et l'innovation technologique, je crée des applications <strong>desktop, web et cloud</strong> robustes avec l'écosystème .NET. De la conception de bases de données à l'interface utilisateur, en passant par les <strong>APIs RESTful</strong> et l'intégration de services tiers.</p>
+                    <p style="margin-top:1rem">Je mets un point d'honneur à produire un code maintenable, sécurisé et orienté performance. Expérience aussi bien en freelance qu'en environnement agile.</p>
+                    <p style="margin-top:1rem"><strong>🎯 Objectif :</strong> Créer des solutions innovantes qui répondent parfaitement aux besoins des utilisateurs tout en assurant une expérience optimale.</p>
+                </div>
+                <div class="skills-box" data-aos="fade-up" data-aos-delay="150">
+                    <h3><i class="fas fa-code"></i> @Localizer.T("TechnicalStack")</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top:1rem;">
+                        <span class="tech-badge">.NET / C#</span><span class="tech-badge">ASP.NET Core</span><span class="tech-badge">Blazor Server</span>
+                        <span class="tech-badge">VB.NET</span><span class="tech-badge">WinForms</span><span class="tech-badge">Entity Framework</span>
+                        <span class="tech-badge">SQL Server</span><span class="tech-badge">SQLite</span><span class="tech-badge">REST API</span>
+                        <span class="tech-badge">JWT Auth</span><span class="tech-badge">Docker</span><span class="tech-badge">Tailwind CSS</span>
+                    </div>
+                    <div style="margin-top:1.8rem">
+                        <div style="margin-bottom: 1rem;"><strong>C# / .NET</strong><div class="progress-bar"><div class="progress-fill" style="width:95%"></div></div></div>
+                        <div style="margin-bottom: 1rem;"><strong>SQL Server</strong><div class="progress-bar"><div class="progress-fill" style="width:88%"></div></div></div>
+                        <div style="margin-bottom: 1rem;"><strong>Blazor</strong><div class="progress-bar"><div class="progress-fill" style="width:80%"></div></div></div>
+                        <div><strong>VB.NET</strong><div class="progress-bar"><div class="progress-fill" style="width:90%"></div></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJETS -->
+    <section id="projets">
+        <div class="container">
+            <h2 class="section-title">@Localizer.T("CompletedProjects")</h2>
+            <div class="projets-grid">
+                @foreach(var proj in portfolio.Projets)
+                {
+                    projet++;
+                    <div class="card" data-aos="zoom-in">
+                        <img src="/images/@proj.ImageProjet" alt="@proj.TitreProjet"  loading="lazy" class="project-img">
+                        <div class="card-content">
+                            <h3>@proj.TitreProjet</h3>
+                            <p>@proj.ResumerProjet</p>
+                            <div style="display:flex; gap:0.5rem; margin:0.5rem 0;">
+                                <span class="tech-badge" style="font-size:0.7rem;">Blazor</span>
+                                <span class="tech-badge" style="font-size:0.7rem;">.NET 10</span>
+                                <span class="tech-badge" style="font-size:0.7rem;">JWT</span>
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn-details" onclick="openModal('@projet')">
+                                <i class="fas fa-info-circle"></i> Détails
+                            </button>
+                            <a href="#" class="btn-github">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+
+<!-- MODALES PROJETS AVEC CARROUSEL -->
+                @foreach(var proj in portfolio.Projets)
+                {
+                    projetdetail++;
+                    <div id="modal-@projetdetail" class="modal">
+                        <div class="modal-content">
+                            <span class="modal-close" onclick="closeModal('@projetdetail')">&times;</span>
+                            <h2 class="modal-title">@proj.TitreProjet</h2>
+                            <div class="modal-gallery" id="gallery@projetdetail">
+                                <img id="mainImage@projetdetail" class="main-image" src="/images/@proj.ImageProjet" alt="@proj.TitreProjet">
+                                <div class="thumbnail-container">
+                                    <img class="thumbnail" src="/images/@proj.ImageProjet" alt="@proj.TitreProjet" data-img="/images/@proj.ImageProjet">
+                                    <img class="thumbnail" src="https://placehold.co/200x200/6366f1/white?text=API+Swagger" data-img="https://placehold.co/800x500/6366f1/white?text=API+Swagger+Documentation" alt="Vue 2">
+                                    <img class="thumbnail" src="https://placehold.co/200x200/8b5cf6/white?text=Chatbot+IA" data-img="https://placehold.co/800x500/8b5cf6/white?text=Chatbot+IA+Integration" alt="Vue 3">
+                                </div>
+                            </div>
+                            <p class="modal-description"><strong>@Localizer.T("FullDescription") :</strong> Une application complète de gestion de portefeuille financier développée avec Blazor Server. L'application permet aux utilisateurs de suivre leurs revenus, dépenses et investissements. Elle intègre un chatbot IA pour l'assistance utilisateur et offre une expérience fluide avec une API REST sécurisée.</p>
+                            <p class="modal-description"><strong>Fonctionnalités :</strong> Authentification JWT, Dashboard interactif, Graphiques de performance, Export de données, Notifications par email.</p>
+                            <div class="modal-techs"><span class="tech-badge">Blazor Server</span><span class="tech-badge">.NET 10</span><span class="tech-badge">SQL Server</span><span class="tech-badge">Entity Framework</span><span class="tech-badge">JWT Auth</span><span class="tech-badge">SignalR</span></div>
+                            <div class="modal-links"><a href="#" class="btn-primary" style="padding:0.5rem 1.2rem;"><i class="fab fa-github"></i> Voir GitHub</a><a href="#" class="btn-outline" style="padding:0.5rem 1.2rem;"><i class="fas fa-external-link-alt"></i> Démo live</a></div>
+                        </div>
+                    </div>
+                }
+    
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">@Localizer.T("ProfessionalExperience")</h2>
+            <div class="experience-container">
+                @foreach(var exp in portfolio.Experiences.OrderByDescending(e => e.DateDebut))
+                {
+                    <div class="exp-item" data-aos="fade-right" data-aos-delay="200">
+                        <div style="display:flex; justify-content:space-between;">
+                            <h3>@Localizer.T(exp.TitreExperience)</h3>
+                            <span style="color:#4f46e5;">@exp.DateDebut.Year - @(exp.DateFin.HasValue ? exp.DateFin.Value.ToString("yyyy") : Localizer.T("Present"))</span>
+                        </div>
+                        <p>@(new MarkupString(exp.DetailExperience.Replace("\\n", "<br/>")))</p>
+                        <div style="display:flex; gap:0.5rem; margin-top:0.5rem;">
+                            <span class="tech-badge" style="font-size:0.7rem;">VB.NET</span>
+                            <span class="tech-badge" style="font-size:0.7rem;">WinForms</span>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">@Localizer.T("MyServices")</h2>
+            <div class="services-grid">
+                <div class="service-card" data-aos="flip-left"><i class="fas fa-laptop-code"></i><h3>Applications WinForms</h3><p>Desktop robuste VB.NET/C#</p></div>
+                <div class="service-card" data-aos="flip-left" data-aos-delay="100"><i class="fas fa-globe"></i><h3>Applications Blazor</h3><p>Web modernes et réactives</p></div>
+                <div class="service-card" data-aos="flip-left" data-aos-delay="200"><i class="fas fa-cloud-upload-alt"></i><h3>API ASP.NET Core</h3><p>APIs RESTful sécurisées JWT</p></div>
+                <div class="service-card" data-aos="flip-left" data-aos-delay="300"><i class="fas fa-database"></i><h3>Optimisation SQL Server</h3><p>Schémas, requêtes, indexation</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-wrapper">
+                <div class="contact-info-card" data-aos="fade-right">
+                    <h3>📬 @Localizer.T("LetsStayInTouch")</h3>
+                    <p>@Localizer.T("AvailableFor")</p>
+                    <div class="contact-details">
+                        <div class="contact-item"><i class="fas fa-phone"></i><span><a href="tel:+261341234567"  target="_blank" rel="noopener noreferrer">+261 32 52 781 38</a></span></div>
+                        <div class="contact-item"><i class="fas fa-envelope"></i><span><a href="mailto:rindra@example.com" target="_blank" rel="noopener noreferrer">rindraniaina.manda@gmail.com</a></span></div>
+                        <div class="contact-item"><i class="fab fa-github"></i><span><a href="https://github.com/Rindra1" target="_blank" rel="noopener noreferrer">https://github.com/Rindra1</a></span></div>
+                        <div class="contact-item"><i class="fab fa-linkedin"></i><span><a href="https://www.linkedin.com/in/rindra-niaina-razafimandanona-1ab51b120" target="_blank" rel="noopener noreferrer">https://www.linkedin.com/in/rindra-niaina-razafimandanona-1ab51b120</a></span></div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://github.com/Rindra1" class="social-link"  target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/rindra-niaina-razafimandanona-1ab51b120" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://x.com/RindraNiaina3" class="social-link"  target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                        <a href="https://wa.me/261325278138" class="social-link"  target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form-card" data-aos="fade-left">
+                    <h3>@Localizer.T("SendMeMessage")</h3>
+                    <form id="contactForm">
+                        <div class="form-group"><input type="text"  @bind="emailRequest.Name" id="userName" placeholder="Votre nom" required></div>
+                        <div class="form-group"><input type="email" @bind="emailRequest.To" id="userEmail" placeholder="Votre email" required></div>
+                        <div class="form-group"><textarea @bind="emailRequest.Body" id="userMessage" rows="4" placeholder="Votre message..." required></textarea></div>
+                        <button type="submit" class="btn-submit" @onclick="Envoyer" ><i class="fas fa-paper-plane"></i> @Localizer.T("SendMessage")</button>
+                        <div id="formStatus" class="form-message"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+<div class="chatbot-float">
+    <div class="chatbot-toggle" id="chatbotToggle"><i class="fas fa-comment-dots"></i><div class="online-dot"></div></div>
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header"><div class="chat-header-left"><div class="chat-avatar">RN</div><div><strong>Assistant RN</strong><div style="font-size:0.7rem;"><i class="fas fa-circle" style="font-size:0.5rem;"></i> @Localizer.T("Online")</div></div></div><button class="close-chat" id="closeChat"><i class="fas fa-times"></i></button></div>
+        <div class="chat-messages" id="chatMessagesFloat"><div class="message-bot"><div class="bot-avatar">🤖</div><div class="bot-bubble">@Localizer.T("MessageChat")</div></div></div>
+        <div class="chat-input-area"><input type="text" id="chatInputFloat" placeholder="@Localizer.T("YourQuestion")"><button id="sendChatFloat"><i class="fas fa-paper-plane"></i></button></div>
+        <div class="suggestions-chat"><span class="suggestion-chip" data-suggestion="Quels sont ses projets .NET?">📁 Projets .NET</span><span class="suggestion-chip" data-suggestion="Quelle est sa stack technique?">⚙️ Stack technique</span><span class="suggestion-chip" data-suggestion="Est-il disponible pour freelance?">💼 Disponibilité</span></div>
     </div>
-  </div>
-</header>
-
-
-  
-<!-- ABOUT -->
-<section id="about" class="fade">
-  <h2>@Localizer.T("About")</h2>
-  <p>@portfolio.APropos</p>
-</section>
-
-
-<!-- PROJECTS -->
-<section id="projects" class="fade">
-  <h2>@Localizer.T("Projects")</h2>
-  <div class="projects-grid">
-    @foreach(var proj in portfolio.Projets)
-    {
-        <div class="project-card">
-          <img src="/images/@proj.ImageProjet" alt="@proj.TitreProjet"  loading="lazy">
-          <div class="project-info">
-            <h3>@proj.TitreProjet</h3>
-            <p>@proj.ResumerProjet</p>
-            <button class="btn-small open-modal" data-project="@proj.IdProjet.ToString()">@Localizer.T("ViewDetails")</button>
-
-          </div>
-        </div>
-
-        <div id="modal-@proj.IdProjet.ToString()" class="modal">
-            <div class="modal-content">
-            <span class="close">&times;</span>
-            <h3>@proj.TitreProjet</h3>
-            <p>@(new MarkupString(proj.DetailProjet.Replace("\\n", "<br/>")))</p>
-          </div>
-        </div>
-    }
-  </div>
-</section>
-
-<section id="skills" class="fade">
-  <h2>@Localizer.T("Skills")</h2>
-  <div class="skills-grid">
-    <!-- Développement Desktop -->
-    @foreach(var competence in portfolio.Competences)
-    {
-      <div class="skill">@competence.Nom</div>  
-    }
-  </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section id="experience" class="fade">
-  <h2>@Localizer.T("Experience")</h2>
-  <div class="timeline">
-  @foreach(var exp in portfolio.Experiences.OrderByDescending(e => e.DateDebut))
-  {
-    <div class="timeline-item">
-      <div class="date">@exp.DateDebut.Year - @(exp.DateFin.HasValue ? exp.DateFin.Value.ToString("yyyy") : Localizer.T("Present"))</div>
-      <div class="content">
-        <h3>@Localizer.T(exp.TitreExperience)</h3>
-        <p>@(new MarkupString(exp.DetailExperience.Replace("\\n", "<br/>")))</p>
-      </div>
-    </div>
-  }
-  </div>
-</section>
-
-
-<!-- CONTACT -->
-<section id="contact" class="fade">
-  <h2>@Localizer.T("Contact")</h2>
-  <!--<form>
-    <input @bind="emailRequest.Name" type="text" placeholder="Nom" required>
-    <input @bind="emailRequest.To" type="email" placeholder="Email" required>
-    <input @bind="emailRequest.Subject" type="text" placeholder="Sujet" required>
-    <textarea @bind="emailRequest.Body" placeholder="Message" required></textarea>
-    <button @onclick="Envoyer"  class="btn btn-hero">Envoyer</button>
-  </form>-->
-  <div class="socials">
-    @if(portfolio.Contacts != null)
-      {
-          @foreach (var contact in portfolio.Contacts)
-          {
-            if (contact.TypeContact.ToUpper() == "LINKEDIN")
-            {
-              <a href="@contact.AdresseContact" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                aria-label="Profil LinkedIn de Rindra Niaina">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="#0077B5" role="img" aria-hidden="true">
-                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.268h-3v-5.604c0-1.337-.025-3.065-1.868-3.065-1.868 0-2.154 1.459-2.154 2.968v5.701h-3v-10h2.881v1.367h.041c.401-.757 1.379-1.555 2.841-1.555 3.036 0 3.598 1.997 3.598 4.592v5.596z"/>
-                </svg>
-              </a>
-            }
-            if (contact.TypeContact.ToUpper() == "GITHUB")
-            {
-              <a href="@contact.AdresseContact"  target="_blank" rel="noopener noreferrer" aria-label="Profil GitHub de Rindra Niaina">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="#0077B5">
-                  <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.089-.745.084-.729.084-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.418-1.305.762-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.468-2.38 1.235-3.22-.123-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.3 1.23a11.52 11.52 0 0 1 3-.405c1.02.005 2.045.138 3 .405 2.29-1.552 3.295-1.23 3.295-1.23.653 1.653.242 2.873.12 3.176.77.84 1.233 1.91 1.233 3.22 0 4.61-2.807 5.625-5.48 5.922.43.372.823 1.102.823 2.222 0 1.606-.015 2.898-.015 3.293 0 .32.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
-                </svg>
-              </a>
-            }
-          }
-      }
-      <a href="mailto:rindraniaina.manda@gmail.com"
-   aria-label="Envoyer un email" _blank" rel="noopener noreferrer">
-    <svg xmlns="http://www.w3.org/2000/svg"
-          width="30" height="30" viewBox="0 0 24 24" fill="#0077B5">
-        <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 
-                 1.1.9 2 2 2h16c1.1 0 2-.9 
-                 2-2V6c0-1.1-.9-2-2-2zm0 
-                 4-8 5-8-5V6l8 5 8-5v2z"/>
-    </svg>
-</a>
-      <a href="https://wa.me/261325278138"
-   target="_blank"
-   rel="noopener noreferrer"
-   aria-label="Contacter via WhatsApp">
-    <svg xmlns="http://www.w3.org/2000/svg"
-          width="30" height="30" viewBox="0 0 24 24" fill="#0077B5">
-        <path d="M20.52 3.48A11.82 11.82 0 0 0 
-                 12.07 0C5.5 0 .16 5.34.16 
-                 11.91c0 2.1.55 4.16 1.6 
-                 5.98L0 24l6.3-1.65a11.92 
-                 11.92 0 0 0 5.77 1.47h.01c6.57 
-                 0 11.91-5.34 11.91-11.91 
-                 0-3.18-1.24-6.17-3.47-8.43zm-8.45 
-                 18.32h-.01a9.94 9.94 0 0 
-                 1-5.06-1.38l-.36-.21-3.74.98 
-                 1-3.65-.23-.37a9.89 9.89 
-                 0 0 1-1.52-5.26c0-5.47 
-                 4.45-9.92 9.92-9.92 2.65 
-                 0 5.14 1.03 7.01 2.9a9.85 
-                 9.85 0 0 1 2.91 7.02c0 
-                 5.47-4.45 9.92-9.92 9.92zm5.44-7.41c-.3-.15-1.78-.88-2.06-.98-.28-.1-.48-.15-.69.15-.2.3-.79.98-.97 1.18-.18.2-.35.23-.65.08-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.79-1.67-2.09-.18-.3-.02-.46.13-.61.13-.13.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.69-1.66-.94-2.27-.25-.6-.5-.52-.69-.53h-.59c-.2 0-.53.08-.8.38-.28.3-1.05 1.03-1.05 2.51s1.08 2.91 1.23 3.11c.15.2 2.12 3.24 5.13 4.54.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.09 1.78-.73 2.03-1.44.25-.71.25-1.31.18-1.44-.08-.12-.28-.2-.58-.35z"/>
-    </svg>
-</a>
-                    <a href="tel:+261325278138"
-   aria-label="Téléphoner"
-   target="_blank"
-   rel="noopener noreferrer">
-    <svg xmlns="http://www.w3.org/2000/svg"
-          width="30" height="30" viewBox="0 0 24 24" fill="#0077B5">
-        <path d="M6.62 10.79a15.05 15.05 0 0 0 
-                 6.59 6.59l2.2-2.2c.27-.27.67-.36 
-                 1.02-.24 1.12.37 2.33.57 3.57.57.55 
-                 0 1 .45 1 1V20c0 .55-.45 1-1 
-                 1C10.07 21 3 13.93 3 5c0-.55.45-1 
-                 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 
-                 2.45.57 3.57.11.35.03.74-.25 
-                 1.02l-2.2 2.2z"/>
-    </svg>
-</a>
-  </div>
-</section>
-
-<!-- Chatbot flottant -->
-<div class="chatbot-container">
-  <div class="chat-toggle" id="chat-toggle" role="button" tabindex="0" aria-controls="chat-body" aria-expanded="false">
-    <img src="images/chatbot1.png" alt="Chat" class="chat-icon" />
-  </div>
-  <div class="chat-body" id="chat-body" aria-hidden="true">
-    <div class="chat-messages" id="chat-messages">
-      @if (ChatResponses != null && ChatResponses.Any())
-      {
-        <div class="chat-message bot">
-          <span>@Localizer.T("ChatGreeting")</span>
-        </div>
-        foreach (var msg in ChatResponses)
-        {
-          <div class="chat-message user">
-            <span>@msg.UserMessage</span>
-          </div>
-          <div class="chat-message bot">
-            <span>@msg.BotResponse</span>
-          </div>
-        }
-      }
-      else
-      {
-        <div class="chat-message bot">
-          <span>@Localizer.T("ChatGreeting")</span>
-        </div>
-      }
-    </div>
-    <div class="chat-input">
-        <input autocomplete="off" type="text" placeholder='@Localizer.T("ChatPlaceholder")' id="chat-input-field"
-          @bind="UserMessage" aria-label="Message" />
-        <button type="button" id="chat-send-btn" @onclick="SendMessage" aria-label='@Localizer.T("Send")' title='@Localizer.T("Send")'>➤</button>
-    </div>
-  </div>
 </div>
 
-}
+<footer class="footer">
+        <p>&copy; @DateTime.Now.Year Rindra Niaina.  @Localizer.T("AllRightsReserved")</p>
+    </footer>
 
 @code {
   private string message = string.Empty;
@@ -230,6 +219,8 @@
   private string UserMessage { get; set; } = "";
   private List<ChatEntry> ChatResponses { get; set; } = new();
   private bool _initialized;
+  private int projet = 0;
+  private int projetdetail = 0;
 
   protected override void OnInitialized()
   {
@@ -277,7 +268,7 @@ protected override async Task OnAfterRenderAsync(bool firstRender)
     if (firstRender && !_initialized)
     {
         _initialized = true;
-        //await JS.InvokeVoidAsync("siteInterop.initAll");
+        await JS.InvokeVoidAsync("siteInterop.initAll");
         //await JS.InvokeAsync<string>("themeManager.applyTheme");
         try
     {
@@ -295,7 +286,7 @@ protected override async Task OnAfterRenderAsync(bool firstRender)
         }
       // Appeler l'initialisation JavaScript déjà incluse via App.razor
       await JS.InvokeVoidAsync("siteInterop.initAll");
-      await JS.InvokeVoidAsync("siteInterop.hideLoader");
+      //await JS.InvokeVoidAsync("siteInterop.hideLoader");
       
     }catch(Exception ex)
     {
@@ -538,27 +529,4 @@ protected override async Task OnAfterRenderAsync(bool firstRender)
         Console.WriteLine("Exception : " + ex.Message);
     }
 }
-
-
-
-
-/*  private bool _alreadyLoaded = false;
-  protected override async Task OnInitializedAsync()
-  {
-    if (_alreadyLoaded) return;
-    _alreadyLoaded = true;
-
-    
-    try
-    {
-      string url = $"api/portfolio";
-      portfolio = await Http.GetFromJsonAsync<UtilisateurDTO>(url)??null;
-      Console.WriteLine("Portfolio:");
-      //Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(portfolio));
-    }catch(Exception ex)
-    {
-        message = $"Erreur: {ex.Message} {ex.StackTrace}";
-        Console.WriteLine(message);
-    }
-  }*/
 }

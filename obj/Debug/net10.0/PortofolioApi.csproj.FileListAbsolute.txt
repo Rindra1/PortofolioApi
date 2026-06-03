@@ -138,7 +138,6 @@ C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\scopedcss\Components\Layout\NavMen
 C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\scopedcss\bundle\PortofolioApi.styles.css
 C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\scopedcss\projectbundle\PortofolioApi.bundle.scp.css
 C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\9er21g4149-{0}-z02cfyjm9u-z02cfyjm9u.gz
-C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\rsgjwjsx63-{0}-wjfvjxjvvx-wjfvjxjvvx.gz
 C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\0vjdw2lh6o-{0}-hwaxidwiwj-hwaxidwiwj.gz
 C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\8x6ubkqr0d-{0}-xbbil6v7co-xbbil6v7co.gz
 C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\staticwebassets.build.json
@@ -162,9 +161,11 @@ c:\Users\ASUS\PortofolioApi\bin\Debug\net10.0\en\PortofolioApi.resources.dll
 c:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\PortofolioApi.Resources.Resource.en.resources
 c:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\en\PortofolioApi.resources.cs
 c:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\en\PortofolioApi.resources.dll
-C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\uykr9vuvs1-{0}-yl6bidhsqy-yl6bidhsqy.gz
-C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\9cdsj2r9rb-{0}-yl6bidhsqy-yl6bidhsqy.gz
-C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\nphpm4t4yx-{0}-ehpz72ku4x-ehpz72ku4x.gz
-C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\satxfy5zdj-{0}-ahssqk0fo9-ahssqk0fo9.gz
 C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\v6s207a7g9-{0}-s8dg7x0tom-s8dg7x0tom.gz
 C:\Users\ASUS\PortofolioApi\bin\Debug\net10.0\Data\appdata.db
+C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\py5fhnwtqo-{0}-70ya0buhel-70ya0buhel.gz
+C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\uykr9vuvs1-{0}-vh3fjivmvd-vh3fjivmvd.gz
+C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\9cdsj2r9rb-{0}-vh3fjivmvd-vh3fjivmvd.gz
+C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\nphpm4t4yx-{0}-jqvnmln3qz-jqvnmln3qz.gz
+C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\satxfy5zdj-{0}-tqtkf84zd1-tqtkf84zd1.gz
+C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\rsgjwjsx63-{0}-1686abp2gy-1686abp2gy.gz

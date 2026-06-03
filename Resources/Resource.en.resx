@@ -239,4 +239,78 @@
 - Using Git for version control and development tracking.\n
 - Participating in testing and validating features.</value>
   </data>
+  <data name="DownloadCV" xml:space="preserve">
+    <value>Download CV</value>
+  </data>
+  <data name="Available" xml:space="preserve">
+    <value>Available · Freelance .NET projects</value>
+  </data>
+  <data name="ContactMe" xml:space="preserve">
+    <value>Contact me</value>
+  </data>
+
+  <data name="ViewProjects" xml:space="preserve">
+    <value>View my projects</value>
+  </data>
+
+  <data name="YearsOfExperience" xml:space="preserve">
+    <value>Years of experience</value>
+  </data>
+
+  <data name="CompletedProjects" xml:space="preserve">
+    <value>Completed projects</value>
+  </data>
+
+  <data name="MasteredStack" xml:space="preserve">
+    <value>MASTERED STACK</value>
+  </data>
+
+    <data name="SendMeMessage" xml:space="preserve">
+    <value>Send me a message</value>
+  </data>
+
+  <data name="ProfessionalExperience" xml:space="preserve">
+    <value>Professional Experience</value>
+  </data>
+
+  <data name="TechnicalStack" xml:space="preserve">
+    <value>TECHNICAL STACK</value>
+  </data>
+
+  <data name="MyServices" xml:space="preserve">
+    <value>My Services</value>
+  </data>
+
+  <data name="LetsStayInTouch" xml:space="preserve">
+    <value>Let's stay in touch.</value>
+  </data>
+
+  <data name="AvailableFor" xml:space="preserve">
+    <value>Available for freelance assignments or permanent positions.</value>
+  </data>
+
+  <data name="SendMessage" xml:space="preserve">
+    <value>Send Message</value>
+  </data>
+
+  <data name="MessageChat" xml:space="preserve">
+    <value>Hello! 😊 I'm Rindra's assistant. How can I help you?</value>
+  </data>
+
+  <data name="AllRightsReserved" xml:space="preserve">
+    <value> Full-stack .NET Developer - All rights reserved</value>
+  </data>
+
+  <data name="Online" xml:space="preserve">
+    <value>Online</value>
+  </data>
+
+  <data name="FullDescription" xml:space="preserve">
+    <value>Full description</value>
+  </data>
+
+  <data name="YourQuestion" xml:space="preserve">
+    <value>Your question...</value>
+  </data>
+
 </root>

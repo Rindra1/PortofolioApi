@@ -1,4 +1,4 @@
-// Gestion centralisée du thème
+
 window.siteInterop = {
     hideLoader: function() {
         const loader = document.getElementById('loader');
@@ -6,18 +6,165 @@ window.siteInterop = {
     },
 
     initAll: function () {
-        console.log("Initialisation du site...");
+        AOS.init({ duration: 800, once: true, offset: 100 });
 
-        this.initMobileMenu();
-        this.initSmoothScroll();
-        this.initFadeScroll();
-        this.initParallax();
-        this.initTiltCards();
-        this.initModalProjects();
-        this.initChatBot();
-        this.initTheme();
+    // Theme
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
+    const themeIcon = themeToggle.querySelector('i');
+    function setTheme(theme) {
+        if(theme === 'dark') {
+            body.classList.remove('light'); body.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+            themeIcon.classList.remove('fa-moon'); themeIcon.classList.add('fa-sun');
+        } else {
+            body.classList.remove('dark'); body.classList.add('light');
+            localStorage.setItem('theme', 'light');
+            themeIcon.classList.remove('fa-sun'); themeIcon.classList.add('fa-moon');
+        }
+    }
+    if(localStorage.getItem('theme') === 'dark') setTheme('dark'); else setTheme('light');
+    themeToggle.addEventListener('click', () => setTheme(body.classList.contains('light') ? 'dark' : 'light'));
 
-        this.initKeepAlive(); 
+    // Mobile menu
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    mobileBtn.addEventListener('click', () => mobileNav.classList.toggle('show'));
+    document.querySelectorAll('.mobile-nav a').forEach(link => link.addEventListener('click', () => mobileNav.classList.remove('show')));
+
+    // Download CV
+    document.querySelectorAll('#downloadCVBtn, #downloadCVBtnMobile').forEach(btn => 
+        btn.addEventListener('click', (e) => { e.preventDefault(); alert("📄 Le CV sera disponible prochainement. Merci de votre intérêt !"); })
+    );
+
+    // Gallery functions for each project
+    function initGallery(galleryId, mainImageId) {
+        console.log(`Initializing gallery: ${galleryId} with main image: ${mainImageId}`);
+        const thumbnails = document.querySelectorAll(`#${galleryId} .thumbnail`);
+        const mainImage = document.getElementById(mainImageId);
+        thumbnails.forEach(thumb => {
+            thumb.addEventListener('click', function() {
+                mainImage.src = this.getAttribute('data-img');
+                thumbnails.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+            });
+            // Activate first thumbnail by default
+            if(thumb === thumbnails[0]) thumb.classList.add('active');
+        });
+    }
+
+    document.addEventListener('click', function(e) {
+
+        if (!e.target.classList.contains('thumbnail'))
+            return;
+
+    const gallery = e.target.closest('.modal-gallery');
+    const mainImage = gallery.querySelector('.main-image');
+
+    mainImage.src = e.target.dataset.img;
+
+    gallery.querySelectorAll('.thumbnail')
+        .forEach(t => t.classList.remove('active'));
+
+    e.target.classList.add('active');
+    });
+
+    initGallery('gallery1', 'mainImage1');
+    initGallery('gallery2', 'mainImage2');
+    initGallery('gallery3', 'mainImage3');
+
+    // Modal functions
+    window.openModal = function(projetId) {
+        document.getElementById(`modal-${projetId}`).style.display = 'flex';
+    }
+    window.closeModal = function(projetId) {
+        document.getElementById(`modal-${projetId}`).style.display = 'none';
+    }
+    window.onclick = function(event) {
+        if(event.target.classList.contains('modal')){
+            console.log('Clicked outside modal content, closing modal');
+            event.target.style.display = 'none';
+        } 
+    }
+
+    // Contact form
+    const contactForm = document.getElementById('contactForm');
+    const formStatus = document.getElementById('formStatus');
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('userName').value;
+        const email = document.getElementById('userEmail').value;
+        const message = document.getElementById('userMessage').value;
+        if(!name || !email || !message) {
+            formStatus.className = 'form-message error';
+            formStatus.textContent = '❌ Veuillez remplir tous les champs.';
+            formStatus.style.display = 'block';
+            return;
+        }
+        formStatus.className = 'form-message';
+        formStatus.textContent = '📤 Envoi en cours...';
+        formStatus.style.display = 'block';
+        setTimeout(() => {
+            formStatus.className = 'form-message success';
+            formStatus.textContent = '✅ Message envoyé avec succès ! Je vous répondrai rapidement.';
+            contactForm.reset();
+        }, 1500);
+    });
+
+    // Chatbot
+    const toggleBtn = document.getElementById('chatbotToggle');
+    const chatWindow = document.getElementById('chatWindow');
+    const closeChat = document.getElementById('closeChat');
+    document.addEventListener('click', function (e) {
+        console.log('Clicked element:', e.target);
+    if (e.target.closest('#chatbotToggle')) {
+        
+            const chat = document.getElementById('chatWindow');
+            chat.classList.toggle('open');
+
+console.log(chat.className);
+console.log(getComputedStyle(chat).opacity);
+console.log(getComputedStyle(chat).transform);
+console.log(getComputedStyle(chat).display);
+    }
+
+    if (e.target.closest('#closeChat')) {
+        document.getElementById('chatWindow')
+            ?.classList.remove('open');
+    }
+});
+    //toggleBtn.addEventListener('click', () => chatWindow.classList.toggle('open'));
+    //closeChat.addEventListener('click', () => chatWindow.classList.remove('open'));
+
+    const chatDiv = document.getElementById('chatMessagesFloat');
+    const chatInput = document.getElementById('chatInputFloat');
+    const sendBtn = document.getElementById('sendChatFloat');
+    function addMessage(text, isUser = false) {
+        const div = document.createElement('div');
+        if(isUser) div.className = 'message-user', div.innerHTML = `<div class="user-bubble">${text}</div>`;
+        else div.className = 'message-bot', div.innerHTML = `<div class="bot-avatar">🤖</div><div class="bot-bubble">${text}</div>`;
+        chatDiv.appendChild(div);
+        chatDiv.scrollTop = chatDiv.scrollHeight;
+    }
+    function getReply(q) {
+        const question = q.toLowerCase();
+        if(question.includes('projet')) return "Rindra a développé plusieurs apps Blazor, WinForms et APIs REST. Cliquez sur 'Détails' pour voir les images !";
+        if(question.includes('stack') || question.includes('technologie')) return "Sa stack : C#/.NET, ASP.NET Core, Blazor, VB.NET, SQL Server, EF, JWT, Docker.";
+        if(question.includes('disponible') || question.includes('freelance')) return "Oui, disponible pour missions freelance ou CDI. Contactez-le via le formulaire !";
+        return "Je peux vous parler de ses projets .NET, sa stack technique ou sa disponibilité.";
+    }
+    function handleSend() {
+        const msg = chatInput.value.trim();
+        if(!msg) return;
+        addMessage(msg, true);
+        chatInput.value = '';
+        setTimeout(() => addMessage(getReply(msg), false), 400);
+    }
+    sendBtn.addEventListener('click', handleSend);
+    chatInput.addEventListener('keypress', e => { if(e.key === 'Enter') handleSend(); });
+    document.querySelectorAll('.suggestion-chip').forEach(chip => {
+        chip.addEventListener('click', () => { chatInput.value = chip.getAttribute('data-suggestion'); handleSend(); });
+    });
         // Masquer le loader après tout
         this.hideLoader();
     },
@@ -37,248 +184,13 @@ window.siteInterop = {
     }, 4 * 60 * 1000); // 4 minutes
 },
 
-    // --- Thème ---
-    initTheme: function () {
 
-        const saved = localStorage.getItem("theme");
-        const systemPref = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
-        const themeToUse = saved || systemPref || 'dark';
-
-        console.log("Thème chargé :", themeToUse);
-
-        this.applyTheme(themeToUse);
-
-        const themeToggle = document.getElementById("theme-toggle");
-
-        if (themeToggle) {
-            themeToggle.onclick = null;
-            themeToggle.onclick = () => {
-                const current = localStorage.getItem("theme") || (document.body.classList.contains('dark') ? 'dark' : 'light');
-                const next = current === 'dark' ? 'light' : 'dark';
-                localStorage.setItem("theme", next);
-                this.applyTheme(next);
-                console.log("Nouveau thème :", next);
-            };
-        }
-    },
-
-    applyTheme: function(theme) {
-
-        document.body.classList.remove("dark", "light");
-
-        document.body.classList.add(theme);
-
-        document.documentElement.setAttribute("data-theme", theme);
-
-        const btn = document.getElementById("theme-toggle");
-
-        if (btn) {
-            btn.textContent = theme === "dark"
-                ? "☀️"
-                : "🌙";
-        }
-    },
-
-    // --- ChatBot ---
-    initChatBot: function () {
-    const toggle = document.getElementById("chat-toggle");
-    const chatBody = document.getElementById("chat-body");
-
-    if (!toggle || !chatBody) {
-        console.log("Chatbot introuvable");
-        return;
-    }
-
-    // Évite doublons d'événements
-    toggle.onclick = null;
-
-    // Accessibilité initiale
-    toggle.setAttribute('role', 'button');
-    toggle.setAttribute('tabindex', '0');
-    toggle.setAttribute('aria-controls', 'chat-body');
-    toggle.setAttribute('aria-expanded', 'false');
-    chatBody.setAttribute('aria-hidden', 'true');
-
-    toggle.onclick = () => {
-        const isOpen = chatBody.classList.toggle('show');
-        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-        chatBody.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
-        // focus sur le champ input quand on ouvre
-        if (isOpen) {
-            const input = document.getElementById('chat-input-field');
-            if (input) setTimeout(() => input.focus(), 120);
-        }
-    };
-
-    // Envoi par Entrée
-    const input = document.getElementById('chat-input-field');
-    const sendBtn = document.getElementById('chat-send-btn');
-    if (input) {
-        input.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                if (sendBtn) sendBtn.click();
-            }
-        });
-    }
-
-    // Fonction globale scroll
-    window.scrollChatToBottom = () => {
-        const chat = document.getElementById('chat-messages');
-        if (chat) {
-            setTimeout(() => { chat.scrollTop = chat.scrollHeight; }, 50);
-        }
-    };
-},
-
-    // --- Menu mobile ---
-    initMobileMenu: function () {
-        // Protect against multiple initializations (Blazor may re-render components)
-        if (this._mobileMenuInited) return;
-        this._mobileMenuInited = true;
-
-        // Use event delegation so handlers survive DOM replacements
-        document.addEventListener('click', (e) => {
-            const toggle = e.target.closest && e.target.closest('#menu-toggle');
-            if (toggle) {
-                const menu = document.getElementById('menu');
-                if (menu) menu.classList.toggle('show');
-                return;
-            }
-
-            // Close menu when clicking a link inside it (mobile behaviour)
-            const insideLink = e.target.closest && e.target.closest('#menu a');
-            if (insideLink) {
-                const menu = document.getElementById('menu');
-                if (menu && menu.classList.contains('show')) menu.classList.remove('show');
-            }
-        });
-    },
-
-    initSmoothScroll: function () {
-        document.querySelectorAll('a[href^="#"]').forEach(a => {
-            a.addEventListener('click', e => {
-                const href = a.getAttribute('href');
-                if (href && href.startsWith('#')) {
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    if (target) target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-    },
-
-    /*initFadeScroll: function () {
-        document.querySelectorAll('.fade').forEach(el => {
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = 1;
-                        entry.target.style.transform = 'translateY(0)';
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-            observer.observe(el);
-        });
-    },*/
-    initFadeScroll: function () {
-    // Observe .fade sections to add .in-view and animate timeline-items with slide directions
-    const fadeEls = document.querySelectorAll('.fade');
-    const slideEls = document.querySelectorAll('.timeline-item');
-
-    // Handle generic fade elements: add .in-view when visible
-    const fadeObserver = new IntersectionObserver((entries, obs) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('in-view');
-                obs.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.12 });
-
-    fadeEls.forEach(el => {
-        fadeObserver.observe(el);
-    });
-
-    // Handle timeline items with alternating slide animations
-    slideEls.forEach((el, index) => {
-        const isEven = (index + 1) % 2 === 0;
-        el.classList.add(isEven ? 'slide-left' : 'slide-right');
-
-        const tObserver = new IntersectionObserver((entries, obs) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    if (entry.target.classList.contains('slide-left')) {
-                        entry.target.style.animation = 'slideInLeft 0.8s forwards';
-                    } else {
-                        entry.target.style.animation = 'slideInRight 0.8s forwards';
-                    }
-                    obs.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.08 });
-
-        tObserver.observe(el);
-    });
-},
-
-
-
-    initParallax: function () {
-        window.addEventListener('scroll', () => {
-            const y = window.scrollY;
-            const back = document.querySelector('.layer-back');
-            const mid = document.querySelector('.layer-mid');
-            const front = document.querySelector('.layer-front');
-            if (back) back.style.transform = `translateY(${y * 0.2}px)`;
-            if (mid) mid.style.transform = `translateY(${y * 0.5}px)`;
-            if (front) front.style.transform = `translateY(${y * 0.8}px)`;
-        });
-    },
-
-    initTiltCards: function () {
-        document.querySelectorAll('.tilt').forEach(card => {
-            card.addEventListener('mousemove', e => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left, y = e.clientY - rect.top;
-                const rotateX = ((y - rect.height / 2) / (rect.height / 2)) * 10;
-                const rotateY = ((x - rect.width / 2) / (rect.width / 2)) * 10;
-                const img = card.querySelector('img');
-                if (img) img.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
-            });
-            card.addEventListener('mouseleave', () => {
-                const img = card.querySelector('img');
-                if (img) img.style.transform = 'rotateX(0) rotateY(0) scale(1)';
-            });
-        });
-    },
-
-    initModalProjects: function () {
-        document.addEventListener('click', function(e) {
-            const btn = e.target.closest('.open-modal');
-            if (btn) {
-                e.preventDefault();
-                const modal = document.getElementById('modal-' + btn.dataset.project);
-                if (modal) modal.style.display = "flex";
-            }
-
-            const closeBtn = e.target.closest('.close');
-            if (closeBtn) {
-                const modal = closeBtn.closest('.modal');
-                if (modal) modal.style.display = "none";
-            }
-        });
-
-        window.addEventListener('click', e => {
-            if (e.target.classList.contains('modal')) {
-                e.target.style.display = "none";
-            }
-        });
-    }
+    
 };
 
-// ⚡ Initialisation automatique après que le DOM est chargé
-window.addEventListener("DOMContentLoaded", () => {
-    window.siteInterop.initAll();
-});
+
+
+    // ⚡ Initialisation automatique après que le DOM est chargé
+//window.addEventListener("DOMContentLoaded", () => {
+    //window.siteInterop.initAll();
+//});

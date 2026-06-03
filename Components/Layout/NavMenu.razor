@@ -6,70 +6,35 @@
 @inject PortofolioApi.Services.LocalizationService Localizer
 @rendermode InteractiveServer 
 
-<nav  aria-label="Navigation principale">
-  <div class="logo"><img src="/images/rindra_logo.png" loading="lazy" alt="Rindra logo"/></div>
-  <button id="menu-toggle">☰ Menu</button>
-  <ul id="menu">
-
-  @if (!string.IsNullOrEmpty(_role))
-    {
-      
-        @if (_role.ToUpper() == "ADMINISTRATEUR")
-        {
-          <li><a href="#">Admin Panel</a></li> 
-          <li><a href="/utilisateur">Utilisateur</a></li>
-          <li><a href="/addprojet">Projet</a></li>   
-        }
-        else if (_role.ToUpper() == "UTILISATEUR")
-        {
-            <li><a href="/utilisateur">Utilisateur</a></li>
-            <li><a href="/addprojet">Projet</a></li>
-        }else if(_role.ToUpper()=="ADMIN")
-        {
-          <li><a href="/createuserlogin">Utilisateur</a></li>
-        }
-        <li><a @onclick="Logout" href="#" class="logout-link">Déconnexion</a></li>
-
-    }
-    else
-    {
-      <li><a href="#home">@Localizer.T("Home")</a></li>
-      <li><a href="#about">@Localizer.T("About")</a></li>
-      <li><a href="#projects">@Localizer.T("Projects")</a></li>
-      <li><a href="#skills">@Localizer.T("Skills")</a></li>
-      <li><a href="#experience">@Localizer.T("Experience")</a></li>
-      <li><a href="#contact">@Localizer.T("Contact")</a></li>
-    }
-  </ul>
-    <div style="display:flex;gap:8px;align-items:center">
-      <button id="theme-toggle">☀️</button>
-      <div class="lang-select" style="position:relative;display:flex;align-items:center">
-        <button class="lang-toggle" @onclick="ToggleLangDropdown" aria-haspopup="true" aria-expanded="@_langOpen" style="background:none;border:0;cursor:pointer">
-          <img src="@(Localizer.CurrentLanguage=="en"?"/images/flags/gb.png":"/images/flags/fr.png")" alt="Lang" width="24" height="16" />
-        </button>
-        @if (_langOpen)
-        {
-          <ul class="lang-menu" style="position:absolute;right:0;top:36px;
-           list-style:none;margin:0;padding:6px;
-           background:var(--surface,#fff);
-           color:var(--text,#111);
-           box-shadow:0 6px 18px rgba(0,0,0,0.12);
-           border-radius:6px;">
-            <li style="padding:6px;cursor:pointer;display:flex;gap:8px;align-items:center;
-                  color:inherit;" @onclick='() => SelectLangAndClose("fr")'>
-              <img src="/images/flags/fr.png" alt="Français" width="24" height="16" />
-              <span>Français</span>
-            </li>
-            <li style="padding:6px;cursor:pointer;display:flex;gap:8px;align-items:center;
-                  color:inherit;" @onclick='() => SelectLangAndClose("en")'>
-              <img src="/images/flags/gb.png" alt="English" width="24" height="16" />
-              <span>English</span>
-            </li>
-          </ul>
-        }
-      </div>
+<header>
+    <div class="container nav-flex">
+        <div class="logo"><span><img src="/images/rindra_logo.png" loading="lazy" alt="Rindra logo"/></span></div>
+        <div class="controls">
+            <button class="lang-toggle" id="langToggle"  @onclick="ToggleLanguage"><i class="fas fa-globe"></i></button>
+            <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+        </div>
+       
+        <div class="nav-links">
+            <a href="#accueil">@Localizer.T("Home")</a>
+            <a href="#about">@Localizer.T("About")</a>
+            <a href="#projets">@Localizer.T("Projects")</a>
+            <a href="#experience">@Localizer.T("Experience")</a>
+            <a href="#services">@Localizer.T("Services")</a>
+            <a href="#contact">@Localizer.T("Contact")</a>
+            <a href="#" class="btn-cv" id="downloadCVBtn"><i class="fas fa-download"></i> @Localizer.T("DownloadCV")</a>
+        </div>
     </div>
-  </nav>
+    <div class="mobile-nav" id="mobileNav">
+        <a href="#accueil">@Localizer.T("Home")</a>
+        <a href="#about">@Localizer.T("About")</a>
+        <a href="#projets">@Localizer.T("Projects")</a>
+        <a href="#experience">@Localizer.T("Experience")</a>
+        <a href="#services">@Localizer.T("Services")</a>
+        <a href="#contact">@Localizer.T("Contact")</a>
+        <a href="#" class="btn-cv-mobile" id="downloadCVBtnMobile"><i class="fas fa-download"></i> @Localizer.T("DownloadCV")</a>
+    </div>
+</header>
 
 
 
@@ -118,6 +83,12 @@ private async Task SelectLangAndClose(string lang)
 {
   _langOpen = false;
   await ChangeLangAsync(lang);
+}
+
+private async Task ToggleLanguage()
+{
+    await SelectLangAndClose(
+        Localizer.CurrentLanguage == "fr" ? "en" : "fr");
 }
 
 

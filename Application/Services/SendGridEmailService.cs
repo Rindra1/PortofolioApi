@@ -1,6 +1,8 @@
 using SendGrid;
 using SendGrid.Helpers.Mail;
 using Microsoft.Extensions.Options;
+using System.Net;
+using System.Net.Mail;
 
 namespace PortofolioApi.Application.Services
 {
@@ -37,7 +39,7 @@ namespace PortofolioApi.Application.Services
     }*/
         public async Task SendEmailAsync(string visitorEmail, string visitorName, string subject, string body)
         {
-            Console.WriteLine("Démarrage de l'envoi d'email via SendGrid...");
+            /*Console.WriteLine("Démarrage de l'envoi d'email via SendGrid...");
 
             var apiKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
             Console.WriteLine($"SENDGRID_API_KEY trouvé ? {(!string.IsNullOrEmpty(apiKey))}");
@@ -79,8 +81,57 @@ namespace PortofolioApi.Application.Services
             {
                 var text = await responseToVisitor.Body.ReadAsStringAsync();
                 throw new Exception($"Erreur SendGrid (vers visiteur) : {text}");
-            }
+            }*/
 
+var smtp = new SmtpClient("smtp.gmail.com", 587)
+{
+    Credentials = new NetworkCredential(
+        "razafaina855@gmail.com",
+        "vntp yowr odte ulzu"
+    ),
+    EnableSsl = true
+};
+
+// 1️⃣ Mail pour toi
+var mailToYou = new MailMessage
+{
+    From = new MailAddress("razafaina855@gmail.com"),
+    Subject = "Nouveau message portfolio",
+    Body = $@"
+Nom: {visitorName}
+Email: {visitorEmail}
+
+Message:
+{body}"
+};
+
+mailToYou.ReplyToList.Add(visitorEmail);
+mailToYou.To.Add("razafaina855@gmail.com");
+
+// 2️⃣ Mail de confirmation pour le visiteur
+var mailToVisitor = new MailMessage
+{
+    From = new MailAddress("razafaina855@gmail.com"),
+    Subject = "Message bien reçu 👍",
+    Body = $@"
+Bonjour {visitorName},
+
+J’ai bien reçu votre message.
+Je vous répondrai dès que possible.
+
+Merci pour votre intérêt !
+
+Cordialement,
+Rindra Niaina RAZAFIMANDANONA"
+
+
+};
+
+mailToVisitor.To.Add(visitorEmail);
+
+// envoi
+await smtp.SendMailAsync(mailToYou);
+await smtp.SendMailAsync(mailToVisitor);
             Console.WriteLine("Emails envoyés avec succès !");
         }
 
