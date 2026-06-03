@@ -83,13 +83,16 @@ namespace PortofolioApi.Application.Services
                 throw new Exception($"Erreur SendGrid (vers visiteur) : {text}");
             }*/
 
-            var smtp = new SmtpClient("smtp.gmail.com", 587)
+            using var smtp = new SmtpClient("smtp.gmail.com", 587)
             {
                 Credentials = new NetworkCredential(
                     Environment.GetEnvironmentVariable("SENDGRID_SENDEREMAIL"),
                     Environment.GetEnvironmentVariable("SENDMAIL_KEY")
                 ),
-                EnableSsl = true
+                EnableSsl = true,
+                Timeout = 15000,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false
             };
 
             var mailToYou = new MailMessage
