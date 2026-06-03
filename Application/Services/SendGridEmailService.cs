@@ -83,56 +83,53 @@ namespace PortofolioApi.Application.Services
                 throw new Exception($"Erreur SendGrid (vers visiteur) : {text}");
             }*/
 
-var smtp = new SmtpClient("smtp.gmail.com", 587)
-{
-    Credentials = new NetworkCredential(
-        "razafaina855@gmail.com",
-        "vntp yowr odte ulzu"
-    ),
-    EnableSsl = true
-};
+            var smtp = new SmtpClient("smtp.gmail.com", 587)
+            {
+                Credentials = new NetworkCredential(
+                    Environment.GetEnvironmentVariable("SENDGRID_SENDEREMAIL"),
+                    Environment.GetEnvironmentVariable("SENDMAIL_KEY")
+                ),
+                EnableSsl = true
+            };
 
-// 1️⃣ Mail pour toi
-var mailToYou = new MailMessage
-{
-    From = new MailAddress("razafaina855@gmail.com"),
-    Subject = "Nouveau message portfolio",
-    Body = $@"
-Nom: {visitorName}
-Email: {visitorEmail}
+            var mailToYou = new MailMessage
+            {
+                From = new MailAddress(Environment.GetEnvironmentVariable("SENDGRID_SENDEREMAIL")),
+                Subject = "Nouveau message portfolio",
+                Body = $@"
+                    Nom: {visitorName}
 
-Message:
-{body}"
-};
+                    Email: {visitorEmail}
 
-mailToYou.ReplyToList.Add(visitorEmail);
-mailToYou.To.Add("razafaina855@gmail.com");
+                    Message:
+                    {body}"
+            };
 
-// 2️⃣ Mail de confirmation pour le visiteur
-var mailToVisitor = new MailMessage
-{
-    From = new MailAddress("razafaina855@gmail.com"),
-    Subject = "Message bien reçu 👍",
-    Body = $@"
-Bonjour {visitorName},
+            mailToYou.ReplyToList.Add(visitorEmail);
+            mailToYou.To.Add(Environment.GetEnvironmentVariable("SENDGRID_SENDEREMAIL"));
 
-J’ai bien reçu votre message.
-Je vous répondrai dès que possible.
+            // Mail de confirmation pour le visiteur
+            var mailToVisitor = new MailMessage
+            {
+                From = new MailAddress(Environment.GetEnvironmentVariable("SENDGRID_SENDEREMAIL"),Environment.GetEnvironmentVariable("SENDGRID_SENDERNAME")),
+                Subject = "Message bien reçu 👍",
+                Body = $@"
+                    Bonjour {visitorName},
 
-Merci pour votre intérêt !
+                    J’ai bien reçu votre message.
+                    Je vous répondrai dès que possible.
 
-Cordialement,
-Rindra Niaina RAZAFIMANDANONA"
+                    Merci pour votre intérêt !
 
+                    Cordialement,
+                    Rindra Niaina RAZAFIMANDANONA"
+            };
 
-};
+            mailToVisitor.To.Add(visitorEmail);
 
-mailToVisitor.To.Add(visitorEmail);
-
-// envoi
-await smtp.SendMailAsync(mailToYou);
-await smtp.SendMailAsync(mailToVisitor);
-            Console.WriteLine("Emails envoyés avec succès !");
+            // envoi
+            await smtp.SendMailAsync(mailToYou);
+            await smtp.SendMailAsync(mailToVisitor);
         }
 
     }

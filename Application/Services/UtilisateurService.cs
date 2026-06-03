@@ -23,8 +23,12 @@ public class UtilisateurService
                 new UtilisateurDTO{
                     Nom = utilisateur.Nom,
                     Prenom = utilisateur.Prenom,
+                    resume = utilisateur.resume,
                     APropos = utilisateur.APropos,
                     UserImage = utilisateur.UserImage,
+                    Titre = utilisateur.Titre,
+                    StackMaitrise = utilisateur.StackMaitrise,
+                    StackTechnique = utilisateur.StackTechnique,
                     Contacts = utilisateur.Contacts.Select(
                         c=>new ContactDTO{
                             TypeContact = c.TypeContact,

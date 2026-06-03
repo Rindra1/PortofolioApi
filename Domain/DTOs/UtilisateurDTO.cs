@@ -7,6 +7,9 @@ public class UtilisateurDTO
     public string Prenom { get; set; }
     public string APropos { get; set; }
     public string UserImage { get; set; }
+    public string? Titre { get; set; }
+    public string? StackMaitrise { get; set; }
+    public string? StackTechnique { get; set; }
     public List<ProjetDTO>? Projets { get; set; } = new List<ProjetDTO>();
     public List<ContactDTO>? Contacts { get; set; } = new List<ContactDTO>();
     public List<ExperienceDTO>? Experiences { get; set; } = new List<ExperienceDTO>();

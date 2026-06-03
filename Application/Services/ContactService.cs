@@ -20,6 +20,7 @@ public class ContactService
         foreach(var contact in contacts)
         {
             contactDto.Add(new ContactDTO{
+                IdContact = contact.IdContact,
                 TypeContact = contact.TypeContact,
                 AdresseContact = contact.AdresseContact
             });
@@ -31,6 +32,7 @@ public class ContactService
     {
         var contact = _repository.GetById(idcontact);
         ContactDTO contactDto = new ContactDTO{
+            IdContact = contact.IdContact,
             TypeContact = contact.TypeContact,
             AdresseContact = contact.AdresseContact
         };
@@ -56,6 +58,7 @@ public class ContactService
     {
         Contact contact = new Contact
         {
+            IdContact = contactDTO.IdContact ?? 0,
             TypeContact = contactDTO.TypeContact,
             AdresseContact = contactDTO.AdresseContact,
             Utilisateur = new Utilisateur {

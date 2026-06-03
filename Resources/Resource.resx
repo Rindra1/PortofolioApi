@@ -153,11 +153,14 @@
   <data name="ViewDetails" xml:space="preserve">
     <value>Voir détails</value>
   </data>
+  <data name="Title" xml:space="preserve">
+    <value>Développeur Full Stack .NET</value>
+  </data>
   <data name="Resumer" xml:space="preserve">
-    <value>Développeur logiciel Full-Stack | .NET (WinForms, Web &amp; API)</value>
+    <value>Développeur Full Stack .NET avec une solide expérience dans le développement d'applications web et métier. Spécialisé en C#, ASP.NET Core, Blazor et SQL Server, je conçois des solutions robustes, évolutives et performantes. J'interviens sur l'ensemble du cycle de développement : analyse des besoins, conception, développement, intégration d'API, optimisation des performances et déploiement.</value>
   </data>
   <data name="APropos" xml:space="preserve">
-    <value>Développeur logiciel passionné et polyvalent, je crée des applications desktop (WinForms), web (ASP.NET, Blazor, WCF) et des API RESTful, utilisant C#, VB.NET, SQL Server et MySQL. Curieux et rigoureux, j’intègre des technologies modernes comme chatbots IA (Hugging Face) et envoi d’e-mails automatisé (Twilio SendGrid) pour transformer des idées en solutions concrètes, fiables et interactives.</value>
+    <value>Développeur Full Stack .NET passionné, spécialisé dans la création d'applications web et métier modernes avec C#, ASP.NET Core, Blazor et SQL Server. J'aime concevoir des solutions robustes, performantes et intuitives, en accordant une attention particulière à la qualité du code, à l'expérience utilisateur et à l'optimisation des performances. Toujours en veille technologique, j'explore des domaines tels que l'intelligence artificielle, l'automatisation et les architectures modernes pour développer des applications innovantes répondant à des besoins réels.</value>
   </data>
   <data name="Experience.1.Titre" xml:space="preserve">
     <value>Développeur VB.NET &amp; C# – Tanyah Consulting</value>
@@ -218,20 +221,26 @@
   </data>
 
   <data name="Projet.1.Titre" xml:space="preserve">
-    <value>Portfolio Full-Stack .NET Interactif avec IA, Emailing et API Documentée</value>
+    <value>Portfolio Développeur Full Stack .NET</value>
   </data>
   <data name="Projet.1.Resumer" xml:space="preserve">
-    <value>Application web moderne développée avec .NET 8, C#, Blazor, Entity Framework Core, SQLite et API RESTful, offrant une interface fluide, un chatbot intelligent (Hugging Face) et un système d’envoi d’e-mails via Twilio SendGrid.<br/>
-    Le projet met en avant mes compétences en développement full-stack, intégration d’IA et conception d’API documentée avec Swagger.</value>
+    <value>Développement complet d’un site portfolio responsive destiné à valoriser mon profil de développeur Full Stack .NET. Le projet inclut une interface moderne, la gestion multilingue (Français/Anglais), un formulaire de contact dynamique, une administration des contenus et diverses optimisations SEO afin d’améliorer la visibilité sur les moteurs de recherche.</value>
   </data>
   <data name="Projet.1.Detail" xml:space="preserve">
-    <value>Ce portfolio propose une expérience utilisateur moderne et interactive, alliant performance, esthétique et fonctionnalités avancées :\n
-    - Backend : API RESTful développée avec .NET 8, connectée à une base SQLite via Entity Framework Core.\n
-    - Frontend : interface Blazor responsive et animée, affichant mes projets avec images, descriptions et liens externes.\n
-    - Chatbot intégré : assistant conversationnel basé sur Hugging Face, capable de présenter mes compétences et réalisations.\n
-    - Emailing : envoi d’e-mails automatisé et fiable grâce à Twilio SendGrid.\n
-    - Documentation d’API : intégration de Swagger UI pour tester et explorer les endpoints directement depuis le navigateur.\n
-    - Design &amp; accessibilité : structure responsive, ouverture des liens externes (LinkedIn, GitHub) dans de nouveaux onglets, et compatibilité mobile/desktop.</value>
+    <value>Conception et développement d’un portfolio personnel moderne permettant de présenter mes compétences, expériences professionnelles, projets réalisés et moyens de contact. L’application est développée avec Blazor et met l’accent sur les performances, l’expérience utilisateur et le référencement SEO.</value>
+  </data>
+
+  <data name="Projet.1.Fonctionnalite" xml:space="preserve">
+    <value>- Présentation du profil et des compétences techniques.\n
+- Affichage des expériences professionnelles.\n
+- Gestion et présentation des projets réalisés.\n
+- Support multilingue (Français / Anglais).\n
+- Formulaire de contact avec envoi d’e-mails.\n
+- Interface responsive adaptée aux mobiles et ordinateurs.\n
+- Optimisation SEO (balises meta, Open Graph, Sitemap).\n
+- Changement de thème clair/sombre.\n
+- Téléchargement du CV.\n
+- Animations et expérience utilisateur moderne.</value>
   </data>
 
   <data name="Projet.2.Titre" xml:space="preserve">
@@ -281,21 +290,19 @@
     <value>Développeur Front-End .NET – Plateforme de Facturation Électronique EN16931</value>
   </data>
   <data name="Projet.5.Resumer" xml:space="preserve">
-    <value>Participation au développement et à la maintenance d’une plateforme de facturation électronique conforme à la norme européenne EN16931 pour un client basé en France. Développement d’interfaces modernes et responsives avec Blazor et MudBlazor, intégration d’API REST en C#, gestion des règles métier liées aux factures électroniques, amélioration des performances et optimisation de l’expérience utilisateur.</value>
+    <value>Développement d’une plateforme de facturation électronique EN16931 avec Blazor et MudBlazor, intégration d’API REST en C#, et gestion des règles métier liées au cycle de vie des factures pour un client en France.</value>
   </data>
   <data name="Projet.5.Detail" xml:space="preserve">
-    <value>- Développement d’interfaces utilisateur avec Blazor et MudBlazor.\n
-    - Intégration et consommation d’API REST en C# /.NET\n
-    - Gestion des workflows de facturation électronique.\n
-    - Implémentation des règles métier conformes à la norme EN16931.\n
-    - Création de composants réutilisables et maintenance du code existant\n
-    - Optimisation des performances et amélioration de l’UX\n
-    - Correction de bugs et évolution fonctionnelle de la plateforme\n
-    - Collaboration avec l’équipe back-end et les équipes métier\n
-    - Utilisation de Git pour le versioning et le suivi des développements\n
-    - Participation aux phases de tests et validation des fonctionnalités</value>
+    <value>Contribution au développement d’une plateforme de facturation électronique conforme à la norme européenne EN16931 destinée à un client basé en France. Le projet vise à garantir la conformité réglementaire des factures tout en offrant une interface utilisateur moderne, intuitive et performante. Mon rôle consistait principalement à concevoir et développer des interfaces web dynamiques avec Blazor et MudBlazor, tout en assurant l’intégration avec les services backend via des API REST en C#. J’ai également participé à la mise en œuvre et à la gestion des règles métier liées au traitement des factures électroniques.</value>
   </data>
-
+  <data name="Projet.5.Fonctionnalite" xml:space="preserve">
+    <value>- Création et gestion de factures électroniques conformes EN16931.\n
+- Interfaces web modernes et responsives (Blazor + MudBlazor)\n
+- Gestion du cycle de vie des factures (brouillon, validée, envoyée, rejetée)\n
+- Intégration d’API REST en C#\n
+- Validation des règles métier de facturation\n
+- Optimisation des performances et de l’expérience utilisateur</value>
+  </data>
   <data name="DownloadCV" xml:space="preserve">
     <value>Télécharger CV</value>
   </data>

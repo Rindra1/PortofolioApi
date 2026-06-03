@@ -94,11 +94,14 @@
   <data name="ViewDetails" xml:space="preserve">
     <value>See details</value>
   </data>
+  <data name="Title" xml:space="preserve">
+    <value>Full-Stack .NET Developer</value>
+  </data>
   <data name="Resumer" xml:space="preserve">
-    <value>Full-Stack Software Developer | .NET (WinForms, Web &amp; API)</value>
+    <value>Full-stack .NET developer with extensive experience in developing web and business applications. Specialising in C#, ASP.NET Core, Blazor and SQL Server, I design robust, scalable and high-performance solutions. I am involved in the entire development lifecycle: requirements analysis, design, development, API integration, performance optimisation and deployment.</value>
   </data>
   <data name="APropos" xml:space="preserve">
-    <value>As a passionate and versatile software developer, I create desktop applications (WinForms), web applications (ASP.NET, Blazor, WCF), and RESTful APIs using C#, VB.NET, SQL Server, and MySQL. Curious and meticulous, I integrate modern technologies such as AI chatbots (Hugging Face) and automated email sending (Twilio SendGrid) to transform ideas into concrete, reliable, and interactive solutions.</value>
+    <value>A passionate .NET full-stack developer, specialising in building modern web and business applications using C#, ASP.NET Core, Blazor and SQL Server. I enjoy designing robust, high-performance and intuitive solutions, paying particular attention to code quality, user experience and performance optimisation. Always keeping up with the latest technological developments, I explore areas such as artificial intelligence, automation and modern architectures to develop innovative applications that meet real-world needs.</value>
   </data>
   <data name="Experience.1.Titre" xml:space="preserve">
     <value>VB.NET &amp; C# Developer – Tanyah Consulting</value>
@@ -162,20 +165,25 @@
   </data>
 
 <data name="Projet.1.Titre" xml:space="preserve">
-    <value>Interactive Full-Stack .NET Portfolio with AI, Emailing, and Documented API</value>
+    <value>Full-Stack .NET Developer Portfolio</value>
   </data>
   <data name="Projet.1.Resumer" xml:space="preserve">
-    <value>A modern web application developed with .NET 8, C#, Blazor, Entity Framework Core, SQLite, and a RESTful API, offering a fluid interface, an intelligent chatbot (Hugging Face), and an email sending system via Twilio SendGrid.<br/>
-    This project showcases my skills in full-stack development, AI integration, and documented API design using Swagger.</value>
+    <value>Full development of a responsive portfolio website designed to showcase my profile as a .NET Full Stack developer. The project includes a modern interface, multilingual support (French/English), a dynamic contact form, a content management system, and various SEO optimisations to improve visibility on search engines.</value>
   </data>
   <data name="Projet.1.Detail" xml:space="preserve">
-    <value>This portfolio offers a modern and interactive user experience, combining performance, aesthetics, and advanced features:\n
-- Backend: RESTful API developed with .NET 8, connected to an SQLite database via Entity Framework Core.\n
-- Frontend: Responsive and animated Blazor interface, displaying my projects with images, descriptions, and external links.\n
-- Integrated chatbot: Conversational assistant based on Hugging Face, capable of showcasing my skills and achievements.\n
-- Emailing: Automated and reliable email sending using Twilio SendGrid.\n
-- API documentation: Swagger UI integration for testing and exploring endpoints directly from the browser.\n
-- Design &amp; accessibility: Responsive structure, opening of external links (LinkedIn, GitHub) in new tabs, and mobile/desktop compatibility.</value>
+    <value>Design and development of a modern personal portfolio to showcase my skills, professional experience, completed projects and contact details. The application is built using Blazor and focuses on performance, user experience and SEO.</value>
+  </data>
+  <data name="Projet.1.Fonctionnalite" xml:space="preserve">
+    <value>- Presentation of profile and technical skills.\n
+- Display of professional experience.\n
+- Management and presentation of completed projects.\n
+- Multilingual support (French / English).\n
+- Contact form with email sending functionality.\n
+- Responsive interface optimised for mobile devices and computers.\n
+- SEO optimisation (meta tags, Open Graph, Sitemap).\n
+- Light/dark theme switching.\n
+- CV upload.\n
+- Animations and a modern user experience.</value>
   </data>
 
 <data name="Projet.2.Titre" xml:space="preserve">
@@ -225,19 +233,18 @@
     <value>.NET Front-End Developer – EN16931 Electronic Billing Platform</value>
   </data>
   <data name="Projet.5.Resumer" xml:space="preserve">
-    <value>Participation in the development and maintenance of an electronic invoicing platform compliant with the European standard EN16931 for a client based in France. Development of modern and responsive interfaces with Blazor and MudBlazor, integration of REST APIs in C#, management of business rules related to electronic invoices, performance improvement and optimization of the user experience.</value>
+    <value>Development of an EN16931-compliant electronic invoicing platform using Blazor and MudBlazor, integration of REST APIs in C#, and management of business rules relating to the invoice lifecycle for a client in France.</value>
   </data>
   <data name="Projet.5.Detail" xml:space="preserve">
-    <value>- Developing user interfaces with Blazor and MudBlazor.\n
-- Integrating and consuming REST APIs in C#/.NET.\n
-- Managing electronic invoicing workflows.\n
-- Implementing business rules compliant with the EN16931 standard.\n
-- Creating reusable components and maintaining existing code.\n
-- Optimizing performance and improving UX.\n
-- Fixing bugs and enhancing the platform's functionality.\n
-- Collaborating with the back-end and business teams.\n
-- Using Git for version control and development tracking.\n
-- Participating in testing and validating features.</value>
+    <value>Contributed to the development of an electronic invoicing platform compliant with the European standard EN16931 for a client based in France. The project aims to ensure that invoices comply with regulations whilst offering a modern, intuitive and high-performance user interface. My role mainly involved designing and developing dynamic web interfaces using Blazor and MudBlazor, whilst ensuring integration with backend services via REST APIs in C#. I also helped implement and manage the business rules relating to the processing of electronic invoices.</value>
+  </data>
+  <data name="Projet.5.Fonctionnalite" xml:space="preserve">
+    <value>- Creation and management of electronic invoices compliant with EN 16931.\n
+- Modern, responsive web interfaces (Blazor + MudBlazor)\n
+- Invoice lifecycle management (draft, approved, sent, rejected)\n
+- REST API integration in C#\n
+- Validation of invoicing business rules\n
+- Optimization of performance and user experience</value>
   </data>
   <data name="DownloadCV" xml:space="preserve">
     <value>Download CV</value>

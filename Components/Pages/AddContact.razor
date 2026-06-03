@@ -1,0 +1,43 @@
+@page "/addcontact"
+@rendermode InteractiveServer
+@inherits AddContactBase
+
+<section>
+  <h2>@(editing ? "Modifier un contact" : "Ajouter un contact")</h2>
+  <div class="project-container">
+    <form class="project-form" onsubmit="return false;">
+      <input type="text" @bind="contact.TypeContact" placeholder="Type (Email, Phone...)" required />
+      <input type="text" @bind="contact.AdresseContact" placeholder="Adresse (ex: email ou url)" required />
+      <input type="text" @bind="contact.Utilisateur.Nom" placeholder="Nom utilisateur (optionnel)" />
+      <input type="text" @bind="contact.Utilisateur.Prenom" placeholder="Prénom utilisateur (optionnel)" />
+      <div style="margin-top:0.5rem;">
+        <button @onclick="Save" class="btn-details">@(editing ? "Sauvegarder" : "Ajouter")</button>
+        @if (editing)
+        {
+            <button class="btn-outline" @onclick="CancelEdit" style="margin-left:0.5rem;">Annuler</button>
+        }
+      </div>
+    </form>
+  </div>
+
+  <h3 style="margin-top:1rem;">Contacts existants</h3>
+  <table class="table">
+    <thead><tr><th>Type</th><th>Adresse</th><th>Utilisateur</th><th>Actions</th></tr></thead>
+    <tbody>
+      @foreach(var c in contacts)
+      {
+        <tr>
+          <td>@c.TypeContact</td>
+          <td>@c.AdresseContact</td>
+          <td>@(c.Utilisateur?.Nom ?? "") @(c.Utilisateur?.Prenom ?? "")</td>
+          <td>
+            <button class="btn-details" @onclick="() => Edit(c)">Modifier</button>
+            <button class="btn-outline" @onclick="() => Delete(c.IdContact ?? 0)" style="margin-left:0.5rem;">Supprimer</button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+
+  <h4>@message</h4>
+</section>

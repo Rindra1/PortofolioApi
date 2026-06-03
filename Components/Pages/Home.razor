@@ -1,19 +1,27 @@
 ﻿@page "/"
+
 @rendermode InteractiveServer
+
 @inject HttpClient Http
+
 @inject IJSRuntime JS
+
 @inject PortofolioApi.Services.LocalizationService Localizer
+
 @using Microsoft.EntityFrameworkCore.Metadata.Conventions
+
 @using PortofolioApi.Domain.DTOs
+
 @using Microsoft.AspNetCore.Components
+
 <main>
     <section id="accueil" class="hero-section">
         <div class="container hero">
             <div class="hero-content" data-aos="fade-right">
                 <div class="dispo-badge"><span class="green-circle"></span> @Localizer.T("Available")</div>
                 <div class="hero-name">@portfolio.Nom <span>@portfolio.Prenom</span></div>
-                <div class="hero-title">Développeur .NET Fullstack</div>
-                <p class="hero-description">Passionné par le développement Full-Stack .NET, je crée des applications performantes et intuitives — de l'API REST au front Blazor, centrées sur l'expérience utilisateur.</p>
+                <div class="hero-title">@portfolio.Titre</div>
+                <p class="hero-description">@portfolio.resume </p>
                 <div class="hero-buttons">
                     <a href="#projets" class="btn-primary"><i class="fas fa-arrow-right"></i> @Localizer.T("ViewProjects")</a>
                     <a href="#contact" class="btn-outline"><i class="fas fa-envelope"></i> @Localizer.T("ContactMe")</a>
@@ -27,43 +35,43 @@
                 <div class="hero-stack-section">
                     <div class="hero-stack-title"><i class="fas fa-layer-group"></i> @Localizer.T("MasteredStack")</div>
                     <div class="stack-items">
-                        <span class="stack-item">.NET 10</span><span class="stack-item">C#</span><span class="stack-item">Blazor</span>
-                        <span class="stack-item">SQL Server</span><span class="stack-item">VB.NET</span><span class="stack-item">ASP.NET Core</span>
-                        <span class="stack-item">Entity Framework</span><span class="stack-item">REST API</span>
+                        @if(!string.IsNullOrEmpty(portfolio.StackMaitrise))
+                        {
+                            @foreach(var tech in portfolio.StackMaitrise.Split(','))
+                            {
+                                <span class="stack-item">@tech</span>    
+                            }
+                        }
                     </div>
                 </div>
             </div>
             <div class="hero-image-container" data-aos="fade-left">
                 <div class="profile-circle">
-                    <img src="images/@portfolio.UserImage" alt="@portfolio.Nom @portfolio.Prenom"  loading="lazy"/>
+                    <img src="images/@portfolio.UserImage" alt="@portfolio.Nom @portfolio.Prenom" loading="lazy"/>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- À PROPOS -->
+
     <section id="about">
         <div class="container">
             <h2 class="section-title">@Localizer.T("About")</h2>
             <div class="about-wrapper">
                 <div class="about-text" data-aos="fade-up">
-                    <p>Passionné par le développement logiciel et l'innovation technologique, je crée des applications <strong>desktop, web et cloud</strong> robustes avec l'écosystème .NET. De la conception de bases de données à l'interface utilisateur, en passant par les <strong>APIs RESTful</strong> et l'intégration de services tiers.</p>
-                    <p style="margin-top:1rem">Je mets un point d'honneur à produire un code maintenable, sécurisé et orienté performance. Expérience aussi bien en freelance qu'en environnement agile.</p>
-                    <p style="margin-top:1rem"><strong>🎯 Objectif :</strong> Créer des solutions innovantes qui répondent parfaitement aux besoins des utilisateurs tout en assurant une expérience optimale.</p>
+                    <p>@portfolio.APropos</p>
                 </div>
                 <div class="skills-box" data-aos="fade-up" data-aos-delay="150">
                     <h3><i class="fas fa-code"></i> @Localizer.T("TechnicalStack")</h3>
                     <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top:1rem;">
-                        <span class="tech-badge">.NET / C#</span><span class="tech-badge">ASP.NET Core</span><span class="tech-badge">Blazor Server</span>
-                        <span class="tech-badge">VB.NET</span><span class="tech-badge">WinForms</span><span class="tech-badge">Entity Framework</span>
-                        <span class="tech-badge">SQL Server</span><span class="tech-badge">SQLite</span><span class="tech-badge">REST API</span>
-                        <span class="tech-badge">JWT Auth</span><span class="tech-badge">Docker</span><span class="tech-badge">Tailwind CSS</span>
-                    </div>
-                    <div style="margin-top:1.8rem">
-                        <div style="margin-bottom: 1rem;"><strong>C# / .NET</strong><div class="progress-bar"><div class="progress-fill" style="width:95%"></div></div></div>
-                        <div style="margin-bottom: 1rem;"><strong>SQL Server</strong><div class="progress-bar"><div class="progress-fill" style="width:88%"></div></div></div>
-                        <div style="margin-bottom: 1rem;"><strong>Blazor</strong><div class="progress-bar"><div class="progress-fill" style="width:80%"></div></div></div>
-                        <div><strong>VB.NET</strong><div class="progress-bar"><div class="progress-fill" style="width:90%"></div></div></div>
+                        @if(!string.IsNullOrEmpty(portfolio.StackTechnique))
+                        {
+                            @foreach(var tech in portfolio.StackTechnique.Split(','))
+                            {
+                                <span class="tech-badge">@tech</span>    
+                            }
+                        }
                     </div>
                 </div>
             </div>
@@ -71,6 +79,7 @@
     </section>
 
     <!-- PROJETS -->
+
     <section id="projets">
         <div class="container">
             <h2 class="section-title">@Localizer.T("CompletedProjects")</h2>
@@ -79,23 +88,21 @@
                 {
                     projet++;
                     <div class="card" data-aos="zoom-in">
-                        <img src="/images/@proj.ImageProjet" alt="@proj.TitreProjet"  loading="lazy" class="project-img">
+                        <img src="/images/@(proj.ImageProjet)" alt="@proj.TitreProjet" loading="lazy" class="project-img">
                         <div class="card-content">
                             <h3>@proj.TitreProjet</h3>
                             <p>@proj.ResumerProjet</p>
-                            <div style="display:flex; gap:0.5rem; margin:0.5rem 0;">
-                                <span class="tech-badge" style="font-size:0.7rem;">Blazor</span>
-                                <span class="tech-badge" style="font-size:0.7rem;">.NET 10</span>
-                                <span class="tech-badge" style="font-size:0.7rem;">JWT</span>
-                            </div>
                         </div>
                         <div class="card-actions">
                             <button class="btn-details" onclick="openModal('@projet')">
                                 <i class="fas fa-info-circle"></i> Détails
                             </button>
-                            <a href="#" class="btn-github">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
+                            @if(!string.IsNullOrEmpty(proj.Lien))
+                            {
+                                <a href="@proj.Lien" class="btn-github" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-github"></i> GitHub
+                                </a>
+                            }
                         </div>
                     </div>
                 }
@@ -103,30 +110,69 @@
         </div>
     </section>
 
-<!-- MODALES PROJETS AVEC CARROUSEL -->
-                @foreach(var proj in portfolio.Projets)
-                {
-                    projetdetail++;
-                    <div id="modal-@projetdetail" class="modal">
-                        <div class="modal-content">
-                            <span class="modal-close" onclick="closeModal('@projetdetail')">&times;</span>
-                            <h2 class="modal-title">@proj.TitreProjet</h2>
-                            <div class="modal-gallery" id="gallery@projetdetail">
-                                <img id="mainImage@projetdetail" class="main-image" src="/images/@proj.ImageProjet" alt="@proj.TitreProjet">
-                                <div class="thumbnail-container">
-                                    <img class="thumbnail" src="/images/@proj.ImageProjet" alt="@proj.TitreProjet" data-img="/images/@proj.ImageProjet">
-                                    <img class="thumbnail" src="https://placehold.co/200x200/6366f1/white?text=API+Swagger" data-img="https://placehold.co/800x500/6366f1/white?text=API+Swagger+Documentation" alt="Vue 2">
-                                    <img class="thumbnail" src="https://placehold.co/200x200/8b5cf6/white?text=Chatbot+IA" data-img="https://placehold.co/800x500/8b5cf6/white?text=Chatbot+IA+Integration" alt="Vue 3">
-                                </div>
-                            </div>
-                            <p class="modal-description"><strong>@Localizer.T("FullDescription") :</strong> Une application complète de gestion de portefeuille financier développée avec Blazor Server. L'application permet aux utilisateurs de suivre leurs revenus, dépenses et investissements. Elle intègre un chatbot IA pour l'assistance utilisateur et offre une expérience fluide avec une API REST sécurisée.</p>
-                            <p class="modal-description"><strong>Fonctionnalités :</strong> Authentification JWT, Dashboard interactif, Graphiques de performance, Export de données, Notifications par email.</p>
-                            <div class="modal-techs"><span class="tech-badge">Blazor Server</span><span class="tech-badge">.NET 10</span><span class="tech-badge">SQL Server</span><span class="tech-badge">Entity Framework</span><span class="tech-badge">JWT Auth</span><span class="tech-badge">SignalR</span></div>
-                            <div class="modal-links"><a href="#" class="btn-primary" style="padding:0.5rem 1.2rem;"><i class="fab fa-github"></i> Voir GitHub</a><a href="#" class="btn-outline" style="padding:0.5rem 1.2rem;"><i class="fas fa-external-link-alt"></i> Démo live</a></div>
-                        </div>
+    <!-- MODALES PROJETS AVEC CARROUSEL -->
+
+    @foreach(var proj in portfolio.Projets)
+    {
+        projetdetail++;
+        <div id="modal-@projetdetail" class="modal">
+            <div class="modal-content">
+                <span class="modal-close" onclick="closeModal('@projetdetail')">&times;</span>
+                <h2 class="modal-title">@proj.TitreProjet</h2>
+                <div class="modal-gallery" id="gallery@projetdetail">
+                    <img id="mainImage@projetdetail" class="main-image" src="/images/@(proj.ImageProjet)" alt="@proj.TitreProjet">
+                    <div class="thumbnail-container">
+                        @if(!string.IsNullOrEmpty(proj.ImageProjet))
+                        {
+                            <img class="thumbnail" src="/images/@(proj.ImageProjet)" alt="@proj.TitreProjet" data-img="/images/@(proj.ImageProjet)">
+                        }
+
+                        @if(!string.IsNullOrEmpty(proj.ImageProjet1))
+                        {
+                            <img class="thumbnail" src="/images/@(proj.ImageProjet1)" alt="@proj.TitreProjet" data-img="/images/@(proj.ImageProjet1)">
+                        }
+
+                        @if(!string.IsNullOrEmpty(proj.ImageProjet2))
+                        {
+                            <img class="thumbnail" src="/images/@(proj.ImageProjet2)" alt="@proj.TitreProjet" data-img="/images/@(proj.ImageProjet2)">
+                        }
                     </div>
-                }
-    
+                </div>
+                <p class="modal-description">
+                    @if(!string.IsNullOrEmpty(proj.DetailProjet))
+                    {
+                        <strong>@Localizer.T("FullDescription") :</strong><br/>@(new MarkupString(proj.DetailProjet.Replace("\\n", "<br/>"))) 
+                    }
+                </p>
+                <p class="modal-description">
+                    @if(!string.IsNullOrEmpty(proj.Fonctionnalite))
+                    {
+                        <strong>Fonctionnalités :</strong><br/>@(new MarkupString(proj.Fonctionnalite.Replace("\\n", "<br/>")))
+                    }
+                </p>
+
+                <div class="modal-techs">
+                    @if(!string.IsNullOrEmpty(proj.Stack))
+                    {
+                        foreach(var tech in proj.Stack.Split(','))
+                        {
+                            <span class="tech-badge">@tech.Trim()</span>
+                        }
+                    }
+                </div>
+
+                <div class="modal-links">
+                    @if(!string.IsNullOrEmpty(proj.Lien))
+                    {
+                        <a href="@proj.Lien" class="btn-primary" style="padding:0.5rem 1.2rem;" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github"></i> Voir GitHub
+                        </a>
+                    }                                
+                </div>
+            </div>
+        </div>
+    }
+
     <section id="experience">
         <div class="container">
             <h2 class="section-title">@Localizer.T("ProfessionalExperience")</h2>
@@ -139,10 +185,6 @@
                             <span style="color:#4f46e5;">@exp.DateDebut.Year - @(exp.DateFin.HasValue ? exp.DateFin.Value.ToString("yyyy") : Localizer.T("Present"))</span>
                         </div>
                         <p>@(new MarkupString(exp.DetailExperience.Replace("\\n", "<br/>")))</p>
-                        <div style="display:flex; gap:0.5rem; margin-top:0.5rem;">
-                            <span class="tech-badge" style="font-size:0.7rem;">VB.NET</span>
-                            <span class="tech-badge" style="font-size:0.7rem;">WinForms</span>
-                        </div>
                     </div>
                 }
             </div>
@@ -169,25 +211,26 @@
                     <h3>📬 @Localizer.T("LetsStayInTouch")</h3>
                     <p>@Localizer.T("AvailableFor")</p>
                     <div class="contact-details">
-                        <div class="contact-item"><i class="fas fa-phone"></i><span><a href="tel:+261341234567"  target="_blank" rel="noopener noreferrer">+261 32 52 781 38</a></span></div>
-                        <div class="contact-item"><i class="fas fa-envelope"></i><span><a href="mailto:rindra@example.com" target="_blank" rel="noopener noreferrer">rindraniaina.manda@gmail.com</a></span></div>
+                        <div class="contact-item"><i class="fas fa-phone"></i><span><a href="tel:+261341234567" target="_blank" rel="noopener noreferrer">+261 32 52 781 38</a></span></div>
+                        <div class="contact-item"><i class="fas fa-envelope"></i><span><a href="mailto:rindraniaina.manda@gmail.com" target="_blank" rel="noopener noreferrer">rindraniaina.manda@gmail.com</a></span></div>
                         <div class="contact-item"><i class="fab fa-github"></i><span><a href="https://github.com/Rindra1" target="_blank" rel="noopener noreferrer">https://github.com/Rindra1</a></span></div>
                         <div class="contact-item"><i class="fab fa-linkedin"></i><span><a href="https://www.linkedin.com/in/rindra-niaina-razafimandanona-1ab51b120" target="_blank" rel="noopener noreferrer">https://www.linkedin.com/in/rindra-niaina-razafimandanona-1ab51b120</a></span></div>
                     </div>
                     <div class="social-links">
-                        <a href="https://github.com/Rindra1" class="social-link"  target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                        <a href="https://github.com/Rindra1" class="social-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
                         <a href="https://www.linkedin.com/in/rindra-niaina-razafimandanona-1ab51b120" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://x.com/RindraNiaina3" class="social-link"  target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
-                        <a href="https://wa.me/261325278138" class="social-link"  target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://x.com/RindraNiaina3" class="social-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                        <a href="https://wa.me/261325278138" class="social-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
+
                 <div class="contact-form-card" data-aos="fade-left">
                     <h3>@Localizer.T("SendMeMessage")</h3>
-                    <form id="contactForm">
-                        <div class="form-group"><input type="text"  @bind="emailRequest.Name" id="userName" placeholder="Votre nom" required></div>
+                    <form id="contactForm" @onsubmit="Envoyer" novalidate>
+                        <div class="form-group"><input type="text" @bind="emailRequest.Name" id="userName" placeholder="Votre nom" required></div>
                         <div class="form-group"><input type="email" @bind="emailRequest.To" id="userEmail" placeholder="Votre email" required></div>
                         <div class="form-group"><textarea @bind="emailRequest.Body" id="userMessage" rows="4" placeholder="Votre message..." required></textarea></div>
-                        <button type="submit" class="btn-submit" @onclick="Envoyer" ><i class="fas fa-paper-plane"></i> @Localizer.T("SendMessage")</button>
+                        <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> @Localizer.T("SendMessage")</button>
                         <div id="formStatus" class="form-message"></div>
                     </form>
                 </div>
@@ -196,337 +239,338 @@
     </section>
 </main>
 
+<!-- CHATBOT FLOATING WINDOW -->
 
 <div class="chatbot-float">
     <div class="chatbot-toggle" id="chatbotToggle"><i class="fas fa-comment-dots"></i><div class="online-dot"></div></div>
     <div class="chat-window" id="chatWindow">
-        <div class="chat-header"><div class="chat-header-left"><div class="chat-avatar">RN</div><div><strong>Assistant RN</strong><div style="font-size:0.7rem;"><i class="fas fa-circle" style="font-size:0.5rem;"></i> @Localizer.T("Online")</div></div></div><button class="close-chat" id="closeChat"><i class="fas fa-times"></i></button></div>
-        <div class="chat-messages" id="chatMessagesFloat"><div class="message-bot"><div class="bot-avatar">🤖</div><div class="bot-bubble">@Localizer.T("MessageChat")</div></div></div>
-        <div class="chat-input-area"><input type="text" id="chatInputFloat" placeholder="@Localizer.T("YourQuestion")"><button id="sendChatFloat"><i class="fas fa-paper-plane"></i></button></div>
-        <div class="suggestions-chat"><span class="suggestion-chip" data-suggestion="Quels sont ses projets .NET?">📁 Projets .NET</span><span class="suggestion-chip" data-suggestion="Quelle est sa stack technique?">⚙️ Stack technique</span><span class="suggestion-chip" data-suggestion="Est-il disponible pour freelance?">💼 Disponibilité</span></div>
+        <div class="chat-header">
+            <div class="chat-header-left">
+                <div class="chat-avatar">RN</div>
+                <div>
+                    <strong>Assistant RN</strong>
+                    <div style="font-size:0.7rem;"><i class="fas fa-circle" style="font-size:0.5rem; color:#4ade80;"></i> @Localizer.T("Online")</div>
+                </div>
+            </div>
+            <button class="close-chat" id="closeChat"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="chat-messages" id="chatMessagesFloat">
+            @foreach(var entry in ChatResponses)
+            {
+                @if(!string.IsNullOrWhiteSpace(entry.UserMessage))
+                {
+                    <div class="message-user">
+                        <div class="user-bubble">@entry.UserMessage</div>
+                    </div>
+                }
+                <div class="message-bot">
+                    <div class="bot-avatar">🤖</div>
+                    <div class="bot-bubble">@entry.BotResponse</div>
+                </div>
+            }
+
+            @if(string.IsNullOrWhiteSpace(ChatResponses.LastOrDefault()?.BotResponse) && ChatResponses.Count > 0)
+            {
+                <div class="typing-indicator">
+                    <span></span><span></span><span></span>
+                </div>
+            }
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chatInputFloat" @bind="UserMessage" @bind:event="oninput" placeholder="@Localizer.T("YourQuestion")" @onkeydown="OnChatKeyPress" />
+            <button id="sendChatFloat" @onclick="SendMessage"><i class="fas fa-paper-plane"></i></button>
+        </div>
+        <div class="suggestions-chat">
+            <span class="suggestion-chip" @onclick='@(() => SendSuggestion("Quels sont ses projets .NET?"))'>📁 Projets .NET</span>
+            <span class="suggestion-chip" @onclick='@(() => SendSuggestion("Quelle est sa stack technique?"))'>⚙️ Stack technique</span>
+            <span class="suggestion-chip" @onclick='@(() => SendSuggestion("Est-il disponible pour freelance?"))'>💼 Disponibilité</span>
+        </div>
     </div>
 </div>
-
 <footer class="footer">
-        <p>&copy; @DateTime.Now.Year Rindra Niaina.  @Localizer.T("AllRightsReserved")</p>
-    </footer>
+    <p>&copy; @DateTime.Now.Year Rindra Niaina. @Localizer.T("AllRightsReserved")</p>
+</footer>
 
 @code {
-  private string message = string.Empty;
-  private MailDTO emailRequest = new MailDTO();
-  private HttpClient http;
-  private UtilisateurDTO portfolio = new UtilisateurDTO();
-  private string UserMessage { get; set; } = "";
-  private List<ChatEntry> ChatResponses { get; set; } = new();
-  private bool _initialized;
-  private int projet = 0;
-  private int projetdetail = 0;
+    private string message = string.Empty;
+    private MailDTO emailRequest = new MailDTO();
+    private UtilisateurDTO portfolio = new UtilisateurDTO();
+    private string UserMessage { get; set; } = "";
+    private List<ChatEntry> ChatResponses { get; set; } = new();
+    private bool _initialized;
+    private int projet = 0;
+    private int projetdetail = 0;
+    // Chatbot API endpoint
+    private string ChatApiEndpoint => "api/chat";
+    protected override void OnInitialized()
+    {
+        Localizer.OnChange += OnLangChanged;
+        // Add welcome message if chat is empty
+        if (ChatResponses.Count == 0)
+        {
+            ChatResponses.Add(new ChatEntry
+            {
+                UserMessage = "",
+                BotResponse = Localizer.T("MessageChat")
+            });
+        }
+    }
 
-  protected override void OnInitialized()
-  {
-      // subscribe to language changes
-      Localizer.OnChange += OnLangChanged;
-  }
+    private void OnLangChanged()
+    {
+        InvokeAsync(async () =>
+        {
+            try
+            {
+                if (portfolio != null)
+                {
+                    if (Localizer.CurrentLanguage != "fr")
+                    {
+                        await TranslatePortfolioAsync(portfolio, Localizer.CurrentLanguage);
+                    }
+                    else
+                    {
+                        try
+                        {
+                            var url = $"api/portfolio";
+                            var original = await Http.GetFromJsonAsync<UtilisateurDTO>(url);
+                            if (original != null) portfolio = original;
+                        }catch { }
+                    }
+                }
+                // Update welcome message when language changes
+                if (ChatResponses.Count > 0 && string.IsNullOrEmpty(ChatResponses[0].UserMessage))
+                {
+                    ChatResponses[0].BotResponse = Localizer.T("MessageChat");
+                }
+            }catch { }
+            StateHasChanged();
+        });
+    }
 
-  private void OnLangChanged()
-  {
-      InvokeAsync(async () =>
-      {
+    public void Dispose() => Localizer.OnChange -= OnLangChanged;
+    
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender && !_initialized)
+        {
+            _initialized = true;
+            await JS.InvokeVoidAsync("siteInterop.initAll");
+            try
+            {
+                string url = $"api/portfolio";
+                try { await Localizer.InitializeAsync(); } catch { }
+                portfolio = await Http.GetFromJsonAsync<UtilisateurDTO>(url) ?? new UtilisateurDTO();
+                StateHasChanged();
+                if (Localizer.CurrentLanguage != "fr" && portfolio != null)
+                {
+                    try { await TranslatePortfolioAsync(portfolio, Localizer.CurrentLanguage); StateHasChanged(); } catch { }
+                }
+                await JS.InvokeVoidAsync("siteInterop.initAll");
+            }
+            catch (Exception ex)
+            {
+                message = $"Erreur: {ex.Message} {ex.StackTrace}";
+            }
+        }
+    }
+
+    private async Task SendMessage()
+    {
+        if (string.IsNullOrWhiteSpace(UserMessage)) return;
+        var userMsg = UserMessage;
+        UserMessage = ""; // Clear input immediately
+        // Add user message to chat
+        ChatResponses.Add(new ChatEntry
+        {
+            UserMessage = userMsg,
+            BotResponse = ""
+        });
+        StateHasChanged();
         try
         {
-          if (portfolio != null)
-          {
-            if (Localizer.CurrentLanguage != "fr")
+            var response = await Http.PostAsJsonAsync(ChatApiEndpoint, new { message = userMsg });
+            if (response.IsSuccessStatusCode)
             {
-              await TranslatePortfolioAsync(portfolio, Localizer.CurrentLanguage);
+                var chatResponse = await response.Content.ReadFromJsonAsync<ChatResponseDTO>();
+                var botMessage = chatResponse?.Message ?? "Aucune réponse";
+                await TypeBotResponse(botMessage);
             }
             else
             {
-              // reload original French content from API
-              try
-              {
-                var url = $"api/portfolio";
-                var original = await Http.GetFromJsonAsync<UtilisateurDTO>(url);
-                if (original != null) portfolio = original;
-              }
-              catch { }
+                var errorMsg = await response.Content.ReadAsStringAsync();
+                ChatResponses.Last().BotResponse = $"Erreur : {errorMsg}";
+                StateHasChanged();
             }
-          }
         }
-        catch { }
-        StateHasChanged();
-      });
-  }
+        catch (Exception ex)
+        {
+            ChatResponses.Last().BotResponse = $"Exception : {ex.Message}";
+            StateHasChanged();
+        }
+        await ScrollChatToBottom();
+    }
 
-  public void Dispose()
-  {
-      Localizer.OnChange -= OnLangChanged;
-  }
-
-protected override async Task OnAfterRenderAsync(bool firstRender)
-{
-    if (firstRender && !_initialized)
+    private async Task SendSuggestion(string suggestion)
     {
-        _initialized = true;
-        await JS.InvokeVoidAsync("siteInterop.initAll");
-        //await JS.InvokeAsync<string>("themeManager.applyTheme");
+        UserMessage = suggestion;
+        await SendMessage();
+    }
+
+    private void OnChatKeyPress(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            SendMessage();
+        }
+    }
+
+    private async Task TypeBotResponse(string botMessage)
+    {
+        var typedResponse = "";
+        var lastEntry = ChatResponses.Last();
+        foreach (var c in botMessage)
+        {
+            typedResponse += c;
+            lastEntry.BotResponse = typedResponse;
+            StateHasChanged();
+            await Task.Delay(20);
+        }
+        await ScrollChatToBottom();
+    }
+
+    private async Task ScrollChatToBottom()
+    {
         try
-    {
-      string url = $"api/portfolio";
-      // ensure localizer initialized
-      try { await Localizer.InitializeAsync(); } catch { }
-
-      portfolio = await Http.GetFromJsonAsync<UtilisateurDTO>(url)??null;
-        StateHasChanged();
-
-        // Traduire le contenu dynamique si la langue est autre que FR
-        if (Localizer.CurrentLanguage != "fr" && portfolio != null)
         {
-          try { await TranslatePortfolioAsync(portfolio, Localizer.CurrentLanguage); StateHasChanged(); } catch { }
-        }
-      // Appeler l'initialisation JavaScript déjà incluse via App.razor
-      await JS.InvokeVoidAsync("siteInterop.initAll");
-      //await JS.InvokeVoidAsync("siteInterop.hideLoader");
-      
-    }catch(Exception ex)
+            await JS.InvokeVoidAsync("eval", @"
+                var chatContainer = document.querySelector('#chatMessagesFloat');
+                if(chatContainer) chatContainer.scrollTop = chatContainer.scrollHeight;
+            ");
+        }catch { }
+    }
+
+    private class ChatEntry
     {
-        message = $"Erreur: {ex.Message} {ex.StackTrace}";
-        Console.WriteLine(message);
+        public string UserMessage { get; set; } = "";
+        public string BotResponse { get; set; } = "";
     }
-    }
-}
 
-
-  /*protected override async Task OnAfterRenderAsync(bool firstRender)
-  {
-    if (firstRender)
+    private class ChatResponseDTO
     {
-      await JS.InvokeVoidAsync("siteInterop.initAll");
-      await JS.InvokeAsync<string>("themeManager.applyTheme");
+        public string Message { get; set; } = "";
     }
-  }*/
-  
-  private async Task SendMessage()
-  {
-    if (string.IsNullOrWhiteSpace(UserMessage))
-      return;
-
-    // Sauvegarder le message utilisateur
-    var userMsg = UserMessage;
-
-    try
-    {
-      var response = await Http.PostAsJsonAsync("api/chat", new { message = userMsg });
-
-      if (response.IsSuccessStatusCode)
-      {
-        var chatResponse = await response.Content.ReadFromJsonAsync<ChatResponse>();
-                
-        ChatResponses.Add(new ChatEntry
-        {
-          UserMessage = userMsg,
-          BotResponse = ""//chatResponse?.Message ?? "Aucune réponse"
-        });
-        var botMessage = chatResponse?.Message ?? "Aucune réponse";
-         // Afficher le message caractère par caractère
-            await TypeBotResponse(botMessage);
-      }
-      else
-      {
-        ChatResponses.Add(new ChatEntry
-        {
-          UserMessage = userMsg,
-          BotResponse = $"Erreur : {response.StatusCode}"
-        });
-      }
-    }
-    catch (Exception ex)
-    {
-      ChatResponses.Add(new ChatEntry
-      {
-        UserMessage = userMsg,
-        BotResponse = $"Exception : {ex.Message}"
-      });
-    }
-
-          // Ne pas réinitialiser la réponse complète, seulement le champ input
-          UserMessage = "";
-
-          // Faire défiler le chat vers le bas si la fonction JS existe
-          try { await JS.InvokeVoidAsync("eval", "window.scrollChatToBottom()"); } catch { }
-  }
-
-  private async Task TypeBotResponse(string botMessage)
-{
-    var typedResponse = "";
-    foreach (var c in botMessage)
-    {
-        typedResponse += c;
-
-        // Mettre à jour la dernière entrée du chat
-        ChatResponses.Last().BotResponse = typedResponse;
-
-        // Rafraîchir l’UI
-        StateHasChanged();
-
-        // Pause entre chaque caractère (ajuste la vitesse)
-        await Task.Delay(30); 
-    }
-}
-
-
-  private class ChatEntry
-  {
-    public string UserMessage { get; set; } = "";
-    public string BotResponse { get; set; } = "";
-  }
 
     private async Task TranslatePortfolioAsync(UtilisateurDTO p, string target)
     {
-      Console.WriteLine($"Translating portfolio to '{target}'");
-      if (p == null) return;
-
-      // Use resource-based translations for the main profile strings
-      try
-      {
-        // Localizer.CurrentLanguage should already equal target when called
-        p.APropos = Localizer.T("APropos");
-        p.resume = Localizer.T("Resumer");
-      }
-      catch (Exception ex)
-      {
-        Console.WriteLine("TranslatePortfolioAsync resource lookup failed: " + ex.Message);
-      }
-
-      // Helper to normalize text into a resource-key friendly string
-      string NormalizeKey(string s)
-      {
-        if (string.IsNullOrWhiteSpace(s)) return string.Empty;
-        var t = s.Trim().ToLowerInvariant();
-        var sb = new System.Text.StringBuilder();
-        foreach (var ch in t)
+        if (p == null) return;
+        try
         {
-          if (char.IsLetterOrDigit(ch)) sb.Append(ch);
-          else sb.Append('_');
-        }
-        return sb.ToString();
-      }
+            p.APropos = Localizer.T("APropos");
+            p.resume = Localizer.T("Resumer");
+            p.Titre = Localizer.T("Title");
+        }catch (Exception ex){}
 
-      // Translate competences
-      if (p.Competences != null)
-      {
-        foreach (var c in p.Competences)
+        // Translate projects
+        if (p.Projets != null)
         {
-          try
-          {
-            var original = c.Nom ?? string.Empty;
-            var keyById = $"Competence.{c.IdCompetence}.Nom";
-            var k1 = Localizer.T(keyById);
-            if (k1 != keyById) { c.Nom = k1; continue; }
+            foreach (var proj in p.Projets)
+            {
+                try
+                {
+                    var idPart = proj.IdProjet?.ToString() ?? "0";
+                    var titleKey = $"Projet.{idPart}.Titre";
+                    var summaryKey = $"Projet.{idPart}.Resumer";
+                    var detailKey = $"Projet.{idPart}.Detail";
+                    var fonctionnaliteKey = $"Projet.{idPart}.Fonctionnalite";
+                    
+                    var tTitle = Localizer.T(titleKey);
+                    if (tTitle != titleKey) proj.TitreProjet = tTitle;
 
-            var keyByName = $"Competence.{NormalizeKey(original)}";
-            var k2 = Localizer.T(keyByName);
-            if (k2 != keyByName) { c.Nom = k2; continue; }
+                    var tSummary = Localizer.T(summaryKey);
+                    if (tSummary != summaryKey) proj.ResumerProjet = tSummary;
 
-            // leave original if no resource found
-            c.Nom = original;
-          }
-          catch { }
+                    var tDetail = Localizer.T(detailKey);
+                    if (tDetail != detailKey) proj.DetailProjet = tDetail;
+
+                    var tFonctionnalite = Localizer.T(fonctionnaliteKey);
+                    if (tFonctionnalite != fonctionnaliteKey) proj.Fonctionnalite = tFonctionnalite;
+
+                }catch { }
+            }
         }
-      }
-
-      // Translate projects
-      if (p.Projets != null)
-      {
-        foreach (var proj in p.Projets)
+        // Translate experiences
+        if (p.Experiences != null)
         {
-          try
-          {
-            var idPart = proj.IdProjet?.ToString() ?? "0";
-            var titleKey = $"Projet.{idPart}.Titre";
-            var summaryKey = $"Projet.{idPart}.Resumer";
-            var detailKey = $"Projet.{idPart}.Detail";
+            foreach (var exp in p.Experiences)
+            {
+                try
+                {
+                    var idPart = exp.IdExperience.ToString();
+                    var titreKey = $"Experience.{idPart}.Titre";
+                    var detailKey = $"Experience.{idPart}.Detail";
 
-            var tTitle = Localizer.T(titleKey);
-            if (tTitle != titleKey) proj.TitreProjet = tTitle;
+                    var tt = Localizer.T(titreKey);
+                    if (tt != titreKey) exp.TitreExperience = tt;
 
-            var tSummary = Localizer.T(summaryKey);
-            if (tSummary != summaryKey) proj.ResumerProjet = tSummary;
-
-            var tDetail = Localizer.T(detailKey);
-            if (tDetail != detailKey) proj.DetailProjet = tDetail;
-          }
-          catch { }
+                    var td = Localizer.T(detailKey);
+                    if (td != detailKey) exp.DetailExperience = td;
+                }catch { }
+            }
         }
-      }
-
-      // Translate experiences
-      if (p.Experiences != null)
-      {
-        foreach (var exp in p.Experiences)
-        {
-          try
-          {
-            var idPart = exp.IdExperience.ToString();
-            var titreKey = $"Experience.{idPart}.Titre";
-            var detailKey = $"Experience.{idPart}.Detail";
-
-            var tt = Localizer.T(titreKey);
-            if (tt != titreKey) exp.TitreExperience = tt;
-
-            var td = Localizer.T(detailKey);
-            if (td != detailKey) exp.DetailExperience = td;
-          }
-          catch { }
-        }
-      }
-
-      await Task.CompletedTask;
+        await Task.CompletedTask;
     }
 
-  private async Task Envoyer()
-{
-    if (emailRequest == null)
-        return;
-
-    try
+    private async Task Envoyer()
     {
-        // URL propre, pas de "?" ajouté
-        var response = await Http.PostAsJsonAsync("api/mail/sendgrid", emailRequest);
-
-        MailResponseDTO result = null;
+        if (emailRequest == null || string.IsNullOrWhiteSpace(emailRequest.Name) || string.IsNullOrWhiteSpace(emailRequest.To) || string.IsNullOrWhiteSpace(emailRequest.Body))
+        {
+            await JS.InvokeVoidAsync("alert", "Veuillez remplir tous les champs");
+            return;
+        }
 
         try
         {
-            // Essayer de lire la réponse JSON
-            result = await response.Content.ReadFromJsonAsync<MailResponseDTO>();
-        }
-        catch
-        {
-            // Si JSON invalide, lire le texte brut
-            var text = await response.Content.ReadAsStringAsync();
-            result = new MailResponseDTO
+            var response = await Http.PostAsJsonAsync("api/mail/sendgrid", emailRequest);
+            MailResponseDTO? result = null;
+            try
             {
-                Message = string.IsNullOrWhiteSpace(text) ? "Erreur inconnue" : text
-            };
-        }
+                result = await response.Content.ReadFromJsonAsync<MailResponseDTO>();
+            }
+            catch
+            {
+                var text = await response.Content.ReadAsStringAsync();
+                result = new MailResponseDTO
+                {
+                    Message = string.IsNullOrWhiteSpace(text) ? "Erreur inconnue" : text
+                };
+            }
 
-        if (response.IsSuccessStatusCode)
-        {
-            Console.WriteLine(result?.Message);
-        }
-        else
-        {
-            Console.WriteLine("Erreur : " + result?.Message);
-            if (!string.IsNullOrEmpty(result?.Error))
+            if (response.IsSuccessStatusCode)
             {
-                Console.WriteLine("Détails : " + result.Error);
+                await JS.InvokeVoidAsync("alert", "Message envoyé avec succès !");
+                emailRequest = new MailDTO(); // Reset form
+                StateHasChanged();
+            }
+            else
+            {
+                await JS.InvokeVoidAsync("alert", "Erreur : " + (result?.Message ?? "Erreur inconnue"));
+                if (!string.IsNullOrEmpty(result?.Error))
+                {
+                 
+                }
             }
         }
+        catch (Exception ex)
+        {
+            await JS.InvokeVoidAsync("alert", "Erreur technique : " + ex.Message);
+        }
     }
-    catch (Exception ex)
+
+    private class MailResponseDTO
     {
-        Console.WriteLine("Exception : " + ex.Message);
+        public string Message { get; set; } = "";
+        public string? Error { get; set; }
     }
-}
 }

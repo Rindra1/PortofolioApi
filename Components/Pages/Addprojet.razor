@@ -15,9 +15,39 @@
       <input type="text" @bind="newProjet.TitreProjet" placeholder="Titre du projet" required>
       <input type="text" @bind="newProjet.ResumerProjet" placeholder="Resumé du projet" required>
       <textarea  @bind="newProjet.DetailProjet" placeholder="Description du projet" required></textarea>
-      <InputFile OnChange="OnFileSelected"/>
+      <input type="text" @bind="newProjet.Stack" placeholder="Stack (ex: Blazor, .NET)" />
+      <input type="text" @bind="newProjet.Lien" placeholder="Lien (ex: https://...)" />
+      <input type="text" @bind="newProjet.Fonctionnalite" placeholder="Fonctionnalités (séparées par ,)" />
+      <label>Image principale</label>
+      <InputFile OnChange="OnFileSelected" />
+      <label>Image secondaire 1</label>
+      <InputFile OnChange="OnFileSelectedImage1" />
+      <label>Image secondaire 2</label>
+      <InputFile OnChange="OnFileSelectedImage2" />
       <button type="button" @onclick="Enregistrer" class="btn-details">Enregistrer</button>
     </form>
+
+    <!-- Liste des projets -->
+    <div style="margin-top:1.2rem;">
+      <h3>Projets existants</h3>
+      <table class="table">
+        <thead><tr><th>Titre</th><th>Résumé</th><th>Stack</th><th>Actions</th></tr></thead>
+        <tbody>
+        @foreach(var p in projets)
+        {
+          <tr>
+            <td>@p.TitreProjet</td>
+            <td>@p.ResumerProjet</td>
+            <td>@p.Stack</td>
+            <td>
+              <button class="btn-details" @onclick="() => EditProjet(p)">Modifier</button>
+              <button class="btn-outline" @onclick="() => SupprimerProjet(p.IdProjet ?? 0)" style="margin-left:0.5rem;">Supprimer</button>
+            </td>
+          </tr>
+        }
+        </tbody>
+      </table>
+    </div>
 
     <!-- Liste projets côté droit -->
     <!--<div class="project-list">  

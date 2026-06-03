@@ -36,4 +36,23 @@ public class ExperienceController : ControllerBase
         _service.AddExperience(experienceDTO);
         return Ok(new { Message = "Experience ajoutée avec succès !" });
     }
+
+    [HttpPut("{id}")]
+    public IActionResult Put(int id, [FromBody] ExperienceDTO experienceDTO)
+    {
+        var existing = _service.GetExperienceById(id);
+        if (existing == null) return NotFound();
+        experienceDTO.IdExperience = id;
+        _service.UpdateExperience(experienceDTO);
+        return Ok();
+    }
+
+    [HttpDelete("{id}")]
+    public IActionResult Delete(int id)
+    {
+        var existing = _service.GetExperienceById(id);
+        if (existing == null) return NotFound();
+        _service.RemoveExperience(id);
+        return Ok();
+    }
 }

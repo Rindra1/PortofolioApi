@@ -13,7 +13,10 @@
     <form class="project-form">
       <input type="text" @bind="newUtilisateur.Nom" placeholder="Votre nom" required>
       <input type="text" @bind="newUtilisateur.Prenom"  placeholder="Votre prenom" required>
-      <input type="text" @bind="newUtilisateur.resume"  placeholder="Votre prenom" required>
+      <input type="text" @bind="newUtilisateur.resume"  placeholder="Votre resumé" required>
+      <input type="text" @bind="newUtilisateur.Titre" placeholder="Titre (ex: Développeur Fullstack)" />
+      <input type="text" @bind="newUtilisateur.StackMaitrise" placeholder="Stack maitrisé (ex: .NET, React)" />
+      <input type="text" @bind="newUtilisateur.StackTechnique" placeholder="Stack technique (ex: SQL, Docker)" />
       <textarea @bind="newUtilisateur.APropos" placeholder="A propos de vous" required></textarea>
       <InputFile OnChange="OnFileSelected"  id="imageInput"/>
     </form>
@@ -22,13 +25,14 @@
         <input @bind="newContact.TypeContact" type="text" placeholder="Type contact(Email,github,...)" required>
         <input @bind="newContact.AdresseContact" type="text" placeholder="Contact" required>
         <button @onclick="AjouterContact" class="btn-details">Ajouter</button>
-        <button type="button" @onclick="Enregistrer" class="btn-details">Enregistrer</button>
+        <button type="button" @onclick="Enregistrer" class="btn-details">@(editing?"Mettre à jour":"Enregistrer")</button>
         <div class="user-table-container">
           <table class="user-table">
             <thead>
               <tr>
                 <th>Type Contact</th>
                 <th>Valeur</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -37,6 +41,7 @@
                 <tr>
                   <td>@contact.TypeContact</td>
                   <td>@contact.AdresseContact</td>
+                  <td><button class="btn-small" @onclick="() => SupprimerContact(contact)">Supprimer</button></td>
                 </tr>
               }
             </tbody>

@@ -51,6 +51,9 @@ public class UtilisateurController : ControllerBase
             APropos = utilisateurDTO.APropos,
             UserImage = utilisateurDTO.UserImage,
             resume = utilisateurDTO.resume,
+            Titre = utilisateurDTO.Titre,
+            StackMaitrise = utilisateurDTO.StackMaitrise,
+            StackTechnique = utilisateurDTO.StackTechnique,
             Contacts = new List<Contact>()
         };
 

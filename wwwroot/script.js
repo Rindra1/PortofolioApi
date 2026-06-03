@@ -33,9 +33,9 @@ window.siteInterop = {
     document.querySelectorAll('.mobile-nav a').forEach(link => link.addEventListener('click', () => mobileNav.classList.remove('show')));
 
     // Download CV
-    document.querySelectorAll('#downloadCVBtn, #downloadCVBtnMobile').forEach(btn => 
-        btn.addEventListener('click', (e) => { e.preventDefault(); alert("📄 Le CV sera disponible prochainement. Merci de votre intérêt !"); })
-    );
+    //document.querySelectorAll('#downloadCVBtn, #downloadCVBtnMobile').forEach(btn => 
+        //btn.addEventListener('click', (e) => { e.preventDefault(); alert("📄 Le CV sera disponible prochainement. Merci de votre intérêt !"); })
+    //);
 
     // Gallery functions for each project
     function initGallery(galleryId, mainImageId) {
@@ -135,7 +135,7 @@ console.log(getComputedStyle(chat).display);
 });
     //toggleBtn.addEventListener('click', () => chatWindow.classList.toggle('open'));
     //closeChat.addEventListener('click', () => chatWindow.classList.remove('open'));
-
+    /*
     const chatDiv = document.getElementById('chatMessagesFloat');
     const chatInput = document.getElementById('chatInputFloat');
     const sendBtn = document.getElementById('sendChatFloat');
@@ -164,7 +164,7 @@ console.log(getComputedStyle(chat).display);
     chatInput.addEventListener('keypress', e => { if(e.key === 'Enter') handleSend(); });
     document.querySelectorAll('.suggestion-chip').forEach(chip => {
         chip.addEventListener('click', () => { chatInput.value = chip.getAttribute('data-suggestion'); handleSend(); });
-    });
+    });*/
         // Masquer le loader après tout
         this.hideLoader();
     },

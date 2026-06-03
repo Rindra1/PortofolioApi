@@ -9,6 +9,9 @@ public class Utilisateur
     public string? Prenom { get; set; }
     public string? APropos { get; set; }
     public string? UserImage { get; set; }
+    public string? Titre { get; set; }
+    public string? StackMaitrise { get; set; }
+    public string? StackTechnique { get; set; }
     //public UserLogin? UserLogin { get; set; }
     public virtual UserLogin? UserLogin {get;set;}
     public List<Projet> Projets { get; set; } = new List<Projet>();

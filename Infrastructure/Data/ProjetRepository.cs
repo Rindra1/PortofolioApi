@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using PortofolioApi.Domain.Entities;
 using PortofolioApi.Domain.Interfaces;
 using PortofolioApi.Services;
+using Microsoft.EntityFrameworkCore;
 
 namespace PortofolioApi.Infrastructure.Data;
 
@@ -48,7 +49,19 @@ public class ProjetRepository : IRepository<Projet>
 
     public void Update(Projet projet)
     {
-        _db.Projet.Update(projet);
+        Console.WriteLine($"Projet Repository Update {projet.IdProjet}");
+        var existing = _db.Projet.Find(projet.IdProjet);
+        projet.UtilisateurId = 1;
+        Console.WriteLine("Projet existant= " + existing);
+        if (existing != null)
+        {
+            _db.Entry(existing).CurrentValues.SetValues(projet);
+        }
+        else
+        {
+            _db.Projet.Attach(projet);
+            _db.Entry(projet).State = EntityState.Modified;
+        }
         _db.SaveChanges();
     }
 

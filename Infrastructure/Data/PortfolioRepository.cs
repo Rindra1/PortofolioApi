@@ -24,6 +24,9 @@ public class PortfolioRepository : IRepositoryPortfolio<UtilisateurDTO>
             resume = u.resume,
             Nom = u.Nom,
             Prenom = u.Prenom,
+                Titre = u.Titre,
+                StackMaitrise = u.StackMaitrise,
+                StackTechnique = u.StackTechnique,
             APropos = u.APropos,
             UserImage = u.UserImage,
 
@@ -63,6 +66,11 @@ public class PortfolioRepository : IRepositoryPortfolio<UtilisateurDTO>
                 TitreProjet = p.TitreProjet,
                 DetailProjet = p.DetailProjet,
                 ImageProjet = p.ImageProjet,
+                ImageProjet1 = p.ImageProjet1,
+                ImageProjet2 = p.ImageProjet2,
+                Stack = p.Stack,
+                Lien = p.Lien,
+                Fonctionnalite = p.Fonctionnalite,
 
                 Liens = p.Liens.Select(t => new LienDTO
                 {
@@ -85,6 +93,9 @@ public class PortfolioRepository : IRepositoryPortfolio<UtilisateurDTO>
             {
                 Nom = u.Nom,
                 Prenom = u.Prenom,
+                Titre = u.Titre,
+                StackMaitrise = u.StackMaitrise,
+                StackTechnique = u.StackTechnique,
                 APropos = u.APropos,
                 UserImage = u.UserImage,
                 Contacts = u.Contacts.Select(c => new ContactDTO
@@ -97,6 +108,11 @@ public class PortfolioRepository : IRepositoryPortfolio<UtilisateurDTO>
                     TitreProjet = p.TitreProjet,
                     DetailProjet = p.DetailProjet,
                     ImageProjet = p.ImageProjet,
+                    ImageProjet1 = p.ImageProjet1,
+                    ImageProjet2 = p.ImageProjet2,
+                    Stack = p.Stack,
+                    Lien = p.Lien,
+                    Fonctionnalite = p.Fonctionnalite,
 
                     Liens = p.Liens.Select(t => new LienDTO
                     {

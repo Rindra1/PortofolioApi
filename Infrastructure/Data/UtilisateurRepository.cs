@@ -82,8 +82,16 @@ public class UtilisateurRepository : IRepository<Utilisateur>
 
     public void Update(Utilisateur utilisateur)
     { 
-        _db.Utilisateur.Update(utilisateur);
-        _db.SaveChanges();
+        var entity = _db.Utilisateur
+        .FirstOrDefault(x => x.IdUser == utilisateur.IdUser);
+
+        if (entity != null)
+        {
+            _db.Entry(entity).CurrentValues.SetValues(utilisateur);
+            _db.SaveChanges();
+        }
+        //_db.Utilisateur.Update(utilisateur);
+        //_db.SaveChanges();
     
     }
 }

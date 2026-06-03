@@ -116,10 +116,25 @@ namespace PortofolioApi.Migrations
                     b.Property<string>("DetailProjet")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Fonctionnalite")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("ImageProjet")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("ImageProjet1")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ImageProjet2")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Lien")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("ResumerProjet")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Stack")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("TitreProjet")
@@ -174,6 +189,15 @@ namespace PortofolioApi.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Prenom")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("StackMaitrise")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("StackTechnique")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Titre")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("UserImage")
