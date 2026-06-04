@@ -16,13 +16,25 @@
             <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
         </div>
         <div class="nav-links">
-            <a href="#accueil">@Localizer.T("Home")</a>
-            <a href="#about">@Localizer.T("About")</a>
-            <a href="#projets">@Localizer.T("Projects")</a>
-            <a href="#experience">@Localizer.T("Experience")</a>
-            <a href="#services">@Localizer.T("Services")</a>
-            <a href="#contact">@Localizer.T("Contact")</a>
-            <a href="/CV/CV_Rindra.pdf" class="btn-cv" id="downloadCVBtn" target="_blank" rel="noopener noreferrer"><i class="fas fa-download"></i> @Localizer.T("DownloadCV")</a>
+          <a @onclick='() => ScrollToSection("accueil")' @onclick:preventDefault="true" style="cursor: pointer;">
+            @Localizer.T("Home")
+          </a>
+          <a @onclick='() => ScrollToSection("about")' @onclick:preventDefault="true" style="cursor: pointer;">
+            @Localizer.T("About")
+          </a>
+          <a @onclick='() => ScrollToSection("projets")' @onclick:preventDefault="true" style="cursor: pointer;">
+            @Localizer.T("Projects")
+          </a>
+          <a @onclick='() => ScrollToSection("experience")' @onclick:preventDefault="true" style="cursor: pointer;">
+            @Localizer.T("Experience")
+          </a>
+          <a @onclick='() => ScrollToSection("services")' @onclick:preventDefault="true" style="cursor: pointer;">
+            @Localizer.T("Services")
+          </a>
+          <a @onclick='() => ScrollToSection("contact")' @onclick:preventDefault="true" style="cursor: pointer;">
+            @Localizer.T("Contact")
+          </a>
+            <a href="/CV/CV_Rindra.pdf" class="btn-cv-mobile" id="downloadCVBtnMobile" target="_blank" rel="noopener noreferrer"><i class="fas fa-download"></i> @Localizer.T("DownloadCV")</a>
         </div>
     </div>
 </header>
@@ -30,13 +42,25 @@
 <!-- Menu mobile en dehors du header -->
 <div class="mobile-nav" id="mobileNav">
     <div class="mobile-nav-container">
-        <a href="#accueil">@Localizer.T("Home")</a>
-        <a href="#about">@Localizer.T("About")</a>
-        <a href="#projets">@Localizer.T("Projects")</a>
-        <a href="#experience">@Localizer.T("Experience")</a>
-        <a href="#services">@Localizer.T("Services")</a>
-        <a href="#contact">@Localizer.T("Contact")</a>
-        <a href="/CV/CV_Rindra.pdf" class="btn-cv-mobile" id="downloadCVBtnMobile" target="_blank" rel="noopener noreferrer"><i class="fas fa-download"></i> @Localizer.T("DownloadCV")</a>
+      <a @onclick='() => ScrollToSection("accueil")' @onclick:preventDefault="true" style="cursor: pointer;">
+        @Localizer.T("Home")
+      </a>
+      <a @onclick='() => ScrollToSection("about")' @onclick:preventDefault="true" style="cursor: pointer;">
+        @Localizer.T("About")
+      </a>
+      <a @onclick='() => ScrollToSection("projets")' @onclick:preventDefault="true" style="cursor: pointer;">
+        @Localizer.T("Projects")
+      </a>
+      <a @onclick='() => ScrollToSection("experience")' @onclick:preventDefault="true" style="cursor: pointer;">
+        @Localizer.T("Experience")
+      </a>
+      <a @onclick='() => ScrollToSection("services")' @onclick:preventDefault="true" style="cursor: pointer;">
+        @Localizer.T("Services")
+      </a>
+      <a @onclick='() => ScrollToSection("contact")' @onclick:preventDefault="true" style="cursor: pointer;">
+        @Localizer.T("Contact")
+      </a>
+      <a href="/CV/CV_Rindra.pdf" class="btn-cv-mobile" id="downloadCVBtnMobile" target="_blank" rel="noopener noreferrer"><i class="fas fa-download"></i> @Localizer.T("DownloadCV")</a>
     </div>
 </div>
 
@@ -51,6 +75,17 @@
       await JS.InvokeVoidAsync("siteInterop.initAll");
     }
   }*/
+
+  private async Task ScrollToSection(string sectionId)
+    {
+        await JS.InvokeVoidAsync("siteInterop.scrollToSection", sectionId);
+    }
+    
+    // Pour le menu mobile
+    private async Task CloseMobileNav()
+    {
+        await JS.InvokeVoidAsync("siteInterop.closeMobileNav");
+    }
 
   
 private bool _initialized;

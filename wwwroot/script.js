@@ -3,6 +3,21 @@ window.siteInterop = {
         const loader = document.getElementById('loader');
         if(loader) loader.style.display = 'none';
     },
+    scrollToSection: function(sectionId) {
+        const element = document.getElementById(sectionId);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+            // Optionnel : nettoyer l'URL
+            history.pushState(null, null, window.location.pathname);
+        }
+    },
+    
+    closeMobileNav: function() {
+        const mobileNav = document.getElementById('mobileNav');
+        if (mobileNav) {
+            mobileNav.classList.remove('active');
+        }
+    },
 
     initAll: function () {
         // Initialisation AOS
