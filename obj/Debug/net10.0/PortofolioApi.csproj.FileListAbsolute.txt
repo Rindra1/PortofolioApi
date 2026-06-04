@@ -165,9 +165,7 @@ C:\Users\ASUS\PortofolioApi\bin\Debug\net10.0\Data\appdata.db
 C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\py5fhnwtqo-{0}-70ya0buhel-70ya0buhel.gz
 C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\uykr9vuvs1-{0}-vh3fjivmvd-vh3fjivmvd.gz
 C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\9cdsj2r9rb-{0}-vh3fjivmvd-vh3fjivmvd.gz
-C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\nphpm4t4yx-{0}-jqvnmln3qz-jqvnmln3qz.gz
 C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\rsgjwjsx63-{0}-1686abp2gy-1686abp2gy.gz
-C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\satxfy5zdj-{0}-l560gaocl1-l560gaocl1.gz
 C:\Users\ASUS\PortofolioApi\bin\Debug\net10.0\BouncyCastle.Cryptography.dll
 C:\Users\ASUS\PortofolioApi\bin\Debug\net10.0\MailKit.dll
 C:\Users\ASUS\PortofolioApi\bin\Debug\net10.0\MimeKit.dll
@@ -177,3 +175,6 @@ C:\Users\ASUS\PortofolioApi\bin\Debug\net10.0\JsonSubTypes.dll
 C:\Users\ASUS\PortofolioApi\bin\Debug\net10.0\sib_api_v3_sdk.dll
 C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\o18slqg74n-{0}-7ybygq9jt4-7ybygq9jt4.gz
 C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\v6s207a7g9-{0}-eke3f2n53r-eke3f2n53r.gz
+C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\hdurdgxfec-{0}-5ipweew5fc-5ipweew5fc.gz
+C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\satxfy5zdj-{0}-mm0yfhwphe-mm0yfhwphe.gz
+C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\nphpm4t4yx-{0}-dr9238yun6-dr9238yun6.gz

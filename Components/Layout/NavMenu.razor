@@ -5,16 +5,16 @@
 @inject TokenServices TokenService
 @inject PortofolioApi.Services.LocalizationService Localizer
 @rendermode InteractiveServer 
-
 <header>
     <div class="container nav-flex">
-        <div class="logo"><span><img src="/images/rindra_logo.png" loading="lazy" alt="Rindra logo"/></span></div>
+        <div class="logo">
+            <img src="/images/rindra_logo.png" loading="lazy" alt="Rindra logo"/>
+        </div>
         <div class="controls">
-            <button class="lang-toggle" id="langToggle"  @onclick="ToggleLanguage"><i class="fas fa-globe"></i></button>
+            <button class="lang-toggle" id="langToggle" @onclick="ToggleLanguage"><i class="fas fa-globe"></i></button>
             <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
             <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
         </div>
-       
         <div class="nav-links">
             <a href="#accueil">@Localizer.T("Home")</a>
             <a href="#about">@Localizer.T("About")</a>
@@ -25,7 +25,11 @@
             <a href="/CV/CV_Rindra.pdf" class="btn-cv" id="downloadCVBtn" target="_blank" rel="noopener noreferrer"><i class="fas fa-download"></i> @Localizer.T("DownloadCV")</a>
         </div>
     </div>
-    <div class="mobile-nav" id="mobileNav">
+</header>
+
+<!-- Menu mobile en dehors du header -->
+<div class="mobile-nav" id="mobileNav">
+    <div class="mobile-nav-container">
         <a href="#accueil">@Localizer.T("Home")</a>
         <a href="#about">@Localizer.T("About")</a>
         <a href="#projets">@Localizer.T("Projects")</a>
@@ -34,8 +38,7 @@
         <a href="#contact">@Localizer.T("Contact")</a>
         <a href="/CV/CV_Rindra.pdf" class="btn-cv-mobile" id="downloadCVBtnMobile" target="_blank" rel="noopener noreferrer"><i class="fas fa-download"></i> @Localizer.T("DownloadCV")</a>
     </div>
-</header>
-
+</div>
 
 
 @code {
