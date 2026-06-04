@@ -6,6 +6,36 @@
     transition: background-color 0.3s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
+#loader {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(6px);
+}
+.page-loader .loader-animation {
+    display: flex;
+    gap: 0.8rem;
+}
+.page-loader .loader-animation div {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #4f46e5;
+    animation: loader-bounce 0.85s infinite ease-in-out;
+}
+.page-loader .loader-animation div:nth-child(2) { animation-delay: 0.1s; }
+.page-loader .loader-animation div:nth-child(3) { animation-delay: 0.2s; }
+.page-loader .loader-animation div:nth-child(4) { animation-delay: 0.3s; }
+.page-loader .loader-animation div:nth-child(5) { animation-delay: 0.4s; }
+@keyframes loader-bounce {
+    0%, 100% { transform: translateY(0); opacity: 0.5; }
+    50% { transform: translateY(-12px); opacity: 1; }
+}
+
 /* CORPS DE LA PAGE */
 html {
     overflow-x: hidden;

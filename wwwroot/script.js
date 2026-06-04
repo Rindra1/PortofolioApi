@@ -243,3 +243,9 @@ if (document.readyState === 'loading') {
         window.siteInterop.initAll();
     }
 }
+
+window.addEventListener('load', function() {
+    if (window.siteInterop) {
+        window.siteInterop.hideLoader();
+    }
+});
