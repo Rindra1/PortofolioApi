@@ -526,7 +526,7 @@
     {
         if (emailRequest == null || string.IsNullOrWhiteSpace(emailRequest.Name) || string.IsNullOrWhiteSpace(emailRequest.To) || string.IsNullOrWhiteSpace(emailRequest.Body))
         {
-            await JS.InvokeVoidAsync("alert", "Veuillez remplir tous les champs");
+            //await JS.InvokeVoidAsync("alert", "Veuillez remplir tous les champs");
             return;
         }
 
@@ -549,7 +549,7 @@
 
             if (response.IsSuccessStatusCode)
             {
-                await JS.InvokeVoidAsync("alert", "Message envoyé avec succès !");
+                //await JS.InvokeVoidAsync("alert", "Message envoyé avec succès !");
                 emailRequest = new MailDTO(); // Reset form
                 StateHasChanged();
             }
@@ -564,7 +564,7 @@
         }
         catch (Exception ex)
         {
-            await JS.InvokeVoidAsync("alert", "Erreur technique : " + ex.Message);
+            //await JS.InvokeVoidAsync("alert", "Erreur technique : " + ex.Message);
         }
     }
 

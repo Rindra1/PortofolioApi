@@ -8,6 +8,10 @@ using MailKit.Net.Smtp;
 using MailKit.Security;
 using MimeKit;
 
+using sib_api_v3_sdk.Api;
+using sib_api_v3_sdk.Client;
+using sib_api_v3_sdk.Model;
+
 
 namespace PortofolioApi.Application.Services
 {
@@ -137,7 +141,7 @@ await smtp.SendMailAsync(mailToVisitor);
 
     }*/
 
-public async Task SendEmailAsync(string visitorEmail, string visitorName, string visitorMessage, string subject)
+/*public async Task SendEmailAsync(string visitorEmail, string visitorName, string visitorMessage, string subject)
 {
     var gmailAddress = Environment.GetEnvironmentVariable("SENDGRID_SENDEREMAIL");
     var appPassword = Environment.GetEnvironmentVariable("SENDMAIL_KEY"); // Ton mot de passe d'application (16 caractères)
@@ -203,7 +207,90 @@ public async Task SendEmailAsync(string visitorEmail, string visitorName, string
     await client.DisconnectAsync(true);
     
     Console.WriteLine($"✅ Emails envoyés : notification à vous + confirmation à {visitorEmail}");
+    }*/
+    
+
+public async System.Threading.Tasks.Task SendEmailAsync(string visitorEmail, string visitorName, string subject, string visitorMessage)
+{
+    // Configuration avec ta clé API
+    var apiInstance = new TransactionalEmailsApi();
+    var apiKey = Environment.GetEnvironmentVariable("BREVO_API_KEY"); // Ta clé API Brevo
+    if (!sib_api_v3_sdk.Client.Configuration.Default.ApiKey.ContainsKey("api-key"))
+    {
+        sib_api_v3_sdk.Client.Configuration.Default.ApiKey.Add("api-key", apiKey);
     }
+    
+    // Adresse expéditeur (doit être vérifiée dans Brevo)
+    string senderEmail = Environment.GetEnvironmentVariable("SENDGRID_SENDEREMAIL");
+    string senderName = "Portfolio";
+    var formattedMessage = string.IsNullOrEmpty(visitorMessage) 
+    ? "Message vide" 
+    : System.Net.WebUtility.HtmlEncode(visitorMessage)  // Évite les injections HTML
+        .Replace("\r\n", "<br/>")   // Retours à la ligne Windows
+        .Replace("\n", "<br/>")     // Retours à la ligne Unix/Mac
+        .Replace("\r", "<br/>");    // Retours à la ligne ancien Mac
+    // 1️⃣ EMAIL POUR TOI (notification)
+    var emailToYou = new SendSmtpEmail
+    {
+        To = new List<SendSmtpEmailTo>
+        {
+            new SendSmtpEmailTo(Environment.GetEnvironmentVariable("SENDGRID_SENDEREMAIL"), "Admin")
+        },
+        Sender = new SendSmtpEmailSender(senderName, senderEmail),
+        Subject = "📩 Nouveau message portfolio",
+        HtmlContent = $@"
+            <html>
+            <body>
+                <h3>Nouveau message</h3>
+                <p><strong>Nom :</strong> {visitorName}</p>
+                <p><strong>Email :</strong> {visitorEmail}</p>
+                <p><strong>Message :</strong></p>
+                <div style='background-color: #f5f5f5; padding: 15px; border-radius: 5px; margin-top: 10px;'>
+                {formattedMessage}
+            </div>
+            <hr/>
+            <p style='font-size: 12px; color: #666;'>
+                Vous pouvez répondre directement à cet email pour contacter {System.Net.WebUtility.HtmlEncode(visitorName)}.
+            </p>
+            </body>
+            </html>"
+    };
+    
+
+    // 2️⃣ EMAIL AU VISITEUR (confirmation)
+    var emailToVisitor = new SendSmtpEmail
+    {
+        To = new List<SendSmtpEmailTo>
+        {
+            new SendSmtpEmailTo(visitorEmail, visitorName)
+        },
+        Sender = new SendSmtpEmailSender(senderName, senderEmail),
+        Subject = "👍 Message bien reçu",
+        HtmlContent = $@"
+            <html>
+            <body>
+                <h2>Bonjour {visitorName},</h2>
+                
+                <p>Merci d'avoir pris le temps de me contacter.</p>
+
+                <p>J'ai bien reçu votre message et je vous répondrai dans les plus brefs délais (généralement sous 24-48h).</p>
+                <p>En attendant, n'hésitez pas à consulter mon portfolio pour découvrir mes autres réalisations.</p>
+
+                <p>Cordialement,</p>
+                <p>Rindra Niaina RAZAFIMANDANONA</p>
+
+                ---
+                <p>Ceci est un message automatique, merci de ne pas y répondre directement.</p>
+            </body>
+            </html>"
+    };
+    
+    // Envoi des deux emails
+    await apiInstance.SendTransacEmailAsync(emailToYou);
+    await apiInstance.SendTransacEmailAsync(emailToVisitor);
+    
+    Console.WriteLine("✅ Emails envoyés via API Brevo");
+}
     }
 }
 

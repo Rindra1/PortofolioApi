@@ -28,6 +28,39 @@
           }
         }
       },
+      "FubarCoder.RestSharp.Portable.Core/4.0.8": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "Newtonsoft.Json": "9.0.1"
+        },
+        "compile": {
+          "lib/netstandard1.3/FubarCoder.RestSharp.Portable.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard1.3/FubarCoder.RestSharp.Portable.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "FubarCoder.RestSharp.Portable.HttpClient/4.0.8": {
+        "type": "package",
+        "dependencies": {
+          "FubarCoder.RestSharp.Portable.Core": "4.0.8"
+        },
+        "compile": {
+          "lib/netstandard1.1/FubarCoder.RestSharp.Portable.HttpClient.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard1.1/FubarCoder.RestSharp.Portable.HttpClient.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Humanizer.Core/2.14.1": {
         "type": "package",
         "compile": {
@@ -39,6 +72,18 @@
           "lib/net6.0/Humanizer.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "JsonSubTypes/2.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/JsonSubTypes.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/JsonSubTypes.dll": {}
         }
       },
       "MailKit/4.17.0": {
@@ -601,6 +646,15 @@
           }
         }
       },
+      "Microsoft.NETCore.Platforms/1.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/_._": {}
+        }
+      },
       "Microsoft.OpenApi/1.6.25": {
         "type": "package",
         "compile": {
@@ -641,6 +695,12 @@
         },
         "runtime": {
           "lib/netstandard2.0/Mono.TextTemplating.dll": {}
+        }
+      },
+      "NETStandard.Library/1.6.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.0.1"
         }
       },
       "Newtonsoft.Json/13.0.3": {
@@ -687,6 +747,25 @@
         "runtime": {
           "lib/netstandard2.0/SendGrid.dll": {
             "related": ".pdb;.xml"
+          }
+        }
+      },
+      "sib_api_v3_sdk/4.0.2": {
+        "type": "package",
+        "dependencies": {
+          "FubarCoder.RestSharp.Portable.Core": "4.0.8",
+          "FubarCoder.RestSharp.Portable.HttpClient": "4.0.8",
+          "JsonSubTypes": "2.0.1",
+          "Newtonsoft.Json": "13.0.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/sib_api_v3_sdk.dll": {
+            "related": ".runtimeconfig.json"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/sib_api_v3_sdk.dll": {
+            "related": ".runtimeconfig.json"
           }
         }
       },
@@ -1101,6 +1180,82 @@
         "packageIcon.png"
       ]
     },
+    "FubarCoder.RestSharp.Portable.Core/4.0.8": {
+      "sha512": "OELVey64TaGRfBmDamG8GCS9sB3tpDOpNBRW2Aoy+Bk1OyDMT3PKSt6s7VuB7Jz4MA2Ut2Pe4v6vYJUArMk1Gw==",
+      "type": "package",
+      "path": "fubarcoder.restsharp.portable.core/4.0.8",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Changes.md",
+        "LICENSE.md",
+        "README.md",
+        "fubarcoder.restsharp.portable.core.4.0.8.nupkg.sha512",
+        "fubarcoder.restsharp.portable.core.nuspec",
+        "lib/monoandroid10/FubarCoder.RestSharp.Portable.Core.dll",
+        "lib/monoandroid10/FubarCoder.RestSharp.Portable.Core.xml",
+        "lib/monotouch10/FubarCoder.RestSharp.Portable.Core.dll",
+        "lib/monotouch10/FubarCoder.RestSharp.Portable.Core.xml",
+        "lib/native/_._",
+        "lib/net40/FubarCoder.RestSharp.Portable.Core.dll",
+        "lib/net40/FubarCoder.RestSharp.Portable.Core.xml",
+        "lib/net45/FubarCoder.RestSharp.Portable.Core.dll",
+        "lib/net45/FubarCoder.RestSharp.Portable.Core.xml",
+        "lib/netstandard1.0/FubarCoder.RestSharp.Portable.Core.dll",
+        "lib/netstandard1.0/FubarCoder.RestSharp.Portable.Core.xml",
+        "lib/netstandard1.1/FubarCoder.RestSharp.Portable.Core.dll",
+        "lib/netstandard1.1/FubarCoder.RestSharp.Portable.Core.xml",
+        "lib/netstandard1.3/FubarCoder.RestSharp.Portable.Core.dll",
+        "lib/netstandard1.3/FubarCoder.RestSharp.Portable.Core.xml",
+        "lib/portable40-net40+sl5+win8+wp8+wpa81/FubarCoder.RestSharp.Portable.Core.dll",
+        "lib/portable40-net40+sl5+win8+wp8+wpa81/FubarCoder.RestSharp.Portable.Core.xml",
+        "lib/portable45-net45+win8+wp8+wpa81/FubarCoder.RestSharp.Portable.Core.dll",
+        "lib/portable45-net45+win8+wp8+wpa81/FubarCoder.RestSharp.Portable.Core.xml",
+        "lib/sl50/FubarCoder.RestSharp.Portable.Core.dll",
+        "lib/sl50/FubarCoder.RestSharp.Portable.Core.xml",
+        "lib/xamarinios10/FubarCoder.RestSharp.Portable.Core.dll",
+        "lib/xamarinios10/FubarCoder.RestSharp.Portable.Core.xml",
+        "tools/native/install.ps1",
+        "tools/native/uninstall.ps1"
+      ]
+    },
+    "FubarCoder.RestSharp.Portable.HttpClient/4.0.8": {
+      "sha512": "h6pTAjqkQW0j6lPm/gsxTMXBvx2Fbe6crZr+jpNgWOKs25S5umYngoJULAvo5YyBFvvN4v7CmCGZhFMWzxS8Ig==",
+      "type": "package",
+      "path": "fubarcoder.restsharp.portable.httpclient/4.0.8",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Changes.md",
+        "LICENSE.md",
+        "README.md",
+        "fubarcoder.restsharp.portable.httpclient.4.0.8.nupkg.sha512",
+        "fubarcoder.restsharp.portable.httpclient.nuspec",
+        "lib/monoandroid10/FubarCoder.RestSharp.Portable.HttpClient.dll",
+        "lib/monoandroid10/FubarCoder.RestSharp.Portable.HttpClient.xml",
+        "lib/monotouch10/FubarCoder.RestSharp.Portable.HttpClient.dll",
+        "lib/monotouch10/FubarCoder.RestSharp.Portable.HttpClient.xml",
+        "lib/native/_._",
+        "lib/net40/FubarCoder.RestSharp.Portable.HttpClient.dll",
+        "lib/net40/FubarCoder.RestSharp.Portable.HttpClient.xml",
+        "lib/net45/FubarCoder.RestSharp.Portable.HttpClient.dll",
+        "lib/net45/FubarCoder.RestSharp.Portable.HttpClient.xml",
+        "lib/netstandard1.1/FubarCoder.RestSharp.Portable.HttpClient.dll",
+        "lib/netstandard1.1/FubarCoder.RestSharp.Portable.HttpClient.xml",
+        "lib/portable40-net40+sl5+win8+wp8+wpa81/FubarCoder.RestSharp.Portable.HttpClient.dll",
+        "lib/portable40-net40+sl5+win8+wp8+wpa81/FubarCoder.RestSharp.Portable.HttpClient.xml",
+        "lib/portable45-net45+win8+wp8+wpa81/FubarCoder.RestSharp.Portable.HttpClient.dll",
+        "lib/portable45-net45+win8+wp8+wpa81/FubarCoder.RestSharp.Portable.HttpClient.xml",
+        "lib/sl50/FubarCoder.RestSharp.Portable.HttpClient.dll",
+        "lib/sl50/FubarCoder.RestSharp.Portable.HttpClient.xml",
+        "lib/xamarinios10/FubarCoder.RestSharp.Portable.HttpClient.dll",
+        "lib/xamarinios10/FubarCoder.RestSharp.Portable.HttpClient.xml",
+        "tools/native/install.ps1",
+        "tools/native/uninstall.ps1"
+      ]
+    },
     "Humanizer.Core/2.14.1": {
       "sha512": "lQKvtaTDOXnoVJ20ibTuSIOf2i0uO0MPbDhd1jm238I+U/2ZnRENj0cktKZhtchBMtCUSRQ5v4xBCUbKNmyVMw==",
       "type": "package",
@@ -1117,6 +1272,26 @@
         "lib/netstandard2.0/Humanizer.dll",
         "lib/netstandard2.0/Humanizer.xml",
         "logo.png"
+      ]
+    },
+    "JsonSubTypes/2.0.1": {
+      "sha512": "1Po+Ypf0SjCeEKx5+C89Nb5OgTcqNvfS3uTI46MUM+KEp6Rq/M0h+vVsTUt/6DFRwZMTpsAJM4yJrZmEObVANA==",
+      "type": "package",
+      "path": "jsonsubtypes/2.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "README.md",
+        "jsonsubtypes.2.0.1.nupkg.sha512",
+        "jsonsubtypes.nuspec",
+        "lib/net35/JsonSubTypes.dll",
+        "lib/net40/JsonSubTypes.dll",
+        "lib/net45/JsonSubTypes.dll",
+        "lib/net46/JsonSubTypes.dll",
+        "lib/net47/JsonSubTypes.dll",
+        "lib/netstandard1.3/JsonSubTypes.dll",
+        "lib/netstandard2.0/JsonSubTypes.dll"
       ]
     },
     "MailKit/4.17.0": {
@@ -2224,6 +2399,20 @@
         "microsoft.identitymodel.tokens.nuspec"
       ]
     },
+    "Microsoft.NETCore.Platforms/1.0.1": {
+      "sha512": "2G6OjjJzwBfNOO8myRV/nFrbTw5iA+DEm0N+qUqhrOmaVtn4pC77h38I1jsXGw5VH55+dPfQsqHD0We9sCl9FQ==",
+      "type": "package",
+      "path": "microsoft.netcore.platforms/1.0.1",
+      "files": [
+        ".nupkg.metadata",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/netstandard1.0/_._",
+        "microsoft.netcore.platforms.1.0.1.nupkg.sha512",
+        "microsoft.netcore.platforms.nuspec",
+        "runtime.json"
+      ]
+    },
     "Microsoft.OpenApi/1.6.25": {
       "sha512": "ZahSqNGtNV7N0JBYS/IYXPkLVexL/AZFxo6pqxv6A7Uli7Q7zfitNjkaqIcsV73Ukzxi4IlJdyDgcQiMXiH8cw==",
       "type": "package",
@@ -2289,6 +2478,18 @@
         "lib/netstandard2.0/Mono.TextTemplating.dll",
         "mono.texttemplating.2.2.1.nupkg.sha512",
         "mono.texttemplating.nuspec"
+      ]
+    },
+    "NETStandard.Library/1.6.0": {
+      "sha512": "ypsCvIdCZ4IoYASJHt6tF2fMo7N30NLgV1EbmC+snO490OMl9FvVxmumw14rhReWU3j3g7BYudG6YCrchwHJlA==",
+      "type": "package",
+      "path": "netstandard.library/1.6.0",
+      "files": [
+        ".nupkg.metadata",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "netstandard.library.1.6.0.nupkg.sha512",
+        "netstandard.library.nuspec"
       ]
     },
     "Newtonsoft.Json/13.0.3": {
@@ -2357,6 +2558,19 @@
         "lib/netstandard2.0/SendGrid.xml",
         "sendgrid.9.29.3.nupkg.sha512",
         "sendgrid.nuspec"
+      ]
+    },
+    "sib_api_v3_sdk/4.0.2": {
+      "sha512": "/N2fTdzNelHhwuyyvOqXCm6DZgJlXNjw0nCKOQddAQnUXrgt6ozrFMtcpRVrrIQU0RC3fU0ZzYrr1xeZ4S857g==",
+      "type": "package",
+      "path": "sib_api_v3_sdk/4.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/sib_api_v3_sdk.dll",
+        "lib/netstandard2.0/sib_api_v3_sdk.runtimeconfig.json",
+        "sib_api_v3_sdk.4.0.2.nupkg.sha512",
+        "sib_api_v3_sdk.nuspec"
       ]
     },
     "SQLitePCLRaw.bundle_e_sqlite3/2.1.6": {
@@ -2758,7 +2972,8 @@
       "OpenAI >= 1.11.0",
       "SendGrid >= 9.29.3",
       "Swashbuckle.AspNetCore >= 9.0.4",
-      "System.IdentityModel.Tokens.Jwt >= 8.14.0"
+      "System.IdentityModel.Tokens.Jwt >= 8.14.0",
+      "sib_api_v3_sdk >= 4.0.2"
     ]
   },
   "packageFolders": {
@@ -2859,6 +3074,10 @@
           "System.IdentityModel.Tokens.Jwt": {
             "target": "Package",
             "version": "[8.14.0, )"
+          },
+          "sib_api_v3_sdk": {
+            "target": "Package",
+            "version": "[4.0.2, )"
           }
         },
         "imports": [

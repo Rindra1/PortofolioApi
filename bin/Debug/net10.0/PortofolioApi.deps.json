@@ -17,7 +17,8 @@
           "OpenAI": "1.11.0",
           "SendGrid": "9.29.3",
           "Swashbuckle.AspNetCore": "9.0.4",
-          "System.IdentityModel.Tokens.Jwt": "8.14.0"
+          "System.IdentityModel.Tokens.Jwt": "8.14.0",
+          "sib_api_v3_sdk": "4.0.2"
         },
         "runtime": {
           "PortofolioApi.dll": {}
@@ -47,11 +48,44 @@
           }
         }
       },
+      "FubarCoder.RestSharp.Portable.Core/4.0.8": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3"
+        },
+        "runtime": {
+          "lib/netstandard1.3/FubarCoder.RestSharp.Portable.Core.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.8.0"
+          }
+        }
+      },
+      "FubarCoder.RestSharp.Portable.HttpClient/4.0.8": {
+        "dependencies": {
+          "FubarCoder.RestSharp.Portable.Core": "4.0.8"
+        },
+        "runtime": {
+          "lib/netstandard1.1/FubarCoder.RestSharp.Portable.HttpClient.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.8.0"
+          }
+        }
+      },
       "Humanizer.Core/2.14.1": {
         "runtime": {
           "lib/net6.0/Humanizer.dll": {
             "assemblyVersion": "2.14.0.0",
             "fileVersion": "2.14.1.48190"
+          }
+        }
+      },
+      "JsonSubTypes/2.0.1": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3"
+        },
+        "runtime": {
+          "lib/netstandard2.0/JsonSubTypes.dll": {
+            "assemblyVersion": "2.0.1.0",
+            "fileVersion": "2.0.1.0"
           }
         }
       },
@@ -511,6 +545,20 @@
           }
         }
       },
+      "sib_api_v3_sdk/4.0.2": {
+        "dependencies": {
+          "FubarCoder.RestSharp.Portable.Core": "4.0.8",
+          "FubarCoder.RestSharp.Portable.HttpClient": "4.0.8",
+          "JsonSubTypes": "2.0.1",
+          "Newtonsoft.Json": "13.0.3"
+        },
+        "runtime": {
+          "lib/netstandard2.0/sib_api_v3_sdk.dll": {
+            "assemblyVersion": "4.0.2.0",
+            "fileVersion": "4.0.2.0"
+          }
+        }
+      },
       "SQLitePCLRaw.bundle_e_sqlite3/2.1.6": {
         "dependencies": {
           "SQLitePCLRaw.lib.e_sqlite3": "2.1.6",
@@ -793,12 +841,33 @@
       "path": "bouncycastle.cryptography/2.6.2",
       "hashPath": "bouncycastle.cryptography.2.6.2.nupkg.sha512"
     },
+    "FubarCoder.RestSharp.Portable.Core/4.0.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-OELVey64TaGRfBmDamG8GCS9sB3tpDOpNBRW2Aoy+Bk1OyDMT3PKSt6s7VuB7Jz4MA2Ut2Pe4v6vYJUArMk1Gw==",
+      "path": "fubarcoder.restsharp.portable.core/4.0.8",
+      "hashPath": "fubarcoder.restsharp.portable.core.4.0.8.nupkg.sha512"
+    },
+    "FubarCoder.RestSharp.Portable.HttpClient/4.0.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-h6pTAjqkQW0j6lPm/gsxTMXBvx2Fbe6crZr+jpNgWOKs25S5umYngoJULAvo5YyBFvvN4v7CmCGZhFMWzxS8Ig==",
+      "path": "fubarcoder.restsharp.portable.httpclient/4.0.8",
+      "hashPath": "fubarcoder.restsharp.portable.httpclient.4.0.8.nupkg.sha512"
+    },
     "Humanizer.Core/2.14.1": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-lQKvtaTDOXnoVJ20ibTuSIOf2i0uO0MPbDhd1jm238I+U/2ZnRENj0cktKZhtchBMtCUSRQ5v4xBCUbKNmyVMw==",
       "path": "humanizer.core/2.14.1",
       "hashPath": "humanizer.core.2.14.1.nupkg.sha512"
+    },
+    "JsonSubTypes/2.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1Po+Ypf0SjCeEKx5+C89Nb5OgTcqNvfS3uTI46MUM+KEp6Rq/M0h+vVsTUt/6DFRwZMTpsAJM4yJrZmEObVANA==",
+      "path": "jsonsubtypes/2.0.1",
+      "hashPath": "jsonsubtypes.2.0.1.nupkg.sha512"
     },
     "MailKit/4.17.0": {
       "type": "package",
@@ -995,6 +1064,13 @@
       "sha512": "sha512-nb/zHePecN9U4/Bmct+O+lpgK994JklbCCNMIgGPOone/DngjQoMCHeTvkl+m0Nglvm0dqMEshmvB4fO8eF3dA==",
       "path": "sendgrid/9.29.3",
       "hashPath": "sendgrid.9.29.3.nupkg.sha512"
+    },
+    "sib_api_v3_sdk/4.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/N2fTdzNelHhwuyyvOqXCm6DZgJlXNjw0nCKOQddAQnUXrgt6ozrFMtcpRVrrIQU0RC3fU0ZzYrr1xeZ4S857g==",
+      "path": "sib_api_v3_sdk/4.0.2",
+      "hashPath": "sib_api_v3_sdk.4.0.2.nupkg.sha512"
     },
     "SQLitePCLRaw.bundle_e_sqlite3/2.1.6": {
       "type": "package",
