@@ -1,7 +1,12 @@
 window.siteInterop = {
+    hideById: function(id) {
+        try {
+            const el = document.getElementById(id);
+            if (el) el.style.display = 'none';
+        } catch (e) { /* ignore */ }
+    },
     hideLoader: function() {
-        const loader = document.getElementById('loader');
-        if(loader) loader.style.display = 'none';
+        this.hideById('loader');
     },
     scrollToSection: function(sectionId) {
         const element = document.getElementById(sectionId);
