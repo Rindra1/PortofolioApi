@@ -3,6 +3,86 @@
   "WorkspaceRootPath": "C:\\Users\\ASUS\\PortofolioApi\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|c:\\users\\asus\\portofolioapi\\components\\pages\\home.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|solutionrelative:components\\pages\\home.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|c:\\users\\asus\\portofolioapi\\components\\shared\\chatbot.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|solutionrelative:components\\shared\\chatbot.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|c:\\users\\asus\\portofolioapi\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|solutionrelative:components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|c:\\users\\asus\\portofolioapi\\components\\shared\\chatbot.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|solutionrelative:components\\shared\\chatbot.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|c:\\users\\asus\\portofolioapi\\components\\shared\\contact.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|solutionrelative:components\\shared\\contact.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|c:\\users\\asus\\portofolioapi\\components\\shared\\contact.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|solutionrelative:components\\shared\\contact.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|c:\\users\\asus\\portofolioapi\\components\\shared\\about.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|solutionrelative:components\\shared\\about.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|c:\\users\\asus\\portofolioapi\\components\\shared\\services.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|solutionrelative:components\\shared\\services.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|c:\\users\\asus\\portofolioapi\\components\\shared\\projects.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|solutionrelative:components\\shared\\projects.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|c:\\users\\asus\\portofolioapi\\components\\shared\\services.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|solutionrelative:components\\shared\\services.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|c:\\users\\asus\\portofolioapi\\components\\shared\\exeperiences.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|solutionrelative:components\\shared\\exeperiences.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|c:\\users\\asus\\portofolioapi\\components\\shared\\exeperiences.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|solutionrelative:components\\shared\\exeperiences.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|c:\\users\\asus\\portofolioapi\\components\\shared\\projects.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|solutionrelative:components\\shared\\projects.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|c:\\users\\asus\\portofolioapi\\components\\shared\\about.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|solutionrelative:components\\shared\\about.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|c:\\users\\asus\\portofolioapi\\components\\shared\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|solutionrelative:components\\shared\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|c:\\users\\asus\\portofolioapi\\components\\shared\\home.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|solutionrelative:components\\shared\\home.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|c:\\users\\asus\\portofolioapi\\resources\\resource.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|solutionrelative:resources\\resource.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|c:\\users\\asus\\portofolioapi\\resources\\resources.en-gb.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}",
+      "RelativeMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|solutionrelative:resources\\resources.en-gb.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|c:\\users\\asus\\portofolioapi\\services\\localizationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|solutionrelative:services\\localizationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|c:\\users\\asus\\portofolioapi\\controllers\\translatecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|solutionrelative:controllers\\translatecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|c:\\users\\asus\\portofolioapi\\application\\services\\chatservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{23F465B5-B7BE-7E90-E32A-F092E3527599}|PortofolioApi.csproj|solutionrelative:application\\services\\chatservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -14,20 +94,262 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ChatBot.razor",
+              "DocumentMoniker": "C:\\Users\\ASUS\\PortofolioApi\\Components\\Shared\\ChatBot.razor",
+              "RelativeDocumentMoniker": "Components\\Shared\\ChatBot.razor",
+              "ToolTip": "C:\\Users\\ASUS\\PortofolioApi\\Components\\Shared\\ChatBot.razor",
+              "RelativeToolTip": "Components\\Shared\\ChatBot.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-06-08T06:48:35.016Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Contact.razor.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\PortofolioApi\\Components\\Shared\\Contact.razor.cs",
+              "RelativeDocumentMoniker": "Components\\Shared\\Contact.razor.cs",
+              "ToolTip": "C:\\Users\\ASUS\\PortofolioApi\\Components\\Shared\\Contact.razor.cs",
+              "RelativeToolTip": "Components\\Shared\\Contact.razor.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAkwA4AAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T06:38:35.068Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Contact.razor",
+              "DocumentMoniker": "C:\\Users\\ASUS\\PortofolioApi\\Components\\Shared\\Contact.razor",
+              "RelativeDocumentMoniker": "Components\\Shared\\Contact.razor",
+              "ToolTip": "C:\\Users\\ASUS\\PortofolioApi\\Components\\Shared\\Contact.razor",
+              "RelativeToolTip": "Components\\Shared\\Contact.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAABeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-06-08T06:38:10.791Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Services.razor.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\PortofolioApi\\Components\\Shared\\Services.razor.cs",
+              "RelativeDocumentMoniker": "Components\\Shared\\Services.razor.cs",
+              "ToolTip": "C:\\Users\\ASUS\\PortofolioApi\\Components\\Shared\\Services.razor.cs",
+              "RelativeToolTip": "Components\\Shared\\Services.razor.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T06:34:54.42Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Services.razor",
+              "DocumentMoniker": "C:\\Users\\ASUS\\PortofolioApi\\Components\\Shared\\Services.razor",
+              "RelativeDocumentMoniker": "Components\\Shared\\Services.razor",
+              "ToolTip": "C:\\Users\\ASUS\\PortofolioApi\\Components\\Shared\\Services.razor",
+              "RelativeToolTip": "Components\\Shared\\Services.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-06-08T06:34:05.691Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Exeperiences.razor.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\PortofolioApi\\Components\\Shared\\Exeperiences.razor.cs",
+              "RelativeDocumentMoniker": "Components\\Shared\\Exeperiences.razor.cs",
+              "ToolTip": "C:\\Users\\ASUS\\PortofolioApi\\Components\\Shared\\Exeperiences.razor.cs",
+              "RelativeToolTip": "Components\\Shared\\Exeperiences.razor.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T06:32:26.244Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Home.razor.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\PortofolioApi\\Components\\Pages\\Home.razor.cs",
+              "RelativeDocumentMoniker": "Components\\Pages\\Home.razor.cs",
+              "ToolTip": "C:\\Users\\ASUS\\PortofolioApi\\Components\\Pages\\Home.razor.cs",
+              "RelativeToolTip": "Components\\Pages\\Home.razor.cs",
+              "ViewState": "AgIAADEAAAAAAAAAAAAAwEUAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T06:09:44.512Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ChatBot.razor.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\PortofolioApi\\Components\\Shared\\ChatBot.razor.cs",
+              "RelativeDocumentMoniker": "Components\\Shared\\ChatBot.razor.cs",
+              "ToolTip": "C:\\Users\\ASUS\\PortofolioApi\\Components\\Shared\\ChatBot.razor.cs",
+              "RelativeToolTip": "Components\\Shared\\ChatBot.razor.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwCMAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T07:02:36.055Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Exeperiences.razor",
+              "DocumentMoniker": "C:\\Users\\ASUS\\PortofolioApi\\Components\\Shared\\Exeperiences.razor",
+              "RelativeDocumentMoniker": "Components\\Shared\\Exeperiences.razor",
+              "ToolTip": "C:\\Users\\ASUS\\PortofolioApi\\Components\\Shared\\Exeperiences.razor",
+              "RelativeToolTip": "Components\\Shared\\Exeperiences.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-06-08T06:31:54.762Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Projects.razor.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\PortofolioApi\\Components\\Shared\\Projects.razor.cs",
+              "RelativeDocumentMoniker": "Components\\Shared\\Projects.razor.cs",
+              "ToolTip": "C:\\Users\\ASUS\\PortofolioApi\\Components\\Shared\\Projects.razor.cs",
+              "RelativeToolTip": "Components\\Shared\\Projects.razor.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T06:28:21.429Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "About.razor.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\PortofolioApi\\Components\\Shared\\About.razor.cs",
+              "RelativeDocumentMoniker": "Components\\Shared\\About.razor.cs",
+              "ToolTip": "C:\\Users\\ASUS\\PortofolioApi\\Components\\Shared\\About.razor.cs",
+              "RelativeToolTip": "Components\\Shared\\About.razor.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T06:21:20.305Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Home.razor",
+              "DocumentMoniker": "C:\\Users\\ASUS\\PortofolioApi\\Components\\Pages\\Home.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Home.razor",
+              "ToolTip": "C:\\Users\\ASUS\\PortofolioApi\\Components\\Pages\\Home.razor",
+              "RelativeToolTip": "Components\\Pages\\Home.razor",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-06-08T06:07:36.006Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Projects.razor",
+              "DocumentMoniker": "C:\\Users\\ASUS\\PortofolioApi\\Components\\Shared\\Projects.razor",
+              "RelativeDocumentMoniker": "Components\\Shared\\Projects.razor",
+              "ToolTip": "C:\\Users\\ASUS\\PortofolioApi\\Components\\Shared\\Projects.razor",
+              "RelativeToolTip": "Components\\Shared\\Projects.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-06-08T06:27:12.926Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "About.razor",
+              "DocumentMoniker": "C:\\Users\\ASUS\\PortofolioApi\\Components\\Shared\\About.razor",
+              "RelativeDocumentMoniker": "Components\\Shared\\About.razor",
+              "ToolTip": "C:\\Users\\ASUS\\PortofolioApi\\Components\\Shared\\About.razor",
+              "RelativeToolTip": "Components\\Shared\\About.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-06-08T06:21:13.302Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Home.razor.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\PortofolioApi\\Components\\Shared\\Home.razor.cs",
+              "RelativeDocumentMoniker": "Components\\Shared\\Home.razor.cs",
+              "ToolTip": "C:\\Users\\ASUS\\PortofolioApi\\Components\\Shared\\Home.razor.cs",
+              "RelativeToolTip": "Components\\Shared\\Home.razor.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T06:05:59.872Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Home.razor",
+              "DocumentMoniker": "C:\\Users\\ASUS\\PortofolioApi\\Components\\Shared\\Home.razor",
+              "RelativeDocumentMoniker": "Components\\Shared\\Home.razor",
+              "ToolTip": "C:\\Users\\ASUS\\PortofolioApi\\Components\\Shared\\Home.razor",
+              "RelativeToolTip": "Components\\Shared\\Home.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-06-08T06:05:56.38Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Resource.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\PortofolioApi\\Resources\\Resource.Designer.cs",
+              "RelativeDocumentMoniker": "Resources\\Resource.Designer.cs",
+              "ToolTip": "C:\\Users\\ASUS\\PortofolioApi\\Resources\\Resource.Designer.cs",
+              "RelativeToolTip": "Resources\\Resource.Designer.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-30T08:31:11.81Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "LocalizationService.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\PortofolioApi\\Services\\LocalizationService.cs",
+              "RelativeDocumentMoniker": "Services\\LocalizationService.cs",
+              "ToolTip": "C:\\Users\\ASUS\\PortofolioApi\\Services\\LocalizationService.cs",
+              "RelativeToolTip": "Services\\LocalizationService.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-30T07:22:15.011Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Resources.en-GB.resx",
+              "DocumentMoniker": "C:\\Users\\ASUS\\PortofolioApi\\Resources\\Resources.en-GB.resx",
+              "RelativeDocumentMoniker": "Resources\\Resources.en-GB.resx",
+              "ToolTip": "C:\\Users\\ASUS\\PortofolioApi\\Resources\\Resources.en-GB.resx",
+              "RelativeToolTip": "Resources\\Resources.en-GB.resx",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2026-05-30T07:21:10.7Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "TranslateController.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\PortofolioApi\\Controllers\\TranslateController.cs",
+              "RelativeDocumentMoniker": "Controllers\\TranslateController.cs",
+              "ToolTip": "C:\\Users\\ASUS\\PortofolioApi\\Controllers\\TranslateController.cs",
+              "RelativeToolTip": "Controllers\\TranslateController.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAowCwAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-30T07:11:55.973Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
               "Title": "ChatService.cs",
               "DocumentMoniker": "C:\\Users\\ASUS\\PortofolioApi\\Application\\Services\\ChatService.cs",
               "RelativeDocumentMoniker": "Application\\Services\\ChatService.cs",
               "ToolTip": "C:\\Users\\ASUS\\PortofolioApi\\Application\\Services\\ChatService.cs",
               "RelativeToolTip": "Application\\Services\\ChatService.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAYwBAAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-30T06:45:11.947Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-30T06:45:11.947Z"
             }
           ]
         }

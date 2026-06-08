@@ -1,0 +1,24 @@
+<!-- À PROPOS -->
+
+<section id="about">
+    <div class="container">
+        <h2 class="section-title">@Localizer.T("About")</h2>
+        <div class="about-wrapper">
+            <div class="about-text" data-aos="fade-right" data-aos-once="false">
+                <p>@Localizer.T("APropos")</p>
+            </div>
+            <div class="skills-box" data-aos="fade-left" data-aos-delay="150" data-aos-once="false">
+                <h3><i class="fas fa-code"></i> @Localizer.T("TechnicalStack")</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top:1rem;">
+                    @if (!string.IsNullOrEmpty(portfolio.StackTechnique))
+                    {
+                        @foreach (var tech in portfolio.StackTechnique.Split(','))
+                        {
+                            <span class="tech-badge">@tech</span>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

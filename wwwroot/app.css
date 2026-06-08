@@ -1058,3 +1058,149 @@ main {
         padding-top: 80px;
     }
 }
+
+/* Badges flottants autour de l'image */
+.hero-image-container {
+    position: relative;
+}
+
+.floating-badge {
+    position: absolute;
+    background: linear-gradient(135deg, #4f46e5, #6366f1);
+    color: white;
+    padding: 0.5rem 1.2rem;
+    border-radius: 40px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 8px 20px rgba(79,70,229,0.3);
+    white-space: nowrap;
+    z-index: 10;
+    animation: floatBadge 3s ease-in-out infinite;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.floating-badge i {
+    font-size: 1rem;
+}
+
+/* Positions des badges */
+.floating-badge-1 {
+    top: 10%;
+    right: -10px;
+    animation-delay: 0s;
+}
+
+.floating-badge-2 {
+    bottom: 15%;
+    left: -30px;
+    animation-delay: 1s;
+}
+
+.floating-badge-3 {
+    top: 60%;
+    right: -40px;
+    animation-delay: 0.5s;
+}
+
+.floating-badge-4 {
+    bottom: 30%;
+    left: -20px;
+    animation-delay: 1.5s;
+}
+
+/* Animation des badges flottants */
+@keyframes floatBadge {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(3deg);
+    }
+}
+
+/* Effet de rotation/parcours pour certains badges */
+.floating-badge-1 {
+    animation: floatBadge1 4s ease-in-out infinite;
+}
+
+.floating-badge-3 {
+    animation: floatBadge1 3.5s ease-in-out infinite;
+}
+
+@keyframes floatBadge1 {
+    0%, 100% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-8px) translateX(5px) rotate(5deg);
+    }
+    75% {
+        transform: translateY(5px) translateX(-3px) rotate(-3deg);
+    }
+}
+
+/* Version pour le thème sombre */
+body.dark .floating-badge {
+    background: linear-gradient(135deg, #a78bfa, #8b5cf6);
+    box-shadow: 0 8px 20px rgba(167,139,250,0.3);
+    border-color: rgba(255,255,255,0.1);
+}
+
+/* Responsive - masquer ou ajuster sur mobile */
+@media (max-width: 768px) {
+    .floating-badge {
+        padding: 0.3rem 0.8rem;
+        font-size: 0.7rem;
+    }
+    
+    .floating-badge i {
+        font-size: 0.75rem;
+    }
+    
+    .floating-badge-1 {
+        top: 5%;
+        right: -5px;
+    }
+    
+    .floating-badge-2 {
+        bottom: 10%;
+        left: -15px;
+    }
+    
+    .floating-badge-3 {
+        top: 55%;
+        right: -20px;
+    }
+    
+    .floating-badge-4 {
+        bottom: 25%;
+        left: -10px;
+    }
+}
+
+/* Très petit mobile - ajuster positions */
+@media (max-width: 480px) {
+    .floating-badge-1 {
+        top: 0;
+        right: -5px;
+    }
+    
+    .floating-badge-2 {
+        bottom: 5%;
+        left: -10px;
+    }
+    
+    .floating-badge-3 {
+        top: 50%;
+        right: -15px;
+    }
+    
+    .floating-badge-4 {
+        bottom: 15%;
+        left: -8px;
+    }
+}

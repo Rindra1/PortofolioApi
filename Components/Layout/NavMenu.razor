@@ -1,47 +1,20 @@
-﻿
-@inject NavigationManager Nav
+﻿@inject NavigationManager Nav
 @inject IJSRuntime JS
 @inject UserState UserState
 @inject TokenServices TokenService
 @inject PortofolioApi.Services.LocalizationService Localizer
-@rendermode InteractiveServer 
+@rendermode InteractiveServer
 <header>
-    <div class="container nav-flex">
-        <div class="logo">
-            <img src="/images/rindra_logo.png" loading="lazy" alt="Rindra logo"/>
-        </div>
-        <div class="controls">
-            <button class="lang-toggle" id="langToggle" @onclick="ToggleLanguage"><i class="fas fa-globe"></i></button>
-            <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
-            <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
-        </div>
-        <div class="nav-links">
-          <a @onclick='() => ScrollToSection("accueil")' @onclick:preventDefault="true" style="cursor: pointer;">
-            @Localizer.T("Home")
-          </a>
-          <a @onclick='() => ScrollToSection("about")' @onclick:preventDefault="true" style="cursor: pointer;">
-            @Localizer.T("About")
-          </a>
-          <a @onclick='() => ScrollToSection("projets")' @onclick:preventDefault="true" style="cursor: pointer;">
-            @Localizer.T("Projects")
-          </a>
-          <a @onclick='() => ScrollToSection("experience")' @onclick:preventDefault="true" style="cursor: pointer;">
-            @Localizer.T("Experience")
-          </a>
-          <a @onclick='() => ScrollToSection("services")' @onclick:preventDefault="true" style="cursor: pointer;">
-            @Localizer.T("Services")
-          </a>
-          <a @onclick='() => ScrollToSection("contact")' @onclick:preventDefault="true" style="cursor: pointer;">
-            @Localizer.T("Contact")
-          </a>
-            <a href="/CV/CV_Rindra.pdf" class="btn-cv-mobile" id="downloadCVBtnMobile" target="_blank" rel="noopener noreferrer"><i class="fas fa-download"></i> @Localizer.T("DownloadCV")</a>
-        </div>
+  <div class="container nav-flex">
+    <div class="logo">
+      <img src="/images/rindra_logo.png" loading="lazy" alt="Rindra logo" />
     </div>
-</header>
-
-<!-- Menu mobile en dehors du header -->
-<div class="mobile-nav" id="mobileNav">
-    <div class="mobile-nav-container">
+    <div class="controls">
+      <button class="lang-toggle" id="langToggle" @onclick="ToggleLanguage"><i class="fas fa-globe"></i></button>
+      <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+      <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+    </div>
+    <div class="nav-links">
       <a @onclick='() => ScrollToSection("accueil")' @onclick:preventDefault="true" style="cursor: pointer;">
         @Localizer.T("Home")
       </a>
@@ -60,126 +33,133 @@
       <a @onclick='() => ScrollToSection("contact")' @onclick:preventDefault="true" style="cursor: pointer;">
         @Localizer.T("Contact")
       </a>
-      <a href="/CV/CV_Rindra.pdf" class="btn-cv-mobile" id="downloadCVBtnMobile" target="_blank" rel="noopener noreferrer"><i class="fas fa-download"></i> @Localizer.T("DownloadCV")</a>
+      <a href="/CV/CV_Rindra.pdf" class="btn-cv-mobile" id="downloadCVBtnMobile" target="_blank"
+         rel="noopener noreferrer"><i class="fas fa-download"></i> @Localizer.T("DownloadCV")</a>
     </div>
+  </div>
+</header>
+
+<!-- Menu mobile en dehors du header -->
+<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav-container">
+    <a @onclick='() => ScrollToSection("accueil")' @onclick:preventDefault="true" style="cursor: pointer;">
+      @Localizer.T("Home")
+    </a>
+    <a @onclick='() => ScrollToSection("about")' @onclick:preventDefault="true" style="cursor: pointer;">
+      @Localizer.T("About")
+    </a>
+    <a @onclick='() => ScrollToSection("projets")' @onclick:preventDefault="true" style="cursor: pointer;">
+      @Localizer.T("Projects")
+    </a>
+    <a @onclick='() => ScrollToSection("experience")' @onclick:preventDefault="true" style="cursor: pointer;">
+      @Localizer.T("Experience")
+    </a>
+    <a @onclick='() => ScrollToSection("services")' @onclick:preventDefault="true" style="cursor: pointer;">
+      @Localizer.T("Services")
+    </a>
+    <a @onclick='() => ScrollToSection("contact")' @onclick:preventDefault="true" style="cursor: pointer;">
+      @Localizer.T("Contact")
+    </a>
+    <a href="/CV/CV_Rindra.pdf" class="btn-cv-mobile" id="downloadCVBtnMobile" target="_blank"
+       rel="noopener noreferrer"><i class="fas fa-download"></i> @Localizer.T("DownloadCV")</a>
+  </div>
 </div>
 
 
 @code {
-    private string _role;
-
-  /*protected override async Task OnAfterRenderAsync(bool firstRender)
-  {
-    if (firstRender)
-    {
-      await JS.InvokeVoidAsync("siteInterop.initAll");
-    }
-  }*/
+  private string _role;
 
   private async Task ScrollToSection(string sectionId)
-    {
-        await JS.InvokeVoidAsync("siteInterop.scrollToSection", sectionId);
-    }
-    
-    // Pour le menu mobile
-    private async Task CloseMobileNav()
-    {
-        await JS.InvokeVoidAsync("siteInterop.closeMobileNav");
-    }
+  {
+    await JS.InvokeVoidAsync("siteInterop.scrollToSection", sectionId);
+  }
+
+  // Pour le menu mobile
+  private async Task CloseMobileNav()
+  {
+    await JS.InvokeVoidAsync("siteInterop.closeMobileNav");
+  }
 
   
-private bool _initialized;
+  private bool _initialized;
 
-protected override async Task OnAfterRenderAsync(bool firstRender)
-{
+  protected override async Task OnAfterRenderAsync(bool firstRender)
+  {
     if (firstRender && !_initialized)
     {
       _initialized = true;
       try { await Localizer.InitializeAsync(); } catch { }
       await JS.InvokeVoidAsync("siteInterop.initAll");
     }
-}
+  }
 
-private async Task ChangeLangAsync(string lang)
-{
-  await Localizer.SetLanguageAsync(lang);
-  StateHasChanged();
-}
+  private async Task ChangeLangAsync(string lang)
+  {
+    await Localizer.SetLanguageAsync(lang);
+    StateHasChanged();
+  }
 
-private async Task OnLangSelectChange(ChangeEventArgs e)
-{
+  private async Task OnLangSelectChange(ChangeEventArgs e)
+  {
     var val = e?.Value?.ToString();
     if (!string.IsNullOrEmpty(val)) await ChangeLangAsync(val);
-}
+  }
 
-private Task SetFr() => ChangeLangAsync("fr");
-private Task SetEn() => ChangeLangAsync("en");
+  private Task SetFr() => ChangeLangAsync("fr");
+  private Task SetEn() => ChangeLangAsync("en");
 
-private bool _langOpen = false;
-private void ToggleLangDropdown() => _langOpen = !_langOpen;
-private async Task SelectLangAndClose(string lang)
-{
-  _langOpen = false;
-  await ChangeLangAsync(lang);
-}
+  private bool _langOpen = false;
+  private void ToggleLangDropdown() => _langOpen = !_langOpen;
+  private async Task SelectLangAndClose(string lang)
+  {
+    _langOpen = false;
+    await ChangeLangAsync(lang);
+  }
 
-private async Task ToggleLanguage()
-{
+  private async Task ToggleLanguage()
+  {
     await SelectLangAndClose(
         Localizer.CurrentLanguage == "fr" ? "en" : "fr");
-}
+  }
+
+  private void LogoutEvent(MouseEventArgs e)
+  {
+    Console.WriteLine("Interieur Evenement");
+    Logout();
+  }
 
 
-  /*private async Task ToggleTheme()
-    {
-        await JS.InvokeAsync<string>("themeManager.applyTheme");
-    }
+  protected override void OnInitialized()
+  {
+    UserState.OnChange += OnUserStateChanged;
+    Localizer.OnChange += OnLangChanged;
+    _role = UserState.Role ?? TokenService.GetRole();
+  }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            await JS.InvokeVoidAsync("themeManager.applyTheme");
-        }
-    }*/
+  private void OnUserStateChanged()
+  {
+    // On prend seulement la valeur de UserState, pas TokenService
+    _role = UserState.Role;
+    InvokeAsync(StateHasChanged);
+  }
 
-    private void LogoutEvent(MouseEventArgs e){
-      Console.WriteLine("Interieur Evenement");
-      Logout();
-    }
+  private void OnLangChanged()
+  {
+    InvokeAsync(StateHasChanged);
+  }
 
+  public async Task Logout()
+  {
+    await JS.InvokeVoidAsync("localStorage.removeItem", "token");
+    TokenService.ClearToken(); // On vide le token en premier
+    UserState.Role = null; // Puis on notifie pour mettre le menu à jour
+    StateHasChanged();
+    Nav.NavigateTo("/login");
+  }
 
-    protected override void OnInitialized()
-    {
-        UserState.OnChange += OnUserStateChanged;
-      Localizer.OnChange += OnLangChanged;
-        _role = UserState.Role ?? TokenService.GetRole();
-    }
-
-    private void OnUserStateChanged()
-    {
-        // On prend seulement la valeur de UserState, pas TokenService
-        _role = UserState.Role; 
-        InvokeAsync(StateHasChanged);
-    }
-
-    private void OnLangChanged()
-    {
-      InvokeAsync(StateHasChanged);
-    }
-
-    public async Task Logout()
-    {
-        await JS.InvokeVoidAsync("localStorage.removeItem", "token");
-        TokenService.ClearToken();  // On vide le token en premier
-        UserState.Role = null;      // Puis on notifie pour mettre le menu à jour
-        StateHasChanged();
-        Nav.NavigateTo("/login");
-    }
-
-    public void Dispose()
-    {
-        UserState.OnChange -= OnUserStateChanged;
-      Localizer.OnChange -= OnLangChanged;
-    }
+  public void Dispose()
+  {
+    UserState.OnChange -= OnUserStateChanged;
+    Localizer.OnChange -= OnLangChanged;
+  }
 }

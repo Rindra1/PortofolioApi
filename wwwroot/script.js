@@ -27,7 +27,7 @@ window.siteInterop = {
     initAll: function () {
         // Initialisation AOS
         if (typeof AOS !== 'undefined') {
-            AOS.init({ duration: 800, once: true, offset: 100 });
+            AOS.init({ duration: 800, once: false, mirror: true, offset: 100 });
         }
 
         // Theme
@@ -135,27 +135,53 @@ window.siteInterop = {
     },
 
     initGalleries: function() {
-        const initGallery = (galleryId, mainImageId) => {
-            const gallery = document.getElementById(galleryId);
-            const mainImage = document.getElementById(mainImageId);
-            if (gallery && mainImage) {
-                const thumbnails = gallery.querySelectorAll('.thumbnail');
-                thumbnails.forEach(thumb => {
-                    thumb.removeEventListener('click', function() {});
-                    thumb.addEventListener('click', function() {
-                        mainImage.src = this.getAttribute('data-img');
-                        thumbnails.forEach(t => t.classList.remove('active'));
-                        this.classList.add('active');
-                    });
-                });
-                if(thumbnails[0]) thumbnails[0].classList.add('active');
+        // Sélectionner toutes les galleries
+        const galleries = document.querySelectorAll('[id^="gallery"]');
+    
+        galleries.forEach(gallery => {
+            const mainImage = gallery.querySelector('.main-image');
+            const thumbnails = gallery.querySelectorAll('.thumbnail');
+        
+        if (!mainImage || thumbnails.length === 0) return;
+        
+        // Fonction pour changer l'image
+        const changeImage = function(thumbnail) {
+            const imgSrc = thumbnail.getAttribute('data-img');
+            if (imgSrc && imgSrc !== mainImage.src) {
+                mainImage.src = imgSrc;
             }
+            
+            // Gérer la classe active
+            thumbnails.forEach(t => t.classList.remove('active'));
+            thumbnail.classList.add('active');
         };
         
-        initGallery('gallery1', 'mainImage1');
-        initGallery('gallery2', 'mainImage2');
-        initGallery('gallery3', 'mainImage3');
-    },
+        // Ajouter les écouteurs d'événements
+        thumbnails.forEach(thumbnail => {
+            // Nettoyer les anciens écouteurs
+            thumbnail.removeEventListener('click', thumbnail._listener);
+            
+            // Créer et stocker le nouveau listener
+            const listener = function(e) {
+                e.preventDefault();
+                changeImage(this);
+            };
+            thumbnail._listener = listener;
+            thumbnail.addEventListener('click', listener);
+        });
+        
+        // Activer la première thumbnail si aucune n'est active
+        const hasActive = Array.from(thumbnails).some(t => t.classList.contains('active'));
+        if (!hasActive && thumbnails[0]) {
+            thumbnails[0].classList.add('active');
+            // S'assurer que l'image principale correspond
+            const firstImgSrc = thumbnails[0].getAttribute('data-img');
+            if (firstImgSrc) {
+                mainImage.src = firstImgSrc;
+            }
+        }
+    });
+},
 
     initModals: function() {
         window.openModal = function(projetId) {

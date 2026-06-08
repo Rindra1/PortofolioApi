@@ -1,0 +1,67 @@
+﻿<section id="contact">
+    <div class="container">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-wrapper">
+            <div class="contact-info-card" data-aos="fade-right">
+                <h3>📬 @Localizer.T("LetsStayInTouch")</h3>
+                <p>@Localizer.T("AvailableFor")</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>
+                            <a href="tel:+261325278138" target="_blank" rel="noopener noreferrer">+261 32 52 781 38</a>
+                        </span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>
+                            <a href="mailto:rindraniaina.manda@gmail.com" target="_blank"
+                               rel="noopener noreferrer">rindraniaina.manda@gmail.com</a>
+                        </span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <span>
+                            <a href="https://github.com/Rindra1" target="_blank"
+                               rel="noopener noreferrer">https://github.com/Rindra1</a>
+                        </span>
+                    </div>
+                    <div class="contact-item"><i class="fab fa-linkedin"></i><span><a
+                        href="https://www.linkedin.com/in/rindra-niaina-razafimandanona-1ab51b120"
+                        target="_blank"
+                        rel="noopener noreferrer">https://www.linkedin.com/in/rindra-niaina-razafimandanona-1ab51b120</a></span>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/Rindra1" class="social-link" target="_blank"
+                       rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/rindra-niaina-razafimandanona-1ab51b120" target="_blank"
+                       rel="noopener noreferrer" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://x.com/RindraNiaina3" class="social-link" target="_blank"
+                       rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                    <a href="https://wa.me/261325278138" class="social-link" target="_blank"
+                       rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div class="contact-form-card" data-aos="fade-left">
+                <h3>@Localizer.T("SendMeMessage")</h3>
+                <form id="contactForm" @onsubmit="Envoyer" novalidate>
+                    <div class="form-group">
+                        <input type="text" @bind="emailRequest.Name" id="userName" placeholder="@Localizer.T("YourName")" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" @bind="emailRequest.To" id="userEmail" placeholder="@Localizer.T("YourMail")" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea @bind="emailRequest.Body" id="userMessage" rows="4" placeholder="@Localizer.T("YourMessage")"
+                                  required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i>
+                        @Localizer.T("SendMessage")</button>
+                        <div id="formStatus" class="form-message"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>

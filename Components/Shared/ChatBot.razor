@@ -1,0 +1,62 @@
+﻿<div class="chatbot-float">
+    <div class="chatbot-toggle" id="chatbotToggle">
+        <i class="fas fa-comment-dots"></i>
+        <div class="online-dot"></div>
+    </div>
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header">
+            <div class="chat-header-left">
+                <div class="chat-avatar">RN</div>
+                <div>
+                    <strong>Assistant RN</strong>
+                    <div style="font-size:0.7rem;">
+                        <i class="fas fa-circle"
+                           style="font-size:0.5rem; color:#4ade80;"></i> @Localizer.T("Online")
+                    </div>
+                </div>
+            </div>
+            <button class="close-chat" id="closeChat"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="chat-messages" id="chatMessagesFloat">
+            @foreach (var entry in ChatResponses)
+            {
+                @if (!string.IsNullOrWhiteSpace(entry.UserMessage))
+                {
+                    <div class="message-user">
+                        <div class="user-bubble">@entry.UserMessage</div>
+                    </div>
+                }
+                <div class="message-bot">
+                    <div class="bot-avatar">🤖</div>
+                    <div class="bot-bubble">@entry.BotResponse</div>
+                </div>
+            }
+
+            @if (string.IsNullOrWhiteSpace(ChatResponses.LastOrDefault()?.BotResponse) && ChatResponses.Count > 0)
+            {
+                <div class="typing-indicator">
+                    <span></span><span></span><span></span>
+                </div>
+            }
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chatInputFloat" @bind="UserMessage" @bind:event="oninput"
+                   placeholder="@Localizer.T("YourQuestion")" @onkeydown="OnChatKeyPress" />
+            <button id="sendChatFloat" @onclick="SendMessage"><i class="fas fa-paper-plane"></i></button>
+        </div>
+        <div class="suggestions-chat">
+            <span class="suggestion-chip" @onclick='@(() => SendSuggestion(@Localizer.T("ProjectsChat")))'>
+                📁 Projets
+                .NET
+            </span>
+            <span class="suggestion-chip" @onclick='@(() => SendSuggestion(@Localizer.T("TechChat")))'>
+                ⚙️ Stack
+                technique
+            </span>
+            <span class="suggestion-chip" @onclick='@(() => SendSuggestion(@Localizer.T("AvailableChat")))'>
+                💼
+                Disponibilité
+            </span>
+        </div>
+    </div>
+</div>

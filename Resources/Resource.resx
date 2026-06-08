@@ -59,7 +59,10 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema id="root"
+    xmlns=""
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -192,21 +195,24 @@
   </data>
 
   <data name="Experience.5.Titre" xml:space="preserve">
-    <value>Développeur VB.NET &amp; C# – Tanyah Consulting</value>
+    <value>Stagiaire développeur web – Ministère de l'Énergie et des Hydrocarbures</value>
   </data>
   <data name="Experience.5.Detail" xml:space="preserve">
-    <value>Maintenance, correction de bugs et ajout de fonctionnalités sur des applications Windows Forms existantes pour un client international.\n
-- Projets : gestion de la paie et gestion comptable, optimisation des performances et fiabilité des traitements.\n
-- Technologies : VB.NET, C#, Access et SQL Server.</value>
+    <value>Développement et maintenance d'une application web complète dédiée au suivi et à la gestion des tâches.\n
+- Conception et mise en œuvre à l'aide d'ASP.NET Web Forms et de C#, avec SQL Server pour la gestion des données.\n
+- Interface adaptative utilisant jQuery et Bootstrap pour une navigation fluide.\n
+- Notifications intelligentes et e-mails automatisés pour le suivi des tâches et le respect des délais.\n
+- Optimisation de la productivité et de l'efficacité pour les utilisateurs du ministère.</value>
   </data>
 
   <data name="Experience.6.Titre" xml:space="preserve">
-    <value>Développeur VB.NET &amp; C# – Tanyah Consulting</value>
+    <value>Stagiaire développeur web – Ministère de l'Énergie et des Hydrocarbures</value>
   </data>
   <data name="Experience.6.Detail" xml:space="preserve">
-    <value>Maintenance, correction de bugs et ajout de fonctionnalités sur des applications Windows Forms existantes pour un client international.\n
-- Projets : gestion de la paie et gestion comptable, optimisation des performances et fiabilité des traitements.\n
-- Technologies : VB.NET, C#, Access et SQL Server.</value>
+    <value>Développement et maintenance d'une application web complète destinée à la gestion de la correspondance au sein du ministère.\n
+- Conception et mise en œuvre à l'aide d'ASP.NET Web Forms et de C#, avec SQL Server pour la gestion des données.\n
+- Interface adaptative utilisant jQuery et Bootstrap pour une navigation fluide.\n
+- Optimisation de la productivité et de l'efficacité pour les utilisateurs du ministère.</value>
   </data>
 
   <data name="Experience.7.Titre" xml:space="preserve">
@@ -244,46 +250,65 @@
   </data>
 
   <data name="Projet.2.Titre" xml:space="preserve">
-    <value>Applications WinForms – Gestion Comptable et Paie (VB.NET / C#)</value>
+    <value>Application de Gestion de la Paie – WinForms</value>
   </data>
   <data name="Projet.2.Resumer" xml:space="preserve">
-    <value>Suite d’applications desktop WinForms pour la gestion comptable et de la paie, développée principalement en VB.NET avec certains modules en C#, connectée à des bases Access et SQL Server et utilisable en réseau via RDP ou partage réseau. Fiabilité et performance assurées pour le traitement des données.</value>
+    <value>Application desktop développée en VB.NET avec certains modules en C#, dédiée à la gestion de la paie. Elle automatise les traitements liés aux salaires tout en garantissant stabilité, rapidité et fiabilité.</value>
   </data>
   <data name="Projet.2.Detail" xml:space="preserve">
-    <value>Développement et maintenance d’une suite d’applications WinForms optimisée pour la gestion comptable et la paie :\n
-    - Technologies : projet principal en VB.NET, modules complémentaires en C#, connexion aux bases Access et SQL Server.\n
-    - Interface : WinForms intuitive et multi-utilisateur, adaptée à un usage en réseau (RDP ou partage réseau).\n
-    - Fonctionnalités avancées : ajout de nouvelles fonctionnalités, correction de bugs et optimisation des performances pour un traitement fiable et rapide des données.\n
-    - Expérience utilisateur : applications stables et performantes, facilitant la gestion quotidienne de la comptabilité et de la paie.</value>
+    <value>Conception, évolution et maintenance d'une application de gestion de la paie utilisée dans un environnement professionnel. Le travail a porté sur le développement de nouvelles fonctionnalités, l'amélioration des performances et la fiabilité des traitements afin de répondre aux besoins opérationnels des utilisateurs.</value>
+  </data>
+  <data name="Projet.2.Fonctionnalite" xml:space="preserve">
+    <value>- Gestion des dossiers employés\n
+    - Calcul et traitement de la paie\n
+- Édition et impression des documents de paie\n
+- Utilisation multi-utilisateur\n
+- Déploiement en réseau (RDP ou partage réseau)
+    </value>
   </data>
 
   <data name="Projet.4.Titre" xml:space="preserve">
-    <value>Logiciel de gestion pour Centre médical ALFA</value>
+    <value>Logiciel de Gestion pour Centre Médical ALFA</value>
   </data>
   <data name="Projet.4.Resumer" xml:space="preserve">
-    <value>Développement d’une application desktop innovante en C# WinForms avec WCF et MySQL, centralisant la gestion des stocks et le suivi des patients pour transformer l’organisation du centre médical et améliorer la qualité des soins.</value>
+    <value>Développement d’une application desktop en C# WinForms utilisant WCF et MySQL, permettant de centraliser la gestion des stocks et le suivi des patients afin d’améliorer l’organisation interne et la qualité des soins au sein du centre médical.</value>
   </data>
   <data name="Projet.4.Detail" xml:space="preserve">
-    <value>Gestion optimisée des stocks : suivi en temps réel de la pharmacie et de l’épicerie, avec alertes automatiques pour prévenir les ruptures et réduire les pertes.\n
-    - Suivi intelligent des patients : planification et organisation des soins simplifiées, permettant un gain de temps et une meilleure coordination du personnel médical.\n
-    - Amélioration des processus internes : réduction des erreurs, meilleure traçabilité des stocks et automatisation des tâches répétitives.\n
-    - Technologies robustes et sécurisées : communication fiable via WCF et stockage centralisé avec MySQL, garantissant l’intégrité et la sécurité des données.\n
-    - Impact concret : gain d’efficacité opérationnelle, meilleure expérience pour le personnel et les patients, et modernisation de la gestion quotidienne du centre médical.</value>
+    <value>Cette application a été conçue pour moderniser la gestion interne du Centre Médical ALFA en centralisant les opérations liées aux stocks et au suivi des patients.\n
+Le système permet un suivi en temps réel des stocks de pharmacie et d’épicerie, avec des alertes automatiques pour anticiper les ruptures et limiter les pertes. En parallèle, il facilite la planification et le suivi des soins des patients, améliorant ainsi la coordination du personnel médical.\n
+L’architecture repose sur WCF pour la communication entre les modules et MySQL pour le stockage centralisé des données, garantissant fiabilité, sécurité et performance.\n
+Grâce à l’automatisation de plusieurs processus internes, l’application contribue à réduire les erreurs, améliorer la productivité et moderniser la gestion quotidienne du centre.</value>
+  </data>
+  <data name="Projet.4.Fonctionnalite" xml:space="preserve">
+    <value>💊 Gestion des stocks pharmaceutiques et d’épicerie\n
+📦 Suivi en temps réel des niveaux de stock\n
+🚨 Alertes automatiques en cas de rupture ou stock faible\n
+👨‍⚕️ Suivi et organisation des patients\n
+📅 Planification des soins et des activités médicales\n
+👥 Coordination optimisée du personnel médical
+    </value>
   </data>
 
   <data name="Projet.3.Titre" xml:space="preserve">
-    <value>Application Web – Suivi et Gestion des Tâches</value>
+    <value>Application Web de Suivi et Gestion des Tâches</value>
   </data>
   <data name="Projet.3.Resumer" xml:space="preserve">
-    <value>Application web performante développée en ASP.NET WebForms (C#) avec jQuery, Bootstrap et SQL Server, permettant de suivre et gérer efficacement les tâches, avec notifications et alertes par e-mail pour un suivi proactif des activités.</value>
+    <value>Application web développée en ASP.NET WebForms (C#) permettant de planifier, suivre et gérer efficacement les tâches. Elle intègre un système de notifications par e-mail pour assurer un suivi proactif et le respect des délais.</value>
   </data>
   <data name="Projet.3.Detail" xml:space="preserve">
-    <value>Développement d’une application web complète pour le suivi et la gestion des tâches :\n
-    - Technologies : ASP.NET WebForms, C#, jQuery, Bootstrap, SQL Server.\n
-    - Gestion des tâches : création, suivi des dates d’échéance et mise à jour du statut en temps réel.\n
-    - Notifications intelligentes : alertes et emails automatiques pour prévenir les utilisateurs des tâches non terminées et assurer le respect des délais.\n
-    - Interface utilisateur : design responsive et intuitif grâce à Bootstrap, offrant une navigation fluide et une expérience utilisateur optimale.\n
-    - Productivité améliorée : simplifie le suivi des tâches et garantit un contrôle efficace des activités.</value>
+    <value>Cette application web a été conçue pour optimiser le suivi et la gestion des tâches au sein d’un environnement professionnel. Elle permet aux utilisateurs de créer, organiser et suivre leurs tâches avec des échéances précises, tout en assurant un suivi automatisé grâce aux notifications par e-mail.\n
+L’interface, développée avec Bootstrap et jQuery, garantit une expérience utilisateur fluide et responsive. L’intégration avec SQL Server assure une gestion fiable et centralisée des données.\n
+Le système de notifications automatiques permet d’alerter les utilisateurs sur les tâches en retard ou proches de leur échéance, améliorant ainsi la productivité et la réactivité des équipes.</value>
+  </data>
+  <data name="Projet.3.Fonctionnalite" xml:space="preserve">
+    <value>📝 Création et gestion des tâches\n
+📅 Suivi des dates d’échéance\n
+🔄 Mise à jour du statut des tâches en temps réel\n
+🔔 Notifications automatiques et alertes e-mail\n
+📊 Suivi de l’avancement des activités\n
+👥 Gestion multi-utilisateur\n
+🔎 Filtrage et recherche des tâches\n
+    </value>
   </data>
 
   <data name="Projet.5.Titre" xml:space="preserve">
@@ -379,7 +404,72 @@
     <value>Votre question...</value>
   </data>
 
+  <data name="ProjectsChat" xml:space="preserve">
+    <value>Quels sont ses projets .NET?</value>
+  </data>
 
-  
+  <data name="TechChat" xml:space="preserve">
+    <value>Quelle est sa stack technique?</value>
+  </data>
+
+  <data name="AvailableChat" xml:space="preserve">
+    <value>Est-il disponible pour freelance?</value>
+  </data>
+
+  <data name="YourMail" xml:space="preserve">
+    <value>Votre email</value>
+  </data>
+
+  <data name="YourName" xml:space="preserve">
+    <value>Votre nom</value>
+  </data>
+
+  <data name="YourMessage" xml:space="preserve">
+    <value>Votre message...</value>
+  </data>
+
+  <data name="Details" xml:space="preserve">
+    <value>Détails</value>
+  </data>
+
+  <data name="SeeGithub" xml:space="preserve">
+    <value>Voir GitHub</value>
+  </data>
+
+  <data name="Service.1.Title" xml:space="preserve">
+    <value>Applications Desktop</value>
+  </data>
+
+  <data name="Service.1.Description" xml:space="preserve">
+    <value>Développement d'applications métiers performantes avec VB.NET et C#.</value>
+  </data>
+
+  <data name="Service.2.Title" xml:space="preserve">
+    <value>Applications Web</value>
+  </data>
+
+  <data name="Service.2.Description" xml:space="preserve">
+    <value>Sites et plateformes modernes avec ASP.NET Core, Blazor et MudBlazor.</value>
+  </data>
+
+  <data name="Service.3.Title" xml:space="preserve">
+    <value>Automatisation &amp; Solutions Connectées</value>
+  </data>
+
+  <data name="Service.3.Description" xml:space="preserve">
+    <value>Intégration d'API, assistants conversationnels et automatisation des processus métier.</value>
+  </data>
+
+  <data name="Service.4.Title" xml:space="preserve">
+    <value>Maintenance &amp; Évolution</value>
+  </data>
+
+  <data name="Service.4.Description" xml:space="preserve">
+    <value>Correction de bugs, optimisation et modernisation d'applications existantes.</value>
+  </data>
+
+  <data name="Features" xml:space="preserve">
+    <value>Fonctionnalités</value>
+  </data>
 
 </root>

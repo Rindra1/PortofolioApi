@@ -176,5 +176,5 @@ C:\Users\ASUS\PortofolioApi\bin\Debug\net10.0\sib_api_v3_sdk.dll
 C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\o18slqg74n-{0}-7ybygq9jt4-7ybygq9jt4.gz
 C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\v6s207a7g9-{0}-eke3f2n53r-eke3f2n53r.gz
 C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\hdurdgxfec-{0}-6g12n6vvne-6g12n6vvne.gz
-C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\satxfy5zdj-{0}-w69c6lki78-w69c6lki78.gz
-C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\nphpm4t4yx-{0}-z0qou8qfjx-z0qou8qfjx.gz
+C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\satxfy5zdj-{0}-oild5k4q1n-oild5k4q1n.gz
+C:\Users\ASUS\PortofolioApi\obj\Debug\net10.0\compressed\nphpm4t4yx-{0}-d3o50pekzg-d3o50pekzg.gz

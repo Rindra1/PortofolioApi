@@ -187,46 +187,65 @@
   </data>
 
 <data name="Projet.2.Titre" xml:space="preserve">
-    <value>WinForms Applications – Accounting and Payroll Management (VB.NET / C#)</value>
+    <value>Payroll Management Application – WinForms</value>
   </data>
   <data name="Projet.2.Resumer" xml:space="preserve">
-    <value>WinForms desktop application suite for accounting and payroll management, developed primarily in VB.NET with some modules in C#, connected to Access and SQL Server databases and usable over a network via RDP or network sharing. Reliability and performance guaranteed for data processing.</value>
+    <value>A desktop application developed in VB.NET with some modules in C#, designed for payroll management. It automates payroll-related processes whilst ensuring stability, speed and reliability.</value>
   </data>
   <data name="Projet.2.Detail" xml:space="preserve">
-    <value>Development and maintenance of a WinForms application suite optimized for accounting and payroll management:\n
-- Technologies: main project in VB.NET, add-on modules in C#, connection to Access and SQL Server databases.\n
-- Interface: intuitive and multi-user WinForms, suitable for network use (RDP or network sharing).\n
-- Advanced features: addition of new features, bug fixes, and performance optimization for reliable and fast data processing.\n
-- User experience: stable and high-performing applications, facilitating daily accounting and payroll management.</value>
+    <value>Design, development and maintenance of a payroll management application used in a professional environment. The work focused on developing new features and improving the performance and reliability of processes to meet users’ operational needs.</value>
+  </data>
+  <data name="Projet.2.Fonctionnalite" xml:space="preserve">
+    <value>- Employee file management\n
+    - Payroll calculation and processing\n
+- Editing and printing of payroll documents\n
+- Multi-user functionality\n
+- Network deployment (RDP or network sharing)</value>
   </data>
 
   <data name="Projet.3.Titre" xml:space="preserve">
-    <value>Web Application – Task Tracking and Management</value>
+    <value>Web Application for Task Tracking and Management</value>
   </data>
   <data name="Projet.3.Resumer" xml:space="preserve">
-    <value>High-performance web application developed in ASP.NET WebForms (C#) with jQuery, Bootstrap and SQL Server, enabling efficient tracking and management of tasks, with email notifications and alerts for proactive activity monitoring.</value>
+    <value>A web application developed using ASP.NET WebForms (C#) that enables users to plan, track and manage tasks efficiently. It includes an email notification system to ensure proactive monitoring and adherence to deadlines.</value>
   </data>
   <data name="Projet.3.Detail" xml:space="preserve">
-    <value>Development of a complete web application for task tracking and management:\n
-- Technologies: ASP.NET WebForms, C#, jQuery, Bootstrap, SQL Server\n
-- Task management: creation, due date tracking, and real-time status updates\n
-- Smart notifications: automatic alerts and emails to notify users of incomplete tasks and ensure deadlines are met\n
-- User interface: responsive and intuitive design using Bootstrap, offering smooth navigation and an optimal user experience\n
-- Improved productivity: simplifies task tracking and ensures effective activity control</value>
+    <value>This web application has been designed to optimise task tracking and management within a professional environment. It allows users to create, organise and track their tasks with specific deadlines, whilst ensuring automated follow-up via email notifications.\n
+The interface, developed using Bootstrap and jQuery, ensures a smooth and responsive user experience. Integration with SQL Server ensures reliable, centralised data management.\n
+The automatic notification system alerts users to overdue tasks or those approaching their deadline, thereby improving team productivity and responsiveness.</value>
+  </data>
+
+  <data name="Projet.3.Fonctionnalite" xml:space="preserve">
+    <value>📝 Create and manage tasks\n
+📅 Track due dates\n
+🔄 Update task statuses in real time\n
+🔔 Automatic notifications and email alerts\n
+📊 Tracking progress\n
+👥 Multi-user management\n
+🔎 Filtering and searching for tasks\n
+    </value>
   </data>
 
   <data name="Projet.4.Titre" xml:space="preserve">
-    <value>ALFA Medical Center Management Software</value>
+    <value>ALFA Medical Centre Management Software</value>
   </data>
   <data name="Projet.4.Resumer" xml:space="preserve">
-    <value>Development of an innovative desktop application in C# WinForms with WCF and MySQL, centralizing stock management and patient tracking to transform the organization of the medical center and improve the quality of care.</value>
+    <value>Development of a desktop application in C# WinForms using WCF and MySQL, designed to centralise stock management and patient monitoring in order to improve internal organisation and the quality of care within the medical center.</value>
   </data>
   <data name="Projet.4.Detail" xml:space="preserve">
-    <value>Optimized inventory management: real-time monitoring of the pharmacy and grocery sections, with automatic alerts to prevent stockouts and reduce losses.\n
-- Intelligent patient monitoring: simplified care planning and organization, saving time and improving coordination among medical staff.\n
-- Improved internal processes: reduced errors, better inventory traceability, and automation of repetitive tasks.\n
-- Robust and secure technologies: reliable communication via WCF and centralized storage with MySQL, ensuring data integrity and security.\n
-- Tangible impact: increased operational efficiency, improved experience for staff and patients, and modernization of the medical center's daily operations.</value>
+    <value>This application was designed to modernise the internal management of the ALFA Medical Centre by centralising operations relating to stock management and patient monitoring.\n
+The system enables real-time monitoring of pharmacy and general store stocks, with automatic alerts to anticipate stock-outs and minimise wastage. At the same time, it facilitates the planning and monitoring of patient care, thereby improving coordination among medical staff.\n
+The architecture is based on WCF for communication between modules and MySQL for centralised data storage, ensuring reliability, security and performance.\n
+By automating several internal processes, the application helps to reduce errors, improve productivity and modernise the centre’s day-to-day management.</value>
+  </data>
+  <data name="Projet.4.Fonctionnalite" xml:space="preserve">
+    <value>💊 Management of pharmaceutical and grocery stock\n
+📦 Real-time monitoring of stock levels\n
+🚨 Automatic alerts for out-of-stock or low stock items\n
+👨‍⚕️ Patient tracking and organisation\n
+📅 Scheduling of care and medical activities\n
+👥 Optimised coordination of medical staff
+    </value>
   </data>
 
   <data name="Projet.5.Titre" xml:space="preserve">
@@ -320,4 +339,70 @@
     <value>Your question...</value>
   </data>
 
+  <data name="ProjectsChat" xml:space="preserve">
+    <value>What .NET projects has he worked on?</value>
+  </data>
+
+  <data name="TechChat" xml:space="preserve">
+    <value>What is his tech stack?</value>
+  </data>
+
+  <data name="AvailableChat" xml:space="preserve">
+    <value>Is he available for freelance work?</value>
+  </data>
+
+    <data name="YourMail" xml:space="preserve">
+    <value>Your email address</value>
+  </data>
+
+  <data name="YourName" xml:space="preserve">
+    <value>Your name</value>
+  </data>
+
+  <data name="YourMessage" xml:space="preserve">
+    <value>Your message...</value>
+  </data>
+
+    <data name="Details" xml:space="preserve">
+    <value>Details</value>
+  </data>
+
+  <data name="SeeGithub" xml:space="preserve">
+    <value>See GitHub</value>
+  </data>
+
+  <data name="Service.1.Title" xml:space="preserve">
+    <value>Desktop Applications</value>
+  </data>
+
+  <data name="Service.1.Description" xml:space="preserve">
+    <value>Development of high-performance business applications using VB.NET and C#.</value>
+  </data>
+  <data name="Service.2.Title" xml:space="preserve">
+    <value>Web Applications</value>
+  </data>
+
+  <data name="Service.2.Description" xml:space="preserve">
+    <value>Modern websites and platforms using ASP.NET Core, Blazor and MudBlazor.</value>
+  </data>
+
+  <data name="Service.3.Title" xml:space="preserve">
+    <value>Automation &amp; Connected Solutions</value>
+  </data>
+
+  <data name="Service.3.Description" xml:space="preserve">
+    <value>API integration, chatbots and business process automation.</value>
+  </data>
+
+  <data name="Service.4.Title" xml:space="preserve">
+    <value>Maintenance &amp; Upgrades</value>
+  </data>
+
+  <data name="Service.4.Description" xml:space="preserve">
+    <value>Bug fixes, optimisation and modernisation of existing applications.</value>
+  </data>
+
+  <data name="Features" xml:space="preserve">
+    <value>Features</value>
+  </data>
 </root>
