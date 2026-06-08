@@ -41,10 +41,10 @@ public class AddprojetBase : ComponentBase
 
     protected override async Task OnInitializedAsync()
     {
-        /*if(userState.Role==null)
+        if(userState.Role==null)
             Nav.NavigateTo("/login");
         else if(userState.Role.ToUpper()=="ADMIN")
-            Nav.NavigateTo("/createuserlogin");*/
+            Nav.NavigateTo("/createuserlogin");
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
