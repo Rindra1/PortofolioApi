@@ -479,7 +479,6 @@ Le système de notifications automatiques permet d’alerter les utilisateurs su
   <data name="FillAllFields" xml:space="preserve">
     <value>Veuillez remplir tous les champs.</value>
   </data>
-
   <data name="MessageSent" xml:space="preserve">
     <value>Message envoyé avec succès ! Je vous répondrai rapidement.</value>
   </data>

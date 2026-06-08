@@ -63,20 +63,19 @@
                         <i class="fas fa-paper-plane"></i>
                         @(isSending ? Localizer.T("Sending") : Localizer.T("SendMessage"))
                     </button>
-                    
-                        @if (isSuccess)
-                        {
-                            <div id="formStatus" class="@formMessageCss">
-                                @Localizer.T("MessageSent")
-                            </div>
-                        }
-                        else
-                        {
-                            <div id="formStatus" class="@formMessageCss">
-                                @Localizer.T("MessageSentError")
-                            </div>
-                        }
-                    
+
+                    @if (isSuccess)
+                    {
+                        <div id="formStatus" class="@formMessageCss">
+                            @Localizer.T("MessageSent")
+                        </div>
+                    }
+                    else if (!string.IsNullOrWhiteSpace(formMessage))
+                    {
+                        <div id="formStatus" class="@formMessageCss">
+                            @Localizer.T("MessageSentError")
+                        </div>
+                    }
                 </form>
             </div>
         </div>
