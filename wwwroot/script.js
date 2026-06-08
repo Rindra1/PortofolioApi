@@ -66,9 +66,6 @@ window.siteInterop = {
         // Modal functions
         this.initModals();
 
-        // Contact form
-        this.initContactForm();
-
         // Chatbot
         this.initChatbot();
 

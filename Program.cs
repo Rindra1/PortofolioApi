@@ -1,14 +1,8 @@
 using PortofolioApi.Components;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using PortofolioApi.Domain.Entities;
 using PortofolioApi.Domain.DTOs;
 using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
 
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using PortofolioApi.Application.Services;
 using PortofolioApi.Infrastructure.Data;
@@ -19,13 +13,8 @@ using PortofolioApi.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using System.Text.Json;
 
 using System.Net;
-using Microsoft.AspNetCore.Mvc;
-
-using Microsoft.AspNetCore.ResponseCompression;
-using System.IO.Compression;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -86,20 +75,11 @@ if (!File.Exists(dbPath))
 
 // Ajoute cette ligne juste après la création du builder
 builder.Configuration.AddEnvironmentVariables();
-builder.Environment.EnvironmentName = Environments.Development;
 
 // Liaison du fichier appsettings.json ou des variables Render
 builder.Services.Configure<SendGridSettings>(
     builder.Configuration.GetSection("SendGridSettings")
 );
-
-//Injection du service SendGrid
-builder.Services.AddScoped<SendGridEmailService>();
-
-
-builder.Services.Configure<SendGridSettings>(builder.Configuration.GetSection("SendGrid"));
-builder.Services.AddTransient<SendGridEmailService>();
-
 
 // Injection du service mail
 //builder.Services.AddSingleton<MailController>();
@@ -130,6 +110,11 @@ builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 
 // JWT Authentication
 var jwtSettings = builder.Configuration.GetSection("JwtSettings").Get<JwtSettings>();
+if (jwtSettings is null || string.IsNullOrWhiteSpace(jwtSettings.Secret))
+{
+    throw new InvalidOperationException("JwtSettings:Secret doit etre defini via les variables d'environnement ou user-secrets.");
+}
+
 var key = Encoding.UTF8.GetBytes(jwtSettings.Secret);
 
 builder.Services.AddAuthentication(options =>
@@ -157,8 +142,12 @@ builder.Services.AddAuthentication(options =>
     };
 });
 builder.Services.AddAuthorization();
-builder.Services.AddControllers();
-// ... other services
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+        options.JsonSerializerOptions.WriteIndented = true;
+    });
 
 
 
@@ -184,7 +173,6 @@ builder.Services.AddScoped<ContactService>();
 builder.Services.AddScoped<ExperienceService>();
 /*Envoi Email*/
 builder.Services.AddScoped<SendGridEmailService>();
-builder.Services.AddScoped<SendGridSettings>();
 /**********************/
 builder.Services.AddScoped<PortfolioService>();
 /*Storage*/
@@ -201,21 +189,10 @@ builder.Services.AddScoped<IRepository<Projet>, ProjetRepository>();
 builder.Services.AddScoped<IRepository<Lien>, LienRepository>();
 builder.Services.AddScoped<IRepository<Contact>, ContactRepository>();
 builder.Services.AddScoped<IRepository<Experience>, ExperienceRepository>();
-builder.Services.AddScoped<IRepositoryPortfolio<UtilisateurDTO>, PortfolioRepository>();
 builder.Services.AddScoped<IRepository<Competence>, CompetenceRepository>();
 
 
-
-builder.Services.AddControllers()
-    .AddJsonOptions(options =>
-    {
-        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
-        options.JsonSerializerOptions.WriteIndented = true; // optionnel
-    });
-
-
 // Ajouter les services API et HttpClient
-builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
 
@@ -235,7 +212,6 @@ builder.Services.AddRazorComponents()
 
 
 // Ajouter les services Swagger
-builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddCors(options =>
@@ -264,20 +240,14 @@ app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 app.UseRouting();
+app.UseCors("AllowAll");
 app.UseAuthentication();    // 🔹 Toujours avant Authorization
 app.UseAuthorization();
 app.UseAntiforgery();
 
-
-
-
-// Afficher tous les endpoints dans la console
-app.UseEndpoints(endpoints =>
+if (app.Environment.IsDevelopment())
 {
-    endpoints.MapControllers();
-
-    // Ajoute un endpoint qui affiche toutes les routes disponibles
-    endpoints.MapGet("/routes", async context =>
+    app.MapGet("/routes", async context =>
     {
         var dataSource = context.RequestServices.GetRequiredService<EndpointDataSource>();
         var routes = dataSource.Endpoints
@@ -286,25 +256,17 @@ app.UseEndpoints(endpoints =>
 
         await context.Response.WriteAsync("Endpoints:\n" + string.Join("\n", routes));
     });
-});
 
-//app.UseCors("AllowAll");  // 🔹 Mettre ça avant app.UseAuthorization()
-
-
-
-// Routing API et Razor
-app.MapControllers();
-app.MapRazorComponents<App>()
-    .AddInteractiveServerRenderMode();
-
-/*if (app.Environment.IsDevelopment())
-{
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "Portofolio API V1");
     });
-}*/
+}
+// Routing API et Razor
+app.MapControllers();
+app.MapRazorComponents<App>()
+    .AddInteractiveServerRenderMode();
 
 /*app.MapBlazorHub(options =>
 {

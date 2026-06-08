@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema id="root"
+    xmlns=""
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -164,7 +167,7 @@
 - Performance optimization, user experience improvement, and bug fixes.</value>
   </data>
 
-<data name="Projet.1.Titre" xml:space="preserve">
+  <data name="Projet.1.Titre" xml:space="preserve">
     <value>Full-Stack .NET Developer Portfolio</value>
   </data>
   <data name="Projet.1.Resumer" xml:space="preserve">
@@ -186,7 +189,7 @@
 - Animations and a modern user experience.</value>
   </data>
 
-<data name="Projet.2.Titre" xml:space="preserve">
+  <data name="Projet.2.Titre" xml:space="preserve">
     <value>Payroll Management Application – WinForms</value>
   </data>
   <data name="Projet.2.Resumer" xml:space="preserve">
@@ -291,7 +294,7 @@ By automating several internal processes, the application helps to reduce errors
     <value>MASTERED STACK</value>
   </data>
 
-    <data name="SendMeMessage" xml:space="preserve">
+  <data name="SendMeMessage" xml:space="preserve">
     <value>Send me a message</value>
   </data>
 
@@ -351,7 +354,7 @@ By automating several internal processes, the application helps to reduce errors
     <value>Is he available for freelance work?</value>
   </data>
 
-    <data name="YourMail" xml:space="preserve">
+  <data name="YourMail" xml:space="preserve">
     <value>Your email address</value>
   </data>
 
@@ -363,7 +366,7 @@ By automating several internal processes, the application helps to reduce errors
     <value>Your message...</value>
   </data>
 
-    <data name="Details" xml:space="preserve">
+  <data name="Details" xml:space="preserve">
     <value>Details</value>
   </data>
 
@@ -404,5 +407,21 @@ By automating several internal processes, the application helps to reduce errors
 
   <data name="Features" xml:space="preserve">
     <value>Features</value>
+  </data>
+
+  <data name="Sending" xml:space="preserve">
+    <value>Sending...</value>
+  </data>
+
+  <data name="FillAllFields" xml:space="preserve">
+    <value>Please fill in all fields.</value>
+  </data>
+
+  <data name="MessageSent" xml:space="preserve">
+    <value>Message sent successfully! I will get back to you soon.</value>
+  </data>
+
+  <data name="MessageSentError" xml:space="preserve">
+    <value>Error sending the message.</value>
   </data>
 </root>

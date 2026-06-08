@@ -10,7 +10,5 @@ namespace PortofolioApi.Components.Shared
         public UtilisateurDTO portfolio { get; set; }
         [Parameter]
         public LocalizationService Localizer { get; set; }
-        private int projet = 0;
-        private int projetdetail = 0;
     }
 }

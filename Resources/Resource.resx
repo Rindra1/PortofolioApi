@@ -472,4 +472,20 @@ Le système de notifications automatiques permet d’alerter les utilisateurs su
     <value>Fonctionnalités</value>
   </data>
 
+  <data name="Sending" xml:space="preserve">
+    <value>Envoi...</value>
+  </data>
+
+  <data name="FillAllFields" xml:space="preserve">
+    <value>Veuillez remplir tous les champs.</value>
+  </data>
+
+  <data name="MessageSent" xml:space="preserve">
+    <value>Message envoyé avec succès ! Je vous répondrai rapidement.</value>
+  </data>
+
+  <data name="MessageSentError" xml:space="preserve">
+    <value>Erreur lors de l'envoi du message.</value>
+  </data>
+
 </root>

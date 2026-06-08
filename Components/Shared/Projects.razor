@@ -7,7 +7,7 @@
             @foreach (var proj in portfolio.Projets)
             {
                 var idPart = proj.IdProjet?.ToString() ?? "0";
-                projet++;
+                var modalId = $"project-{idPart}";
                 <div class="card" data-aos="zoom-in">
                     <img src="/images/@(proj.ImageProjet)" alt="@Localizer.T($"Projet.{idPart}.Titre")" loading="lazy"
                          class="project-img">
@@ -16,7 +16,7 @@
                         <p>@Localizer.T($"Projet.{idPart}.Resumer")</p>
                     </div>
                     <div class="card-actions">
-                        <button class="btn-details" onclick="openModal('@projet')">
+                        <button class="btn-details" onclick="openModal('@modalId')">
                             <i class="fas fa-info-circle"></i> @Localizer.T("Details")
                         </button>
                         @if (!string.IsNullOrEmpty(proj.Lien))
@@ -35,14 +35,14 @@
 <!-- MODALES PROJETS AVEC CARROUSEL -->
 @foreach (var proj in portfolio.Projets)
 {
-    projetdetail++;
     var idPart = proj.IdProjet?.ToString() ?? "0";
-    <div id="modal-@projetdetail" class="modal">
+    var modalId = $"project-{idPart}";
+    <div id="modal-@modalId" class="modal">
         <div class="modal-content">
-            <span class="modal-close" onclick="closeModal('@projetdetail')">&times;</span>
+            <span class="modal-close" onclick="closeModal('@modalId')">&times;</span>
             <h2 class="modal-title">@Localizer.T($"Projet.{idPart}.Titre")</h2>
-            <div class="modal-gallery" id="gallery@projetdetail">
-                <img id="mainImage@projetdetail" class="main-image" src="/images/@(proj.ImageProjet)"
+            <div class="modal-gallery" id="gallery-@modalId">
+                <img id="mainImage-@modalId" class="main-image" src="/images/@(proj.ImageProjet)"
                      alt="@Localizer.T($"Projet.{idPart}.Titre")">
                 <div class="thumbnail-container">
                     @if (!string.IsNullOrEmpty(proj.ImageProjet))

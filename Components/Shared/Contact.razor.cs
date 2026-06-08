@@ -14,18 +14,27 @@ namespace PortofolioApi.Components.Shared
         public LocalizationService Localizer { get; set; }
         [Inject]
         public IJSRuntime JS { get; set; }
-        [Parameter]
+        [Inject]
         public HttpClient Http { get; set; }
 
         private MailDTO emailRequest = new MailDTO();
+        private string? formMessage;
+        private bool isSending;
+        private bool isSuccess;
+        private string formMessageCss => isSuccess ? "form-message success" : "form-message error";
+
         private async Task Envoyer()
         {
             if (emailRequest == null || string.IsNullOrWhiteSpace(emailRequest.Name) || string.IsNullOrWhiteSpace(emailRequest.To)
     || string.IsNullOrWhiteSpace(emailRequest.Body))
             {
-                //await JS.InvokeVoidAsync("alert", "Veuillez remplir tous les champs");
+                isSuccess = false;
+                formMessage = Localizer?.T("FillAllFields") ?? "Veuillez remplir tous les champs.";
                 return;
             }
+
+            isSending = true;
+            formMessage = null;
 
             try
             {
@@ -46,22 +55,24 @@ namespace PortofolioApi.Components.Shared
 
                 if (response.IsSuccessStatusCode)
                 {
-                    //await JS.InvokeVoidAsync("alert", "Message envoyé avec succès !");
                     emailRequest = new MailDTO(); // Reset form
-                    StateHasChanged();
+                    isSuccess = true;
+                    formMessage = "Message envoyé avec succès ! Je vous répondrai rapidement.";
                 }
                 else
                 {
-                    await JS.InvokeVoidAsync("alert", "Erreur : " + (result?.Message ?? "Erreur inconnue"));
-                    if (!string.IsNullOrEmpty(result?.Error))
-                    {
-
-                    }
+                    isSuccess = false;
+                    formMessage = result?.Message ?? "Erreur lors de l'envoi du message.";
                 }
             }
             catch (Exception ex)
             {
-                //await JS.InvokeVoidAsync("alert", "Erreur technique : " + ex.Message);
+                isSuccess = false;
+                formMessage = "Erreur technique : " + ex.Message;
+            }
+            finally
+            {
+                isSending = false;
             }
         }
 
