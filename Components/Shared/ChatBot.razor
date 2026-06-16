@@ -42,7 +42,9 @@
         <div class="chat-input-area">
             <input type="text" id="chatInputFloat" @bind="UserMessage" @bind:event="oninput"
                    placeholder="@Localizer.T("YourQuestion")" @onkeydown="OnChatKeyPress" />
-            <button id="sendChatFloat" @onclick="SendMessage"><i class="fas fa-paper-plane"></i></button>
+            <button id="sendChatFloat" @onclick="SendMessage" 
+                    class="send-chat"
+                    aria-label="Envoyer"><i class="fas fa-paper-plane"></i></button>
         </div>
         <div class="suggestions-chat">
             <span class="suggestion-chip" @onclick='@(() => SendSuggestion(@Localizer.T("ProjectsChat")))'>

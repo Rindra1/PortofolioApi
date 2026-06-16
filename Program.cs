@@ -274,4 +274,15 @@ app.MapRazorComponents<App>()
     options.Transports = Microsoft.AspNetCore.Http.Connections.HttpTransportType.LongPolling;
 });*/
 
+//Mise en cache
+app.UseStaticFiles(new StaticFileOptions
+{
+    OnPrepareResponse = ctx =>
+    {
+        ctx.Context.Response.Headers.Append(
+            "Cache-Control",
+            "public,max-age=31536000,immutable");
+    }
+});
+
 app.Run();
