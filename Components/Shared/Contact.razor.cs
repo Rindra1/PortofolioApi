@@ -57,7 +57,7 @@ namespace PortofolioApi.Components.Shared
                 {
                     emailRequest = new MailDTO(); // Reset form
                     isSuccess = true;
-                    formMessage = "Message envoyé avec succès ! Je vous répondrai rapidement.";
+                    formMessage = Localizer?.T("MessageSent") ?? "Message envoyé avec succès !";
                 }
                 else
                 {

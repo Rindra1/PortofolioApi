@@ -247,12 +247,12 @@ window.siteInterop = {
         }
     },
 
-    initKeepAlive: function () {
+initKeepAlive: function () {
         if (this._keepAliveStarted) return;
         this._keepAliveStarted = true;
         console.log("Keep-alive activé");
         setInterval(() => {
-            fetch("https://ton-api.onrender.com/api/health")
+            fetch("/api/health")
                 .then(() => console.log("keep-alive OK"))
                 .catch(err => console.log("keep-alive error", err));
         }, 4 * 60 * 1000);

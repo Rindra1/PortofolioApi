@@ -58,32 +58,31 @@ public partial class Home
     public void Dispose() => Localizer?.OnChange -= OnLangChanged;
 
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+protected override async Task OnAfterRenderAsync(bool firstRender)
+{
+    if (firstRender && !_initialized)
     {
-        if (firstRender && !_initialized)
+        _initialized = true;
+        try
         {
-            _initialized = true;
-            await JS.InvokeVoidAsync("siteInterop.initAll");
-            try
+            string url = $"api/portfolio";
+            try { await Localizer.InitializeAsync(); } catch { }
+            portfolio = await Http.GetFromJsonAsync<UtilisateurDTO>(url) ?? new UtilisateurDTO();
+            StateHasChanged();
+            if (Localizer?.CurrentLanguage != "fr" && portfolio != null)
             {
-                string url = $"api/portfolio";
-                try { await Localizer.InitializeAsync(); } catch { }
-                portfolio = await Http.GetFromJsonAsync<UtilisateurDTO>(url) ?? new UtilisateurDTO();
-                StateHasChanged();
-                if (Localizer?.CurrentLanguage != "fr" && portfolio != null)
-                {
-                    //try { await TranslatePortfolioAsync(portfolio, Localizer.CurrentLanguage); StateHasChanged(); } catch { }
-                }
-                await JS.InvokeVoidAsync("siteInterop.initAll");
+                //try { await TranslatePortfolioAsync(portfolio, Localizer.CurrentLanguage); StateHasChanged(); } catch { }
             }
-            catch (Exception ex)
-            {
-                message = $"Erreur: {ex.Message} {ex.StackTrace}";
-            }
-            // Hide the page-specific loader when render/data load is complete
-            try { await JS.InvokeVoidAsync("siteInterop.hideById", "loader-home"); } catch { }
         }
+        catch (Exception ex)
+        {
+            message = $"Erreur: {ex.Message}";
+            Console.WriteLine($"Erreur chargement portfolio: {ex.Message}");
+        }
+        // Hide the page-specific loader when render/data load is complete
+        try { await JS.InvokeVoidAsync("siteInterop.hideById", "loader-home"); } catch { }
     }
+}
 
     
 

@@ -10,9 +10,9 @@
       <img src="/images/rindra_logo.png" loading="lazy" alt="Rindra logo" />
     </div>
     <div class="controls">
-      <button class="lang-toggle" id="langToggle" @onclick="ToggleLanguage"><i class="fas fa-globe"></i></button>
-      <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
-      <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+<button class="lang-toggle" id="langToggle" @onclick="ToggleLanguage" aria-label="Changer de langue"><i class="fas fa-globe"></i></button>
+       <button class="theme-toggle" id="themeToggle" aria-label="Changer de thème"><i class="fas fa-moon"></i></button>
+       <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu"><i class="fas fa-bars"></i></button>
     </div>
     <div class="nav-links">
       <a @onclick='() => ScrollToSection("accueil")' @onclick:preventDefault="true" style="cursor: pointer;">
