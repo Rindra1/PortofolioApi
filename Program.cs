@@ -222,6 +222,12 @@ builder.Services.AddCors(options =>
                .AllowAnyHeader());
 });
 
+builder.Services.AddServerSideBlazor()
+    .AddCircuitOptions(o =>
+    {
+        o.DetailedErrors = false;
+    });
+
 
 var app = builder.Build();
 

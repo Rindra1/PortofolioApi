@@ -131,52 +131,24 @@ window.siteInterop = {
         }
     },
 
-    initGalleries: function() {
-        // Sélectionner toutes les galleries
-        const galleries = document.querySelectorAll('[id^="gallery"]');
-    
-        galleries.forEach(gallery => {
-            const mainImage = gallery.querySelector('.main-image');
-            const thumbnails = gallery.querySelectorAll('.thumbnail');
-        
-        if (!mainImage || thumbnails.length === 0) return;
-        
-        // Fonction pour changer l'image
-        const changeImage = function(thumbnail) {
-            const imgSrc = thumbnail.getAttribute('data-img');
-            if (imgSrc && imgSrc !== mainImage.src) {
-                mainImage.src = imgSrc;
-            }
-            
-            // Gérer la classe active
-            thumbnails.forEach(t => t.classList.remove('active'));
-            thumbnail.classList.add('active');
-        };
-        
-        // Ajouter les écouteurs d'événements
-        thumbnails.forEach(thumbnail => {
-            // Nettoyer les anciens écouteurs
-            thumbnail.removeEventListener('click', thumbnail._listener);
-            
-            // Créer et stocker le nouveau listener
-            const listener = function(e) {
-                e.preventDefault();
-                changeImage(this);
-            };
-            thumbnail._listener = listener;
-            thumbnail.addEventListener('click', listener);
-        });
-        
-        // Activer la première thumbnail si aucune n'est active
-        const hasActive = Array.from(thumbnails).some(t => t.classList.contains('active'));
-        if (!hasActive && thumbnails[0]) {
-            thumbnails[0].classList.add('active');
-            // S'assurer que l'image principale correspond
-            const firstImgSrc = thumbnails[0].getAttribute('data-img');
-            if (firstImgSrc) {
-                mainImage.src = firstImgSrc;
-            }
+    initGalleries: function () {
+    document.addEventListener('click', function (e) {
+        const thumb = e.target.closest('.thumbnail');
+        if (!thumb) return;
+
+        const gallery = thumb.closest('[id^="gallery"]');
+        if (!gallery) return;
+
+        const mainImage = gallery.querySelector('.main-image');
+        const thumbnails = gallery.querySelectorAll('.thumbnail');
+
+        const imgSrc = thumb.getAttribute('data-img');
+        if (imgSrc && mainImage) {
+            mainImage.src = imgSrc;
         }
+
+        thumbnails.forEach(t => t.classList.remove('active'));
+        thumb.classList.add('active');
     });
 },
 

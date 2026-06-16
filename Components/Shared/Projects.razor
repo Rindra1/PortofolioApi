@@ -43,7 +43,9 @@
             <h2 id="modal-title-@modalId" class="modal-title">@Localizer.T($"Projet.{idPart}.Titre")</h2>
             <div class="modal-gallery" id="gallery-@modalId">
                 <img id="mainImage-@modalId" class="main-image" src="/images/@(proj.ImageProjet)"
-                     alt="@Localizer.T($"Projet.{idPart}.Titre")" width="700" height="300">
+                     alt="@Localizer.T($"Projet.{idPart}.Titre")" 
+                     width="700" height="300" 
+                     loading="eager" fetchpriority="high">
                 <div class="thumbnail-container">
                     @if (!string.IsNullOrEmpty(proj.ImageProjet))
                     {
