@@ -31,9 +31,12 @@
     <meta name="geo.placename" content="Antananarivo" />
     <meta name="language" content="French" />
     
+    <!-- Sitemap -->
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+
     <!-- Favicons & Icons -->
-    
     <link rel="manifest" href="/site.webmanifest" />
+    <link rel="icon" type="image/png" href="images/rindra_logo.png" />
     
     <!-- Open Graph (Social Media Optimization) -->
     <meta property="og:title" content="Rindra Niaina | Expert Développeur .NET - ASP.NET Core & Blazor" />
@@ -49,8 +52,6 @@
     <meta property="profile:first_name" content="Rindra Niaina" />
     <meta property="profile:last_name" content="Razafimandanona" />
     <meta property="profile:username" content="rindra_dotnet_dev" />
-
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -81,201 +82,24 @@
     
     <!-- Preload Critical Assets -->
     <link rel="preload" href="/script.js" as="script" />
-
-    <link rel="icon" type="image/png" href="images/rindra_logo.png" />
     
     <!-- Stylesheets -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" media="print" onload="this.media='all'" />
-    <link rel="preload"
-          href="app.css"
-          as="style"
-          onload="this.onload=null;this.rel='stylesheet'"  />
+    <link rel="preload" href="app.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     
-    <!-- Structured Data (JSON-LD) - Enhanced -->
+    <!-- Structured Data (JSON-LD) - Séparé en 3 blocs -->
     <script type="application/ld+json">
-    {
-        "@@context": "https://schema.org",
-        "@@type": "ProfilePage",
-        "dateCreated": "2025-11-01T00:00:00+03:00",
-        "dateModified": "2026-06-04T00:00:00+03:00",
-        "mainEntity": {
-            "@@type": "Person",
-            "@@id": "https://rindra-dotnet-developer.onrender.com/",
-            "name": "Razafimandanona Rindra Niaina",
-            "alternateName": "Rindra Niaina",
-            "url": "https://rindra-dotnet-developer.onrender.com",
-            "image": {
-                "@@type": "ImageObject",
-                "url": "https://rindra-dotnet-developer.onrender.com/assets/profile.jpg",
-                "width": 1200,
-                "height": 630,
-                "caption": "Rindra Niaina - Développeur .NET"
-            },
-            "jobTitle": "Développeur Full Stack .NET Senior",
-            "worksFor": {
-                "@@type": "Organization",
-                "name": "Freelance & Consulting",
-                "url": "https://rindra-dotnet-developer.onrender.com"
-            },
-            "description": "Développeur .NET senior spécialisé en ASP.NET Core, Blazor, C#, VB.NET, WinForms, SQL Server et Entity Framework. Plus de 5 ans d'expérience dans la conception et le développement d'applications robustes.",
-            "nationality": "Malagasy",
-            "gender": "Male",
-"birthPlace": {
-                "@@type": "Place",
-                "address": {
-                    "@@type": "PostalAddress",
-                    "addressCountry": "Madagascar",
-                    "addressLocality": "Antananarivo"
-                }
-            },
-            "address": {
-                "@@type": "PostalAddress",
-                "addressCountry": "Madagascar",
-                "addressLocality": "Antananarivo"
-            },
-            "knowsLanguage": ["French", "Malagasy"],
-            "knowsAbout": [
-                ".NET Framework",
-                ".NET Core",
-                ".NET 8/10",
-                "ASP.NET Core MVC",
-                "Blazor Server",
-                "Blazor WebAssembly",
-                "C#",
-                "VB.NET",
-                "WinForms",
-                "Entity Framework Core",
-                "SQL Server",
-                "Azure",
-                "Docker",
-                "Git",
-                "REST API"
-            ],
-            "skills": [
-                "ASP.NET Core",
-                "Blazor",
-                "C#",
-                "VB.NET",
-                "WinForms",
-                "Entity Framework",
-                "SQL Server",
-                "REST APIs",
-                "Microservices"
-            ],
-            "hasOccupation": {
-                "@@type": "Occupation",
-                "name": "Développeur .NET Senior",
-                "occupationLocation": {
-                    "@@type": "City",
-                    "name": "Antananarivo, Madagascar"
-                }
-            },
-            "alumniOf": {
-                "@@type": "CollegeOrUniversity",
-                "name": "ISPM - Institut Supérieur Polytechnique de Madagascar",
-                "sameAs": "https://ispm-edu.com/"
-            },
-            "workExperience": [
-                {
-                    "@@type": "WorkExperience",
-                    "name": "Développeur .NET Senior",
-                    "location": "Madagascar",
-                    "description": "Conception et développement d'applications web et desktop avec les technologies .NET"
-                }
-            ],
-            "sameAs": [
-                "https://github.com/Rindra1",
-                "https://linkedin.com/in/rindra-niaina-razafimandanona-1ab51b120",
-                "https://x.com/RindraNiaina3",
-                "https://web.facebook.com/rindra.niaina.9"
-            ],
-            "contactPoint": {
-                "@@type": "ContactPoint",
-                "contactType": "Professional",
-                "email": "rindraniaina.manda@gmail.com",
-                "availableLanguage": ["French", "Malagasy"]
-            }
-        },
-        "primaryImageOfPage": {
-            "@@type": "ImageObject",
-            "url": "https://rindra-dotnet-developer.onrender.com/assets/profile.jpg",
-            "width": 1200,
-            "height": 630
-        },
-        "about": {
-            "@@type": "Thing",
-            "name": ".NET Development Portfolio",
-            "description": "Portfolio présentant les projets et compétences en développement .NET"
-        }
-    }
+        @((MarkupString)GetProfilePageData())
     </script>
-    
-    <!-- WebSite Structured Data -->
+
     <script type="application/ld+json">
-    {
-        "@@context": "https://schema.org",
-        "@@type": "WebSite",
-        "name": "Rindra Niaina .NET Developer Portfolio",
-        "url": "https://rindra-dotnet-developer.onrender.com",
-        "description": "Portfolio professionnel d'un développeur .NET senior spécialisé en ASP.NET Core, Blazor et C#",
-        "inLanguage": "fr-FR",
-        "potentialAction": {
-            "@@type": "SearchAction",
-            "target": {
-                "@@type": "EntryPoint",
-                "urlTemplate": "https://rindra-dotnet-developer.onrender.com/search?q={search_term_string}"
-            },
-            "query-input": "required name=search_term_string"
-        }
-    }
+        @((MarkupString)GetWebSiteData())
     </script>
-    
-    <!-- BreadcrumbList Structured Data -->
+
     <script type="application/ld+json">
-    {
-        "@@context": "https://schema.org",
-        "@@type": "BreadcrumbList",
-        "itemListElement": [
-            {
-                "@@type": "ListItem",
-                "position": 1,
-                "name": "Accueil",
-                "item": "https://rindra-dotnet-developer.onrender.com"
-            },
-            {
-                "@@type": "ListItem",
-                "position": 2,
-                "name": "A propos de moi",
-                "item": "https://rindra-dotnet-developer.onrender.com/#about"
-            },
-            {
-                "@@type": "ListItem",
-                "position": 3,
-                "name": "Mes projets",
-                "item": "https://rindra-dotnet-developer.onrender.com/#projets"
-            },
-            {
-                "@@type": "ListItem",
-                "position": 4,
-                "name": "Experiences",
-                "item": "https://rindra-dotnet-developer.onrender.com/#experience"
-            },
-            {
-                "@@type": "ListItem",
-                "position": 5,
-                "name": "Services",
-                "item": "https://rindra-dotnet-developer.onrender.com/#services"
-            },
-            {
-                "@@type": "ListItem",
-                "position": 6,
-                "name": "Contact",
-                "item": "https://rindra-dotnet-developer.onrender.com/#contact"
-            }
-        ]
-    }
+        @((MarkupString)GetBreadcrumbData())
     </script>
     
     <!-- Google Analytics -->
@@ -320,37 +144,212 @@
 
 <body class="dark">
 
-<div id="loader" class="page-loader">
-    <div class="loader-animation">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+    <div id="loader" class="page-loader">
+        <div class="loader-animation">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
     </div>
-</div>
 
     <Routes />
         
-        <script src="_framework/blazor.web.js" defer></script>
-        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-        <script src="./script.js" defer></script>
-
-    
+    <script src="_framework/blazor.web.js" defer></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="./script.js" defer></script>
 
 </body>
 
 </html>
-@code{
-    /*private bool _initialized;
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+@code {
+    private string GetProfilePageData()
     {
-        if (firstRender && !_initialized)
+        return @"
         {
-            _initialized = true;
-            //await JS.InvokeVoidAsync("siteInterop.initAll");
-            await JS.InvokeVoidAsync("siteInterop.hideLoader");
-        }
-    }*/
+            ""@context"": ""https://schema.org"",
+            ""@type"": ""ProfilePage"",
+            ""dateCreated"": ""2025-11-01T00:00:00+03:00"",
+            ""dateModified"": ""2026-06-04T00:00:00+03:00"",
+            ""mainEntity"": {
+                ""@type"": ""Person"",
+                ""@id"": ""https://rindra-dotnet-developer.onrender.com/"",
+                ""name"": ""Razafimandanona Rindra Niaina"",
+                ""alternateName"": ""Rindra Niaina"",
+                ""url"": ""https://rindra-dotnet-developer.onrender.com"",
+                ""image"": {
+                    ""@type"": ""ImageObject"",
+                    ""url"": ""https://rindra-dotnet-developer.onrender.com/assets/profile.jpg"",
+                    ""width"": 1200,
+                    ""height"": 630,
+                    ""caption"": ""Rindra Niaina - Développeur .NET""
+                },
+                ""jobTitle"": ""Développeur Full Stack .NET Senior"",
+                ""worksFor"": {
+                    ""@type"": ""Organization"",
+                    ""name"": ""Freelance & Consulting"",
+                    ""url"": ""https://rindra-dotnet-developer.onrender.com""
+                },
+                ""description"": ""Développeur .NET senior spécialisé en ASP.NET Core, Blazor, C#, VB.NET, WinForms, SQL Server et Entity Framework. Plus de 5 ans d'expérience dans la conception et le développement d'applications robustes."",
+                ""nationality"": ""Malagasy"",
+                ""gender"": ""Male"",
+                ""birthPlace"": {
+                    ""@type"": ""Place"",
+                    ""address"": {
+                        ""@type"": ""PostalAddress"",
+                        ""addressCountry"": ""Madagascar"",
+                        ""addressLocality"": ""Antananarivo""
+                    }
+                },
+                ""address"": {
+                    ""@type"": ""PostalAddress"",
+                    ""addressCountry"": ""Madagascar"",
+                    ""addressLocality"": ""Antananarivo""
+                },
+                ""knowsLanguage"": [""French"", ""Malagasy""],
+                ""knowsAbout"": [
+                    "".NET Framework"",
+                    "".NET Core"",
+                    "".NET 8/10"",
+                    ""ASP.NET Core MVC"",
+                    ""Blazor Server"",
+                    ""Blazor WebAssembly"",
+                    ""C#"",
+                    ""VB.NET"",
+                    ""WinForms"",
+                    ""Entity Framework Core"",
+                    ""SQL Server"",
+                    ""Azure"",
+                    ""Docker"",
+                    ""Git"",
+                    ""REST API""
+                ],
+                ""skills"": [
+                    ""ASP.NET Core"",
+                    ""Blazor"",
+                    ""C#"",
+                    ""VB.NET"",
+                    ""WinForms"",
+                    ""Entity Framework"",
+                    ""SQL Server"",
+                    ""REST APIs"",
+                    ""Microservices""
+                ],
+                ""hasOccupation"": {
+                    ""@type"": ""Occupation"",
+                    ""name"": ""Développeur .NET Senior"",
+                    ""occupationLocation"": {
+                        ""@type"": ""City"",
+                        ""name"": ""Antananarivo, Madagascar""
+                    }
+                },
+                ""alumniOf"": {
+                    ""@type"": ""CollegeOrUniversity"",
+                    ""name"": ""ISPM - Institut Supérieur Polytechnique de Madagascar"",
+                    ""sameAs"": ""https://ispm-edu.com/""
+                },
+                ""workExperience"": [
+                    {
+                        ""@type"": ""WorkExperience"",
+                        ""name"": ""Développeur .NET Senior"",
+                        ""location"": ""Madagascar"",
+                        ""description"": ""Conception et développement d'applications web et desktop avec les technologies .NET""
+                    }
+                ],
+                ""sameAs"": [
+                    ""https://github.com/Rindra1"",
+                    ""https://linkedin.com/in/rindra-niaina-razafimandanona-1ab51b120"",
+                    ""https://x.com/RindraNiaina3"",
+                    ""https://web.facebook.com/rindra.niaina.9""
+                ],
+                ""contactPoint"": {
+                    ""@type"": ""ContactPoint"",
+                    ""contactType"": ""Professional"",
+                    ""email"": ""rindraniaina.manda@gmail.com"",
+                    ""availableLanguage"": [""French"", ""Malagasy""]
+                }
+            },
+            ""primaryImageOfPage"": {
+                ""@type"": ""ImageObject"",
+                ""url"": ""https://rindra-dotnet-developer.onrender.com/assets/profile.jpg"",
+                ""width"": 1200,
+                ""height"": 630
+            },
+            ""about"": {
+                ""@type"": ""Thing"",
+                ""name"": "".NET Development Portfolio"",
+                ""description"": ""Portfolio présentant les projets et compétences en développement .NET""
+            }
+        }";
+    }
+
+    private string GetWebSiteData()
+    {
+        return @"
+        {
+            ""@context"": ""https://schema.org"",
+            ""@type"": ""WebSite"",
+            ""name"": ""Rindra Niaina .NET Developer Portfolio"",
+            ""url"": ""https://rindra-dotnet-developer.onrender.com"",
+            ""description"": ""Portfolio professionnel d'un développeur .NET senior spécialisé en ASP.NET Core, Blazor et C#"",
+            ""inLanguage"": ""fr-FR"",
+            ""potentialAction"": {
+                ""@type"": ""SearchAction"",
+                ""target"": {
+                    ""@type"": ""EntryPoint"",
+                    ""urlTemplate"": ""https://rindra-dotnet-developer.onrender.com/search?q={search_term_string}""
+                },
+                ""query-input"": ""required name=search_term_string""
+            }
+        }";
+    }
+
+    private string GetBreadcrumbData()
+    {
+        return @"
+        {
+            ""@context"": ""https://schema.org"",
+            ""@type"": ""BreadcrumbList"",
+            ""itemListElement"": [
+                {
+                    ""@type"": ""ListItem"",
+                    ""position"": 1,
+                    ""name"": ""Accueil"",
+                    ""item"": ""https://rindra-dotnet-developer.onrender.com""
+                },
+                {
+                    ""@type"": ""ListItem"",
+                    ""position"": 2,
+                    ""name"": ""À propos"",
+                    ""item"": ""https://rindra-dotnet-developer.onrender.com/about""
+                },
+                {
+                    ""@type"": ""ListItem"",
+                    ""position"": 3,
+                    ""name"": ""Projets"",
+                    ""item"": ""https://rindra-dotnet-developer.onrender.com/projets""
+                },
+                {
+                    ""@type"": ""ListItem"",
+                    ""position"": 4,
+                    ""name"": ""Expériences"",
+                    ""item"": ""https://rindra-dotnet-developer.onrender.com/experience""
+                },
+                {
+                    ""@type"": ""ListItem"",
+                    ""position"": 5,
+                    ""name"": ""Services"",
+                    ""item"": ""https://rindra-dotnet-developer.onrender.com/services""
+                },
+                {
+                    ""@type"": ""ListItem"",
+                    ""position"": 6,
+                    ""name"": ""Contact"",
+                    ""item"": ""https://rindra-dotnet-developer.onrender.com/contact""
+                }
+            ]
+        }";
+    }
 }

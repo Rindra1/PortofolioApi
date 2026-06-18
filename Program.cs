@@ -15,6 +15,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
 using System.Net;
+using Microsoft.AspNetCore.ResponseCompression;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -206,11 +207,6 @@ builder.Services.AddHttpClient("API", client =>
 
 builder.Services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("API"));
 
-// Ajouter les services Blazor Server et Razor Components
-builder.Services.AddRazorComponents()
-    .AddInteractiveServerComponents();
-
-
 // Ajouter les services Swagger
 builder.Services.AddSwaggerGen();
 
@@ -222,15 +218,30 @@ builder.Services.AddCors(options =>
                .AllowAnyHeader());
 });
 
+// Ajouter les services Blazor Server et Razor Components
+builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor()
+    .AddInteractiveServerComponents()
     .AddCircuitOptions(o =>
     {
         o.DetailedErrors = false;
     });
 
+builder.Services.AddResponseCompression(options =>
+{
+    options.EnableForHttps = true;
+    options.Providers.Add<BrotliCompressionProvider>();
+    options.Providers.Add<GzipCompressionProvider>();
+});
+
+builder.Services.AddMemoryCache();
+builder.Services.AddResponseCaching();
+
 
 var app = builder.Build();
 
+
+app.UseResponseCaching();
 // Route de test pour vérifier si le serveur est actif
 //app.MapGet("/health", () => Results.Ok("OK"));
 
@@ -289,6 +300,14 @@ app.UseStaticFiles(new StaticFileOptions
             "Cache-Control",
             "public,max-age=31536000,immutable");
     }
+});
+
+app.MapGet("/sitemap.xml", async () => 
+{
+    var urls = new[] 
+    {
+        "/", "/about", "/projets", "/experience", "/services", "/contact"
+    };
 });
 
 app.Run();
