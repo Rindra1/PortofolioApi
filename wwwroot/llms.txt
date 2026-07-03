@@ -1,81 +1,49 @@
 # Rindra - Full Stack .NET Developer
 
-Name: Rindra Razafimandanona
-Title: Full Stack .NET Developer
+Professional portfolio of **Rindra Razafimandanona**, Full Stack .NET Developer specializing in ASP.NET Core, C#, Angular, Blazor, SQL Server, Docker, and modern web development.
 
-Website:
-https://rindra-dotnet-developer.onrender.com/
+## Website
 
-Description:
-Professional portfolio of Rindra Razafimandanona, a Full Stack .NET Developer specializing in ASP.NET Core, C#, Angular, Blazor, SQL Server, Docker, GitHub Actions, and modern web development.
+- [Portfolio](https://rindra-dotnet-developer.onrender.com/)
 
-Primary Topics:
+## Pages
+
+- [Home](https://rindra-dotnet-developer.onrender.com/)
+- [About](https://rindra-dotnet-developer.onrender.com/about)
+- [Projects](https://rindra-dotnet-developer.onrender.com/projects)
+- [Skills](https://rindra-dotnet-developer.onrender.com/skills)
+- [Experience](https://rindra-dotnet-developer.onrender.com/experience)
+- [Contact](https://rindra-dotnet-developer.onrender.com/contact)
+- [Resume](https://rindra-dotnet-developer.onrender.com/cv)
+
+## Profiles
+
+- [GitHub](https://github.com/Rindra1)
+- [LinkedIn](https://www.linkedin.com/in/rindra-niaina-razafimandanona-1ab51b120)
+
+## Technical Skills
+
 - ASP.NET Core
 - C#
 - .NET
 - Angular
 - Blazor
-- SQL Server
 - Entity Framework Core
+- SQL Server
 - REST API
 - Docker
 - GitHub Actions
 - CI/CD
 - Clean Architecture
-- Software Development
 
-Skills:
-- C#
-- ASP.NET Core
-- Blazor
-- Angular
-- TypeScript
-- JavaScript
-- HTML
-- CSS
-- SQL Server
-- Entity Framework Core
-- LINQ
-- Git
-- GitHub
-- Docker
-- Azure (Learning)
-- DevOps
+## Purpose
 
-Pages:
+This website showcases my professional experience, technical skills, personal projects, and contact information for software engineering opportunities.
 
-Home
-https://rindra-dotnet-developer.onrender.com/
+## Preferred Citation
 
-About
-https://rindra-dotnet-developer.onrender.com/about
+Rindra Razafimandanona – Full Stack .NET Developer
 
-Projects
-https://rindra-dotnet-developer.onrender.com/projects
+## License
 
-Skills
-https://rindra-dotnet-developer.onrender.com/skills
-
-Experience
-https://rindra-dotnet-developer.onrender.com/experience
-
-Contact
-https://rindra-dotnet-developer.onrender.com/contact
-
-GitHub:
-https://github.com/Rindra1
-
-LinkedIn:
-www.linkedin.com/in/rindra-niaina-razafimandanona-1ab51b120
-
-Resume:
-https://rindra-dotnet-developer.onrender.com/cv
-
-Purpose:
-This website showcases professional experience, technical skills, personal projects, and contact information for software engineering opportunities.
-
-Preferred Citation:
-Rindra Razafimandanona - Full Stack .NET Developer
-
-License:
 Content © Rindra Razafimandanona. Please attribute when quoting.
