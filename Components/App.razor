@@ -80,14 +80,13 @@
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
     <link rel="dns-prefetch" href="https://unpkg.com" />
     
-    <!-- Preload Critical Assets -->
-    <link rel="preload" href="/script.js" as="script" />
     
     <!-- Stylesheets -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <link href="./fonts/poppins.css" rel="stylesheet" media="print" onload="this.media='all'" />
+    <link href="./fonts/inter.css" rel="stylesheet" media="print" onload="this.media='all'" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" media="print" onload="this.media='all'" />
     <link rel="preload" href="app.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link href="./lib/aos/aos.css" rel="stylesheet" />
     
     <!-- Structured Data (JSON-LD) - Séparé en 3 blocs -->
     <script type="application/ld+json">
@@ -157,7 +156,7 @@
     <Routes />
         
     <script src="_framework/blazor.web.js" defer></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="./lib/aos/aos.js"></script>
     <script src="./script.js" defer></script>
 
 </body>
