@@ -1,22 +1,6 @@
 # Robots.txt optimisé pour portfolio .NET & SEO
 # Généré pour Rindra Niaina - Développeur .NET Senior
-# Dernière mise à jour : 2026-07-03
-
-# === ROBOTS D'INTELLIGENCE ARTIFICIELLE (AUTORISÉS SPÉCIFIQUEMENT) ===
-# On s'assure que les IA majeures ont un accès total pour lire le contenu Blazor
-User-agent: GPTBot
-User-agent: ChatGPT-User
-User-agent: ClaudeBot
-User-agent: Claude-Web
-User-agent: PerplexityBot
-User-agent: Applebot-Extended
-User-agent: Google-Extended
-User-agent: Omgilibot
-Disallow: /admin/
-Disallow: /private/
-Disallow: /api/
-# Pas de Crawl-delay pour les IA, pour éviter que la requête expire sur Render
-
+# Dernière mise à jour : 2026-06-04
 
 # === USER-AGENTS GÉNÉRAUX ===
 User-agent: *
