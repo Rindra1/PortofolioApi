@@ -1,4 +1,4 @@
-# Robots.txt optimisé pour portfolio .NET, SEO & IA
+# Robots.txt optimisé pour portfolio .NET & SEO
 # Généré pour Rindra Niaina - Développeur .NET Senior
 # Dernière mise à jour : 2026-07-03
 
@@ -17,8 +17,10 @@ Disallow: /private/
 Disallow: /api/
 # Pas de Crawl-delay pour les IA, pour éviter que la requête expire sur Render
 
-# === USER-AGENTS GÉNÉRAUX (Moteurs de recherche classiques) ===
+
+# === USER-AGENTS GÉNÉRAUX ===
 User-agent: *
+# Délai entre les requêtes pour ne pas surcharger le serveur
 Crawl-delay: 1
 
 # Chemins absolument interdits (sécurité + SEO)
@@ -51,7 +53,7 @@ Disallow: /*.dll$
 Disallow: /*.exe$
 Disallow: /*.pdb$
 
-# Fichiers générés par Blazor / .NET (Bloqués uniquement pour le SEO classique pour éviter le duplicate content)
+# Fichiers générés par Blazor / .NET
 Disallow: /_framework/
 Disallow: /_content/
 Disallow: /_blazor/
@@ -62,7 +64,7 @@ Disallow: /service-worker.js
 Disallow: /dashboard/admin/
 Disallow: /backoffice/
 
-# URLs avec paramètres
+# URLs avec paramètres (évite contenu dupliqué)
 Disallow: /*?*
 Disallow: /*&*
 Disallow: /*?page=
@@ -76,7 +78,7 @@ Disallow: /*.tmp$
 Disallow: /*.old$
 Disallow: /*.backup$
 
-# === GOOGLE SPECIFIC ===
+# === GOOGLE SPECIFIC (optimisé) ===
 User-agent: Googlebot
 Crawl-delay: 1
 Disallow: /admin/
@@ -86,6 +88,8 @@ Allow: /assets/
 Allow: /images/
 Allow: /css/
 Allow: /js/
+
+# Disallow des paramètres inutiles pour Google
 Disallow: /*?utm_
 Disallow: /*?ref=
 Disallow: /*?source=
@@ -104,9 +108,14 @@ Crawl-delay: 2
 Disallow: /admin/
 Disallow: /private/
 
-# === PETITS ROBOTS OU SPAMMERS (Évite surcharge du serveur Render) ===
+# === PETITS ROBOTS (évite surcharge) ===
 User-agent: Baiduspider
+Crawl-delay: 5
 Disallow: /
+
+User-agent: YandexBot
+Crawl-delay: 3
+Disallow: /admin/
 
 User-agent: AhrefsBot
 Disallow: /
@@ -120,8 +129,10 @@ Disallow: /
 User-agent: DotBot
 Disallow: /
 
-# === SITEMAPS ===
+# === SITEMAPS (multiples si besoin) ===
 Sitemap: https://rindra-dotnet-developer.onrender.com/sitemap.xml
+# Sitemap secondaire pour les images (si vous avez beaucoup d'images)
+# Sitemap: https://rindra-dotnet-developer.onrender.com/sitemap-images.xml
 
-# === HOST ===
+# === HOST (optionnel mais recommandé) ===
 Host: https://rindra-dotnet-developer.onrender.com
