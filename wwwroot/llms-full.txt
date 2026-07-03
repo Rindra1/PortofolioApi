@@ -1,0 +1,59 @@
+# Rindra Razafimandanona
+
+I am a Full Stack .NET Developer based in Madagascar.
+
+My main expertise includes:
+
+- ASP.NET Core
+- C#
+- Blazor
+- Angular
+- SQL Server
+- Entity Framework Core
+- REST APIs
+- Docker
+
+I build:
+- Enterprise business applications
+- REST APIs
+- Modern web applications
+- Dashboard applications
+- CRUD applications
+- Portfolio websites
+
+Programming Languages:
+- C#
+- TypeScript
+- JavaScript
+- SQL
+
+Frontend:
+- Angular
+- Blazor
+- HTML
+- CSS
+
+Backend:
+- ASP.NET Core
+- Entity Framework Core
+- SQL Server
+
+Tools:
+- Visual Studio
+- VS Code
+- Git
+- GitHub
+- Docker
+- Postman
+
+Current Goal:
+Seeking remote opportunities as a Full Stack .NET Developer while continuously improving my expertise in Angular, Docker, CI/CD, and cloud technologies.
+
+Portfolio:
+https://rindra-dotnet-developer.onrender.com/
+
+GitHub:
+https://github.com/Rindra1
+
+LinkedIn:
+www.linkedin.com/in/rindra-niaina-razafimandanona-1ab51b120
