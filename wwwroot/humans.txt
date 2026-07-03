@@ -1,12 +1,12 @@
 # humans.txt for rindra-dotnet-developer.onrender.com
 /* TEAM */
 Developer: Razafimandanona Rindra Niaina
-Contact: rindra@dotnet-developer.com
+Contact: rindraniaina.manda@gmail.com
 LinkedIn: linkedin.com/in/rindra-niaina-razafimandanona-1ab51b120
 GitHub: github.com/Rindra1
 
 /* TECHNOLOGY */
-Stack: .NET 6/7/8/10, Blazor, C#, VB.NET, ASP.NET Core
+Stack: .NET 8/10, Blazor, Mudblazor, C#, VB.NET, ASP.NET Core
 Database: SQL Server, Access
 Hosting: Render
-Last update: 2026-06-04
+Last update: 2026-07-03
