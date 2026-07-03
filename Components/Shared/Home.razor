@@ -1,7 +1,9 @@
 @page "/home"
-<section id="accueil" class="hero-section">
+@if(portfolio != null)
+{
+    <section id="accueil" class="hero-section">
     <div class="container hero">
-        <div class="hero-content" data-aos="fade-right">
+        <div class="hero-content">
             <div class="dispo-badge"><span class="green-circle"></span> @Localizer.T("Available")</div>
             <div class="hero-name">@portfolio.Nom <span>@portfolio.Prenom</span></div>
             <div class="hero-title">@Localizer.T("Title")</div>
@@ -38,7 +40,7 @@
                 </div>
             </div>
         </div>
-        <div class="hero-image-container" data-aos="fade-left">
+        <div class="hero-image-container">
             <div class="floating-badge floating-badge-1">
                 <i class="fab fa-microsoft"></i> Blazor
             </div>
@@ -51,3 +53,4 @@
         </div>
     </div>
 </section>
+}
