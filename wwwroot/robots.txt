@@ -1,10 +1,24 @@
-# Robots.txt optimisé pour portfolio .NET & SEO
+# Robots.txt optimisé pour portfolio .NET, SEO & IA
 # Généré pour Rindra Niaina - Développeur .NET Senior
-# Dernière mise à jour : 2026-06-04
+# Dernière mise à jour : 2026-07-03
 
-# === USER-AGENTS GÉNÉRAUX ===
+# === ROBOTS D'INTELLIGENCE ARTIFICIELLE (AUTORISÉS SPÉCIFIQUEMENT) ===
+# On s'assure que les IA majeures ont un accès total pour lire le contenu Blazor
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-Web
+User-agent: PerplexityBot
+User-agent: Applebot-Extended
+User-agent: Google-Extended
+User-agent: Omgilibot
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+# Pas de Crawl-delay pour les IA, pour éviter que la requête expire sur Render
+
+# === USER-AGENTS GÉNÉRAUX (Moteurs de recherche classiques) ===
 User-agent: *
-# Délai entre les requêtes pour ne pas surcharger le serveur
 Crawl-delay: 1
 
 # Chemins absolument interdits (sécurité + SEO)
@@ -37,7 +51,7 @@ Disallow: /*.dll$
 Disallow: /*.exe$
 Disallow: /*.pdb$
 
-# Fichiers générés par Blazor / .NET
+# Fichiers générés par Blazor / .NET (Bloqués uniquement pour le SEO classique pour éviter le duplicate content)
 Disallow: /_framework/
 Disallow: /_content/
 Disallow: /_blazor/
@@ -48,7 +62,7 @@ Disallow: /service-worker.js
 Disallow: /dashboard/admin/
 Disallow: /backoffice/
 
-# URLs avec paramètres (évite contenu dupliqué)
+# URLs avec paramètres
 Disallow: /*?*
 Disallow: /*&*
 Disallow: /*?page=
@@ -62,7 +76,7 @@ Disallow: /*.tmp$
 Disallow: /*.old$
 Disallow: /*.backup$
 
-# === GOOGLE SPECIFIC (optimisé) ===
+# === GOOGLE SPECIFIC ===
 User-agent: Googlebot
 Crawl-delay: 1
 Disallow: /admin/
@@ -72,8 +86,6 @@ Allow: /assets/
 Allow: /images/
 Allow: /css/
 Allow: /js/
-
-# Disallow des paramètres inutiles pour Google
 Disallow: /*?utm_
 Disallow: /*?ref=
 Disallow: /*?source=
@@ -92,14 +104,9 @@ Crawl-delay: 2
 Disallow: /admin/
 Disallow: /private/
 
-# === PETITS ROBOTS (évite surcharge) ===
+# === PETITS ROBOTS OU SPAMMERS (Évite surcharge du serveur Render) ===
 User-agent: Baiduspider
-Crawl-delay: 5
 Disallow: /
-
-User-agent: YandexBot
-Crawl-delay: 3
-Disallow: /admin/
 
 User-agent: AhrefsBot
 Disallow: /
@@ -113,10 +120,8 @@ Disallow: /
 User-agent: DotBot
 Disallow: /
 
-# === SITEMAPS (multiples si besoin) ===
+# === SITEMAPS ===
 Sitemap: https://rindra-dotnet-developer.onrender.com/sitemap.xml
-# Sitemap secondaire pour les images (si vous avez beaucoup d'images)
-# Sitemap: https://rindra-dotnet-developer.onrender.com/sitemap-images.xml
 
-# === HOST (optionnel mais recommandé) ===
+# === HOST ===
 Host: https://rindra-dotnet-developer.onrender.com
