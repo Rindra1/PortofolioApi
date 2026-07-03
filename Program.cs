@@ -296,9 +296,22 @@ app.UseStaticFiles(new StaticFileOptions
 {
     OnPrepareResponse = ctx =>
     {
-        ctx.Context.Response.Headers.Append(
-            "Cache-Control",
-            "public,max-age=31536000,immutable");
+        var path = ctx.File.PhysicalPath;
+
+        if (path.EndsWith(".html"))
+        {
+            ctx.Context.Response.Headers.Append(
+                "Cache-Control",
+                "no-cache"
+            );
+        }
+        else
+        {
+            ctx.Context.Response.Headers.Append(
+                "Cache-Control",
+                "public,max-age=31536000,immutable"
+            );
+        }
     }
 });
 
