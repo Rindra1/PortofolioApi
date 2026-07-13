@@ -252,7 +252,7 @@ By automating several internal processes, the application helps to reduce errors
   </data>
 
   <data name="Projet.5.Titre" xml:space="preserve">
-    <value>.NET Front-End Developer – EN16931 Electronic Billing Platform</value>
+    <value>.NET Developer – EN16931 Electronic Billing Platform</value>
   </data>
   <data name="Projet.5.Resumer" xml:space="preserve">
     <value>Development of an EN16931-compliant electronic invoicing platform using Blazor and MudBlazor, integration of REST APIs in C#, and management of business rules relating to the invoice lifecycle for a client in France.</value>

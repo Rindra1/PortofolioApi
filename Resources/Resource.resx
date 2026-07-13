@@ -312,7 +312,7 @@ Le système de notifications automatiques permet d’alerter les utilisateurs su
   </data>
 
   <data name="Projet.5.Titre" xml:space="preserve">
-    <value>Développeur Front-End .NET – Plateforme de Facturation Électronique EN16931</value>
+    <value>Développeur .NET – Plateforme de Facturation Électronique EN16931</value>
   </data>
   <data name="Projet.5.Resumer" xml:space="preserve">
     <value>Développement d’une plateforme de facturation électronique EN16931 avec Blazor et MudBlazor, intégration d’API REST en C#, et gestion des règles métier liées au cycle de vie des factures pour un client en France.</value>
