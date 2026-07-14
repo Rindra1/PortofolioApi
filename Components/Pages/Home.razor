@@ -2,6 +2,7 @@
 
 @rendermode InteractiveServer
 
+@using PortofolioApi.Components.Layout
 @using PortofolioApi.Components.Shared
 
 <main>
@@ -20,9 +21,8 @@
     <Contact Localizer="Localizer" portfolio="portfolio" />
 </main>
 <ChatBot Localizer="Localizer" />
-<footer class="footer">
-    <p>&copy; @DateTime.Now.Year Rindra Niaina. @Localizer?.T("AllRightsReserved")</p>
-</footer>
+
+<Footer Localizer="Localizer"/>
 
 @code {
     

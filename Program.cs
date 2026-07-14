@@ -29,9 +29,6 @@ var dbPath = Path.Combine(
 Directory.CreateDirectory(appDataFolder); // Crée le dossier si inexistant
 
 var dbPath = Path.Combine(appDataFolder, "appdata.db");*/
-Console.WriteLine();
-Console.WriteLine($"Chemin de la base de données: {dbPath}");
-Console.WriteLine();
 // Supprime le fichier existant s'il existe
 /*if (File.Exists(dbPath))
 {
@@ -40,18 +37,13 @@ Console.WriteLine();
 // Téléchargement si la base n'existe pas
 if (!File.Exists(dbPath))
 {
-    Console.WriteLine("Téléchargement de la base de données depuis GitHub...");
     using var client = new WebClient();
-
     try
     {
         client.DownloadFile(
             "https://github.com/Rindra1/PortofolioApi/raw/refs/heads/main/appdata.db",
             dbPath
         );
-        Console.WriteLine("Base téléchargée avec succès !");
-        Console.WriteLine(new FileInfo(dbPath).Length);
-
     }
     catch (Exception ex)
     {
@@ -255,7 +247,32 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseStaticFiles();
+app.UseResponseCompression();
+
+//Mise en cache
+app.UseStaticFiles(new StaticFileOptions
+{
+    OnPrepareResponse = ctx =>
+    {
+        var path = ctx.File.PhysicalPath;
+
+        if (path.EndsWith(".html"))
+        {
+            ctx.Context.Response.Headers.Append(
+                "Cache-Control",
+                "no-cache"
+            );
+        }
+        else
+        {
+            ctx.Context.Response.Headers.Append(
+                "Cache-Control",
+                "public,max-age=31536000,immutable"
+            );
+        }
+    }
+});
+
 app.UseRouting();
 app.UseCors("AllowAll");
 app.UseAuthentication();    // 🔹 Toujours avant Authorization
@@ -290,30 +307,6 @@ app.MapRazorComponents<App>()
     // Forcer LongPolling si WebSockets ne sont pas supportés
     options.Transports = Microsoft.AspNetCore.Http.Connections.HttpTransportType.LongPolling;
 });*/
-
-//Mise en cache
-app.UseStaticFiles(new StaticFileOptions
-{
-    OnPrepareResponse = ctx =>
-    {
-        var path = ctx.File.PhysicalPath;
-
-        if (path.EndsWith(".html"))
-        {
-            ctx.Context.Response.Headers.Append(
-                "Cache-Control",
-                "no-cache"
-            );
-        }
-        else
-        {
-            ctx.Context.Response.Headers.Append(
-                "Cache-Control",
-                "public,max-age=31536000,immutable"
-            );
-        }
-    }
-});
 
 app.MapGet("/sitemap.xml", async () => 
 {

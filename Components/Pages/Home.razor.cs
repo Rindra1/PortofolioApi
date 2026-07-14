@@ -20,9 +20,28 @@ public partial class Home
     public LocalizationService? Localizer { get; set; }
 
     private bool _initialized;
-    protected override void OnInitialized()
+    protected override async void OnInitialized()
     {
         Localizer?.OnChange += OnLangChanged;
+        
+        try
+        {
+            string url = $"api/portfolio";
+            try { await Localizer.InitializeAsync(); } catch { }
+            portfolio = await Http.GetFromJsonAsync<UtilisateurDTO>(url) ?? new UtilisateurDTO();
+            StateHasChanged();
+            if (Localizer?.CurrentLanguage != "fr" && portfolio != null)
+            {
+                //try { await TranslatePortfolioAsync(portfolio, Localizer.CurrentLanguage); StateHasChanged(); } catch { }
+            }
+        }
+        catch (Exception ex)
+        {
+            message = $"Erreur: {ex.Message}";
+            Console.WriteLine($"Erreur chargement portfolio: {ex.Message}");
+        }
+        // Hide the page-specific loader when render/data load is complete
+        try { await JS.InvokeVoidAsync("siteInterop.hideById", "loader-home"); } catch { }
         StateHasChanged();
     }
 
@@ -58,7 +77,7 @@ public partial class Home
     public void Dispose() => Localizer?.OnChange -= OnLangChanged;
 
 
-protected override async Task OnAfterRenderAsync(bool firstRender)
+/*protected override async Task OnAfterRenderAsync(bool firstRender)
 {
     if (firstRender && !_initialized)
     {
@@ -82,7 +101,7 @@ protected override async Task OnAfterRenderAsync(bool firstRender)
         // Hide the page-specific loader when render/data load is complete
         try { await JS.InvokeVoidAsync("siteInterop.hideById", "loader-home"); } catch { }
     }
-}
+}*/
 
     
 
