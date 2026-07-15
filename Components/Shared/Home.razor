@@ -1,59 +1,103 @@
 @page "/home"
+@inject HttpClient Http
 
-    <section id="accueil" class="hero-section">
+@* Rendu immédiat même sans données *@
+<section id="accueil" class="hero-section">
     <div class="container hero">
         <div class="hero-content">
-            <div class="dispo-badge"><span class="green-circle"></span> @Localizer.T("Available")</div>
-            <div class="hero-name">@portfolio.Nom <span>@portfolio.Prenom</span></div>
-            <div class="hero-title">@Localizer.T("Title")</div>
-            <p class="hero-description">@Localizer.T("Resumer") </p>
-            <div class="hero-buttons">
-                <a href="#projets" class="btn-primary"><i class="fas fa-arrow-right"></i>
-                    @Localizer.T("ViewProjects")</a>
-                <a href="#contact" class="btn-outline"><i class="fas fa-envelope"></i> @Localizer.T("ContactMe")</a>
+            <!-- BADGE -->
+            <div class="dispo-badge">
+                <span class="green-circle"></span> 
+                @(Localizer?.T("Available") ?? "Disponible")
             </div>
+
+            <!-- NOM - ÉLÉMENT LCP CRITIQUE -->
+            <h1 class="hero-name">
+                @(portfolio?.Nom ?? "Razafimandanona") 
+                <span>@(portfolio?.Prenom ?? "Rindra Niaina")</span>
+            </h1>
+
+            <!-- TITRE -->
+            <div class="hero-title">@(Localizer?.T("Title") ?? "Développeur Full Stack .NET")</div>
+
+            <!-- DESCRIPTION - ÉLÉMENT LCP PRINCIPAL -->
+            <p class="hero-description">
+                @resume
+            </p>
+
+            <!-- BOUTONS -->
+            <div class="hero-buttons">
+                <a href="#projets" class="btn-primary">
+                    <i class="fas fa-arrow-right"></i>
+                    @(Localizer?.T("ViewProjects") ?? "Voir mes projets")
+                </a>
+                <a href="#contact" class="btn-outline">
+                    <i class="fas fa-envelope"></i> 
+                    @(Localizer?.T("ContactMe") ?? "Me contacter")
+                </a>
+            </div>
+
+            <!-- STATS -->
             <div class="hero-stats">
                 <div class="stat-card">
                     <div class="stat-number">5+</div>
-                    <div class="stat-label">@Localizer.T("YearsOfExperience")</div>
+                    <div class="stat-label">@(Localizer?.T("YearsOfExperience") ?? "Années d'expérience")</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">5+</div>
-                    <div class="stat-label">@Localizer.T("CompletedProjects")</div>
+                    <div class="stat-number">@(portfolio?.Projets?.Count ?? 0)+</div>
+                    <div class="stat-label">@(Localizer?.T("CompletedProjects") ?? "Projets réalisés")</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-number">10+</div>
                     <div class="stat-label">Technologies</div>
                 </div>
             </div>
+
+            <!-- STACK -->
             <div class="hero-stack-section">
-                <div class="hero-stack-title"><i class="fas fa-layer-group"></i> @Localizer.T("MasteredStack")</div>
+                <div class="hero-stack-title">
+                    <i class="fas fa-layer-group"></i> 
+                    @(Localizer?.T("MasteredStack") ?? "Stack maîtrisée")
+                </div>
                 <div class="stack-items">
-                    @if (!string.IsNullOrEmpty(portfolio.StackMaitrise))
+                    @if (!string.IsNullOrEmpty(portfolio?.StackMaitrise))
                     {
-                        @foreach (var tech in portfolio.StackMaitrise.Split(','))
+                        @foreach (var tech in portfolio.StackMaitrise.Split(',').Take(8))
                         {
-                            <span class="stack-item">@tech</span>
+                            <span class="stack-item">@tech.Trim()</span>
                         }
+                    }
+                    else
+                    {
+                        <span class="stack-item">C#</span>
+                        <span class="stack-item">.NET</span>
+                        <span class="stack-item">Blazor</span>
+                        <span class="stack-item">ASP.NET Core</span>
+                        <span class="stack-item">SQL Server</span>
+                        <span class="stack-item">Entity Framework</span>
+                        <span class="stack-item">Docker</span>
                     }
                 </div>
             </div>
         </div>
+
+        <!-- IMAGE -->
         <div class="hero-image-container">
-            <div class="floating-badge floating-badge-1">
+            <div class="floating-badge floating-badge-1" loading="lazy">
                 <i class="fab fa-microsoft"></i> Blazor
             </div>
-            <div class="floating-badge floating-badge-2">
+            <div class="floating-badge floating-badge-2" loading="lazy">
                 <i class="fas fa-code"></i> C# 
             </div>
             <div class="profile-circle">
-                <img src="images/@(portfolio.UserImage)"
-                     alt="@portfolio.Nom @portfolio.Prenom"
+                <img src="images/@(portfolio?.UserImage ?? "profile.jpg")"
+                     alt="@(portfolio?.Nom ?? "Rindra") @(portfolio?.Prenom ?? "Niaina")"
                      loading="eager"
                      fetchpriority="high"
                      decoding="async"
                      width="300"
-                     height="300" />
+                     height="300"
+                     importance="high" />
             </div>
         </div>
     </div>

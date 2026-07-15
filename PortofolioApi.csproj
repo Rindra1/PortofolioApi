@@ -31,5 +31,13 @@
   <ItemGroup>
     <Folder Include="Resources\" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
+  </ItemGroup>
+  <Target Name="VerifyMinifiedFiles" AfterTargets="Build">
+    <Message Text="🔍 Vérification des fichiers minifiés..." Importance="high" />
+    <Message Text="✅ script.min.js: $(MSBuildProjectDirectory)/wwwroot/script.min.js" Importance="high" />
+    <Message Text="✅ aos.min.js: $(MSBuildProjectDirectory)/wwwroot/lib/aos/aos.js" Importance="high" />
+  </Target>
 
 </Project>

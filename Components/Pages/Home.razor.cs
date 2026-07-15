@@ -19,14 +19,14 @@ public partial class Home
     [Inject]
     public LocalizationService? Localizer { get; set; }
 
-    private bool _initialized;
+    private readonly string url = $"api/portfolio";
+
     protected override async Task OnInitializedAsync()
     {
         Localizer?.OnChange += OnLangChanged;
         
         try
         {
-            string url = $"api/portfolio";
             try { await Localizer.InitializeAsync(); } catch { }
             portfolio = await Http.GetFromJsonAsync<UtilisateurDTO>(url) ?? new UtilisateurDTO();
             if (Localizer?.CurrentLanguage != "fr" && portfolio != null)
@@ -53,14 +53,12 @@ public partial class Home
                 {
                     if (Localizer?.CurrentLanguage != "fr")
                     {
-                        //await TranslatePortfolioAsync(portfolio, Localizer.CurrentLanguage);
                     }
                     else
                     {
                         try
                         {
-                            var url = $"api/portfolio";
-                            var original = await Http.GetFromJsonAsync<UtilisateurDTO>(url);
+                            var original = await Http?.GetFromJsonAsync<UtilisateurDTO>(url);
                             if (original != null) portfolio = original;
                         }
                         catch { }

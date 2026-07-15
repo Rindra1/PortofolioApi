@@ -25,15 +25,7 @@ var dbPath = Path.Combine(
     builder.Environment.ContentRootPath,
     "Data",
     "appdata.db");
-/*var appDataFolder = Path.Combine(AppContext.BaseDirectory, "var", "data");
-Directory.CreateDirectory(appDataFolder); // Crée le dossier si inexistant
-
-var dbPath = Path.Combine(appDataFolder, "appdata.db");*/
-// Supprime le fichier existant s'il existe
-/*if (File.Exists(dbPath))
-{
-    File.Delete(dbPath);
-}*/
+    
 // Téléchargement si la base n'existe pas
 if (!File.Exists(dbPath))
 {
@@ -51,21 +43,6 @@ if (!File.Exists(dbPath))
     }
 }
 
-//Utilisation Open-API
-//var apiKey = Environment.GetEnvironmentVariable("OPENAI_API_KEY");
-
-//builder.Services.AddSingleton(new OpenAI.OpenAIClient(apiKey));
-
-//Test en local Open-api
-/*builder.Services.AddSingleton(new OpenAI.GPT3.OpenAIService(new OpenAI.GPT3.Models.OpenAiOptions()
-{
-    ApiKey = builder.Configuration["OpenAI:ApiKey"]
-}));*/
-
-
-
-
-
 // Ajoute cette ligne juste après la création du builder
 builder.Configuration.AddEnvironmentVariables();
 
@@ -73,17 +50,6 @@ builder.Configuration.AddEnvironmentVariables();
 builder.Services.Configure<SendGridSettings>(
     builder.Configuration.GetSection("SendGridSettings")
 );
-
-// Injection du service mail
-//builder.Services.AddSingleton<MailController>();
-
-// Récupère le port fourni par Render
-//var port = Environment.GetEnvironmentVariable("PORT") ?? "5000"; // 5000 si local
-//sbuilder.WebHost.UseUrls($"http://*:{port}");
-
-//builder.Services.AddSingleton<UserState>();
-//builder.Services.AddSingleton<PortofolioApi.Services.TokenServices>();
-
 
 builder.Services.AddScoped<UserState>();
 builder.Services.AddScoped<PortofolioApi.Services.TokenServices>();
@@ -142,19 +108,10 @@ builder.Services.AddControllers()
         options.JsonSerializerOptions.WriteIndented = true;
     });
 
-
-
-// Configurer Sqlite
-/*builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")
-        ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.")));
-*/
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlite($"Data Source={dbPath}");
 });
-
-
 
 // Ajouter les services applicatifs
 builder.Services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
@@ -229,14 +186,26 @@ builder.Services.AddResponseCompression(options =>
 builder.Services.AddMemoryCache();
 builder.Services.AddResponseCaching();
 
+builder.Services.AddResponseCompression(options =>
+{
+    options.EnableForHttps = true;
+    options.Providers.Add<BrotliCompressionProvider>();
+    options.Providers.Add<GzipCompressionProvider>();
+    options.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
+        new[] { 
+            "text/css", 
+            "application/javascript",
+            "application/json",
+            "text/html",
+            "image/svg+xml",
+            "font/woff2",
+            "font/woff"
+        });
+});
 
 var app = builder.Build();
 
-
 app.UseResponseCaching();
-// Route de test pour vérifier si le serveur est actif
-//app.MapGet("/health", () => Results.Ok("OK"));
-
 
 // Pipeline HTTP
 if (!app.Environment.IsDevelopment())
@@ -255,20 +224,46 @@ app.UseStaticFiles(new StaticFileOptions
     OnPrepareResponse = ctx =>
     {
         var path = ctx.File.PhysicalPath;
-
-        if (path.EndsWith(".html"))
+        
+        if (path == null) return;
+        
+        // site.webmanifest - NE PAS METTRE EN CACHE (ou cache court)
+        if (path.EndsWith(".webmanifest"))
         {
             ctx.Context.Response.Headers.Append(
-                "Cache-Control",
-                "no-cache"
+                "Cache-Control", 
+                "public, max-age=3600" // 1 heure
             );
+            return;
         }
-        else
+        
+        // Fichiers statiques - Cache long
+        if (path.EndsWith(".css") || 
+            path.EndsWith(".min.css") ||
+            path.EndsWith(".js") || 
+            path.EndsWith(".min.js") ||
+            path.EndsWith(".woff2") ||
+            path.EndsWith(".woff") ||
+            path.EndsWith(".png") ||
+            path.EndsWith(".jpg") ||
+            path.EndsWith(".jpeg") ||
+            path.EndsWith(".svg"))
         {
             ctx.Context.Response.Headers.Append(
-                "Cache-Control",
-                "public,max-age=31536000,immutable"
+                "Cache-Control", 
+                "public, max-age=31536000, immutable"
             );
+            
+            // Ajouter ETag pour validation
+            try
+            {
+                var etag = $"\"{Convert.ToBase64String(
+                    System.Security.Cryptography.SHA1.HashData(
+                        System.IO.File.ReadAllBytes(path)
+                    )).Substring(0, 16)}\"";
+                ctx.Context.Response.Headers.Append("ETag", etag);
+            }
+            catch { /* Ignorer */ }
         }
     }
 });
@@ -301,12 +296,6 @@ if (app.Environment.IsDevelopment())
 app.MapControllers();
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
-
-/*app.MapBlazorHub(options =>
-{
-    // Forcer LongPolling si WebSockets ne sont pas supportés
-    options.Transports = Microsoft.AspNetCore.Http.Connections.HttpTransportType.LongPolling;
-});*/
 
 app.MapGet("/sitemap.xml", async () => 
 {
