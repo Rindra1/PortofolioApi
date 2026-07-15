@@ -17,6 +17,8 @@ using System.Text;
 using System.Net;
 using Microsoft.AspNetCore.ResponseCompression;
 
+using Microsoft.AspNetCore.StaticFiles; 
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -227,34 +229,21 @@ app.UseStaticFiles(new StaticFileOptions
         
         if (path == null) return;
         
-        // site.webmanifest - NE PAS METTRE EN CACHE (ou cache court)
-        if (path.EndsWith(".webmanifest"))
-        {
-            ctx.Context.Response.Headers.Append(
-                "Cache-Control", 
-                "public, max-age=3600" // 1 heure
-            );
-            return;
-        }
+        // ===== 1. IMAGES - Cache long (1 an) =====
+        var imageExtensions = new[] { 
+            ".jpg", ".jpeg", ".png", ".gif", ".bmp", 
+            ".webp", ".svg", ".ico", ".avif", ".tiff"
+        };
         
-        // Fichiers statiques - Cache long
-        if (path.EndsWith(".css") || 
-            path.EndsWith(".min.css") ||
-            path.EndsWith(".js") || 
-            path.EndsWith(".min.js") ||
-            path.EndsWith(".woff2") ||
-            path.EndsWith(".woff") ||
-            path.EndsWith(".png") ||
-            path.EndsWith(".jpg") ||
-            path.EndsWith(".jpeg") ||
-            path.EndsWith(".svg"))
+        if (imageExtensions.Any(e => path.EndsWith(e, StringComparison.OrdinalIgnoreCase)))
         {
+            // Cache d'1 an pour les images
             ctx.Context.Response.Headers.Append(
                 "Cache-Control", 
                 "public, max-age=31536000, immutable"
             );
             
-            // Ajouter ETag pour validation
+            // Ajouter un ETag pour la validation
             try
             {
                 var etag = $"\"{Convert.ToBase64String(
@@ -263,10 +252,69 @@ app.UseStaticFiles(new StaticFileOptions
                     )).Substring(0, 16)}\"";
                 ctx.Context.Response.Headers.Append("ETag", etag);
             }
-            catch { /* Ignorer */ }
+            catch
+            {
+                // Ignorer les erreurs de lecture
+            }
+            
+            // Ajouter le type MIME correct
+            var contentType = GetContentType(path);
+            if (!string.IsNullOrEmpty(contentType))
+            {
+                ctx.Context.Response.Headers.Append("Content-Type", contentType);
+            }
+            
+            // Ajouter un header de cache supplémentaire
+            ctx.Context.Response.Headers.Append(
+                "Expires", 
+                DateTime.UtcNow.AddYears(1).ToString("R")
+            );
+        }
+        
+        // ===== 2. CSS & JS - Cache long =====
+        if (path.EndsWith(".css") || 
+            path.EndsWith(".min.css") ||
+            path.EndsWith(".js") || 
+            path.EndsWith(".min.js"))
+        {
+            ctx.Context.Response.Headers.Append(
+                "Cache-Control", 
+                "public, max-age=31536000, immutable"
+            );
+        }
+        
+        // ===== 3. Webmanifest - Cache moyen =====
+        if (path.EndsWith(".webmanifest"))
+        {
+            ctx.Context.Response.Headers.Append(
+                "Cache-Control", 
+                "public, max-age=3600" // 1 heure
+            );
+        }
+        
+        // ===== 4. HTML - Pas de cache =====
+        if (path.EndsWith(".html") || path.EndsWith(".htm"))
+        {
+            ctx.Context.Response.Headers.Append(
+                "Cache-Control", 
+                "no-cache, no-store, must-revalidate"
+            );
+            ctx.Context.Response.Headers.Append("Pragma", "no-cache");
+            ctx.Context.Response.Headers.Append("Expires", "0");
         }
     }
 });
+
+// Fonction helper pour déterminer le type MIME
+static string GetContentType(string path)
+{
+    var provider = new FileExtensionContentTypeProvider();
+    if (provider.TryGetContentType(path, out string contentType))
+    {
+        return contentType;
+    }
+    return "application/octet-stream";
+}
 
 app.UseRouting();
 app.UseCors("AllowAll");
