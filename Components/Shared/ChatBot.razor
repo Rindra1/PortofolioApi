@@ -18,6 +18,12 @@
             <button class="close-chat" id="closeChat" aria-label="fermer"><i class="fas fa-times"></i></button>
         </div>
         <div class="chat-messages" id="chatMessagesFloat">
+            
+            <div class="message-bot">
+                <div class="bot-avatar">🤖</div>
+                <div class="bot-bubble">@Localizer.T("MessageChat")</div>
+            </div>
+            
             @foreach (var entry in ChatResponses)
             {
                 @if (!string.IsNullOrWhiteSpace(entry.UserMessage))

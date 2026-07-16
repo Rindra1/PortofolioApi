@@ -22,14 +22,14 @@ public partial class ChatBot
     protected override void OnInitialized()
     {
         Localizer.OnChange += OnLangChanged;
-        if (ChatResponses.Count == 0)
+        /*if (ChatResponses.Count == 0)
         {
             ChatResponses.Add(new ChatEntry
             {
                 UserMessage = "",
                 BotResponse = Localizer.T("MessageChat")
             });
-        }
+        }*/
     }
 
     private void OnLangChanged()

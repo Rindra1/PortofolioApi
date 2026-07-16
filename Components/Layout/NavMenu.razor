@@ -96,7 +96,11 @@
     if (firstRender && !_initialized)
     {
       _initialized = true;
-      try { await Localizer.InitializeAsync(); } catch { }
+      try { 
+        await Localizer.InitializeAsync();
+        await Localizer.SetLanguageAsync(Localizer.CurrentLanguage);
+        Console.WriteLine($"Langue menu {Localizer.CurrentLanguage}"); 
+      } catch { }
       await JS.InvokeVoidAsync("siteInterop.initAll");
     }
   }
