@@ -487,4 +487,8 @@ Le système de notifications automatiques permet d’alerter les utilisateurs su
     <value>Erreur lors de l'envoi du message.</value>
   </data>
 
+  <data name="FooterDescription" xml:space="preserve">
+    <value>Du desktop au web, je développe des solutions .NET robustes, performantes et centrées sur l'utilisateur.</value>
+  </data>
+
 </root>

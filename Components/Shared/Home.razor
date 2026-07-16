@@ -22,7 +22,7 @@
 
             <!-- DESCRIPTION - ÉLÉMENT LCP PRINCIPAL -->
             <p class="hero-description">
-                @resume
+                @Localizer.T("Resumer")
             </p>
 
             <!-- BOUTONS -->
@@ -90,7 +90,7 @@
                 <i class="fas fa-code"></i> C# 
             </div>
             <div class="profile-circle">
-                <img src="images/@(portfolio?.UserImage ?? "profile.jpg")"
+                <img src="images/@(portfolio?.UserImage)"
                      alt="@(portfolio?.Nom ?? "Rindra") @(portfolio?.Prenom ?? "Niaina")"
                      loading="eager"
                      fetchpriority="high"

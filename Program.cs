@@ -171,13 +171,9 @@ builder.Services.AddCors(options =>
 
 // Ajouter les services Blazor Server et Razor Components
 builder.Services.AddRazorPages();
-builder.Services.AddServerSideBlazor()
-    .AddInteractiveServerComponents()
-    .AddCircuitOptions(o =>
-    {
-        o.DetailedErrors = false;
-    });
-
+builder.Services
+    .AddRazorComponents()
+    .AddInteractiveServerComponents();
 builder.Services.AddResponseCompression(options =>
 {
     options.EnableForHttps = true;

@@ -8,15 +8,15 @@
       <!-- Colonne 1 - Logo & Description -->
       <div class="footer-col footer-col-brand">
         <a href="#" class="footer-brand">
-          <div class="footer-logo-icon">
-            <!--<i class="fas fa-code"></i>-->
-          </div>
+          <!--<div class="footer-logo-icon">
+            <i class="fas fa-code"></i>
+          </div>-->
           <span class="footer-brand-name">
-            Rindra 
+            Rindra Niaina
           </span>
         </a>
         <p class="footer-description">
-          Développeur full-stack passionné par la création d'applications web performantes et élégantes.
+          @Localizer.T("FooterDescription")
         </p>
         <!-- Réseaux sociaux -->
         <div class="footer-socials">
@@ -46,12 +46,12 @@
           Navigation
         </h3>
         <ul class="footer-list">
-          <li><a @onclick='() => ScrollToSection("accueil")' @onclick:preventDefault="true" class="footer-link">@Localizer.T("Home")</a></li>
-          <li><a @onclick='() => ScrollToSection("about")' @onclick:preventDefault="true" class="footer-link">@Localizer.T("About")</a></li>
-          <li><a @onclick='() => ScrollToSection("projets")' @onclick:preventDefault="true" class="footer-link">@Localizer.T("Projects")</a></li>
-          <li><a @onclick='() => ScrollToSection("experience")' @onclick:preventDefault="true" class="footer-link">@Localizer.T("Experience")</a></li>
-          <li><a @onclick='() => ScrollToSection("services")' @onclick:preventDefault="true" class="footer-link">@Localizer.T("Services")</a></li>
-          <li><a @onclick='() => ScrollToSection("contact")' @onclick:preventDefault="true" class="footer-link">@Localizer.T("Contact")</a></li>
+          <li><a @onclick='() => ScrollToSection("accueil")' @onclick:preventDefault="true" class="footer-link" style="cursor: pointer;">@Localizer.T("Home")</a></li>
+          <li><a @onclick='() => ScrollToSection("about")' @onclick:preventDefault="true" class="footer-link" style="cursor: pointer;">@Localizer.T("About")</a></li>
+          <li><a @onclick='() => ScrollToSection("projets")' @onclick:preventDefault="true" class="footer-link" style="cursor: pointer;">@Localizer.T("Projects")</a></li>
+          <li><a @onclick='() => ScrollToSection("experience")' @onclick:preventDefault="true" class="footer-link" style="cursor: pointer;">@Localizer.T("Experience")</a></li>
+          <li><a @onclick='() => ScrollToSection("services")' @onclick:preventDefault="true" class="footer-link" style="cursor: pointer;">@Localizer.T("Services")</a></li>
+          <li><a @onclick='() => ScrollToSection("contact")' @onclick:preventDefault="true" class="footer-link" style="cursor: pointer;">@Localizer.T("Contact")</a></li>
         </ul>
       </div>
 
@@ -61,10 +61,10 @@
           Services
         </h3>
         <ul class="footer-list">
-          <li><a @onclick='() => ScrollToSection("services")' @onclick:preventDefault="true" class="footer-link">@Localizer.T("Service.1.Title")</a></li>
-          <li><a @onclick='() => ScrollToSection("services")' @onclick:preventDefault="true" class="footer-link">@Localizer.T("Service.2.Title")</a></li>
-          <li><a @onclick='() => ScrollToSection("services")' @onclick:preventDefault="true" class="footer-link">@Localizer.T("Service.3.Title")</a></li>
-          <li><a @onclick='() => ScrollToSection("services")' @onclick:preventDefault="true" class="footer-link">@Localizer.T("Service.4.Title")</a></li>
+          <li><a @onclick='() => ScrollToSection("services")' @onclick:preventDefault="true" class="footer-link" style="cursor: pointer;">@Localizer.T("Service.1.Title")</a></li>
+          <li><a @onclick='() => ScrollToSection("services")' @onclick:preventDefault="true" class="footer-link" style="cursor: pointer;">@Localizer.T("Service.2.Title")</a></li>
+          <li><a @onclick='() => ScrollToSection("services")' @onclick:preventDefault="true" class="footer-link" style="cursor: pointer;">@Localizer.T("Service.3.Title")</a></li>
+          <li><a @onclick='() => ScrollToSection("services")' @onclick:preventDefault="true" class="footer-link" style="cursor: pointer;">@Localizer.T("Service.4.Title")</a></li>
         </ul>
       </div>
 
@@ -88,7 +88,7 @@
           </li>
         </ul>
         <!-- Bouton contact -->
-        <a @onclick='() => ScrollToSection("contact")' @onclick:preventDefault="true" class="footer-contact-btn">
+        <a @onclick='() => ScrollToSection("contact")' @onclick:preventDefault="true" class="footer-contact-btn" style="cursor: pointer;">
           <i class="fas fa-paper-plane"></i>
           @Localizer.T("ContactMe")
         </a>
@@ -101,20 +101,20 @@
         <p class="footer-copy">
           &copy; @DateTime.Now.Year Rindra Niaina. @Localizer?.T("AllRightsReserved")
         </p>
-        <div class="footer-legal">
+        <!--<div class="footer-legal">
           <a href="#" class="footer-legal-link">Politique de confidentialité</a>
           <a href="#" class="footer-legal-link">Mentions légales</a>
           <a href="#" class="footer-legal-link">Cookies</a>
-        </div>
+        </div>-->
       </div>
     </div>
   </div>
 </footer>
 
 @code{
-    [Parameter]
-    public LocalizationService Localizer {get;set;}
-    private async Task ScrollToSection(string sectionId)
+  [Parameter]
+  public LocalizationService Localizer {get;set;}
+  private async Task ScrollToSection(string sectionId)
   {
     await JS.InvokeVoidAsync("siteInterop.scrollToSection", sectionId);
   }

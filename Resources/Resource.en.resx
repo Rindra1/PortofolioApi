@@ -424,4 +424,8 @@ By automating several internal processes, the application helps to reduce errors
   <data name="MessageSentError" xml:space="preserve">
     <value>Error sending the message.</value>
   </data>
+
+  <data name="FooterDescription" xml:space="preserve">
+    <value>From desktop to web, I develop robust, high-performance, and user-centric .NET solutions.</value>
+  </data>
 </root>
