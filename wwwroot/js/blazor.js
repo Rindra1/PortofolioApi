@@ -12,8 +12,22 @@ function loadBlazorOptimized() {
                 document.body.appendChild(script);
             }
             script.onload = function() {
-                console.log('✅ Blazor chargé avec succès');
+                hideLoadingIndicator();
+                //console.log('✅ Blazor chargé avec succès');
             };
+        }
+
+        function hideLoadingIndicator() {
+            const loadingDiv = document.getElementById('blazor-loading');
+            if (loadingDiv) {
+                loadingDiv.style.transition = 'opacity 0.5s ease-out';
+                loadingDiv.style.opacity = '0';
+                setTimeout(() => {
+                    if (loadingDiv && loadingDiv.parentNode) {
+                        loadingDiv.parentNode.removeChild(loadingDiv);
+                    }
+                }, 500);
+            }
         }
 
         let blazorLoadAttempted = false;
