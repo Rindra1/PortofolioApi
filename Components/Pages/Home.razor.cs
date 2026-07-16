@@ -69,7 +69,6 @@ public partial class Home
 
     protected override void OnInitialized()
     {
-        Localizer?.OnChange -= OnLangChanged;
         Localizer?.OnChange += OnLangChanged;
     }
 
@@ -83,6 +82,8 @@ public partial class Home
         const string cacheKey = "PortfolioData";
         if (Cache.TryGetValue(cacheKey, out UtilisateurDTO? cachedData) && cachedData != null)
         {
+            Console.WriteLine("cache");
+            try { await Localizer.InitializeAsync(); } catch { }
             portfolio = cachedData;
             originalPortfolio = cachedData;
             isReady = true;
@@ -98,6 +99,8 @@ public partial class Home
 
     private async Task LoadPortfolioAsync()
     {
+        
+        Console.WriteLine("loadporfolio");
         try
         {
             var localizationTask = Localizer?.InitializeAsync() ?? Task.CompletedTask;

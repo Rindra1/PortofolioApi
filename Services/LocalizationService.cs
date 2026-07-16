@@ -16,6 +16,7 @@ namespace PortofolioApi.Services
         public string CurrentLanguage { get; private set; } = "fr";
 
         public event Action? OnChange;
+        private bool _initialized = false;
 
         private readonly Dictionary<string, Dictionary<string, string>> _dict = new()
         {
@@ -85,35 +86,47 @@ namespace PortofolioApi.Services
 
         public async Task InitializeAsync()
         {
+            if(_initialized) return;
             try
             {
+                string detectedLang = "fr";
                 var saved = await _js.InvokeAsync<string>("localStorage.getItem", "lang");
                 if (!string.IsNullOrEmpty(saved))
                 {
-                    CurrentLanguage = saved;
-                    try { Resource.Culture = new CultureInfo(CurrentLanguage); } catch { }
-                    OnChange?.Invoke();
-                    return;
+                    detectedLang = saved;
+                }
+                else
+                {
+                    // detect browser language
+                    var nav = await _js.InvokeAsync<string>("eval", "navigator.language || navigator.userLanguage");
+                    if (!string.IsNullOrEmpty(nav) && nav.Length >= 2)
+                    {
+                        var code = nav.Substring(0,2).ToLower();
+                        if (_dict.ContainsKey(code)) detectedLang = code;
+                    }
                 }
 
-                // detect browser language
-                var nav = await _js.InvokeAsync<string>("eval", "navigator.language || navigator.userLanguage");
-                if (!string.IsNullOrEmpty(nav) && nav.Length >= 2)
+                if(detectedLang != CurrentLanguage)
                 {
-                    var code = nav.Substring(0,2).ToLower();
-                    if (_dict.ContainsKey(code)) CurrentLanguage = code;
+                    CurrentLanguage = detectedLang;
                 }
-                try { Resource.Culture = new CultureInfo(CurrentLanguage); } catch { }
-                OnChange?.Invoke();
+                
+                try { Resource.Culture = new CultureInfo(CurrentLanguage); } catch { } 
+                _initialized = true;
+                await _js.InvokeVoidAsync("localStorage.setItem", "lang", CurrentLanguage);
+                Console.WriteLine($"initialise Language {CurrentLanguage}");
+                
             }
             catch
             {
+                _initialized = true;
                 // ignore JS errors
             }
         }
 
         public async Task SetLanguageAsync(string lang)
         {
+            Console.WriteLine("set Language");
             if (string.IsNullOrEmpty(lang)) return;
             lang = lang.ToLower();
             // normalize locales like en-GB, en-US -> en
