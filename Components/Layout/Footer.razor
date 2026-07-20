@@ -46,12 +46,12 @@
           Navigation
         </h3>
         <ul class="footer-list">
-          <li><a @onclick='() => ScrollToSection("accueil")' @onclick:preventDefault="true" class="footer-link" style="cursor: pointer;">@Localizer.T("Home")</a></li>
-          <li><a @onclick='() => ScrollToSection("about")' @onclick:preventDefault="true" class="footer-link" style="cursor: pointer;">@Localizer.T("About")</a></li>
-          <li><a @onclick='() => ScrollToSection("projets")' @onclick:preventDefault="true" class="footer-link" style="cursor: pointer;">@Localizer.T("Projects")</a></li>
-          <li><a @onclick='() => ScrollToSection("experience")' @onclick:preventDefault="true" class="footer-link" style="cursor: pointer;">@Localizer.T("Experience")</a></li>
-          <li><a @onclick='() => ScrollToSection("services")' @onclick:preventDefault="true" class="footer-link" style="cursor: pointer;">@Localizer.T("Services")</a></li>
-          <li><a @onclick='() => ScrollToSection("contact")' @onclick:preventDefault="true" class="footer-link" style="cursor: pointer;">@Localizer.T("Contact")</a></li>
+          <li><a  href="/#accueil" @onclick='() => ScrollToSection("accueil")' @onclick:preventDefault="true" class="footer-link" style="cursor: pointer;">@Localizer.T("Home")</a></li>
+          <li><a  href="/#about" @onclick='() => ScrollToSection("about")' @onclick:preventDefault="true" class="footer-link" style="cursor: pointer;">@Localizer.T("About")</a></li>
+          <li><a  href="/#projets" @onclick='() => ScrollToSection("projets")' @onclick:preventDefault="true" class="footer-link" style="cursor: pointer;">@Localizer.T("Projects")</a></li>
+          <li><a  href="/#experience" @onclick='() => ScrollToSection("experience")' @onclick:preventDefault="true" class="footer-link" style="cursor: pointer;">@Localizer.T("Experience")</a></li>
+          <li><a  href="/#services" @onclick='() => ScrollToSection("services")' @onclick:preventDefault="true" class="footer-link" style="cursor: pointer;">@Localizer.T("Services")</a></li>
+          <li><a  href="/#contact" @onclick='() => ScrollToSection("contact")' @onclick:preventDefault="true" class="footer-link" style="cursor: pointer;">@Localizer.T("Contact")</a></li>
         </ul>
       </div>
 
@@ -61,10 +61,10 @@
           Services
         </h3>
         <ul class="footer-list">
-          <li><a @onclick='() => ScrollToSection("services")' @onclick:preventDefault="true" class="footer-link" style="cursor: pointer;">@Localizer.T("Service.1.Title")</a></li>
-          <li><a @onclick='() => ScrollToSection("services")' @onclick:preventDefault="true" class="footer-link" style="cursor: pointer;">@Localizer.T("Service.2.Title")</a></li>
-          <li><a @onclick='() => ScrollToSection("services")' @onclick:preventDefault="true" class="footer-link" style="cursor: pointer;">@Localizer.T("Service.3.Title")</a></li>
-          <li><a @onclick='() => ScrollToSection("services")' @onclick:preventDefault="true" class="footer-link" style="cursor: pointer;">@Localizer.T("Service.4.Title")</a></li>
+          <li><a href="/#services" @onclick='() => ScrollToSection("services")' @onclick:preventDefault="true" class="footer-link" style="cursor: pointer;">@Localizer.T("Service.1.Title")</a></li>
+          <li><a  href="/#services" @onclick='() => ScrollToSection("services")' @onclick:preventDefault="true" class="footer-link" style="cursor: pointer;">@Localizer.T("Service.2.Title")</a></li>
+          <li><a  href="/#services" @onclick='() => ScrollToSection("services")' @onclick:preventDefault="true" class="footer-link" style="cursor: pointer;">@Localizer.T("Service.3.Title")</a></li>
+          <li><a  href="/#services" @onclick='() => ScrollToSection("services")' @onclick:preventDefault="true" class="footer-link" style="cursor: pointer;">@Localizer.T("Service.4.Title")</a></li>
         </ul>
       </div>
 
@@ -88,7 +88,7 @@
           </li>
         </ul>
         <!-- Bouton contact -->
-        <a @onclick='() => ScrollToSection("contact")' @onclick:preventDefault="true" class="footer-contact-btn" style="cursor: pointer;">
+        <a  href="/#contact" @onclick='() => ScrollToSection("contact")' @onclick:preventDefault="true" class="footer-contact-btn" style="cursor: pointer;">
           <i class="fas fa-paper-plane"></i>
           @Localizer.T("ContactMe")
         </a>

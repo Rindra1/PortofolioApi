@@ -67,12 +67,29 @@ public partial class Home
     private bool initialized;
     private bool isLoading = false;
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
         Localizer?.OnChange += OnLangChanged;
+        initialized = true;
+
+        const string cacheKey = "PortfolioData";
+        if (Cache.TryGetValue(cacheKey, out UtilisateurDTO? cachedData) && cachedData != null)
+        {
+            Console.WriteLine("cache");
+            try { await Localizer.InitializeAsync(); } catch { }
+            portfolio = cachedData;
+            originalPortfolio = cachedData;
+            isReady = true;
+            StateHasChanged();
+            return;
+        }
+
+        isLoading = true;
+        Console.WriteLine("Onafterrenderasync");
+        await LoadPortfolioAsync();
     }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    /*protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (!firstRender || initialized)
             return;
@@ -92,10 +109,11 @@ public partial class Home
         }
 
         isLoading = true;
-        StateHasChanged();
-
+        Console.WriteLine("Onafterrenderasync");
         await LoadPortfolioAsync();
-    }
+        //StateHasChanged();
+        
+    }*/
 
     private async Task LoadPortfolioAsync()
     {

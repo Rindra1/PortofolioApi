@@ -27,11 +27,11 @@
 
             <!-- BOUTONS -->
             <div class="hero-buttons">
-                <a href="#projets" class="btn-primary">
+                <a href="/#projets" @onclick='() => ScrollToSection("projets")' @onclick:preventDefault="true" style="cursor: pointer;" class="btn-primary">
                     <i class="fas fa-arrow-right"></i>
                     @(Localizer?.T("ViewProjects") ?? "Voir mes projets")
                 </a>
-                <a href="#contact" class="btn-outline">
+                <a href="/#contact" @onclick='() => ScrollToSection("contact")' @onclick:preventDefault="true" style="cursor: pointer;" class="btn-outline">
                     <i class="fas fa-envelope"></i> 
                     @(Localizer?.T("ContactMe") ?? "Me contacter")
                 </a>
