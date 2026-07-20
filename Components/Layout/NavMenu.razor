@@ -2,7 +2,6 @@
 @inject IJSRuntime JS
 @inject UserState UserState
 @inject TokenServices TokenService
-@inject PortofolioApi.Services.LocalizationService Localizer
 @rendermode InteractiveServer
 <header>
   <div class="container nav-flex">
@@ -75,6 +74,8 @@
 
 
 @code {
+  [Parameter]
+  public LocalizationService Localizer{get;set;}
   private string _role;
 
   private async Task ScrollToSection(string sectionId)
@@ -96,11 +97,11 @@
     if (firstRender && !_initialized)
     {
       _initialized = true;
-      try { 
+      /*try { 
         await Localizer.InitializeAsync();
         await Localizer.SetLanguageAsync(Localizer.CurrentLanguage);
         Console.WriteLine($"Langue menu {Localizer.CurrentLanguage}"); 
-      } catch { }
+      } catch { }*/
       await JS.InvokeVoidAsync("siteInterop.initAll");
     }
   }
@@ -145,7 +146,7 @@
   {
     UserState.OnChange += OnUserStateChanged;
     Localizer.OnChange += OnLangChanged;
-    _role = UserState.Role ?? TokenService.GetRole();
+    //_role = UserState.Role ?? TokenService.GetRole();
   }
 
   private void OnUserStateChanged()
