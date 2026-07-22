@@ -13,8 +13,8 @@
 
             <!-- NOM - ÉLÉMENT LCP CRITIQUE -->
             <h1 class="hero-name">
-                @(portfolio?.Nom) 
-                <span>@(portfolio?.Prenom)</span>
+                @(portfolio?.Nom ?? "RAZAFIMANDANONA") 
+                <span>@(portfolio?.Prenom ?? "Rindra Niaina")</span>
             </h1>
 
             <!-- TITRE -->
@@ -22,7 +22,7 @@
 
             <!-- DESCRIPTION - ÉLÉMENT LCP PRINCIPAL -->
             <p class="hero-description">
-                @Localizer?.T("Resumer")
+                @(Localizer?.T("Resumer") ?? "Développeur Full Stack .NET avec une solide expérience dans le développement d'applications Web et Desktop.")
             </p>
 
             <!-- BOUTONS -->
