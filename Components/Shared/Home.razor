@@ -13,8 +13,8 @@
 
             <!-- NOM - ÉLÉMENT LCP CRITIQUE -->
             <h1 class="hero-name">
-                @(portfolio?.Nom ?? "Razafimandanona") 
-                <span>@(portfolio?.Prenom ?? "Rindra Niaina")</span>
+                @(portfolio?.Nom) 
+                <span>@(portfolio?.Prenom)</span>
             </h1>
 
             <!-- TITRE -->
@@ -22,7 +22,7 @@
 
             <!-- DESCRIPTION - ÉLÉMENT LCP PRINCIPAL -->
             <p class="hero-description">
-                @Localizer.T("Resumer")
+                @Localizer?.T("Resumer")
             </p>
 
             <!-- BOUTONS -->
@@ -95,7 +95,7 @@
                     ? $"images/{portfolio.UserImage}"
                     : "assets/profile.jpg";
                 }
-                <img src="@imagePath"
+                <img src="@imagePath.Replace("jpg","webp")"
                      alt="@(portfolio?.Nom ?? "Rindra") @(portfolio?.Prenom ?? "Niaina")"
                      loading="eager"
                      fetchpriority="high"
@@ -103,7 +103,7 @@
                      width="300"
                      height="300"
                      importance="high"
-                     onerror="this.onerror=null;this.src='assets/profile.jpg';" />
+                     onerror="this.onerror=null;this.src='/assets/profile.jpg';" />
             </div>
         </div>
     </div>

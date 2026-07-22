@@ -3,6 +3,7 @@
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="$(NuGetPackageRoot)microsoft.extensions.apidescription.server\9.0.0\build\Microsoft.Extensions.ApiDescription.Server.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.extensions.apidescription.server\9.0.0\build\Microsoft.Extensions.ApiDescription.Server.targets')" />
     <Import Project="$(NuGetPackageRoot)sqlitepclraw.lib.e_sqlite3\2.1.6\buildTransitive\net8.0\SQLitePCLRaw.lib.e_sqlite3.targets" Condition="Exists('$(NuGetPackageRoot)sqlitepclraw.lib.e_sqlite3\2.1.6\buildTransitive\net8.0\SQLitePCLRaw.lib.e_sqlite3.targets')" />
-    <Import Project="$(NuGetPackageRoot)microsoft.aspnetcore.app.internal.assets\10.0.7\buildTransitive\Microsoft.AspNetCore.App.Internal.Assets.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.aspnetcore.app.internal.assets\10.0.7\buildTransitive\Microsoft.AspNetCore.App.Internal.Assets.targets')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.aspnetcore.app.internal.assets\10.0.9\buildTransitive\Microsoft.AspNetCore.App.Internal.Assets.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.aspnetcore.app.internal.assets\10.0.9\buildTransitive\Microsoft.AspNetCore.App.Internal.Assets.targets')" />
+    <Import Project="$(NuGetPackageRoot)buildbundlerminifier\3.2.449\build\BuildBundlerMinifier.targets" Condition="Exists('$(NuGetPackageRoot)buildbundlerminifier\3.2.449\build\BuildBundlerMinifier.targets')" />
   </ImportGroup>
 </Project>

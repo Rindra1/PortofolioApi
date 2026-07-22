@@ -1,4 +1,6 @@
 ﻿@page "/projects"
+
+@inject IWebHostEnvironment Env
 <!-- PROJETS -->
 
 <section id="projets">
@@ -9,9 +11,43 @@
             {
                 var idPart = proj.IdProjet?.ToString() ?? "0";
                 var modalId = $"project-{idPart}";
+                var image = proj.ImageProjet.Split(".")[0];
+                var extension = proj.ImageProjet.Split(".")[1];
+                var ImageProjetDesktop = $"{image}.webp";
+                var ImageProjetMobile = $"{image}_phone.webp";
+                var mobilePath = Path.Combine(Env.WebRootPath, "images", ImageProjetMobile);
+                var mobileExists = File.Exists(mobilePath);
+                var mobileUrl = $"/images/{Uri.EscapeDataString(ImageProjetMobile)}";
+                var desktopUrl = $"/images/{Uri.EscapeDataString(ImageProjetDesktop)}";
                 <div class="card" data-aos="zoom-in">
-                    <img src="/images/@(proj.ImageProjet)" alt="@Localizer.T($"Projet.{idPart}.Titre")" loading="lazy"
-                         class="project-img" width="320" height="180">
+
+                @if (mobileExists)
+                {
+                    <picture>
+                        @* Image utilisée uniquement sur les écrans ≤ 768px *@
+                        <source media="(max-width: 768px)" srcset="@mobileUrl" />
+
+                        @* Image par défaut pour desktop *@
+                        <img src="@desktopUrl"
+                             alt="@Localizer.T($"Projet.{idPart}.Titre")"
+                             loading="lazy"
+                             class="project-img"
+                             width="320"
+                             height="180" />
+                    </picture>
+                }
+                else
+                {
+                    @* S'il n'y a pas d'image mobile, on garde l'image normale *@
+                    <img src="@desktopUrl"
+                         alt="@Localizer.T($"Projet.{idPart}.Titre")"
+                         loading="lazy"
+                         class="project-img"
+                         width="320"
+                         height="180" />
+                }
+                    <!--<img src="/images/@(proj.ImageProjet)" alt="@Localizer.T($"Projet.{idPart}.Titre")" loading="lazy"
+                         class="project-img" width="320" height="180">-->
                     <div class="card-content">
                         <h3>@Localizer.T($"Projet.{idPart}.Titre")</h3>
                         <p>@Localizer.T($"Projet.{idPart}.Resumer")</p>
@@ -38,32 +74,37 @@
 {
     var idPart = proj.IdProjet?.ToString() ?? "0";
     var modalId = $"project-{idPart}";
+    var imageProjet = $"{proj.ImageProjet.Split(".")[0]}.webp";
+    Console.WriteLine();
     <div id="modal-@modalId" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title-@modalId">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal('@modalId')" aria-label="Fermer">&times;</span>
             <h2 id="modal-title-@modalId" class="modal-title">@Localizer.T($"Projet.{idPart}.Titre")</h2>
             <div class="modal-gallery" id="gallery-@modalId">
-                <img id="mainImage-@modalId" class="main-image" src="/images/@(proj.ImageProjet)"
+                <img id="mainImage-@modalId" class="main-image" src="/images/@(imageProjet)"
                      alt="@Localizer.T($"Projet.{idPart}.Titre")" 
                      width="700" height="300" 
                      loading="eager" fetchpriority="high">
                 <div class="thumbnail-container">
                     @if (!string.IsNullOrEmpty(proj.ImageProjet))
                     {
-                        <img class="thumbnail" src="/images/@(proj.ImageProjet)" alt="@proj.TitreProjet"
-                             data-img="/images/@(proj.ImageProjet)" width="80" height="80">
+                        var image = $"{proj.ImageProjet.Split(".")[0]}.webp";
+                        <img class="thumbnail" src="/images/@(image)" alt="@proj.TitreProjet"
+                             data-img="/images/@(image)" width="80" height="80">
                     }
 
                     @if (!string.IsNullOrEmpty(proj.ImageProjet1))
                     {
-                        <img class="thumbnail" src="/images/@(proj.ImageProjet1)" alt="@proj.TitreProjet"
-                             data-img="/images/@(proj.ImageProjet1)" width="80" height="80">
+                        var image = $"{proj.ImageProjet1.Split(".")[0]}.webp";
+                        <img class="thumbnail" src="/images/@(image)" alt="@proj.TitreProjet"
+                             data-img="/images/@(image)" width="80" height="80">
                     }
 
                     @if (!string.IsNullOrEmpty(proj.ImageProjet2))
                     {
-                        <img class="thumbnail" src="/images/@(proj.ImageProjet2)" alt="@proj.TitreProjet"
-                             data-img="/images/@(proj.ImageProjet2)" width="80" height="80">
+                        var image = $"{proj.ImageProjet2.Split(".")[0]}.webp";
+                        <img class="thumbnail" src="/images/@(image)" alt="@proj.TitreProjet"
+                             data-img="/images/@(image)" width="80" height="80">
                     }
                 </div>
             </div>

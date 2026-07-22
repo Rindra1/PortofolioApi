@@ -26,7 +26,7 @@ function loadBlazorOptimized() {
                     if (loadingDiv && loadingDiv.parentNode) {
                         loadingDiv.parentNode.removeChild(loadingDiv);
                     }
-                }, 500);
+                }, 3000);
             }
         }
 

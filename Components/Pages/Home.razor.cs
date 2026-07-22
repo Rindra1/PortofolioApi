@@ -1,12 +1,11 @@
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
-using Microsoft.JSInterop;
 using PortofolioApi.Domain.DTOs;
 using PortofolioApi.Services;
 
 using Microsoft.Extensions.Caching.Memory;
 
 namespace PortofolioApi.Components.Pages;
+
 public partial class Home
 {
     public UtilisateurDTO portfolio = new UtilisateurDTO();
@@ -16,10 +15,6 @@ public partial class Home
     [Inject]
     protected HttpClient? Http { get; set; }
     [Inject]
-    protected IJSRuntime? JS { get; set; }
-    [Inject] 
-    protected NavigationManager? Nav{get;set;}
-    [Inject]
     public LocalizationService? Localizer { get; set; }
 
     private readonly string url = $"api/portfolio";
@@ -28,54 +23,17 @@ public partial class Home
     [Inject]
     private IMemoryCache Cache { get; set; } = default!;
 
-    /*protected override async Task OnInitializedAsync()
-    {
-        Localizer?.OnChange += OnLangChanged;
-        Console.WriteLine("OnInitializedAsync");
-        try
-        {
-                    // Vérifier le cache
-            const string cacheKey = "PortfolioData";
-            if (Cache.TryGetValue(cacheKey, out UtilisateurDTO? cachedData) && cachedData != null)
-            {
-                portfolio = cachedData;
-                originalPortfolio = portfolio;
-                isReady = true;
-                return;
-            }
-            else
-            {
-                var localizationTask = Localizer.InitializeAsync();
-                var portfolioTask = Http.GetFromJsonAsync<UtilisateurDTO>(url);
-
-                //await Task.WhenAll(localizationTask, portfolioTask);
-
-                portfolio = portfolioTask.Result ?? new UtilisateurDTO();
-                originalPortfolio = portfolio;
-                Cache.Set(cacheKey, portfolio, TimeSpan.FromMinutes(10));
-                isReady = true;    
-            }
-        }
-        catch (Exception ex)
-        {
-            message = $"Erreur: {ex.Message}";
-            Console.WriteLine($"Erreur chargement portfolio: {ex.Message}");
-        }
-        
-    }*/
-
-    private bool initialized;
     private bool isLoading = false;
+
+    private bool jsReady;
 
     protected override async Task OnInitializedAsync()
     {
+        if (isReady) return;
         Localizer?.OnChange += OnLangChanged;
-        initialized = true;
-
         const string cacheKey = "PortfolioData";
         if (Cache.TryGetValue(cacheKey, out UtilisateurDTO? cachedData) && cachedData != null)
         {
-            Console.WriteLine("cache");
             try { await Localizer.InitializeAsync(); } catch { }
             portfolio = cachedData;
             originalPortfolio = cachedData;
@@ -83,64 +41,24 @@ public partial class Home
             StateHasChanged();
             return;
         }
+        portfolio = await Http!.GetFromJsonAsync<UtilisateurDTO>(url)
+                    ?? new UtilisateurDTO();
 
-        isLoading = true;
-        Console.WriteLine("Onafterrenderasync");
-        await LoadPortfolioAsync();
+        originalPortfolio = portfolio;
+        Cache.Set("PortfolioData", portfolio, TimeSpan.FromMinutes(10));
+        isReady = true;
     }
 
-    /*protected override async Task OnAfterRenderAsync(bool firstRender)
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if (!firstRender || initialized)
+        if (!firstRender || jsReady)
             return;
 
-        initialized = true;
+        jsReady = true;
 
-        const string cacheKey = "PortfolioData";
-        if (Cache.TryGetValue(cacheKey, out UtilisateurDTO? cachedData) && cachedData != null)
-        {
-            Console.WriteLine("cache");
-            try { await Localizer.InitializeAsync(); } catch { }
-            portfolio = cachedData;
-            originalPortfolio = cachedData;
-            isReady = true;
-            StateHasChanged();
-            return;
-        }
+        await Localizer!.InitializeAsync();
 
-        isLoading = true;
-        Console.WriteLine("Onafterrenderasync");
-        await LoadPortfolioAsync();
-        //StateHasChanged();
-        
-    }*/
-
-    private async Task LoadPortfolioAsync()
-    {
-        
-        Console.WriteLine("loadporfolio");
-        try
-        {
-            var localizationTask = Localizer?.InitializeAsync() ?? Task.CompletedTask;
-            var portfolioTask = Http!.GetFromJsonAsync<UtilisateurDTO>(url);
-
-            await Task.WhenAll(localizationTask, portfolioTask);
-
-            portfolio = await portfolioTask ?? new UtilisateurDTO();
-            originalPortfolio = portfolio;
-            Cache.Set("PortfolioData", portfolio, TimeSpan.FromMinutes(10));
-            isReady = true;
-        }
-        catch (Exception ex)
-        {
-            message = $"Erreur: {ex.Message}";
-            Console.WriteLine($"Erreur chargement portfolio: {ex.Message}");
-        }
-        finally
-        {
-            isLoading = false;
-            await InvokeAsync(StateHasChanged);
-        }
+        await InvokeAsync(StateHasChanged);
     }
 
     private void OnLangChanged()
@@ -159,5 +77,5 @@ public partial class Home
 
 
     public void Dispose() => Localizer?.OnChange -= OnLangChanged;
-    
+
 }

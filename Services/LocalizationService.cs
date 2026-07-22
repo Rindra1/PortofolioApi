@@ -91,6 +91,7 @@ namespace PortofolioApi.Services
             {
                 string detectedLang = "fr";
                 var saved = await _js.InvokeAsync<string>("localStorage.getItem", "lang");
+                Console.WriteLine($"InializeAsync localstorage {saved}");
                 if (!string.IsNullOrEmpty(saved))
                 {
                     detectedLang = saved;
@@ -99,6 +100,7 @@ namespace PortofolioApi.Services
                 {
                     // detect browser language
                     var nav = await _js.InvokeAsync<string>("eval", "navigator.language || navigator.userLanguage");
+                Console.WriteLine($"InializeAsync navigator {saved}");
                     if (!string.IsNullOrEmpty(nav) && nav.Length >= 2)
                     {
                         var code = nav.Substring(0,2).ToLower();
@@ -119,6 +121,8 @@ namespace PortofolioApi.Services
             }
             catch
             {
+                
+                Console.WriteLine($"InializeAsync Erreur");
                 _initialized = true;
                 // ignore JS errors
             }
