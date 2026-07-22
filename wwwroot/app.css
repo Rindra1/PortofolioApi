@@ -2353,3 +2353,8 @@ body.dark .footer-contact-btn:hover {
     grid-template-columns: repeat(3, 1fr) !important;
   }
 }
+
+#blazor-loading{
+    position:fixed;
+    inset:0;
+}

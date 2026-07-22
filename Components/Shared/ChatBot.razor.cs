@@ -85,9 +85,6 @@ public partial class ChatBot
 
     private async Task SendSuggestion(string suggestion)
     {
-        Console.WriteLine("");
-        Console.WriteLine($"Suggestion clicked: {suggestion}");
-        Console.WriteLine("");
         UserMessage = suggestion;
         await SendMessage();
     }

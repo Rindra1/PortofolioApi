@@ -93,7 +93,7 @@
                 @{
                     var imagePath = !string.IsNullOrWhiteSpace(portfolio?.UserImage)
                     ? $"images/{portfolio.UserImage}"
-                    : "assets/profile.jpg";
+                    : "assets/profile.webp";
                 }
                 <img src="@imagePath.Replace("jpg","webp")"
                      alt="@(portfolio?.Nom ?? "Rindra") @(portfolio?.Prenom ?? "Niaina")"
@@ -103,7 +103,7 @@
                      width="300"
                      height="300"
                      importance="high"
-                     onerror="this.onerror=null;this.src='/assets/profile.jpg';" />
+                     onerror="this.onerror=null;this.src='/assets/profile.webp';" />
             </div>
         </div>
     </div>

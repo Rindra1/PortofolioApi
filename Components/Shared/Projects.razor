@@ -75,7 +75,6 @@
     var idPart = proj.IdProjet?.ToString() ?? "0";
     var modalId = $"project-{idPart}";
     var imageProjet = $"{proj.ImageProjet.Split(".")[0]}.webp";
-    Console.WriteLine();
     <div id="modal-@modalId" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title-@modalId">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal('@modalId')" aria-label="Fermer">&times;</span>

@@ -7,7 +7,7 @@ function loadBlazorOptimized() {
             script.fetchPriority = 'low';
             script.setAttribute('data-lazy', 'true');
             if (window.innerWidth < 768) {
-                setTimeout(() => document.body.appendChild(script), 4000);
+                setTimeout(() => document.body.appendChild(script), 1200);
             } else {
                 document.body.appendChild(script);
             }
@@ -23,10 +23,13 @@ function loadBlazorOptimized() {
                 loadingDiv.style.transition = 'opacity 0.5s ease-out';
                 loadingDiv.style.opacity = '0';
                 setTimeout(() => {
+                    loadingDiv.remove();
+                }, 500);
+                /*setTimeout(() => {
                     if (loadingDiv && loadingDiv.parentNode) {
                         loadingDiv.parentNode.removeChild(loadingDiv);
                     }
-                }, 2000);
+                }, 2000);*/
             }
         }
 

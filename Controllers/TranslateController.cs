@@ -47,15 +47,11 @@ public class TranslateController : ControllerBase
                 };
 
                 var response = await client.PostAsync(apiUrl, new FormUrlEncodedContent(body));
-                Console.WriteLine();
-                Console.WriteLine($"Translating '{t}' to '{req.Target}' - Status: {response.StatusCode}");
-                Console.WriteLine();
                 if (response.IsSuccessStatusCode)
                 {
                     var json = await response.Content.ReadFromJsonAsync<System.Text.Json.JsonElement>();
                     if (json.TryGetProperty("translatedText", out var translated))
                     {
-                        Console.WriteLine($"Translated '{t}' to '{translated.GetString()}'");
                         translations.Add(translated.GetString() ?? string.Empty);
                         continue;
                     }

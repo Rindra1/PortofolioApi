@@ -63,7 +63,6 @@ public partial class Home
 
     private void OnLangChanged()
     {
-        Console.WriteLine("OnLangChanged");
         InvokeAsync(() =>
         {
             if (Localizer?.CurrentLanguage == "fr")
