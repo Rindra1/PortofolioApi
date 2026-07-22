@@ -17,7 +17,7 @@ using System.Text;
 using System.Net;
 using Microsoft.AspNetCore.ResponseCompression;
 
-using Microsoft.AspNetCore.StaticFiles; 
+using Microsoft.AspNetCore.StaticFiles;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,7 +27,7 @@ var dbPath = Path.Combine(
     builder.Environment.ContentRootPath,
     "Data",
     "appdata.db");
-    
+
 // Téléchargement si la base n'existe pas
 if (!File.Exists(dbPath))
 {
@@ -174,6 +174,14 @@ builder.Services.AddRazorPages();
 builder.Services
     .AddRazorComponents()
     .AddInteractiveServerComponents();
+
+builder.Services.AddHsts(options =>
+{
+    options.Preload = true;
+    options.IncludeSubDomains = true;
+    options.MaxAge = TimeSpan.FromDays(365);
+});
+
 builder.Services.AddResponseCompression(options =>
 {
     options.EnableForHttps = true;
@@ -190,8 +198,8 @@ builder.Services.AddResponseCompression(options =>
     options.Providers.Add<BrotliCompressionProvider>();
     options.Providers.Add<GzipCompressionProvider>();
     options.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
-        new[] { 
-            "text/css", 
+        new[] {
+            "text/css",
             "application/javascript",
             "application/json",
             "text/html",
@@ -214,6 +222,8 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseHsts();
+
 app.UseResponseCompression();
 
 //Mise en cache
@@ -222,23 +232,23 @@ app.UseStaticFiles(new StaticFileOptions
     OnPrepareResponse = ctx =>
     {
         var path = ctx.File.PhysicalPath;
-        
+
         if (path == null) return;
-        
+
         // ===== 1. IMAGES - Cache long (1 an) =====
-        var imageExtensions = new[] { 
-            ".jpg", ".jpeg", ".png", ".gif", ".bmp", 
+        var imageExtensions = new[] {
+            ".jpg", ".jpeg", ".png", ".gif", ".bmp",
             ".webp", ".svg", ".ico", ".avif", ".tiff"
         };
-        
+
         if (imageExtensions.Any(e => path.EndsWith(e, StringComparison.OrdinalIgnoreCase)))
         {
             // Cache d'1 an pour les images
             ctx.Context.Response.Headers.Append(
-                "Cache-Control", 
+                "Cache-Control",
                 "public, max-age=31536000, immutable"
             );
-            
+
             // Ajouter un ETag pour la validation
             try
             {
@@ -252,47 +262,47 @@ app.UseStaticFiles(new StaticFileOptions
             {
                 // Ignorer les erreurs de lecture
             }
-            
+
             // Ajouter le type MIME correct
             var contentType = GetContentType(path);
             if (!string.IsNullOrEmpty(contentType))
             {
                 ctx.Context.Response.Headers.Append("Content-Type", contentType);
             }
-            
+
             // Ajouter un header de cache supplémentaire
             ctx.Context.Response.Headers.Append(
-                "Expires", 
+                "Expires",
                 DateTime.UtcNow.AddYears(1).ToString("R")
             );
         }
-        
+
         // ===== 2. CSS & JS - Cache long =====
-        if (path.EndsWith(".css") || 
+        if (path.EndsWith(".css") ||
             path.EndsWith(".min.css") ||
-            path.EndsWith(".js") || 
+            path.EndsWith(".js") ||
             path.EndsWith(".min.js"))
         {
             ctx.Context.Response.Headers.Append(
-                "Cache-Control", 
+                "Cache-Control",
                 "public, max-age=31536000, immutable"
             );
         }
-        
+
         // ===== 3. Webmanifest - Cache moyen =====
         if (path.EndsWith(".webmanifest"))
         {
             ctx.Context.Response.Headers.Append(
-                "Cache-Control", 
+                "Cache-Control",
                 "public, max-age=3600" // 1 heure
             );
         }
-        
+
         // ===== 4. HTML - Pas de cache =====
         if (path.EndsWith(".html") || path.EndsWith(".htm"))
         {
             ctx.Context.Response.Headers.Append(
-                "Cache-Control", 
+                "Cache-Control",
                 "no-cache, no-store, must-revalidate"
             );
             ctx.Context.Response.Headers.Append("Pragma", "no-cache");
@@ -338,12 +348,103 @@ if (app.Environment.IsDevelopment())
 }
 // Routing API et Razor
 app.MapControllers();
+
+app.Use(async (context, next) =>
+{
+    var headers = context.Response.Headers;
+
+    // COOP / COEP / CORP
+    headers["Cross-Origin-Opener-Policy"] = "same-origin";
+    headers["Cross-Origin-Embedder-Policy"] = "credentialless";
+    headers["Cross-Origin-Resource-Policy"] = "cross-origin";
+
+    // CSP avec Trusted Types
+    headers["Content-Security-Policy"] =
+        "default-src 'self';" +
+        "base-uri 'self';" +
+        "object-src 'none';" +
+        "frame-ancestors 'none';" +
+        "form-action 'self';" +
+        "upgrade-insecure-requests;" +
+        "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.gstatic.com https://cdnjs.cloudflare.com;" +
+        "style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com;" +
+        "font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com data:;" +
+        "img-src 'self' data: blob: https:;" +
+        "connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com wss: https:;" +
+        "frame-src 'self' https://www.googletagmanager.com;" +
+        "manifest-src 'self';" +
+        "worker-src 'self' blob:;" +
+        "media-src 'self' https:;" +
+        "trusted-types default blazor blazor#bundler gtm;" +
+        "require-trusted-types-for 'script';";
+
+
+    // Content Security Policy
+    headers["Content-Security-Policy"] =
+        "default-src 'self';" +
+        "base-uri 'self';" +
+        "object-src 'none';" +
+        "frame-ancestors 'none';" +
+        "form-action 'self';" +
+        "upgrade-insecure-requests;" +
+
+        // Scripts (Blazor + GTM + Analytics + scripts inline de ton App.razor)
+        "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.gstatic.com https://cdnjs.cloudflare.com;" +
+
+        // Styles (AOS + FontAwesome + styles inline)
+        "style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com;" +
+
+        // Polices
+        "font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com data:;" +
+
+        // Images (OpenGraph, data URI, CDN HTTPS)
+        "img-src 'self' data: blob: https:;" +
+
+        // Connexions (Blazor Server utilise WebSocket)
+        "connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com wss: https:;" +
+
+        // Frames
+        "frame-src 'self' https://www.googletagmanager.com;" +
+
+        // Manifest PWA
+        "manifest-src 'self';" +
+
+        // Workers éventuels
+        "worker-src 'self' blob:;" +
+
+        // Médias
+        "media-src 'self' https:;";
+
+    // HSTS (au cas où le proxy ne le fait pas)
+    headers["Strict-Transport-Security"] =
+        "max-age=31536000; includeSubDomains; preload";
+
+    // En-têtes complémentaires
+    headers["X-Content-Type-Options"] = "nosniff";
+    headers["X-Frame-Options"] = "DENY";
+    headers["Referrer-Policy"] = "strict-origin-when-cross-origin";
+    headers["Permissions-Policy"] =
+        "camera=(), microphone=(), geolocation=(), payment=(), usb=()";
+
+    // Cache des ressources statiques
+    if (context.Request.Path.StartsWithSegments("/images") ||
+        context.Request.Path.StartsWithSegments("/assets") ||
+        context.Request.Path.StartsWithSegments("/_framework") ||
+        context.Request.Path.StartsWithSegments("/lib"))
+    {
+        headers["Cache-Control"] = "public,max-age=31536000,immutable";
+    }
+
+    await next();
+});
+
+
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
 
-app.MapGet("/sitemap.xml", async () => 
+app.MapGet("/sitemap.xml", async () =>
 {
-    var urls = new[] 
+    var urls = new[]
     {
         "/", "/about", "/projets", "/experience", "/services", "/contact"
     };
