@@ -87,23 +87,53 @@
                 <div class="thumbnail-container">
                     @if (!string.IsNullOrEmpty(proj.ImageProjet))
                     {
-                        var image = $"{proj.ImageProjet.Split(".")[0]}.webp";
-                        <img class="thumbnail" src="/images/@(image)" alt="@proj.TitreProjet"
-                             data-img="/images/@(image)" width="80" height="80">
+                        var image = $"{proj.ImageProjet.Split(".")[0]}";
+                        <picture>
+                            <source media="(max-width: 768px)" srcset="/images/@(image + "_phone.webp")"
+                                class="thumbnail" alt="@proj.TitreProjet"
+                                data-img="/images/@(image + "_phone.webp")" />
+
+                            <img src="/images/@(image + ".webp")"
+                                loading="lazy"
+                                class="thumbnail" alt="@proj.TitreProjet"
+                                data-img="/images/@(image + ".webp")"
+                                width="80"
+                                height="80" />
+                        </picture>
                     }
 
                     @if (!string.IsNullOrEmpty(proj.ImageProjet1))
                     {
-                        var image = $"{proj.ImageProjet1.Split(".")[0]}.webp";
-                        <img class="thumbnail" src="/images/@(image)" alt="@proj.TitreProjet"
-                             data-img="/images/@(image)" width="80" height="80">
+                        var image = $"{proj.ImageProjet1.Split(".")[0]}";
+                        <picture>
+                            <source media="(max-width: 768px)" srcset="/images/@(image + "_phone.webp")"
+                                class="thumbnail" alt="@proj.TitreProjet"
+                                data-img="/images/@(image + "_phone.webp")" />
+
+                            <img src="/images/@(image + ".webp")"
+                                loading="lazy"
+                                class="thumbnail" alt="@proj.TitreProjet"
+                                data-img="/images/@(image + ".webp")"
+                                width="80"
+                                height="80" />
+                        </picture>
                     }
 
                     @if (!string.IsNullOrEmpty(proj.ImageProjet2))
                     {
-                        var image = $"{proj.ImageProjet2.Split(".")[0]}.webp";
-                        <img class="thumbnail" src="/images/@(image)" alt="@proj.TitreProjet"
-                             data-img="/images/@(image)" width="80" height="80">
+                        var image = $"{proj.ImageProjet2.Split(".")[0]}";
+                        <picture>
+                            <source media="(max-width: 768px)" srcset="/images/@(image + "_phone.webp")"
+                                class="thumbnail" alt="@proj.TitreProjet"
+                                data-img="/images/@(image + "_phone.webp")" />
+
+                            <img src="/images/@(image + ".webp")"
+                                loading="lazy"
+                                class="thumbnail" alt="@proj.TitreProjet"
+                                data-img="/images/@(image + ".webp")"
+                                width="80"
+                                height="80" />
+                        </picture>
                     }
                 </div>
             </div>
