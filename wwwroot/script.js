@@ -27,7 +27,7 @@ window.siteInterop = {
     initAll: function () {
         // Initialisation AOS
         if (typeof AOS !== 'undefined') {
-            AOS.init({ duration: 800, once: false, mirror: true, offset: 100 });
+            AOS.init({ duration: 800, once: false, mirror: true, offset: 100, disable: window.innerWidth < 768 ? true : false });
         }
 
         // Theme

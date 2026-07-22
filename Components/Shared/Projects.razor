@@ -3,7 +3,7 @@
 @inject IWebHostEnvironment Env
 <!-- PROJETS -->
 
-<section id="projets">
+<section id="projets"  class="section">
     <div class="container">
         <h2 class="section-title">@Localizer.T("CompletedProjects")</h2>
         <div class="projets-grid">
@@ -33,7 +33,8 @@
                              loading="lazy"
                              class="project-img"
                              width="320"
-                             height="180" />
+                             height="180"
+                             style="width:100%;height:auto;" />
                     </picture>
                 }
                 else
@@ -98,7 +99,8 @@
                                 class="thumbnail" alt="@proj.TitreProjet"
                                 data-img="/images/@(image + ".webp")"
                                 width="80"
-                                height="80" />
+                                height="80"
+                                style="width:100%;height:auto;" />
                         </picture>
                     }
 
@@ -115,7 +117,8 @@
                                 class="thumbnail" alt="@proj.TitreProjet"
                                 data-img="/images/@(image + ".webp")"
                                 width="80"
-                                height="80" />
+                                height="80"
+                                style="width:100%;height:auto;" />
                         </picture>
                     }
 
@@ -132,7 +135,8 @@
                                 class="thumbnail" alt="@proj.TitreProjet"
                                 data-img="/images/@(image + ".webp")"
                                 width="80"
-                                height="80" />
+                                height="80"
+                                style="width:100%;height:auto;" />
                         </picture>
                     }
                 </div>
