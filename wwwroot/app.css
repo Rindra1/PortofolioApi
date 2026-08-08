@@ -2563,7 +2563,6 @@ body.dark .glass {
     font-size: 0.95rem;
     line-height: 1.6;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -2676,7 +2675,6 @@ body.dark .card .project-img.loading {
     
     .card-content p {
         font-size: 0.85rem;
-        -webkit-line-clamp: 2;
     }
     
     .card-actions {
