@@ -7,7 +7,8 @@
       
       <!-- Colonne 1 - Logo & Description -->
       <div class="footer-col footer-col-brand">
-        <a href="#" class="footer-brand">
+        <a href="/#accueil" @onclick='() => ScrollToSection("accueil")' @onclick:preventDefault="true"
+           style="cursor: pointer;" class="footer-brand">
           <div class="footer-logo-icon">
             <!--<i class="fas fa-code"></i>-->
             <img src="images/logo.png" sizes="300px" width="300" height="300" loading="eager" fetchpriority="high"

@@ -23,29 +23,38 @@
 
                 @if (mobileExists)
                 {
-                    <picture>
-                        @* Image utilisée uniquement sur les écrans ≤ 768px *@
-                        <source media="(max-width: 768px)" srcset="@mobileUrl" />
-
-                        @* Image par défaut pour desktop *@
-                        <img src="@desktopUrl"
-                             alt="@Localizer.T($"Projet.{idPart}.Titre")"
-                             loading="lazy"
-                             class="project-img"
-                             width="320"
-                             height="180"
-                             style="width:100%;height:auto;" />
-                    </picture>
+                    <div class="image-container">
+                        <picture>
+                            <source media="(max-width: 768px)" srcset="@mobileUrl" />
+                            <img src="@desktopUrl" 
+                                 alt="@Localizer.T($"Projet.{idPart}.Titre")"
+                                 loading="lazy"
+                                 class="project-img" />
+                        </picture>
+                        <div class="image-overlay"></div>
+                        <div class="image-tags">
+                            <!--span class="image-tag">Projet</span-->
+                            <span class="image-tag">@Localizer.T($"Projet.{idPart}.Titre")</span>
+                        </div>
+                    </div>
                 }
                 else
                 {
                     @* S'il n'y a pas d'image mobile, on garde l'image normale *@
-                    <img src="@desktopUrl"
-                         alt="@Localizer.T($"Projet.{idPart}.Titre")"
-                         loading="lazy"
-                         class="project-img"
-                         width="320"
-                         height="180" />
+                    <div class="image-container">
+                        <picture>
+                            <source media="(max-width: 768px)" srcset="@desktopUrl" />
+                            <img src="@desktopUrl" 
+                                 alt="@Localizer.T($"Projet.{idPart}.Titre")"
+                                 loading="lazy"
+                                 class="project-img" />
+                        </picture>
+                        <div class="image-overlay"></div>
+                        <div class="image-tags">
+                            <!--span class="image-tag">Projet</span-->
+                            <span class="image-tag">@Localizer.T($"Projet.{idPart}.Titre")</span>
+                        </div>
+                    </div>
                 }
                     <!--<img src="/images/@(proj.ImageProjet)" alt="@Localizer.T($"Projet.{idPart}.Titre")" loading="lazy"
                          class="project-img" width="320" height="180">-->
