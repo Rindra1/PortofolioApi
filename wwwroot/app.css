@@ -1574,7 +1574,7 @@ body.dark .suggestion-chip {
     flex-wrap: wrap;
   }
   .logo img {
-    height: 75px;
+    height: 55px;
   }
 }
 @media (min-width: 1001px) {
