@@ -109,7 +109,6 @@ body.dark header {
 .logo {
   font-weight: 800;
   font-size: 1.6rem;
-  background: linear-gradient(135deg, #8b5cf6, #3b82f6);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -119,7 +118,6 @@ body.dark header {
   transform: scale(1.02);
 }
 body.dark .logo {
-  background: linear-gradient(135deg, #a78bfa, #60a5fa);
   -webkit-background-clip: text;
   background-clip: text;
 }
@@ -1576,7 +1574,7 @@ body.dark .suggestion-chip {
     flex-wrap: wrap;
   }
   .logo img {
-    height: 35px;
+    height: 75px;
   }
 }
 @media (min-width: 1001px) {
