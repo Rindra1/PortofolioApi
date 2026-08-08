@@ -28,20 +28,49 @@ var dbPath = Path.Combine(
     "Data",
     "appdata.db");
 
-// Téléchargement si la base n'existe pas
+// Vérifier si la base existe, sinon la télécharger
 if (!File.Exists(dbPath))
 {
-    using var client = new WebClient();
+    var dbDirectory = Path.GetDirectoryName(dbPath);
+    if (!Directory.Exists(dbDirectory))
+    {
+        Directory.CreateDirectory(dbDirectory);
+    }
+
+    using var httpClient = new HttpClient();
+    httpClient.Timeout = TimeSpan.FromSeconds(30);
+    
     try
     {
-        client.DownloadFile(
-            "https://github.com/Rindra1/PortofolioApi/raw/refs/heads/main/appdata.db",
-            dbPath
+        var response = await httpClient.GetAsync(
+            "https://github.com/Rindra1/PortofolioApi/raw/refs/heads/main/appdata.db"
         );
+        
+        if (response.IsSuccessStatusCode)
+        {
+            var content = await response.Content.ReadAsByteArrayAsync();
+            await File.WriteAllBytesAsync(dbPath, content);
+            Console.WriteLine("✅ Base de données téléchargée avec succès");
+        }
+        else
+        {
+            Console.WriteLine($"❌ Erreur de téléchargement : {response.StatusCode}");
+            // Créer une base vide si le téléchargement échoue
+            /*using var emptyDb = new ApplicationDbContext(
+                new DbContextOptionsBuilder<ApplicationDbContext>()
+                    .UseSqlite($"Data Source={dbPath}")
+                    .Options);
+            await emptyDb.Database.EnsureCreatedAsync();*/
+        }
     }
     catch (Exception ex)
     {
-        Console.WriteLine($"Erreur lors du téléchargement de la base : {ex.Message}");
+        Console.WriteLine($"❌ Erreur de téléchargement : {ex.Message}");
+        /*using var emptyDb = new ApplicationDbContext(
+            new DbContextOptionsBuilder<ApplicationDbContext>()
+                .UseSqlite($"Data Source={dbPath}")
+                .Options);
+        await emptyDb.Database.EnsureCreatedAsync();*/
     }
 }
 
