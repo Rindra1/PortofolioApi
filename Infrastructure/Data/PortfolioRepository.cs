@@ -59,7 +59,7 @@ public class PortfolioRepository : IRepositoryPortfolio<UtilisateurDTO>
                 Nom = e.Nom
             }).ToList(),
 
-            Projets = u.Projets.Select(p => new ProjetDTO
+            Projets = u.Projets.OrderByDescending(p=>p.Ordre).Select(p => new ProjetDTO
             {
                 IdProjet = p.IdProjet,
                 ResumerProjet = p.ResumerProjet,
@@ -71,6 +71,7 @@ public class PortfolioRepository : IRepositoryPortfolio<UtilisateurDTO>
                 Stack = p.Stack,
                 Lien = p.Lien,
                 Fonctionnalite = p.Fonctionnalite,
+                ordre = p.Ordre,
 
                 Liens = p.Liens.Select(t => new LienDTO
                 {
@@ -103,7 +104,7 @@ public class PortfolioRepository : IRepositoryPortfolio<UtilisateurDTO>
                     TypeContact = c.TypeContact,
                     AdresseContact = c.AdresseContact
                 }).ToList(),
-                Projets = u.Projets.Select(p => new ProjetDTO
+                Projets = u.Projets.OrderByDescending(p=>p.Ordre).Select(p => new ProjetDTO
                 {
                     TitreProjet = p.TitreProjet,
                     DetailProjet = p.DetailProjet,
@@ -113,6 +114,7 @@ public class PortfolioRepository : IRepositoryPortfolio<UtilisateurDTO>
                     Stack = p.Stack,
                     Lien = p.Lien,
                     Fonctionnalite = p.Fonctionnalite,
+                    ordre = p.Ordre,
 
                     Liens = p.Liens.Select(t => new LienDTO
                     {
@@ -121,6 +123,17 @@ public class PortfolioRepository : IRepositoryPortfolio<UtilisateurDTO>
                 }).ToList()
             })
         .FirstOrDefault(); // retourne un seul DTO
+        var projets = utilisateurDto.Projets;
+        Console.WriteLine();
+        Console.WriteLine();
+        Console.WriteLine();
+        foreach(var projet in projets)
+        {
+            Console.WriteLine($"{projet.ordre} {projet.TitreProjet}" );
+        }
+        Console.WriteLine();
+        Console.WriteLine();
+        Console.WriteLine();
         return utilisateurDto ?? new UtilisateurDTO();
     }
 }

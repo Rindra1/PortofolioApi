@@ -18,4 +18,5 @@ public class Projet
     public Utilisateur? Utilisateur { get; set; }
 
     public List<Lien> Liens { get; set; } = new List<Lien>();
+    public int Ordre {get;set;}
 }

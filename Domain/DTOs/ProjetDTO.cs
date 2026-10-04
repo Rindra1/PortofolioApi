@@ -15,4 +15,5 @@ public class ProjetDTO
     public string? Lien { get; set; }
     public string? Fonctionnalite { get; set; }
     public List<LienDTO>? Liens {get;set;} = new List<LienDTO>(); 
+    public int ordre {get;set;}
 }
