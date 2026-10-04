@@ -20,9 +20,27 @@ public class PortfolioController : ControllerBase
     }
 
     [HttpGet]
+    [HttpGet]
     public ActionResult<UtilisateurDTO> GetPortfolio()
     {
-        return _service.GetPortfolio();
+        try
+        {
+            var portfolio = _service.GetPortfolio();
+
+            return Ok(portfolio);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("========== ERREUR PORTFOLIO ==========");
+            Console.WriteLine(ex.ToString());
+            Console.WriteLine("=======================================");
+
+            return StatusCode(500, new
+            {
+                message = ex.Message,
+                detail = ex.InnerException?.Message
+            });
+        }
     }
 
 }
