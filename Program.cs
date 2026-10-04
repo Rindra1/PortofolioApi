@@ -22,8 +22,47 @@ using Microsoft.AspNetCore.StaticFiles;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Chemin vers la base, compatible local et Render
 var dbPath = Path.Combine(
+    builder.Environment.ContentRootPath,
+    "Data",
+    "appdata.db");
+
+if (File.Exists(dbPath))
+{
+    File.Delete(dbPath);
+}
+
+var dbDirectory = Path.GetDirectoryName(dbPath);
+
+if (!Directory.Exists(dbDirectory))
+{
+    Directory.CreateDirectory(dbDirectory);
+}
+
+using var httpClient = new HttpClient();
+httpClient.Timeout = TimeSpan.FromSeconds(30);
+
+try
+{
+    var response = await httpClient.GetAsync(
+        "https://github.com/Rindra1/PortofolioApi/raw/refs/heads/main/appdata.db"
+    );
+
+    response.EnsureSuccessStatusCode();
+
+    var content = await response.Content.ReadAsByteArrayAsync();
+
+    await File.WriteAllBytesAsync(dbPath, content);
+
+    Console.WriteLine("✅ Base SQLite téléchargée");
+}
+catch (Exception ex)
+{
+    Console.WriteLine($"❌ Erreur téléchargement SQLite : {ex}");
+}
+
+// Chemin vers la base, compatible local et Render
+/*var dbPath = Path.Combine(
     builder.Environment.ContentRootPath,
     "Data",
     "appdata.db");
@@ -61,18 +100,18 @@ if (!File.Exists(dbPath))
                     .UseSqlite($"Data Source={dbPath}")
                     .Options);
             await emptyDb.Database.EnsureCreatedAsync();*/
-        }
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine($"❌ Erreur de téléchargement : {ex.Message}");
-        /*using var emptyDb = new ApplicationDbContext(
-            new DbContextOptionsBuilder<ApplicationDbContext>()
-                .UseSqlite($"Data Source={dbPath}")
-                .Options);
-        await emptyDb.Database.EnsureCreatedAsync();*/
-    }
-}
+//}
+/*}
+catch (Exception ex)
+{
+    Console.WriteLine($"❌ Erreur de téléchargement : {ex.Message}");
+    /*using var emptyDb = new ApplicationDbContext(
+        new DbContextOptionsBuilder<ApplicationDbContext>()
+            .UseSqlite($"Data Source={dbPath}")
+            .Options);
+    await emptyDb.Database.EnsureCreatedAsync();*/
+//}
+//}
 
 // Ajoute cette ligne juste après la création du builder
 builder.Configuration.AddEnvironmentVariables();
