@@ -44,9 +44,9 @@ httpClient.Timeout = TimeSpan.FromSeconds(30);
 
 try
 {
-    var response = await httpClient.GetAsync(
-        "https://github.com/Rindra1/PortofolioApi/raw/refs/heads/main/appdata.db"
-    );
+    var response = await httpClient.GetAsync("https://github.com/Rindra1/PortofolioApi/tree/main/Data");
+        //"https://github.com/Rindra1/PortofolioApi/raw/refs/heads/main/appdata.db"
+    //);
 
     response.EnsureSuccessStatusCode();
 
